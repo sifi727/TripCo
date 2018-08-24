@@ -17,21 +17,21 @@ Teamwork Questionnaire for Melvin Gramke
     How will you decide who should do what on the project and activities?
         Try to match interests and skills / abilities with identified tasks.
     What will happen if someone doesn’t follow through on a commitment (missing deadline, no show, etc.)?
-        answer
+        The team should be notified prior to the commitment deadline; otherwise, the person will need to take responsibility for any missed deadline / incompleted tasks.
     What happens if people have different opinions on the quality of the work?
-        answer
+        The team should achieve consensus regarding the range of quality that is expected as tasks are assigned, and members should be held to agreed upon standards.
     How will you deal with different work habits of team members?
-        answer
+        Team members should briefly provide regular status updates during weekly meetings to reconcile progression among members.
     Do you want to have a standing meeting time outside of class?
-        answer
+        That would be great, I am open to scheduling a time that works for each member.
     How often do you think the team will need to meet outside of class?
-        answer
+        2 or 3 times per week seems feasible.
     Will you need approval of every team member before making a decision?
-        answer
+        Sometimes, depending on the circumstances; however, generally, I don't think that is necessary.
     What will you do if every team member except one agrees on something?
-        answer
+        The team should determine which path is most consistent with the requirements of the associated task and if necessary, consider the requirements of associated tasks and overall project requirements.
     What will you do if one person seems to be dominating the team process?
-        answer
+        If necessary, team members should discuss their concerns in order to increase situational awareness.
     What will you do if you feel most of the facilitation responsibilities are falling on you?
-        answer
+        Try to communicate your perspective to team members in order to identify mitigating steps that could be taken.
 
