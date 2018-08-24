@@ -53,8 +53,8 @@ Add additional notes about how to deploy this on a live system
 
 * **Alex Laswell**
 * **David Jump**
-*
-*
+* **Jerrel Siler**
+* **Melvin Gramke**
 
 See also the list of [contributors](https://github.com/csu18fa314/t07/graphs/contributors) who participated in this project.
 
