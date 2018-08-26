@@ -20,3 +20,5 @@ My hobbies include watching anime, biking, camping, computers, food, football, h
 # Manifesto
 
 # Expectations
+
+* All work must be tracked and accounted for. Each branch will have a correspoding issue and each pull request will be associated to a branch. We will never commit directly to the master branch. 
