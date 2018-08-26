@@ -4,6 +4,7 @@
 
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
+|David Jump|djump|DavidJump|David.Jump@Colostate.edu|
 
 # Manifesto
 
