@@ -4,6 +4,7 @@
 
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
+| Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
 
 # Manifesto
 
