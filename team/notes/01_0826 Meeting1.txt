@@ -1,0 +1,29 @@
+
+Notes from the first team meeting on Sunday, 08/26.
+Includes tasks for completing the t07/README.md file on github.
+
+
+*task (team member)
+
+*Clean Up README.md (MG)
+
+*Team Name: Team double 07
+
+*Team Picture & Caption (Monday)
+
+*Member Table
+	each does own name / information
+
+*Member Bio
+
+*Manifesto (4 values; 1 paragraph)
+(AL) Working software = progress
+(MG) Changing requirements, even late
+(DJ) Respect and teach one another
+(JS) Accuracy and precision, not one or other
+
+*Expectations
+(JS) 2 or more reviewers before merge
+(AL) Always make issue / branch / PR (*new merge to master)
+(DJ) Follow through w/ commitments or ask for help if stuck
+(MG) Incremental develpment --commit often --always test code
