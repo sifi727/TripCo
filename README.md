@@ -5,7 +5,10 @@
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
 | Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
+| David Jump | djump | DavidJump | David.Jump@Colostate.edu |
+| Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
 | Melvin Gramke | gramkem | gramkem | gramkem@rams.colostate.edu |
+
 
 ### David Jump
 
@@ -17,11 +20,21 @@ I am a Colorado native, I grew up in and around Loveland and Fort Collins. I am 
 
 My hobbies include watching anime, biking, camping, computers, food, football, hiking, netflix binging, pokémon, and video games (mostly First Person Shooters, but also Mario, Zelda, etc). My favourite colour is green, and I love all kinds of music from heavy metal to pop, in both English and Spanish. 
 
+### Jerrel Siler
+
+I am originally from the east coast and lived in Pittsburgh, Pennsylvania for most of my life in a town southeast of Pittsburgh called McKeesport. I am currently majoring in two degrees: Computer Science and Applied Computing Technology. I have been in Colorado since August 2010 and before that, I lived in Georgia for nearly seven years in the city of Columbus. I developed a passion for computers once I was out of high school and I have always enjoyed math when I was younger, so computer science fits well with what I wanted to do as a career.
+
+As for my hobbies, well I love being behind a computer (obviously) whether it is surfing the web, playing games (I currently like to play Terraria by the way), or even working on personal computing projects. Also when time and money allows it, I love to travel and visit new places. Colorado is the furtherest west that I have been in the US, so eventually I would like to travel west to visit California and Las Vegas!
+
 # Manifesto
 
+* We will use tested, working, and deployable software to track our progress and success. This is expected at all times of development, but especially as we approach the end of the sprint. We want to be focused on delivering bug free software that works at any given time. By using working versions as an incremental way of tracking our progress, we will ensure that we achieve this. We will have a deployable system at all times, and in particular, the last few days of the sprint will be spent ensuring tests pass, code is clean, and we have made progress as defined above.
 * It is okay to disagree with each other, but as a team we will respect one another and help each other succeed.
+* When it comes to our development practices, we will strive for both accurrecy and percision, rather than acheiving either one or the other.
 
 # Expectations
 
+
 * All work must be tracked and accounted for. Each branch will have a correspoding issue and each pull request will be associated to a branch. We will never commit directly to the master branch. 
 * All pull requests must have at least two reviewers aproving it before the new branch is merged into the master branch. The last reviewer that approves the branch will merge it into the master branch.
+* Every member is expected to finish the work they commit to. If a member is experiencing difficulty in completing their task, and have put in an effort, then they should ask the rest of the team for help.
