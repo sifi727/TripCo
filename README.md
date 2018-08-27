@@ -12,4 +12,6 @@ Currently, I am student at Colorado State University. In December, I am completi
 
 # Manifesto
 
+* We will use tested, working, and deployable software to track our progress and success. This is expected at all times of development, but especially as we approach the end of the sprint. We want to be focused on delivering bug free software that works at any given time. By using working versions as an incremental way of tracking our progress, we will ensure that we achieve this. We will have a deployable system at all times, and in particular, the last few days of the sprint will be spent ensuring tests pass, code is clean, and we have made progress as defined above.
+
 # Expectations
