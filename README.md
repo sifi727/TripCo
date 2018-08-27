@@ -24,3 +24,4 @@ My hobbies include watching anime, biking, camping, computers, food, football, h
 # Expectations
 
 * All work must be tracked and accounted for. Each branch will have a correspoding issue and each pull request will be associated to a branch. We will never commit directly to the master branch. 
+* All pull requests must have at least two reviewers aproving it before the new branch is merged into the master branch. The last reviewer that approves the branch will merge it into the master branch.
