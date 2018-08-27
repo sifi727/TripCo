@@ -5,8 +5,10 @@
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
 | Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
-| Melvin Gramke | gramkem | gramkem | gramkem@rams.colostate.edu |
+| David Jump | djump | DavidJump | David.Jump@Colostate.edu |
 | Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
+| Melvin Gramke | gramkem | gramkem | gramkem@rams.colostate.edu |
+
 
 ### David Jump
 
