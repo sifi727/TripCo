@@ -6,6 +6,7 @@
 | ----------------- | ---------- | ---------- | ----------------------------------- |
 | Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
 | Melvin Gramke | gramkem | gramkem | gramkem@rams.colostate.edu |
+| Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
 
 ### David Jump
 
