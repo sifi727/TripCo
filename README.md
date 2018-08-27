@@ -30,7 +30,7 @@ As for my hobbies, well I love being behind a computer (obviously) whether it is
 
 * We will use tested, working, and deployable software to track our progress and success. This is expected at all times of development, but especially as we approach the end of the sprint. We want to be focused on delivering bug free software that works at any given time. By using working versions as an incremental way of tracking our progress, we will ensure that we achieve this. We will have a deployable system at all times, and in particular, the last few days of the sprint will be spent ensuring tests pass, code is clean, and we have made progress as defined above.
 * It is okay to disagree with each other, but as a team we will respect one another and help each other succeed.
-* When it comes to our development practices, we will strive for both accurrecy and percision, rather than acheiving either one or the other.
+* When it comes to our development practices, we will strive for both accurrecy and percision, rather than acheiving either one or the other. We reconize that being both accurate and precise will always lead to meeting our developement goals. Being only accurate may occasionally leave us short from hitting our developement goals while being only precise may always lead to not reaching our development goals.
 * We take a dynamic approach to specifications implementation. We will strive to continually adopt each requirements modification during every stage of development. We will use process management tools in a collaborative environment to ensure consistent, effective, and efficient development practices that allow timely changes and that maintains consistency within the requirements specification framework. 
 
 # Expectations
