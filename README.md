@@ -26,4 +26,5 @@ My hobbies include watching anime, biking, camping, computers, food, football, h
 
 # Expectations
 
-* All work must be tracked and accounted for. Each branch will have a correspoding issue and each pull request will be associated to a branch. We will never commit directly to the master branch. 
+* All work must be tracked and accounted for. Each branch will have a correspoding issue and each pull request will be associated to a branch. We will never commit directly to the master branch.
+* Every member is expected to finish the work they commit to. If a member is experiencing difficulty in completing their task, and have put in an effort, then they should ask the rest of the team for help.
