@@ -19,6 +19,8 @@ My hobbies include watching anime, biking, camping, computers, food, football, h
 
 # Manifesto
 
+* It is okay to disagree with each other, but as a team we will respect one another and help each other succeed.
+
 # Expectations
 
 * All work must be tracked and accounted for. Each branch will have a correspoding issue and each pull request will be associated to a branch. We will never commit directly to the master branch. 
