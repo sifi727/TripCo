@@ -20,6 +20,7 @@ My hobbies include watching anime, biking, camping, computers, food, football, h
 # Manifesto
 
 * It is okay to disagree with each other, but as a team we will respect one another and help each other succeed.
+* When it come to completing our team sprints, we will strive for both accurrecy and percision, rather than acheiving either one or the other.
 
 # Expectations
 
