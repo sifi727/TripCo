@@ -4,6 +4,7 @@
 
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
+| Melvin Gramke | gramkem | gramkem | gramkem@rams.colostate.edu |
 
 ### David Jump
 
