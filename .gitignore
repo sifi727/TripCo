@@ -101,4 +101,15 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# this is a test line
+# this is a test line.idea/
+*.iml
+
+client/node_modules/
+client/public/
+client/*.log
+
+client_bundle/
+target/
+
+# Client Jest coverage reports
+/client/coverage/

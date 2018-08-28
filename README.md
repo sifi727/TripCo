@@ -4,11 +4,13 @@
 
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
-| Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
-| David Jump | djump | DavidJump | David.Jump@Colostate.edu |
-| Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
 | Melvin Gramke | gramkem | gramkem | gramkem@rams.colostate.edu |
+| David Jump | djump | DavidJump | David.Jump@Colostate.edu |
+| Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
+| Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
 
+### Melvin Gramke
+I have lived here in Fort Collins for almost 6 years now. Previously, I lived in Montrose for just over a year and prior to that in Florida, where it snows less frequently. I am an undergraduate here at Colorado State, and my major is in Computer Science. I have one year to go before graduation, and I am currently employed with CSU Facilities. I enjoy biking and CSU pickup soccer as well as listening to audiobooks, podcasts, and music. My favorite aspect of Computer Science is logical analysis and algorithms.
 
 ### David Jump
 
@@ -29,7 +31,7 @@ As for my hobbies, well I love being behind a computer (obviously) whether it is
 # Manifesto
 
 * We will use tested, working, and deployable software to track our progress and success. This is expected at all times of development, but especially as we approach the end of the sprint. We want to be focused on delivering bug free software that works at any given time. By using working versions as an incremental way of tracking our progress, we will ensure that we achieve this. We will have a deployable system at all times, and in particular, the last few days of the sprint will be spent ensuring tests pass, code is clean, and we have made progress as defined above.
-* It is okay to disagree with each other, but as a team we will respect one another and help each other succeed.
+* Each member on the team will respect one another and help each other succeed.  We recognize it is okay to disagree with each other. When we have disagreements we will discuss them on Slack or in a meeting. If the disagreement is major and cannot be resolved we will bring up the ideas objectivity to the TA so we as team can learn what the best course of action is. If the TA does not know then we will talk with Dave. 
 * When it comes to our development practices, we will strive for both accurrecy and percision, rather than acheiving either one or the other. We reconize that being both accurate and precise will always lead to meeting our developement goals. Being only accurate may occasionally leave us short from hitting our developement goals while being only precise may always lead to not reaching our development goals.
 * We take a dynamic approach to specifications implementation. We will strive to continually adopt each requirements modification during every stage of development. We will use process management tools in a collaborative environment to ensure consistent, effective, and efficient development practices that allow timely changes and that maintains consistency within the requirements specification framework. 
 
