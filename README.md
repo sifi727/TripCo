@@ -9,6 +9,8 @@
 | Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
 | Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
 
+### Melvin Gramke
+I have lived here in Fort Collins for almost 6 years now. Previously, I lived in Montrose for just over a year and prior to that in Florida, where it snows less frequently. I am an undergraduate here at Colorado State, and my major is in Computer Science. I have one year to go before graduation, and I am currently employed with CSU Facilities. I enjoy biking and CSU pickup soccer as well as listening to audiobooks, podcasts, and music. My favorite aspect of Computer Science is logical analysis and algorithms.
 
 ### David Jump
 
