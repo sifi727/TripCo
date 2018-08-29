@@ -1,5 +1,6 @@
 # t07 - Team double 07
-
+![Team double 07](/images/Team-double-07.jpg "Team double 07")
+_Jerrel, David, Melvin, Alex_
 # Member Information
 
 | Name | eName | gitHub username | email |
