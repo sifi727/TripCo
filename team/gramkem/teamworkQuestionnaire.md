@@ -1,7 +1,7 @@
 # Teamwork Questionnaire for Melvin Gramke
 
 #### 1.    Is it generally easier to reach you by text, electronic mail, voice mail or something else? What hours?
-        * email. The morning hours are best.
+        **** email. The morning hours are best.
 #### 2.    What are your expectations about what your team will accomplish this semester?
         * Experience with development tools and development processes in a collaborative environment.
 #### 3.    What are your personal goals for improving your teamwork and communication skills this semester?
