@@ -91,6 +91,8 @@ public class Distance
         double destination_latitude = Math.toRadians(Double.valueOf(destination.latitude));
         double destination_longitude = Math.toRadians(Double.valueOf(destination.longitude));
 
-        this.distance = Math.atan(Math.sqrt(Math.pow(Math.cos(destination_latitude) + Math.sin(origin_longitude - destination_longitude), 2) + Math.pow((Math.cos(origin_latitude) * Math.sin(destination_latitude)) - (Math.sin(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude), 2)))/((Math.sin(origin_latitude) * Math.sin(destination_latitude)) + (Math.cos(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude))));
+        //The 0.5 at the end of the next line below will round up the answer 
+        //(Java truncates decimals when converting from double to int).
+        this.distance = Math.atan(Math.sqrt(Math.pow(Math.cos(destination_latitude) + Math.sin(origin_longitude - destination_longitude), 2) + Math.pow((Math.cos(origin_latitude) * Math.sin(destination_latitude)) - (Math.sin(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude), 2)))/((Math.sin(origin_latitude) * Math.sin(destination_latitude)) + (Math.cos(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude)))) + 0.5;
     }
 }
