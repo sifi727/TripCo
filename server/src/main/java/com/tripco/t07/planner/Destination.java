@@ -93,6 +93,7 @@ public class Distance
 
         //The 0.5 at the end of the next line below will round up the answer 
         //(Java truncates decimals when converting from double to int).
+        //Reference source to formula: https://en.wikipedia.org/wiki/Great-circle_distance (Vincenty formula)
         this.distance = Math.atan(Math.sqrt(Math.pow(Math.cos(destination_latitude) + Math.sin(origin_longitude - destination_longitude), 2) + Math.pow((Math.cos(origin_latitude) * Math.sin(destination_latitude)) - ((Math.sin(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude)), 2)))/((Math.sin(origin_latitude) * Math.sin(destination_latitude)) + (Math.cos(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude))) + 0.5;
     }
 }
