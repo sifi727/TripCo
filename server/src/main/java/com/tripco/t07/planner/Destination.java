@@ -39,7 +39,7 @@ public class Distance
     public int getDistance()
     {
         return this.distance;
-    }
+    } 
 
 
     //class setters (or mutators)
