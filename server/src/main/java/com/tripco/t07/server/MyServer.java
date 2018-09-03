@@ -46,7 +46,7 @@ public class MyServer {
       return name;
     }
     else
-      return "Unknown";
+      return "T07 Team double07"; //Default to our team name
   }
 
 }
