@@ -77,9 +77,9 @@ public class Distance
     //class methods
 
     //This calls a helper method haversineVincenty().
-    public void calculateTotalDistance(Place origin, Place destination)
+    public void calculateTotalDistance()
     {
-        haversineVincenty(origin, destination);
+        haversineVincenty(this.origin, this.destination);
     }
 
     private void haversineVincenty(Place origin, Place destination)
@@ -108,6 +108,6 @@ public class Distance
         double denominator = left_denominator_component + right_denominator_component;
 
         //The 0.5 at the end of the next line below will round up the answer when converting back into the distance int variable.
-        this.distance = (radius * Math.atan2(numerator, denominator)) + 0.5;
+        this.distance = (int)(Math.floor((radius * Math.atan2(numerator, denominator)) + 0.5));
     }
 }
