@@ -79,17 +79,17 @@ public class Distance
     //This calls a helper method haversineVincenty().
     public void calculateTotalDistance()
     {
-        haversineVincenty(this.origin, this.destination);
+        haversineVincenty();
     }
 
-    private void haversineVincenty(Place origin, Place destination)
+    private void haversineVincenty()
     {
         //We have to covert the latitude and longitude angles from degrees to radians.
         //The latitude and longitude are also String variables so they will have to be converted to doubles for the formula.
-        double origin_latitude = Math.toRadians(Double.valueOf(origin.latitude));
-        double origin_longitude = Math.toRadians(Double.valueOf(origin.longitude));
-        double destination_latitude = Math.toRadians(Double.valueOf(destination.latitude));
-        double destination_longitude = Math.toRadians(Double.valueOf(destination.longitude));
+        double origin_latitude = Math.toRadians(Double.valueOf(this.origin.latitude));
+        double origin_longitude = Math.toRadians(Double.valueOf(this.origin.longitude));
+        double destination_latitude = Math.toRadians(Double.valueOf(this.destination.latitude));
+        double destination_longitude = Math.toRadians(Double.valueOf(this.destination.longitude));
         //The delta-lambda variable is the absolute differences between the two longitudes.
         double delta_lambda = Math.abs(origin_longitude - destination_longitude);
         //The radius of Earth in miles.
