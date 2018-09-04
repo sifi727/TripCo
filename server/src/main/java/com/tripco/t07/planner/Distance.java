@@ -39,7 +39,7 @@ public class Distance
     public int getDistance()
     {
         return this.distance;
-    } 
+    }
 
 
     //class setters (or mutators)
@@ -90,12 +90,24 @@ public class Distance
         double origin_longitude = Math.toRadians(Double.valueOf(origin.longitude));
         double destination_latitude = Math.toRadians(Double.valueOf(destination.latitude));
         double destination_longitude = Math.toRadians(Double.valueOf(destination.longitude));
+        //The delta-lambda variable is the absolute differences between the two longitudes.
+        double delta_lambda = origin_longitude - destination_longitude;
         //The radius of Earth in miles.
         int radius = 3959;
 
-        //The 0.5 at the end of the next line below will round up the answer 
-        //(Java truncates decimals when converting from double to int).
-        //Reference source to formula: https://en.wikipedia.org/wiki/Great-circle_distance (Vincenty formula)
-        this.distance = radius * Math.atan(Math.sqrt(Math.pow(Math.cos(destination_latitude) + Math.sin(origin_longitude - destination_longitude), 2) + Math.pow((Math.cos(origin_latitude) * Math.sin(destination_latitude)) - (Math.sin(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude)), 2)))/((Math.sin(origin_latitude) * Math.sin(destination_latitude)) + (Math.cos(origin_latitude) * Math.cos(destination_latitude) * Math.cos(origin_longitude - destination_longitude))) + 0.5;
+        /**
+         *  We have broken the formula into several lines, calculating the innermost components first and then plugging into a more general formula,
+         *  Reference source to the haversineVincenty formula: https://en.wikipedia.org/wiki/Great-circle_distance (Vincenty formula)
+         */
+
+        double left_sqrt_component = Math.pow(Math.cos(destination_latitude) * Math.sin(delta_lambda), 2);
+        double right_sqrt_component = Math.pow((Math.cos(origin_latitude) * Math.sin(destination_latitude)) - (Math.sin(origin_latitude) * Math.cos(destination_latitude) * Math.cos(delta_lambda)), 2);
+        double numerator = Math.sqrt(left_sqrt_component + right_sqrt_component);
+        double left_denominator_component = Math.sin(origin_latitude) * Math.sin(destination_latitude);
+        double right_denominator_component = Math.cos(origin_latitude) * Math.cos(destination_latitude) * Math.cos(delta_lambda);
+        double denominator = left_denominator_component + right_denominator_component;
+
+        //The 0.5 at the end of the next line below will round up the answer when converting back into the distance int variable.
+        this.distance = (radius * Math.atan(numerator / denominator)) + 0.5;
     }
 }
