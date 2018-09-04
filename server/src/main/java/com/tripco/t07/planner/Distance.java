@@ -91,9 +91,9 @@ public class Distance
         double destination_latitude = Math.toRadians(Double.valueOf(destination.latitude));
         double destination_longitude = Math.toRadians(Double.valueOf(destination.longitude));
         //The delta-lambda variable is the absolute differences between the two longitudes.
-        double delta_lambda = origin_longitude - destination_longitude;
+        double delta_lambda = Math.abs(origin_longitude - destination_longitude);
         //The radius of Earth in miles.
-        int radius = 3959;
+        double radius = 3959.0;
 
         /**
          *  We have broken the formula into several lines, calculating the innermost components first and then plugging into a more general formula,
@@ -108,6 +108,6 @@ public class Distance
         double denominator = left_denominator_component + right_denominator_component;
 
         //The 0.5 at the end of the next line below will round up the answer when converting back into the distance int variable.
-        this.distance = (radius * Math.atan(numerator / denominator)) + 0.5;
+        this.distance = (radius * Math.atan2(numerator, denominator)) + 0.5;
     }
 }
