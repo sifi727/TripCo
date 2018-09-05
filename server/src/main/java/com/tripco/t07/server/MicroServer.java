@@ -42,9 +42,10 @@ public class MicroServer {
     get("/echo", this::echo);
     get("/hello/:name", this::hello);
     get("/team", this::team);
-    // client is sending data, so a HTTP POST is used instead of a GET
     get("/config", this::config);
+    // client is sending data, so a HTTP POST is used instead of a GET
     post("/plan", this::plan);
+    post("/distance",this::distance);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
   }
@@ -131,5 +132,21 @@ public class MicroServer {
     response.header("Access-Control-Allow-Origin", "*");
 
     return name;
+  }
+
+    /** A REST API that receives a TFFI and returns a TFFI with populated distance variable
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+  private String distance(Request request, Response response){
+
+    response.type("application/json");
+    response.header("Access-Control-Allow-Origin", "*");
+    Calculate calculate = new Calculate(request);
+    String distance = calculate.getDistance();
+    return distance;
+
   }
 }
