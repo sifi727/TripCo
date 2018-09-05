@@ -27,8 +27,24 @@ public class Distance
         double destination_longitude = Math.toRadians(Double.valueOf(this.destination.longitude));
         //The delta-lambda variable is the absolute differences between the two longitudes.
         double delta_lambda = Math.abs(origin_longitude - destination_longitude);
-        //The radius of Earth in miles.
-        double radius = 3959.0;
+        // the radius of the Earth
+        double radius = 0;
+
+        // switch on the units and assign the correct radius
+        switch (units) {
+            case "miles":
+                radius = 3959.0;
+                break;
+            case "kilometers":
+                radius = 6371.0;
+                break;
+            case "nautical miles":
+                radius = 3440.0;
+                break;
+            default:
+                return;
+        }
+
 
         /**
          *  We have broken the formula into several lines, calculating the innermost components first and then plugging into a more general formula,
