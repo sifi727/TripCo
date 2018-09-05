@@ -1,9 +1,9 @@
-# Sprint # - *your team number* - *your team name*
+# Sprint # - *t07* - *Team double 07*
 
 ## Goal
 
 ### Distance Calculator!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *David Jump*
 
 ## Definition of Done
 
@@ -21,8 +21,8 @@
 
 Epics planned for this release.
 
-* *## title*
-*
+* *RESTful Service for Distance*
+* *Responsive Client for Distance Calculator*
 
 *Include a discussion of planning decisions the team made.*
 
