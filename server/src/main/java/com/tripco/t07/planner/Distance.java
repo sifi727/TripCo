@@ -21,10 +21,10 @@ public class Distance
     {
         //We have to covert the latitude and longitude angles from degrees to radians.
         //The latitude and longitude are also String variables so they will have to be converted to doubles for the formula.
-        double origin_latitude = Math.toRadians(Double.valueOf(this.origin.latitude));
-        double origin_longitude = Math.toRadians(Double.valueOf(this.origin.longitude));
-        double destination_latitude = Math.toRadians(Double.valueOf(this.destination.latitude));
-        double destination_longitude = Math.toRadians(Double.valueOf(this.destination.longitude));
+        double origin_latitude = Math.toRadians(this.origin.latitude);
+        double origin_longitude = Math.toRadians(this.origin.longitude);
+        double destination_latitude = Math.toRadians(this.destination.latitude);
+        double destination_longitude = Math.toRadians(this.destination.longitude);
         //The delta-lambda variable is the absolute differences between the two longitudes.
         double delta_lambda = Math.abs(origin_longitude - destination_longitude);
         //The radius of Earth in miles.
