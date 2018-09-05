@@ -1,4 +1,4 @@
-# Sprint # - *t07* - *Team double 07*
+# Sprint 1 - *t07* - *Team double 07*
 
 ## Goal
 
