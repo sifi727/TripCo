@@ -62,6 +62,8 @@ Planning Decisions the team made.
 ## Retrospective
 
 #### What went well
+* The planning and delegating went good. And following through on our commitments and working with each other to polish each branch.
+* Meeting up as a team went well whether it was meeting after classes for an hour or so and on occasions meeting on the weekends when we needed to also went pretty good.
 
 #### Potential improvements
 * Figuring out the best way to mock out an object during the planning phase so other developers can use a method currently being built in the current sprint and still have their code compile.
