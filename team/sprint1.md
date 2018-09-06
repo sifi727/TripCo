@@ -50,12 +50,14 @@ Planning Decisions the team made.
 *
 
 #### What went well
-* *something*
-*
+* Everyone in the team contributed to different parts in the sprint.
+* Everyone in the team provided useful correction to code before it was merged into the master branch.
 
 #### Problems encountered and resolutions
-* *something*
-*
+* Some of the original code purposed to be merged into the master branch did not compile. This was found and fixed before it was merged.
+* Because of the lack of mock up during the planning phase some code was merged into the master branch that would not compile. This was fixed promptly when it was discovered.
+* Some code was complex and was hard to read in the first purposed pull request. This was fixed by refactoring the code into a more readable format.
+
 
 ## Retrospective
 
