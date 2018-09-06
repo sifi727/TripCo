@@ -42,12 +42,11 @@ Planning Decisions the team made.
 ## Review
 
 #### Completed epics in Sprint Backlog 
-* *user story*:  *comments*
-* 
+* RESTful Service for Distance*
+* Responsive Client for Distance Calculator*
 
 #### Incomplete epics in Sprint Backlog 
-* *user story*: *explanation...*
-*
+* Currently waiting on the next sprint to create new epics
 
 #### What went well
 * Everyone in the team contributed to different parts in the sprint.
