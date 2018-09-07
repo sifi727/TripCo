@@ -16,6 +16,7 @@
 
 * All commits include a task/issue number.
 * No commits to master
+* All pull requests must have at least two reviewers aproving it before the new branch is merged into the master branch.
 
 ## Plan
 
