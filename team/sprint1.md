@@ -9,6 +9,7 @@
 
 * Web application deployed on the production server (black-bottle.cs.colostate.edu).
 * Version in server/pom.xml should be `<version>1.0</version>`.
+* Replace `sprint#` with `sprint1`
 * Sprint Review and Restrospectives completed (sprint1.md).
 * Product Increment release `v1.0` created on GitHub.
 
