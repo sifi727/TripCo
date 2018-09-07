@@ -9,20 +9,13 @@
 
 * Web application deployed on the production server (black-bottle.cs.colostate.edu).
 * Version in server/pom.xml should be `<version>1.0</version>`.
-* Sprint Review and Restrospectives completed (sprint#.md).
+* Sprint Review and Restrospectives completed (sprint1.md).
 * Product Increment release `v1.0` created on GitHub.
 
 ## Policies
 
 * All commits include a task/issue number.
 * No commits to master
-
-## Plan
-
-Epics planned for this release.
-
-* *RESTful Service for Distance*
-* *Responsive Client for Distance Calculator*
 
 ## Plan
 
@@ -42,8 +35,8 @@ Planning Decisions the team made.
 ## Review
 
 #### Completed epics in Sprint Backlog 
-* RESTful Service for Distance*
-* Responsive Client for Distance Calculator*
+* RESTful Service for Distance
+* Responsive Client for Distance Calculator
 
 #### Incomplete epics in Sprint Backlog 
 * Currently waiting on the next sprint to create new epics
