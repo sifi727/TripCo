@@ -47,6 +47,7 @@ Planning Decisions the team made.
 * Everyone in the team contributed to different parts in the sprint.
 * Everyone in the team provided useful correction to code before it was merged into the master branch.
 * The TFFI object structure provided a powerful means of handling distance requests that was easy to work with and that greatly enhanced integration of tasks.
+* The RESTful API by design kept the server and the client decoupled. This was beneficial because the team was able to test our implementation against the rest of the teams and found a bug on the index page where a place holder had not been updated.
 
 
 #### Problems encountered and resolutions
