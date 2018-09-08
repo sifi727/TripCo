@@ -9,15 +9,14 @@
 
 * Web application deployed on the production server (black-bottle.cs.colostate.edu).
 * Version in server/pom.xml should be `<version>1.0</version>`.
-* Replace `sprint#` with `sprint1`
-* Sprint Review and Restrospectives completed (sprint1.md).
+* Sprint Review and Retrospectives completed (sprint1.md).
 * Product Increment release `v1.0` created on GitHub.
 
 ## Policies
 
 * All commits include a task/issue number.
 * No commits to master
-* All pull requests must have at least two reviewers aproving it before the new branch is merged into the master branch.
+* All pull requests must have at least two reviewers approving it before the new branch is merged into the master branch.
 
 ## Plan
 
