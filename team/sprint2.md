@@ -11,6 +11,7 @@
 * Version in pom.xml should be `<version>2.0.0</version>`.
 * Increment deployed for demo and testing.
 * Increment release `v2.0` created on GitHub with appropriate version number and name.
+* Code should follow clean code standards of the Google style guide for Java and JavaScript and be maintainable.
 
 
 ## Policies
