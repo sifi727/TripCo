@@ -34,6 +34,7 @@
 
 ## Plan
 
+*We are planning to implement five epics for sprint 2. Two of the epics are specifically designed to enhance user experience. These enhancements include the adoption of user-defined distance units for calculation of trip distances and the display of a map and an itinerary for an associated trip for the user.*
 *An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
 
 * *## epic title: description*
