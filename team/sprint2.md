@@ -46,9 +46,9 @@
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *value* | *value* |
-| Tasks |  *value*   | *value* | 
-| Story Points |  *value*  | *value* | 
+| Epics | *5* | *0* |
+| Tasks |  *7*   | *0* | 
+| Story Points |  *13*  | *0* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
