@@ -34,7 +34,7 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
+*For sprint 2, we are planning to provide a solution that enhances user experience, that resolves ongoing issues regarding code maintainability and mobile responsiveness, and that promotes interoperability among various client-server ports in order to enhance testing and development. We are planning to implement five epic issues for sprint 2. Two of the epics are specifically designed to enhance user experience. These enhancements include the adoption of user-defined distance units for calculation of trip distances and the display of a map and an itinerary for an associated trip for the user. During this sprint, we are also planning to begin work towards the resolution of two ongoing issues. The first ongoing issue involves the consistent writing of maintainable code. This issue includes ensuring that all code follows clean code standards, and that all code adheres to the google style guide for Java and JavaScript. The second ongoing issue that we are planning for sprint 2 is that the solution needs to be optimized for mobile platforms. The final epic involves ensuring that there is interoperability among all clients and servers.*
 
 * *88 User: I want a map and itinerary for my trip*: Display a map and an itinerary using data from a TFFI **trip** file that is supplied by the user.
 * *90 User: I want supply my own units for the distances*: Allow user-defined units of distance.
