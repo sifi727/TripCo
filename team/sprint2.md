@@ -41,9 +41,8 @@
 * *91 TripCo: The solution must be responsive for mobile devices*: Optimize user interface for mobile environments.
 * *93 TripCo: All clients and servers must interoperate!*: Client and server must adhere to TFFI specification. Clients must provide a configuration option for changing the RESTful services server:port number.
 * *94 TripCo: All code shall be clean!*: Code must be maintainable and follow the google style guide for Java and JavaScript.
-*
 
-*Include a discussion of planning decisions.*
+*We decided that the user experience enhancements were necessary for the current sprint planning because they are top priority issues. We also determined that the two ongoing issues are of significance and have relevance to all current and future work; therefore, it is imperative that these issues are treated initially during the current sprint. We believe that dealing with the issue involving client and server interoperability is necessary for the current sprint because of the enhanced testing and development capabilities that can be derived from this enhancement. We expect these capabilities to provide significant improvement to current and future development practices.*
 
 
 ## Metrics
@@ -51,8 +50,8 @@
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | *5* | *0* |
-| Tasks |  *7*   | *0* | 
-| Story Points |  *13*  | *0* | 
+| Tasks |  *10*   | *0* | 
+| Story Points |  *21*  | *0* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
