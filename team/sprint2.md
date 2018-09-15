@@ -50,8 +50,8 @@
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | *5* | *0* |
-| Tasks |  *10*   | *0* | 
-| Story Points |  *21*  | *0* | 
+| Tasks |  *13*   | *2* | 
+| Story Points |  *23*  | *2* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
@@ -60,7 +60,7 @@
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* | *none* | 
+| *09/14* | *#96, #107* | *#84, #99, #102, #112, #113, #116* | *none* | 
 
 *Add a new row for each scrum session.*
 
