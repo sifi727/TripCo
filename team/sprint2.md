@@ -62,7 +62,7 @@
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *09/14* | *#96, #107* | *#84, #99, #102, #112, #113, #116* | *none* |
-| *09/17* | *123, *100, *99 | *#84, #102, #112, #113, #116* | *Waiting on #97 to complete to add custum units to #102  |
+| *09/17* | *#123, #100, #99* | *#84, #102, #112, #113, #116* | *Waiting on #97 to complete to add custum units to #102*  |
 
 *Add a new row for each scrum session.*
 
