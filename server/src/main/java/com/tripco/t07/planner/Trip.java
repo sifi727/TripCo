@@ -46,10 +46,13 @@ public class Trip {
 
   private int legDistance(Place origin, Place destination) {
 
-    Distance distance = new Distance();
-    distance.destination = destination;
-    distance.origin = origin;
-    distance.units = options.units;
+    Distance distance = new Distance(origin, destination, options.units);
+
+//
+//    Distance distance = new Distance();
+//    distance.destination = destination;
+//    distance.origin = origin;
+//    distance.units = options.units;
     distance.calculateTotalDistance();
     return (distance.distance);
 

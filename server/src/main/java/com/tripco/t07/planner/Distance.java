@@ -17,6 +17,16 @@ public class Distance
         haversineVincenty();
     }
 
+    public Distance(){}
+    public Distance(Place origin, Place  destination, String units)
+    {
+
+        this.origin=origin;
+        this.destination=destination;
+        this.units=units;
+    }
+
+
     private void haversineVincenty()
     {
         //We have to covert the latitude and longitude angles from degrees to radians.
