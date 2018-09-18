@@ -6,12 +6,16 @@ import com.google.gson.JsonParser;
 import com.tripco.t07.server.HTTP;
 import spark.Request;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 /**
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
- *
  */
 public class Trip {
+
   // The variables in this class should reflect TFFI.
   public String type;
   public String title;
@@ -20,9 +24,13 @@ public class Trip {
   public ArrayList<Integer> distances;
   public String map;
 
-  /** The top level method that does planning.
-   * At this point it just adds the map and distances for the places in order.
-   * It might need to reorder the places in the future.
+  // Constants
+  public static final String CO_BACKGROUND_FILE_PATH = "/CObackground.svg";
+
+
+  /**
+   * The top level method that does planning. At this point it just adds the map and distances for
+   * the places in order. It might need to reorder the places in the future.
    */
   public void plan() {
 
@@ -32,19 +40,41 @@ public class Trip {
   }
 
   /**
+   * Uses the path to access a file and then returns the value as string.
+   */
+  private String getStringFromFile(String path)
+      throws IOException { //copied and modified from An_Introduction_to_Maven.pdf
+    BufferedReader reader;
+
+    reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(path)));
+
+    StringBuilder stringBuilder = new StringBuilder();
+    String line = "";
+    while ((line = reader.readLine()) != null) {
+      stringBuilder.append(line);
+    }
+    return stringBuilder.toString();
+  }
+
+
+  /**
    * Returns an SVG containing the background and the legs of the trip.
-   * @return
    */
   private String svg() {
+    String coBackGroundSvg = "";
+    try {
 
-    // hardcoded example
-    return "<svg width=\"1920\" height=\"960\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\"><!-- Created with SVG-edit - http://svg-edit.googlecode.com/ --> <g> <g id=\"svg_4\"> <svg id=\"svg_1\" height=\"960\" width=\"1920\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"svg_2\"> <title>Layer 1</title> <rect fill=\"rgb(119, 204, 119)\" stroke=\"black\" x=\"0\" y=\"0\" width=\"1920\" height=\"960\" id=\"svg_3\"/> </g> </svg> </g> <g id=\"svg_9\"> <svg id=\"svg_5\" height=\"480\" width=\"960\" y=\"240\" x=\"480\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\"> <g id=\"svg_6\"> <title>Layer 2</title> <polygon points=\"0,0 960,0 960,480 0,480\" stroke-width=\"12\" stroke=\"brown\" fill=\"none\" id=\"svg_8\"/> <polyline points=\"0,0 960,480 480,0 0,480 960,0 480,480 0,0\" fill=\"none\" stroke-width=\"4\" stroke=\"blue\" id=\"svg_7\"/> </g> </svg> </g> </g> </svg>";
+      coBackGroundSvg = getStringFromFile(CO_BACKGROUND_FILE_PATH);
+    } catch (IOException e) {
+      return "";
+    }
+    return coBackGroundSvg;
+
   }
 
   /**
-   * Returns the distances between consecutive places,
-   * including the return to the starting point to make a round trip.
-   * @return
+   * Returns the distances between consecutive places, including the return to the starting point to
+   * make a round trip.
    */
   private ArrayList<Integer> legDistances() {
 
