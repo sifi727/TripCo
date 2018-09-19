@@ -27,7 +27,6 @@ public class Trip {
   // Constants
   public static final String CO_BACKGROUND_FILE_PATH = "/CObackground.svg";
 
-
   /**
    * The top level method that does planning. At this point it just adds the map and distances for
    * the places in order. It might need to reorder the places in the future.
@@ -35,7 +34,7 @@ public class Trip {
   public void plan() {
 
     this.map = svg();
-    this.distances = legDistances();
+    this.distances = calculateLegDistances();
 
   }
 
@@ -76,19 +75,41 @@ public class Trip {
    * Returns the distances between consecutive places, including the return to the starting point to
    * make a round trip.
    */
-  private ArrayList<Integer> legDistances() {
+
+  private int legDistance(Place origin, Place destination) {
+
+    Distance distance = new Distance(origin, destination, options.units);
+    distance.calculateTotalDistance();
+    return (distance.distance);
+
+  }
+
+  /**
+   * Returns the distances between consecutive places, including the return to the starting point to
+   * make a round trip.
+   */
+  private ArrayList<Integer> calculateLegDistances() {
 
     ArrayList<Integer> dist = new ArrayList<Integer>();
+    if (places == null || places.size() == 0) {
 
-    // hardcoded example
-    dist.add(12);
-    dist.add(23);
-    dist.add(34);
-    dist.add(45);
-    dist.add(65);
-    dist.add(19);
+      dist.add(0);
+      return dist;
+
+    }
+    int originIndex = 0;     //start at first city
+    int destinationIndex = 1; //first destination
+
+    while (destinationIndex < places.size()) {
+      dist.add(legDistance(places.get(originIndex), places.get(destinationIndex)));
+      originIndex++;
+      destinationIndex++;
+    }
+    dist.add(
+        legDistance(places.get(places.size() - 1), places.get(0))); //to make it a round trip back
 
     return dist;
   }
+
 
 }
