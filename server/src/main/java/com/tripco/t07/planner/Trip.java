@@ -27,7 +27,7 @@ public class Trip {
   public void plan() {
 
     this.map = svg();
-    this.distances = legDistances();
+    this.distances = calculateLegDistances();
 
   }
 
@@ -47,12 +47,6 @@ public class Trip {
   private int legDistance(Place origin, Place destination) {
 
     Distance distance = new Distance(origin, destination, options.units);
-
-//
-//    Distance distance = new Distance();
-//    distance.destination = destination;
-//    distance.origin = origin;
-//    distance.units = options.units;
     distance.calculateTotalDistance();
     return (distance.distance);
 
@@ -62,7 +56,7 @@ public class Trip {
    * Returns the distances between consecutive places, including the return to the starting point to
    * make a round trip.
    */
-  private ArrayList<Integer> legDistances() {
+  private ArrayList<Integer> calculateLegDistances() {
 
     ArrayList<Integer> dist = new ArrayList<Integer>();
     if (places == null || places.size() == 0) {
