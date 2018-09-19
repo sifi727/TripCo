@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Container } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
+import UploadTffi from './UploadTffi'
 
 import { get_config } from '../../api/api';
 
@@ -27,6 +28,7 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
+    this.updateTffiObject = this.updateTffiObject.bind(this);
   }
 
   componentWillMount() {
@@ -55,6 +57,17 @@ class Application extends Component {
     this.setState(trip);
   }
 
+  updateTffiObject(object){
+    let trip = this.state.trip;
+    trip.type = object.type;
+    trip.title = object.title;
+    trip.options = object.options;
+    trip.places = object.places;
+    trip.distances = object.distances;
+    trip.map = object.map;
+    this.setState(trip);
+  }
+
   render() {
     if(!this.state.config) { return <div/> }
 
@@ -62,6 +75,7 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+        <UploadTffi updateTffiObect={this.updateTffiObject}/>
       </Container>
     )
   }
