@@ -3,30 +3,42 @@ package com.tripco.t07.planner;
 public class Distance
 {
     //The variables in this class should match the REST API definition.
-    public String type;
+    public double unitRadius;
+    public int distance;
     public int version;
     public Place origin;
     public Place destination;
+    public String type;
     public String units;
-    public int distance;
- 
+
+    //Constructor(s)
+    public Distance(){}
+
+    public Distance(Place origin, Place destination, String units)
+    {
+        this.origin=origin;
+        this.destination=destination;
+        this.units=units;
+    }
+
+    public Distance(Place origin, Place destination, String units, double radius)
+    {
+        this.destination=destination;
+        this.origin=origin;
+        this.unitRadius=radius;
+        this.units=units;
+    }
+
     //class methods
+
     //This calls a helper method haversineVincenty().
     public void calculateTotalDistance()
     {
         haversineVincenty();
     }
 
-    public Distance(){}
-    public Distance(Place origin, Place  destination, String units)
-    {
-
-        this.origin=origin;
-        this.destination=destination;
-        this.units=units;
-    }
-
-
+    // Calculates the total distance between two points
+    // using the Haversine Vincenty formula
     private void haversineVincenty()
     {
         //We have to covert the latitude and longitude angles from degrees to radians.
@@ -51,7 +63,12 @@ public class Distance
             case "nautical miles":
                 radius = 3440.0;
                 break;
+            case "user defined":
+                radius = this.unitRadius;
+                break;
             default:
+                // return a distance of zero if we encounter an error
+                this.distance = 0;
                 return;
         }
 
