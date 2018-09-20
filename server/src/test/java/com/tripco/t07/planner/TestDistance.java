@@ -20,26 +20,36 @@ import static org.junit.Assert.*;
 public class TestDistance {
 
   Distance distance;
+  Gson gson;
+
+  double delta;
+  int dist;
+  int version;
+  Place origin;
+  Place destination;
+  String type;
+  String units;
 
   // Setup to be done before every test in TestDistance
   @Before
   public void initialize() {
-    Gson gson = new Gson();
+    gson = new Gson();
 
-    int distance = 0;
-    int version = 2;
-    String type = "distance";
-    String units = "miles";
+    delta = 0.1;
+    dist = 0;
+    version = 2;
+    type = "distance";
+    units = "miles";
 
-    Place origin = new Place();
-    boulder.latitude = 40.01499;
-    boulder.longitude = -105.27055;
-    boulder.name = "Boulder";
+    origin = new Place();
+    origin.latitude = 40.01499;
+    origin.longitude = -105.27055;
+    origin.name = "Boulder";
 
-    Place destination = new Place();
-    denver.latitude = 39.7392;
-    denver.longitude = -104.9903;
-    denver.name = "Denver";
+    destination = new Place();
+    destination.latitude = 39.7392;
+    destination.longitude = -104.9903;
+    destination.name = "Denver";
   }
 
   @Test
@@ -52,18 +62,24 @@ public class TestDistance {
     // initialize distance object with json data
     distance = gson.fromJson(distanceRequestJson, Distance.class);
 
-    assertEquals(distance.distance, distance);
+    assertEquals(distance.distance, dist);
+    assertEquals(distance.type, type);
     assertEquals(distance.units, units);
     assertEquals(distance.version, version);
-    assertEquals(distance.origin, origin);
-    assertEquals(distance.destination, destination);
-    assertEquals(distance.type, type);
+
+    assertEquals(distance.destination.latitude, destination.latitude, delta);
+    assertEquals(distance.destination.longitude, destination.longitude, delta);
+    assertEquals(distance.destination.name, destination.name);
+
+    assertEquals(distance.origin.latitude, origin.latitude, delta);
+    assertEquals(distance.origin.longitude, origin.longitude, delta);
+    assertEquals(distance.origin.name, origin.name);
   }
 
   @Test
   public void testDistanceNoJson() {
     // create a new distance object directly
-    distance = new Distance(origin, destination, units)
+    distance = new Distance(origin, destination, units);
 
     assertEquals(distance.destination, destination);
     assertEquals(distance.origin, origin);
@@ -73,11 +89,17 @@ public class TestDistance {
   @Test
   public void testDistanceNoJsonCustomRadius() {
     // create a new distance object directly
-    distance = new Distance(origin, destination, units, 3958.7613)
+    distance = new Distance(origin, destination, units, 3958.7613);
 
-    assertEquals(distance.destination, destination);
-    assertEquals(distance.origin, origin);
-    assertEquals(distance.unitRadius, 3958.7613);
+    assertEquals(distance.destination.latitude, destination.latitude, delta);
+    assertEquals(distance.destination.longitude, destination.longitude, delta);
+    assertEquals(distance.destination.name, destination.name);
+
+    assertEquals(distance.origin.latitude, origin.latitude, delta);
+    assertEquals(distance.origin.longitude, origin.longitude, delta);
+    assertEquals(distance.origin.name, origin.name);
+
+    assertEquals(distance.unitRadius, 3958.7613, delta);
     assertEquals(distance.units, units);
   }
 
@@ -149,41 +171,41 @@ public class TestDistance {
   public void testCalculateTotalDistanceNoJsonIncorrectUnits() {
     distance = new Distance(origin, destination, "parsec");
     distance.calculateTotalDistance();
-    assertEquals(distance.distance, 0)
+    assertEquals(distance.distance, 0);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonKilometers() {
     distance = new Distance(origin, destination, "kilometers");
     distance.calculateTotalDistance();
-    assertEquals(distance.distance, 39)
+    assertEquals(distance.distance, 39);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonKilometersSwitchInput() {
     distance = new Distance(destination, origin, "kilometers");
     distance.calculateTotalDistance();
-    assertEquals(distance.distance, 39)
+    assertEquals(distance.distance, 39);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonMiles() {
     distance = new Distance(origin, destination, "miles");
     distance.calculateTotalDistance();
-    assertEquals(distance.distance, 24)
+    assertEquals(distance.distance, 24);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonNauticalMiles() {
     distance = new Distance(origin, destination, "nautical miles");
     distance.calculateTotalDistance();
-    assertEquals(distance.distance, 21)
+    assertEquals(distance.distance, 21);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonUserDefinedUnits() {
     distance = new Distance(origin, destination, "user defined", 3958.7613);
     distance.calculateTotalDistance();
-    assertEquals(distance.distance, 24)
+    assertEquals(distance.distance, 24);
   }
 }
