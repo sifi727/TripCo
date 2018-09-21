@@ -16,9 +16,7 @@ public class Distance {
   }
 
   public Distance(Place origin, Place destination, String units) {
-    this.origin = origin;
-    this.destination = destination;
-    this.units = units;
+    this(origin, destination, units, 0);
   }
 
   public Distance(Place origin, Place destination, String units, double radius) {
@@ -35,6 +33,23 @@ public class Distance {
     haversineVincenty();
   }
 
+  // switch on the units and return the correct radius
+  // or zero if we encounter an error
+  public double getRadiusFromUnits() {
+    switch (this.units) {
+      case "miles":
+        return 3959.0;
+      case "kilometers":
+        return 6371.0;
+      case "nautical miles":
+        return 3440.0;
+      case "user defined":
+        return this.unitRadius;
+      default:
+        return 0;
+    }
+  }
+
   // Calculates the total distance between two points
   // using the Haversine Vincenty formula
   private void haversineVincenty() {
@@ -47,27 +62,7 @@ public class Distance {
     //The delta-lambda variable is the absolute differences between the two longitudes.
     double delta_lambda = Math.abs(origin_longitude - destination_longitude);
     // the radius of the Earth
-    double radius = 0;
-
-    // switch on the units and assign the correct radius
-    switch (units) {
-      case "miles":
-        radius = 3959.0;
-        break;
-      case "kilometers":
-        radius = 6371.0;
-        break;
-      case "nautical miles":
-        radius = 3440.0;
-        break;
-      case "user defined":
-        radius = this.unitRadius;
-        break;
-      default:
-        // return a distance of zero if we encounter an error
-        this.distance = 0;
-        return;
-    }
+    double radius = getRadiusFromUnits();
 
     /**
      *  We have broken the formula into several lines, calculating the innermost components first and then plugging into a more general formula,
