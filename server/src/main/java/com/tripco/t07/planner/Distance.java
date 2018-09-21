@@ -3,12 +3,13 @@ package com.tripco.t07.planner;
 public class Distance {
 
   //The variables in this class should match the REST API definition.
-  public double unitRadius;
+  public Double unitRadius;
   public int distance;
   public int version;
   public Place origin;
   public Place destination;
   public String type;
+  public String unitName;
   public String units;
 
   //Constructor(s)
@@ -16,14 +17,18 @@ public class Distance {
   }
 
   public Distance(Place origin, Place destination, String units) {
-    this(origin, destination, units, null);
+    this(origin, destination, null, units, -1);
   }
 
-  public Distance(Place origin, Place destination, String units, double radius) {
+  public Distance(Place origin, Place destination, String unitname, String units, double radius) {
     this.destination = destination;
     this.origin = origin;
-    this.unitRadius = radius;
     this.units = units;
+    // only set these for user defined units
+    if(radius > 0) {
+      this.unitRadius =  new Double(radius);
+      this.unitName = unitname;
+    }
   }
 
   //class methods
@@ -36,8 +41,6 @@ public class Distance {
   // switch on the units and return the correct radius
   // or zero if we encounter an error
   public double getRadiusFromUnits() {
-    this.unitRadius = null;
-    
     switch (this.units) {
       case "miles":
         return 3959.0;
@@ -46,7 +49,7 @@ public class Distance {
       case "nautical miles":
         return 3440.0;
       case "user defined":
-        return this.unitRadius;
+        return this.unitRadius.doubleValue();
       default:
         return 0;
     }

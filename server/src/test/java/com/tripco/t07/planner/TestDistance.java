@@ -89,7 +89,7 @@ public class TestDistance {
   @Test
   public void testDistanceNoJsonCustomRadius() {
     // create a new distance object directly
-    distance = new Distance(origin, destination, units, 3958.7613);
+    distance = new Distance(origin, destination, "accurate miles", "user defined", 3958.7613);
 
     assertEquals(distance.destination.latitude, destination.latitude, delta);
     assertEquals(distance.destination.longitude, destination.longitude, delta);
@@ -100,7 +100,8 @@ public class TestDistance {
     assertEquals(distance.origin.name, origin.name);
 
     assertEquals(distance.unitRadius, 3958.7613, delta);
-    assertEquals(distance.units, units);
+    assertEquals(distance.unitName, "accurate miles");
+    assertEquals(distance.units, "user defined");
   }
 
   @Test
@@ -204,7 +205,7 @@ public class TestDistance {
 
   @Test
   public void testCalculateTotalDistanceNoJsonUserDefinedUnits() {
-    distance = new Distance(origin, destination, "user defined", 3958.7613);
+    distance = new Distance(origin, destination, "actual miles", "user defined", 3958.7613);
     distance.calculateTotalDistance();
     assertEquals(distance.distance, 24);
   }
