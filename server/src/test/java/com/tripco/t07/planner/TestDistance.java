@@ -79,7 +79,7 @@ public class TestDistance {
   @Test
   public void testDistanceNoJson() {
     // create a new distance object directly
-    distance = new Distance(origin, destination, units);
+    distance = new Distance(origin, destination, null, units, -1);
 
     assertEquals(distance.destination, destination);
     assertEquals(distance.origin, origin);
@@ -170,35 +170,35 @@ public class TestDistance {
 
   @Test
   public void testCalculateTotalDistanceNoJsonIncorrectUnits() {
-    distance = new Distance(origin, destination, "parsec");
+    distance = new Distance(origin, destination, null, "parsec", -1);
     distance.calculateTotalDistance();
     assertEquals(distance.distance, 0);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonKilometers() {
-    distance = new Distance(origin, destination, "kilometers");
+    distance = new Distance(origin, destination, null, "kilometers", -1);
     distance.calculateTotalDistance();
     assertEquals(distance.distance, 39);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonKilometersSwitchInput() {
-    distance = new Distance(destination, origin, "kilometers");
+    distance = new Distance(destination, origin, null, "kilometers", -1);
     distance.calculateTotalDistance();
     assertEquals(distance.distance, 39);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonMiles() {
-    distance = new Distance(origin, destination, "miles");
+    distance = new Distance(origin, destination, null, "miles", -1);
     distance.calculateTotalDistance();
     assertEquals(distance.distance, 24);
   }
 
   @Test
   public void testCalculateTotalDistanceNoJsonNauticalMiles() {
-    distance = new Distance(origin, destination, "nautical miles");
+    distance = new Distance(origin, destination, null, "nautical miles", -1);
     distance.calculateTotalDistance();
     assertEquals(distance.distance, 21);
   }

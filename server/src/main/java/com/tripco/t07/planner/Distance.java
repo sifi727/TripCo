@@ -16,17 +16,13 @@ public class Distance {
   public Distance() {
   }
 
-  public Distance(Place origin, Place destination, String units) {
-    this(origin, destination, null, units, -1);
-  }
-
   public Distance(Place origin, Place destination, String unitname, String units, double radius) {
     this.destination = destination;
     this.origin = origin;
     this.units = units;
     // only set these for user defined units
-    if(radius > 0) {
-      this.unitRadius =  new Double(radius);
+    if (radius > 0) {
+      this.unitRadius = new Double(radius);
       this.unitName = unitname;
     }
   }
