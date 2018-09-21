@@ -16,7 +16,7 @@ public class Distance {
   }
 
   public Distance(Place origin, Place destination, String units) {
-    this(origin, destination, units, 0);
+    this(origin, destination, units, null);
   }
 
   public Distance(Place origin, Place destination, String units, double radius) {
@@ -36,6 +36,8 @@ public class Distance {
   // switch on the units and return the correct radius
   // or zero if we encounter an error
   public double getRadiusFromUnits() {
+    this.unitRadius = null;
+    
     switch (this.units) {
       case "miles":
         return 3959.0;
