@@ -77,11 +77,15 @@ public class Trip {
    */
 
   private int legDistance(Place origin, Place destination) {
-
-    Distance distance = new Distance(origin, destination, options.units);
+    Distance distance = null;
+    if (options.units.equals("user defined")) {
+      distance = new Distance(origin, destination, options.unitName, options.units,
+          options.unitRadius);
+    } else {
+      distance = new Distance(origin, destination, null, options.units, -1);
+    }
     distance.calculateTotalDistance();
-    return (distance.distance);
-
+    return distance.distance;
   }
 
   /**
