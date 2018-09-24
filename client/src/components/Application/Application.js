@@ -58,6 +58,7 @@ class Application extends Component {
   }
 
   updateTffiObject(object){
+    console.log("I am in the updateTiffObject");
     let trip = this.state.trip;
     trip.type = object.type;
     trip.title = object.title;

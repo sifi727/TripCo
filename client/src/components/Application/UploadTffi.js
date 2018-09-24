@@ -19,13 +19,34 @@ class UploadTffi extends Component{
     uploadFile(event){
         let reader = new FileReader();
         let file = event.target.files[0];
+
         console.log(file);
+        reader.readAsText(file, 'UTF-8');
+        reader.onload = function(e) {
+
+            if (file) {
 
 
-        if(file){
+                let result = reader.result;
+                // let content = "{\n" +
+                //     " \"type\" : \"trip\",\n" +
+                //      " \"version\" : 2,\n" +
+                //      " \"title\" : \"Shopping loop\",\n" +
+                //      " \"options\" : {\n" +
+                //      "    \"units\":\"miles\"\n" +
+                //      "    },\n" +
+                //      " \"places\" : [\n" +
+                //      "    {\"id\":\"dnvr\", \"name\":\"Denver\", \"latitude\":39.7392, \"longitude\":-104.9903}, \n" +
+                //      "    {\"id\":\"bldr\", \"name\":\"Boulder\", \"latitude\":40.01499, \"longitude\":-105.27055}, \n" +
+                //      "    {\"id\":\"foco\", \"name\":\"Fort Collins\", \"latitude\":40.585258, \"longitude\":-105.084419} \n" +
+                //      "    ]\n" +
+                //      "}";
+                console.log("I before content");
+                console.log("This is real!!");
+                console.log(result);
+                console.log("I after content");
 
-            let content = reader.readAsText(file,'UTF-8');
-            console.log(content);
+            }
         }
     }
 
