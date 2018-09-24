@@ -8,21 +8,25 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 class UploadTffi extends Component{
     constructor(props) {
         super(props);
-
-        this.trip = {
-            version: 2,
-            type: "trip",
-            title: "",
-            places: [],
-            options: {},
-            distances: [],
-            map: ""
-        };
     }
 
-    tffi(tffi){
-        this.trip = tffi;
-        this.props.updateTffiObject(this.trip)
+    tffi(){
+        let tffi = document.getElementById('tffi');
+        tffi.type = "submit";
+        this.props.updateTffiObject(tffi);
+    }
+
+    uploadFile(event){
+        let reader = new FileReader();
+        let file = event.target.files[0];
+        console.log(file);
+
+
+        if(file){
+
+            let content = reader.readAsText(file,'UTF-8');
+            console.log(content);
+        }
     }
 
     render() {
@@ -31,12 +35,11 @@ class UploadTffi extends Component{
                 <CardBody>
                     <Form>
                         <FormGroup>
-                            <Label for="exampleFile">Upload TFFI file:File</Label>
-                            <Input type="file" name="file" id="tffi" />
+                            <input type="file" name="file" id="tffi" onChange={this.uploadFile} />
                             <FormText color="muted">
                                 Insert your TFFI file in the above input.
                             </FormText>
-                            <Button onClick={(event) => tffi(document.getElementById('tffi').submit())}>Submit</Button>
+                            <Button onClick={(event) => this.tffi()}>Upload</Button>
                         </FormGroup>
                     </Form>
                 </CardBody>
