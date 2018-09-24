@@ -78,7 +78,7 @@ public class TestTrip {
 
 
   @Test
-  public void testMap() {
+  public void testNoPlacesMap() {
     trip.places = new ArrayList<>();
     trip.plan();
     BufferedReader reader;
@@ -88,7 +88,7 @@ public class TestTrip {
     String line = "";
     try {
       while ((line = reader.readLine()) != null) {
-        stringBuilder.append(line);
+        stringBuilder.append(line+"\n");
       }
     }
     catch (Exception e)
@@ -96,6 +96,48 @@ public class TestTrip {
       fail();
     }
     assertEquals(trip.map,stringBuilder.toString());
+  }
+
+  @Test public void testWithPlacesNoTitleMap(){
+    trip.places = new ArrayList<>();
+    String placesJson = " {\"options\" : {\n" +
+        "\"units\":\"miles\"\n" +
+        "},\"places\"    : [\n" +
+        "  {\"id\":\"dnvr\", \"name\":\"Denver\", \"latitude\":39.7392, \"longitude\":-104.9903},\n"
+        +
+        "  {\"id\":\"bldr\", \"name\":\"Boulder\", \"latitude\":40.01499, \"longitude\":-105.27055},\n"
+        +
+        "  {\"id\":\"foco\", \"name\":\"Fort Collins\", \"latitude\":40.58258, \"longitude\":-105.084419}\n"
+        +
+        "  ]}";
+
+    Gson gson = new Gson();
+    trip = gson.fromJson(placesJson, Trip.class);
+    BufferedReader reader;
+    reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
+
+    StringBuilder stringBuilder = new StringBuilder();
+    String line = "";
+    try {
+      while ((line = reader.readLine()) != null) {
+        stringBuilder.append(line+"\n");
+      }
+    }
+    catch (Exception e)
+    {
+      fail();
+    }
+    int indexOfClosingSvgTag =  stringBuilder.indexOf("</g>");
+    stringBuilder.insert(indexOfClosingSvgTag-1,"\n"+"<path\n"
+        + "d= \"M 612.900997,259.983357 L 573.045438,210.900108 L 599.515929,109.884258 z\"\n"
+        + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
+        + "\tid=\"path-null\"\n"
+        + "\t\t\t/>\n\n");
+    trip.plan();
+
+    assertEquals(stringBuilder.toString(),trip.map);
+
+
   }
 
 }
