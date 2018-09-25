@@ -20,12 +20,10 @@ class UploadTffi extends Component{
          * the updateTffiObject should be able to be used again to do this update from the POST response.
          *
          */
-        console.log("Starting to submit");
     }
 
     readFuction(e){
             let result = e.target.result;  //makes the json string store that some where.
-            console.log(e);
             this.props.updateTffiObject(JSON.parse(result));
     }
 
@@ -33,7 +31,6 @@ class UploadTffi extends Component{
         let reader = new FileReader();
         let file = event.target.files[0];
 
-        console.log(file);
         reader.readAsText(file, 'UTF-8');
         reader.onload = this.readFuction;
     }
