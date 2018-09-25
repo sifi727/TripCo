@@ -3,7 +3,6 @@ import { Container } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import UploadTffi from './UploadTffi'
-
 import { get_config } from '../../api/api';
 
 /* Renders the application.
@@ -58,7 +57,6 @@ class Application extends Component {
   }
 
   updateTffiObject(object){
-    console.log("I am in the updateTiffObject");
     let trip = object;
     this.setState({"trip": trip});
   }
