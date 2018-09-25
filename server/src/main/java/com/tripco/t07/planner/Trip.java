@@ -29,8 +29,8 @@ public class Trip {
   // Constants
   public static final String CO_BACKGROUND_FILE_PATH = "/CObackground.svg";
   // Map image size (in points)
-  public static final double  CO_SVG_MAP_HEIGHT =  783.0824;
-  public static final double CO_SVG_MAP_WIDTH =  1066.6073;
+  public static final double CO_SVG_MAP_HEIGHT = 783.0824;
+  public static final double CO_SVG_MAP_WIDTH = 1066.6073;
 
   //Map borders lat and long
   //These values came from here https://commons.wikimedia.org/wiki/File:USA_Colorado_location_map.svg
@@ -72,8 +72,8 @@ public class Trip {
   }
 
   /**
-   *Calculates the x,y pixel coordinates for all the trip.places on the CObackground.svg
-   *This method uses the trip.places longitude and latitude
+   * Calculates the x,y pixel coordinates for all the trip.places on the CObackground.svg This
+   * method uses the trip.places longitude and latitude
    */
   private List<Point2D> calculalateSvgPoints() {
     List<Point2D> points = new ArrayList<Point2D>();
@@ -85,8 +85,8 @@ public class Trip {
   }
 
   /**
-   * Calculates the x,y pixel coordinates to be placed on the CObackground.svg.
-   * This method uses the Place.java longitude and latitude
+   * Calculates the x,y pixel coordinates to be placed on the CObackground.svg. This method uses the
+   * Place.java longitude and latitude
    */
   private Point2D calculatePoint(Place place) {
     //This some of this code copied or modified from this
@@ -106,7 +106,6 @@ public class Trip {
 
   /**
    * Converts the trip.places to a SVG path string
-   *
    */
   private String placesToSvgPath() {
     List<Point2D> points = calculalateSvgPoints();
@@ -131,36 +130,36 @@ public class Trip {
   }
 
   /**
-   * Gets the SVG Path from trip.places.
-   * If trip.places is null or empty pass back a empty String
+   * Gets the SVG Path from trip.places. If trip.places is null or empty pass back a empty String
    */
 
   public String getSvgPath() {
-    if (places==null || places.size() == 0) {
+    if (places == null || places.size() == 0) {
       return "";
     }
     StringBuilder stringBuilder = new StringBuilder("<path\n"); //start of path tag
     stringBuilder.append(placesToSvgPath() + "\n");
     stringBuilder.append(CO_SVG_MAP_PATH_LINE_STYLE + "\n");  //sets the way the line will look
-    stringBuilder.append(String.format("\tid=\"path-%s\"\n" + "\t\t\t/>\n", title)); //if no title set will be null
+    stringBuilder.append(
+        String.format("\tid=\"path-%s\"\n" + "\t\t\t/>\n", title)); //if no title set will be null
     return stringBuilder.toString();
 
   }
 
   /**
-   * This adds the SVG path to the map. Inserts it before the second to last </g>
-   * Returns the map with the path inserted.
-   * If trip.places is empty or null returns the map without a path.
+   * This adds the SVG path to the map. Inserts it before the second to last </g> Returns the map
+   * with the path inserted. If trip.places is empty or null returns the map without a path.
    */
 
   private String addPathToSvgMap(String map, String path) {
     StringBuilder stringBuilder = new StringBuilder(map);
-                                            //No places in trip so return a map.
-    if (places==null||places.size() == 0) {
+    //No places in trip so return a map.
+    if (places == null || places.size() == 0) {
       return stringBuilder.toString();
     }
     int indexOfFirstClosingGroupTag = map.indexOf("</g>");  //find the second to last group tag
-    stringBuilder.insert(indexOfFirstClosingGroupTag - 1, "\n" + path + "\n"); //insert the path before group tag
+    stringBuilder.insert(indexOfFirstClosingGroupTag - 1,
+        "\n" + path + "\n"); //insert the path before group tag
     return stringBuilder.toString();
 
   }
