@@ -117,9 +117,9 @@ public class MicroServer {
 
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
-
     Plan plan = new Plan(request);
     String trip = plan.getTrip();
+
     return trip;
   }
 

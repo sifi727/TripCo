@@ -20,8 +20,9 @@ import static org.junit.Assert.*;
 public class TestTrip {
 
   Trip trip;
+
   //Helper Class
-  private String getJsonThreeCityWithMiles(){
+  private String getJsonThreeCityWithMiles() {
     return " {\"options\" : {\n" +
         "\"units\":\"miles\"\n" +
         "},\"places\"    : [\n" +
@@ -33,7 +34,8 @@ public class TestTrip {
         +
         "  ]}";
   }
-  private String getJsonFourStateBorderWithTitle(){
+
+  private String getJsonFourStateBorderWithTitle() {
     return "{\n"
         + "  \"version\"   : 2,\n"
         + "  \"type\"      : \"trip\",\n"
@@ -49,7 +51,8 @@ public class TestTrip {
         + "  ]\n"
         + "}";
   }
-  private String getJsonFourStateCornerBorderWithCustomUnits(){
+
+  private String getJsonFourStateCornerBorderWithCustomUnits() {
     return "{\n"
         + "\t\"type\": \"trip\",\n"
         + "\t\"version\": 2,\n"
@@ -140,82 +143,82 @@ public class TestTrip {
     trip.places = new ArrayList<>();
     trip.plan();
     BufferedReader reader;
-    reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
+    reader = new BufferedReader(
+        new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
 
     StringBuilder stringBuilder = new StringBuilder();
     String line = "";
     try {
       while ((line = reader.readLine()) != null) {
-        stringBuilder.append(line+"\n");
+        stringBuilder.append(line + "\n");
       }
-    }
-    catch (Exception e)
-    {
+    } catch (Exception e) {
       fail();
     }
-    assertEquals(trip.map,stringBuilder.toString());
+    assertEquals(trip.map, stringBuilder.toString());
   }
 
-  @Test public void testWithPlacesAndTitleAndCustomUnitsGetSvgPath()
-  {
-    trip.places =  new ArrayList<>();
+  @Test
+  public void testWithPlacesAndTitleAndCustomUnitsGetSvgPath() {
+    trip.places = new ArrayList<>();
     String placesJson = getJsonFourStateCornerBorderWithCustomUnits();
     Gson gson = new Gson();
     trip = gson.fromJson(placesJson, Trip.class);
-    String svgPathActual=trip.getSvgPath();
+    String svgPathActual = trip.getSvgPath();
     assertEquals("<path\n"
         + "d= \"M 36.406863,747.665719 L 1032.333652,748.733558 L 1032.333652,35.594655 L 36.406863,35.594655 z\"\n"
         + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
         + "\tid=\"path-Four Corners of CO State\"\n"
-        + "\t\t\t/>\n",svgPathActual);
-
-
-      }
-  @Test public void testWithPlacesAndTitleGetSvgPath()
-  {
-    trip.places =  new ArrayList<>();
-    String placesJson = getJsonFourStateBorderWithTitle();
-    Gson gson = new Gson();
-    trip = gson.fromJson(placesJson, Trip.class);
-    String svgPathActual=trip.getSvgPath();
-    assertEquals("<path\n"
-        + "d= \"M 36.406863,747.665719 L 1032.333652,748.733558 L 1030.911509,213.034007 L 36.406863,35.594655 z\"\n"
-        + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
-        + "\tid=\"path-Shopping loop\"\n"
-        + "\t\t\t/>\n",svgPathActual);
+        + "\t\t\t/>\n", svgPathActual);
 
 
   }
 
-  @Test public void testWithPlacesNoTitleMap(){
+  @Test
+  public void testWithPlacesAndTitleGetSvgPath() {
+    trip.places = new ArrayList<>();
+    String placesJson = getJsonFourStateBorderWithTitle();
+    Gson gson = new Gson();
+    trip = gson.fromJson(placesJson, Trip.class);
+    String svgPathActual = trip.getSvgPath();
+    assertEquals("<path\n"
+        + "d= \"M 36.406863,747.665719 L 1032.333652,748.733558 L 1030.911509,213.034007 L 36.406863,35.594655 z\"\n"
+        + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
+        + "\tid=\"path-Shopping loop\"\n"
+        + "\t\t\t/>\n", svgPathActual);
+
+
+  }
+
+  @Test
+  public void testWithPlacesNoTitleMap() {
     trip.places = new ArrayList<>();
     String placesJson = getJsonThreeCityWithMiles();
 
     Gson gson = new Gson();
     trip = gson.fromJson(placesJson, Trip.class);
     BufferedReader reader;
-    reader= new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
+    reader = new BufferedReader(
+        new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
 
     StringBuilder stringBuilder = new StringBuilder();
     String line = "";
     try {
       while ((line = reader.readLine()) != null) {
-        stringBuilder.append(line+"\n");
+        stringBuilder.append(line + "\n");
       }
-    }
-    catch (Exception e)
-    {
+    } catch (Exception e) {
       fail();
     }
-    int indexOfClosingSvgTag =  stringBuilder.indexOf("</g>");
-    stringBuilder.insert(indexOfClosingSvgTag-1,"\n"+"<path\n"
+    int indexOfClosingSvgTag = stringBuilder.indexOf("</g>");
+    stringBuilder.insert(indexOfClosingSvgTag - 1, "\n" + "<path\n"
         + "d= \"M 612.900997,259.983357 L 573.045438,210.900108 L 599.515929,109.884258 z\"\n"
         + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
         + "\tid=\"path-null\"\n"
         + "\t\t\t/>\n\n");
     trip.plan();
 
-    assertEquals(stringBuilder.toString(),trip.map);
+    assertEquals(stringBuilder.toString(), trip.map);
 
 
   }
