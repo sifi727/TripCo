@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Card, CardHeader, CardBody, ButtonGroup} from 'reactstrap'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import {request, get_comfig} from '../../api/api.js'
 
 /* The UploadTffi allows the user to upload their Trip TFFI file
  * and then updates the parent Trip object in the Application.js.
@@ -12,14 +13,14 @@ class UploadTffi extends Component{
         this.uploadFile = this.uploadFile.bind(this);
     }
 
-    tffi(){
-        /**
-         * This coded needs to Post to our server.
-         * Use the api.js to create the Post
-         * then use a "then" on the promise update the trip infromation in the application.js
-         * the updateTffiObject should be able to be used again to do this update from the POST response.
-         *
-         */
+    submit(){
+
+          request(this.props.trip,'plan').then(response => {
+            this.props.updateTffiObject(response);
+
+    });
+
+
     }
 
     readFuction(e){
@@ -45,7 +46,7 @@ class UploadTffi extends Component{
                             <FormText color="muted">
                                 Insert your TFFI file in the above input.
                             </FormText>
-                            <Button onClick={(event) => this.tffi()}>Upload</Button>
+                            <Button onClick={(event) => this.submit()}>Upload</Button>
                         </FormGroup>
                     </Form>
                 </CardBody>
