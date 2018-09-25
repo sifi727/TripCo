@@ -13,6 +13,13 @@ class UploadTffi extends Component{
     }
 
     tffi(){
+        /**
+         * This coded needs to Post to our server.
+         * Use the api.js to create the Post
+         * then use a "then" on the promise update the trip infromation in the application.js
+         * the updateTffiObject should be able to be used again to do this update from the POST response.
+         *
+         */
         console.log("Starting to submit");
     }
 
