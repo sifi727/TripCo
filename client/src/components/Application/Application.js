@@ -18,7 +18,7 @@ class Application extends Component {
         type: "trip",
         title: "",
         options : {
-          unit: "miles"
+          units: "miles"
         },
         places: [],
         distances: [],
@@ -59,14 +59,8 @@ class Application extends Component {
 
   updateTffiObject(object){
     console.log("I am in the updateTiffObject");
-    let trip = this.state.trip;
-    trip.type = object.type;
-    trip.title = object.title;
-    trip.options = object.options;
-    trip.places = object.places;
-    trip.distances = object.distances;
-    trip.map = object.map;
-    this.setState(trip);
+    let trip = object;
+    this.setState({"trip": trip});
   }
 
   render() {
@@ -76,7 +70,7 @@ class Application extends Component {
       <Container id="Application">
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-        <UploadTffi updateTffiObect={this.updateTffiObject}/>
+        <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}/>
       </Container>
     )
   }

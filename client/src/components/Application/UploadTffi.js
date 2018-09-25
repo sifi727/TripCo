@@ -8,30 +8,18 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 class UploadTffi extends Component{
     constructor(props) {
         super(props);
+        this.readFuction = this.readFuction.bind(this);
+        this.uploadFile = this.uploadFile.bind(this);
     }
 
     tffi(){
         console.log("Starting to submit");
-       //console.log(result);
-      //  let tffi = document.getElementById('tffi');
-        //hard codind results to see if we can call props.updateTiffiObject but it is not working.
-       let tffidoc = "{\n" +
-            " \"type\" : \"trip\",\n" +
-            " \"version\" : 2,\n" +
-            " \"title\" : \"Shopping loop\",\n" +
-            " \"options\" : {\n" +
-            "    \"units\":\"miles\"\n" +
-            "    },\n" +
-            " \"places\" : [\n" +
-            "    {\"id\":\"dnvr\", \"name\":\"Denver\", \"latitude\":39.7392, \"longitude\":-104.9903}, \n" +
-            "    {\"id\":\"bldr\", \"name\":\"Boulder\", \"latitude\":40.01499, \"longitude\":-105.27055}, \n" +
-            "    {\"id\":\"foco\", \"name\":\"Fort Collins\", \"latitude\":40.585258, \"longitude\":-105.084419} \n" +
-            "    ]\n" +
-            "}";
-       // tffi.type = "submit";
-        console.log(tffidoc);
+    }
 
-        this.props.updateTffiObject(tffidoc);
+    readFuction(e){
+            let result = e.target.result;  //makes the json string store that some where.
+            console.log(e);
+            this.props.updateTffiObject(JSON.parse(result));
     }
 
     uploadFile(event){
@@ -40,20 +28,7 @@ class UploadTffi extends Component{
 
         console.log(file);
         reader.readAsText(file, 'UTF-8');
-        reader.onload = function(e) {
-
-            if (file) {
-
-
-                let result = reader.result;  //makes the json string store that some where.
-
-                console.log("I before content");
-                console.log(result);
-                console.log("I after content");
-            //   tffi(result);
-
-            }
-        }
+        reader.onload = this.readFuction;
     }
 
     render() {
