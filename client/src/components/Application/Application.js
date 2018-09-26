@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Container } from 'reactstrap';
 import Info from './Info'
+import Map from './Map';
 import Options from './Options';
 import UploadTffi from './UploadTffi'
 import { get_config } from '../../api/api';
@@ -69,6 +70,7 @@ class Application extends Component {
         <Info/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
         <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}/>
+        <Map map={this.state.trip}/>
       </Container>
     )
   }
