@@ -7,14 +7,18 @@ import { get_comfig } from '../../api/api.js'
 class Map extends Component{
     constructor(props) {
         super(props);
-        document.getElementById("mapImage").src = this.props.trip.map;
     }
 
+    setMapSource() {
+        document.getElementById("mapImage").src = this.props.trip.map;
+    }
+    
     render() {
         return (
             <Card>
                 <CardBody>
                     <img id="mapImage" src="" />
+                    {this.setMapSource()}
                 </CardBody>
             </Card>
         )
