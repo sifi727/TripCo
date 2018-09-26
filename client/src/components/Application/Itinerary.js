@@ -45,7 +45,7 @@ class Itinerary extends Component{
         <tr>
     <th>Destination</th>
     <th>Leg Distance</th>
-    <th>Total Trip Distance</th>
+    <th>Total Trip Distan  ce</th>
     </tr>
     </thead>
     <tbody>
