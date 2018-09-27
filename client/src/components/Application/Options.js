@@ -12,10 +12,8 @@ class Options extends Component{
     super(props);
     this.displayFields = this.displayFields.bind(this);
     this.handleUnitName = this.handleUnitName.bind(this);
-      this.handleUnitRadius = this.handleUnitRadius.bind(this);
+    this.handleUnitRadius = this.handleUnitRadius.bind(this);
     this.isUserDefined = false;
-    this.props.updateOptions('unitName', "unitName");
-    this.props.updateOptions('unitRadius', 0.0);
   }
 
   displayFields(){
