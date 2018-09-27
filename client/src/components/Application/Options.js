@@ -43,7 +43,7 @@ class Options extends Component{
   }
 
   initialUnitRadius(){
-      this.props.updateOptions('unitRadius', 0.0);
+      this.props.updateOptions('unitRadius', 0.0)
   }
 
   handleUnitName(event){
