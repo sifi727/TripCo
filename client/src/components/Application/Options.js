@@ -13,11 +13,7 @@ class Options extends Component{
     this.displayFields = this.displayFields.bind(this);
     this.handleUnitName = this.handleUnitName.bind(this);
     this.handleUnitRadius = this.handleUnitRadius.bind(this);
-    this.initialUnitName = this.initialUnitName.bind(this);
-    this.initialUnitRadius = this.initialUnitRadius.bind(this);
     this.isUserDefined = false;
-    this.initialUnitName();
-    this.initialUnitRadius();
   }
 
   displayFields(){
@@ -36,14 +32,6 @@ class Options extends Component{
               </Form>
           )
       }
-  }
-  
-  initialUnitName(){
-      this.props.updateOptions('unitName', "unitName")
-  }
-
-  initialUnitRadius(){
-      this.props.updateOptions('unitRadius', 0.0)
   }
 
   handleUnitName(event){
