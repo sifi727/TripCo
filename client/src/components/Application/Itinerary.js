@@ -73,13 +73,13 @@ class Itinerary extends Component{
    console.log("rows");
    console.log(rows);
 
+    totaldistance = totaldistance+this.props.trip.distances[index];
 
-
-//     rows.push(<tr>
-//     < td > {this.props.trip.places[0]} </td>
-//     < td > {this.props.trip.distances[0]} < /td>
-//     < td > {totaldistance+this.props.trip.distances[0]}< /td>
-//     < /tr>);
+    rows.push(<tr key ={'intererary-row74'}>
+    < td > {this.props.trip.places[0].name} </td>
+    < td > {this.props.trip.distances[index]} < /td>
+    < td > {totaldistance}< /td>
+    < /tr>);
 
     return (
         <Table>
