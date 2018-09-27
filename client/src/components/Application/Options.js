@@ -23,13 +23,7 @@ class Options extends Component{
                   <FormText color="muted">
                       Enter your user defined unit name:
                   </FormText>
-                  <input
-                      type="text"
-                      name="uName"
-                      id="unitName"
-                      value={this.props.options.unitName}
-                      onChange={this.handleUnitName}
-                  />
+                  <input type="text" name="uName" id="unitName" value={this.props.options.unitName} onChange={this.handleUnitName}/>
             
                   <FormText color="muted">
                       Enter your user defined unit radius:
