@@ -13,11 +13,12 @@ class Itinerary extends Component{
     this.getBlankPlaceHolder= this.getBlankPlaceHolder.bind(this);
 
   }
+  //Function returns the placeholder if no data can be filled in the table.
    getBlankPlaceHolder()
   {
     return '-';
-
   }
+  //Get the distance out of the TIFF obj. If no distance value is present then returns placeholder
   getDistance (index)
   {
     if( this.props.trip.distances === null || typeof this.props.trip.distances === 'undefined'  || this.props.trip.distances.length==0)
@@ -27,6 +28,7 @@ class Itinerary extends Component{
     return this.props.trip.distances[index];
 
   }
+  //Calc totalDistance from previousDestance and the index of distance in the distance array
   getTotalDistance(previousDistance,index)
   {
     if( this.props.trip.distances === null || typeof this.props.trip.distances === 'undefined'  || this.props.trip.distances.length==0)
@@ -36,85 +38,77 @@ class Itinerary extends Component{
     return previousDistance+this.props.trip.distances[index];
 
   }
-
-  getRows ()
-  {
-    var index = -1;
+  //builds the row of table to present in the view
+  getRows () {
+    var index = -1;  //starts at -1 to indicate that the foreach is on the 1 place and
+                    // total distance and leg distance are both 0
     var totaldistance = 0;
 
     const rows = this.props.trip.places.map((place)=> {
-      //console.log("Distance" + this.props.trip.distances[index]);
-      if(index == -1)
-    {
+
+      if(index == -1){ // the first entry in the table and is special because leg and total at both 0
+
       index++;
+
+      //table is |place name| leg distance| total distance|
       return (
           <tr key={'intinerary-row 0'}>
-        < td > {place.name} </td>
-    < td > 0 < /td>
-    < td > 0 < /td>
-    < /tr>
-    )
+            < td > {place.name} </td>
+            < td > 0 < /td>
+            < td > 0 < /td>
+          < /tr>
+      )
 
     }
     totaldistance = this.getTotalDistance(totaldistance,index);
-
+    //table is |place name| leg distance| total distance|
+    //table entry for middle destinations
     var row = (
         <tr key={'intinerary-row '+(index+1)}>
-      < td > {place.name} </td>
-  < td > {this.getDistance(index)} < /td>
-  < td > {totaldistance}< /td>
-  < /tr>
+          < td > {place.name} </td>
+          < td > {this.getDistance(index)} < /td>
+          < td > {totaldistance}< /td>
+        < /tr>
   )
-    //{this.props.trip.distances[index]}
     index++;
     return row;
   }
 
 
   );
-    console.log("rows");
-    console.log(rows);
 
     totaldistance = this.getTotalDistance(totaldistance,index);
 
-    rows.push(<tr key ={'intererary-row74'}>
-      < td > {this.props.trip.places[0].name} </td>
-  < td > {this.getDistance(index)} < /td>
-  < td > {totaldistance}< /td>
-  < /tr>);
+    rows.push(
+            <tr key ={'intererary-row74'}>
+              < td > {this.props.trip.places[0].name} </td>
+              < td > {this.getDistance(index)} < /td>
+              < td > {totaldistance}< /td>
+             < /tr>);
     return rows;
 
   }
 
   render() {
-    let rows;
+    //Checks to see if places has been set.
+
     if( this.props.trip.places === null || typeof this.props.trip.places === 'undefined'  || this.props.trip.places.length==0)
     {
-      console.log("place not there");
-      return (<Container></Container>);
+      return (<Container></Container>);  //return nothing because there is not places to build a table from
     }
-    // if( this.props.trip.distances === null || typeof this.props.trip.distances === 'undefined'  || this.props.trip.distances.length==0)
-    // {
-    //   return (<Container></Container>);
-    //
-    // }
-
-      rows = this.getRows();
-
-
 
     return (
         <Table>
         <thead>
-        <tr>
-    <th>Destination</th>
-    <th>Leg of the Trip Distance</th>
-    <th>Total Trip Distance</th>
-    </tr>
-    </thead>
-    <tbody>
-    {rows}
-    </tbody>
+          <tr>
+              <th>Destination</th>
+              <th>Leg of the Trip Distance</th>
+              <th>Total Trip Distance</th>
+          </tr>
+        </thead>
+        <tbody>
+           {this.getRows()}
+         </tbody>
     </Table>
   )
   }
