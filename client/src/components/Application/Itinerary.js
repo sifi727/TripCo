@@ -3,7 +3,6 @@ import {Card, CardHeader, CardBody, ButtonGroup} from 'reactstrap'
 import {Container, Table, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 
 
-
 class Itinerary extends Component{
   constructor(props) {
     super(props);
@@ -13,14 +12,13 @@ class Itinerary extends Component{
     this.getBlankPlaceHolder= this.getBlankPlaceHolder.bind(this);
 
   }
+
   //Function returns the placeholder if no data can be filled in the table.
-   getBlankPlaceHolder()
-  {
+   getBlankPlaceHolder() {
     return '-';
   }
   //Get the distance out of the TIFF obj. If no distance value is present then returns placeholder
-  getDistance (index)
-  {
+  getDistance (index) {
     if( this.props.trip.distances === null || typeof this.props.trip.distances === 'undefined'  || this.props.trip.distances.length==0)
     {
       return this.getBlankPlaceHolder();
@@ -28,9 +26,12 @@ class Itinerary extends Component{
     return this.props.trip.distances[index];
 
   }
-  //Calc totalDistance from previousDestance and the index of distance in the distance array
-  getTotalDistance(previousDistance,index)
-  {
+
+  /**
+   * Calc totalDistance from previousDestance and the index of distance in the distance array
+   */
+
+  getTotalDistance(previousDistance,index) {
     if( this.props.trip.distances === null || typeof this.props.trip.distances === 'undefined'  || this.props.trip.distances.length==0)
     {
       return this.getBlankPlaceHolder();
@@ -38,7 +39,10 @@ class Itinerary extends Component{
     return previousDistance+this.props.trip.distances[index];
 
   }
-  //builds the row of table to present in the view
+
+  /**
+   * Builds the row of table to present in the view
+   */
   getRows () {
     var index = -1;  //starts at -1 to indicate that the foreach is on the 1 place and
                     // total distance and leg distance are both 0
@@ -89,6 +93,9 @@ class Itinerary extends Component{
 
   }
 
+  /**
+   *   Renders the view
+   */
   render() {
     //Checks to see if places has been set.
 
@@ -98,18 +105,22 @@ class Itinerary extends Component{
     }
 
     return (
-        <Table>
-        <thead>
-          <tr>
-              <th>Destination</th>
-              <th>Leg of the Trip Distance</th>
-              <th>Total Trip Distance</th>
-          </tr>
-        </thead>
-        <tbody>
-           {this.getRows()}
-         </tbody>
-    </Table>
+        <Card>
+          <CardBody>
+            <Table>
+            <thead>
+              <tr>
+                  <th>Destination</th>
+                  <th>Leg of the Trip Distance</th>
+                  <th>Total Trip Distance</th>
+              </tr>
+            </thead>
+            <tbody>
+               {this.getRows()}
+             </tbody>
+        </Table>
+      </CardBody>
+    </Card>
   )
   }
 }
