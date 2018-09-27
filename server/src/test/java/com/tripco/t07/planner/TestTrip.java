@@ -34,6 +34,19 @@ public class TestTrip {
         +
         "  ]}";
   }
+  private String getJsonMinVersionTwoTripTFFI ()
+  {
+    return ("{\n"
+        + " \"type\" : \"trip\",\n"
+        + " \"version\" : 2,\n"
+        + " \"places\" : [\n"
+        + "    {\"id\":\"dnvr\", \"name\":\"Denver\", \"latitude\":39.7392, \"longitude\":-104.9903}, \n"
+        + "    {\"id\":\"bldr\", \"name\":\"Boulder\", \"latitude\":40.01499, \"longitude\":-105.27055}, \n"
+        + "    {\"id\":\"foco\", \"name\":\"Fort Collins\", \"latitude\":40.58258, \"longitude\":-105.084419} \n"
+        + "    ]\n"
+        + "}");
+
+  }
 
   private String getJsonFourStateBorderWithTitle() {
     return "{\n"
@@ -91,6 +104,7 @@ public class TestTrip {
   }
 
 
+
   // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
@@ -136,6 +150,27 @@ public class TestTrip {
     assertEquals(expectedDistances, trip.distances);
 
   }
+  @Test
+  public void testDistanceWithMinTripTFFI () {
+    String placesJson = getJsonMinVersionTwoTripTFFI();
+    Gson gson = new Gson();
+    trip = gson.fromJson(placesJson, Trip.class);
+    try {
+      trip.plan();
+    }
+    catch (Exception e)
+    {
+      fail();
+    }
+    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
+    Collections.addAll(expectedDistances, 24, 40, 58);
+    assertEquals(2,trip.version);
+    assertEquals(expectedDistances,trip.distances);
+    assertEquals("miles",trip.options.units);
+
+  }
+
+
 
 
   @Test
@@ -214,7 +249,7 @@ public class TestTrip {
     stringBuilder.insert(indexOfClosingSvgTag - 1, "\n" + "<path\n"
         + "d= \"M 612.900997,259.983357 L 573.045438,210.900108 L 599.515929,109.884258 z\"\n"
         + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
-        + "\tid=\"path-null\"\n"
+        + "\tid=\"path-\"\n"
         + "\t\t\t/>\n\n");
     trip.plan();
 

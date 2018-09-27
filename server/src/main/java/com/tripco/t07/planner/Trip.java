@@ -50,6 +50,17 @@ public class Trip {
    */
   public void plan() {
 
+    if(options ==null)
+    {
+      options = new Option();
+      options.units="miles";
+    }
+    if(title==null)
+    {
+      title="";
+    }
+
+
     this.map = svg();
     this.distances = calculateLegDistances();
 
