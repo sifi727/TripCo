@@ -11,6 +11,7 @@ class UploadTffi extends Component{
         super(props);
         this.readFuction = this.readFuction.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
     submit(){
@@ -25,7 +26,11 @@ class UploadTffi extends Component{
 
     readFuction(e){
             let result = e.target.result;  //makes the json string store that some where.
-            this.props.updateTffiObject(JSON.parse(result));
+            let json = JSON.parse(result);
+            if(json.options === null || typeof json.options === 'undefined'){
+               return;
+            }
+            this.props.updateTffiObject(json);
     }
 
     uploadFile(event){
