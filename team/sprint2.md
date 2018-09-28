@@ -78,7 +78,7 @@
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *User: I want to supply my own units for the distances:  We added two input fields when the `user defined` button is active.  We also added an uplooad file feature for the user to upload their own Trip TFFI object*
+* *90 User: I want to supply my own units for the distances:  We added two input fields when the `user defined` button is active.  We also added an uplooad file feature for the user to upload their own Trip TFFI object*
 * 
 
 #### Incomplete epics in Sprint Backlog 
