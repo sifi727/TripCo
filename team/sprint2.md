@@ -68,7 +68,7 @@
 
 ## Review
 
-*Overall we believe that this sprint went well for our team dispite some of our drawdraws.  Even though we were one team member short during the second half of the sprint, we were still able to complete four of our five planned epics.  As for the changes we agreed to make during the first sprint, we did better in reserving rooms for our meetings; however, we did not have the oppertunity to mock up code.*
+*Overall we believe that this sprint went well for our team despite some of our drawbacks.  Even though we were one team member short during the second half of the sprint, we were still able to complete four of our five planned epics.  As for the changes we agreed to make during the first sprint, we did better in reserving rooms for our meetings; however, we did not have the opportunity to mock up code.*
 
 #### Completed epics in Sprint Backlog 
 
@@ -98,7 +98,7 @@
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+Looking back, the sprint went very well considering everything that happened. We are able to carry over many positive changes from this sprint, as well as drop a few negative ones we uncovered. We still have things to work on going forward, but we are aware of them and plan to actively address them in the next sprint. 
 
 #### What we changed this sprint
 
@@ -112,7 +112,8 @@ Last sprint we wasted time trying to find a place to meet because we did not res
 
 The team unexpectedly had the withdraw of a teammate after our week of sprint 2 planning. We told Dave as soon as possible so he could plan for missing member. The team was willing to continue to try and pursue what we had said we were going to accomplish. This was good because it showed we wanted to complete what we set out to complete. Our team also did well in trying to be flexible with change.
 
-#### What we need to work on
+#### What we
+ need to work on
 
 We did not ask questions on things we needed to understand early in the sprint. This translated into delays when we went to implement the client view because we did not fully understand how ReactJS and JavaScript worked. An example of this is simple things like loading a file took the whole team an entire day to figure out. If we had asked questions sooner this could have been solved much quicker, and we could have allocated more time for the task(s) as needed. As a team, asking questions early on would have helped us to define the tasks better.
 
