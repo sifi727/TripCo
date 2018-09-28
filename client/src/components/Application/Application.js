@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Container } from 'reactstrap';
 import Info from './Info'
+import Map from './Map';
 import Options from './Options';
 import UploadTffi from './UploadTffi'
 import { get_config } from '../../api/api';
@@ -23,7 +24,7 @@ class Application extends Component {
         },
         places: [],
         distances: [],
-        map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
+        map: ""
       }
     };
     this.updateTrip = this.updateTrip.bind(this);
@@ -116,11 +117,12 @@ class Application extends Component {
     return(
         <Container id="Application">
         <Info/>
+        <Itinerary trip={this.state.trip} />
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-    <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}/>
-    <Itinerary trip={this.state.trip} />
-    </Container>
-  )
+        <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}/>
+        <Map trip={this.state.trip}/>
+      </Container>
+    )
   }
 }
 
