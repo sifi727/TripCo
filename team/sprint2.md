@@ -68,7 +68,7 @@
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*Overall we believe that this sprint went well for our team dispite some of our drawdraws.  Even though we were one team member short during the second half of the sprint, we were still able to complete four of our five planned epics.  As for the changes we agreed to make during the first sprint, we did better in reserving rooms for our meetings; however, we did not have the oppertunity to mock up code.*
 
 #### Completed epics in Sprint Backlog 
 
