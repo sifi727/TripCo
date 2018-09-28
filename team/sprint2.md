@@ -79,7 +79,7 @@
 *Describe the solution based on the completed epics and list the epics below.*
 
 * *90 User: I want to supply my own units for the distances:  We added two input fields when the `user defined` button is active; a field to add the unitName and a field to add the unitRadius.  We also added an uplooad file feature for the user to upload their own Trip TFFI object*
-* *91TripCo: The solution must be responsive for mobile devices: 
+* *91 TripCo: The solution must be responsive for mobile devices: 
 * 
 
 #### Incomplete epics in Sprint Backlog 
