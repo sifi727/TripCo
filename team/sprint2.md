@@ -80,8 +80,7 @@
 
 * *90 User: I want to supply my own units for the distances:  We added two input fields when the `user defined` button is active; a field to add the unitName and a field to add the unitRadius.  We also added an uplooad file feature for the user to upload their own Trip TFFI object*
 
- *91 TripCo: The solution must be responsive for mobile devices:  As a team, we made the decision to be mindful of this and continuously work on it as we made changes throughout the sprint. We did need to make a task that directly address this, to be sure things were good on deploy day, but as a direct result of our planning and execution, we were able to close this on the final day with no issue.*
-* 
+* *91 TripCo: The solution must be responsive for mobile devices:  As a team, we made the decision to be mindful of this and continuously work on it as we made changes throughout the sprint. We did need to make a task that directly address this, to be sure things were good on deploy day, but as a direct result of our planning and execution, we were able to close this on the final day with no issue.*
 
 #### Incomplete epics in Sprint Backlog 
 
