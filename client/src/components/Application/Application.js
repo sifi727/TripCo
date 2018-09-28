@@ -104,9 +104,7 @@ class Application extends Component {
     else{
       this.updateTrip("distances",trip.distances);
     }
-
-
-
+    this.setState({"trip": trip});
   }
 
 
