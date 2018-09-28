@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
-import { Container } from 'reactstrap';
+import {Container} from 'reactstrap';
 import Info from './Info'
+import Map from './Map';
 import Options from './Options';
 import UploadTffi from './UploadTffi'
-import { get_config } from '../../api/api';
+import {get_config} from '../../api/api';
 import Itinerary from './Itinerary';
 
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
 class Application extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       config: null,
@@ -18,12 +19,12 @@ class Application extends Component {
         version: 2,
         type: "trip",
         title: "",
-        options : {
+        options: {
           units: "miles"
         },
         places: [],
         distances: [],
-        map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
+        map: ""
       }
     };
     this.updateTrip = this.updateTrip.bind(this);
@@ -37,19 +38,19 @@ class Application extends Component {
   componentWillMount() {
     get_config().then(
         config => {
-      this.setState({
-      config:config
-    })
+          this.setState({
+            config: config
+          })
+        }
+    );
   }
-  );
-  }
-  isObjNullorUndefined(object){
-    return(object === null || typeof object === 'undefined');
+
+  isObjNullorUndefined(object) {
+    return (object === null || typeof object === 'undefined');
 
   }
 
-
-  updateTrip(field, value){
+  updateTrip(field, value) {
     let trip = this.state.trip;
     trip[field] = value;
     this.setState(trip);
@@ -59,66 +60,69 @@ class Application extends Component {
     this.setState({'trip': value});
   }
 
-  updateOptions(option, value){
+  updateOptions(option, value) {
     let trip = this.state.trip;
     trip.options[option] = value;
     this.setState(trip);
   }
 
-  updateTffiObject(object){
+  updateTffiObject(object) {
     //version, type, and places elements
 
     let trip = object;
 
-    this.updateTrip("places",trip.places); //required
-    this.updateTrip("type",trip.type);
+    this.updateTrip("places", trip.places); //required
+    this.updateTrip("type", trip.type);
     this.updateTrip("version", trip.version);
 
-    if(this.isObjNullorUndefined(trip.title)){
+    if (this.isObjNullorUndefined(trip.title)) {
 
-      this.updateTrip("",trip.title);
+      this.updateTrip("", trip.title);
     }
     else {
       this.updateTrip("title", trip.title);
     }
 
-    if(this.isObjNullorUndefined(trip.options)) {
-     //do nothing keep units as defined by buttons
+    if (this.isObjNullorUndefined(trip.options)) {
+      //do nothing keep units as defined by buttons
     }
     else {
-      this.updateOptions("units",trip.options.units);
+      this.updateOptions("units", trip.options.units);
     }
 
-    if(this.isObjNullorUndefined(trip.map)){
-      trip.map ="";
+    if (this.isObjNullorUndefined(trip.map)) {
+      trip.map = "";
     }
 
     else {
-      this.updateTrip("map",trip.map);
+      this.updateTrip("map", trip.map);
     }
 
-
-    if(this.isObjNullorUndefined(trip.distances)) {
+    if (this.isObjNullorUndefined(trip.distances)) {
       trip.distances = [];
     }
-    else{
-      this.updateTrip("distances",trip.distances);
+    else {
+      this.updateTrip("distances", trip.distances);
     }
     this.setState({"trip": trip});
   }
 
-
   render() {
-    if(!this.state.config) { return <div/> }
+    if (!this.state.config) {
+      return <div/>
+    }
 
-    return(
+    return (
         <Container id="Application">
-        <Info/>
-        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-    <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}/>
-    <Itinerary trip={this.state.trip} />
-    </Container>
-  )
+          <Info/>
+          <Map trip={this.state.trip}/>
+          <Itinerary trip={this.state.trip}/>
+          <Options options={this.state.trip.options} config={this.state.config}
+                   updateOptions={this.updateOptions}/>
+          <UploadTffi trip={this.state.trip}
+                      updateTffiObject={this.updateTffiObject}/>
+        </Container>
+    )
   }
 }
 

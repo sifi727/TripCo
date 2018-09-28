@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {Card, CardHeader, CardBody, ButtonGroup} from 'reactstrap'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import {Card, CardBody} from 'reactstrap'
+import {Button, Form, FormGroup, FormText} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
 /* The UploadTffi allows the user to upload their Trip TFFI file
