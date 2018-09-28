@@ -25,6 +25,7 @@ public class Trip {
   public ArrayList<Place> places;
   public ArrayList<Integer> distances;
   public String map;
+  public int version;
 
   // Constants
   public static final String CO_BACKGROUND_FILE_PATH = "/CObackground.svg";
