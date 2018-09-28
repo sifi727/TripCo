@@ -79,14 +79,13 @@
 *Describe the solution based on the completed epics and list the epics below.*
 
 * *90 User: I want to supply my own units for the distances:  We added two input fields when the `user defined` button is active; a field to add the unitName and a field to add the unitRadius.  We also added an uplooad file feature for the user to upload their own Trip TFFI object*
-* *91 TripCo: The solution must be responsive for mobile devices: We have checked and the site is showing well on moblie.*
-* 
+* *91 TripCo: The solution must be responsive for mobile devices:  As a team, we made the decision to be mindful of this and continuously work on it as we made changes throughout the sprint. We did need to make a task that directly address this, to be sure things were good on deploy day, but as a direct result of our planning and execution, we were able to close this on the final day with no issue.*
 
 #### Incomplete epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
+* *TripCo: All clients and servers must interoperate: While we are confident that everything should work with the other teams, we were not able to get with our assigned group partners and actually test this. We also had a task to add some configuration options related this epic that were not completed, and as such neither was the epic.*
 *
 
 #### What went well
