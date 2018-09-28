@@ -66,6 +66,7 @@
 | *09/19* | *#84, #102, #112, #113, 116* | *#97, #98, #117, #127* | *Loss a teammate. Another teammate was sick*  |
 | *09/21* | *#97, #127* | *#98, #117* | *none* |
 | *09/24* | *none* | *#98, #117* | *need to finish the Client UI task in progress before we can pickup other tasks* |
+| *09/26* | *#98, #117* | *#142, #143, #144* | *none* |
 
 *Add a new row for each scrum session.*
 

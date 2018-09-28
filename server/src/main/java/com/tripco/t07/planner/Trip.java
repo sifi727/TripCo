@@ -25,6 +25,7 @@ public class Trip {
   public ArrayList<Place> places;
   public ArrayList<Integer> distances;
   public String map;
+  public int version;
 
   // Constants
   public static final String CO_BACKGROUND_FILE_PATH = "/CObackground.svg";
@@ -48,6 +49,17 @@ public class Trip {
    * the places in order. It might need to reorder the places in the future.
    */
   public void plan() {
+
+    if(options ==null)
+    {
+      options = new Option();
+      options.units="miles";
+    }
+    if(title==null)
+    {
+      title="";
+    }
+
 
     this.map = svg();
     this.distances = calculateLegDistances();
