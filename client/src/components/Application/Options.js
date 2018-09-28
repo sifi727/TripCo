@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap'
-import { ButtonGroup, Button } from 'reactstrap'
+import {Card, CardHeader, CardBody, FormText} from 'reactstrap'
+import { ButtonGroup, Button, Form, FormGroup, Table } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -10,9 +10,40 @@ import { ButtonGroup, Button } from 'reactstrap'
 class Options extends Component{
   constructor(props) {
     super(props);
+    this.displayFields = this.displayFields.bind(this);
+    this.handleUnitName = this.handleUnitName.bind(this);
+    this.handleUnitRadius = this.handleUnitRadius.bind(this);
+    this.isUserDefined = false;
   }
 
+  displayFields(){
+      if(this.isUserDefined){
+          return(
+              <Form>
+                  <FormText color="muted">
+                      Enter your user defined unit name:
+                  </FormText>
+                  <input type="text" name="uName" id="unitName" value={this.props.options.unitName} onChange={this.handleUnitName}/>
+
+                  <FormText color="muted">
+                      Enter your user defined unit radius:
+                  </FormText>
+                  <input type="text" name="uRaduis" id="unitRadius" value={this.props.options.unitRadius} onChange={this.handleUnitRadius}/>
+              </Form>
+          )
+      }
+  }
+
+  handleUnitName(event){
+      this.props.updateOptions('unitName', event.target.value)
+  }
+
+    handleUnitRadius(event){
+        this.props.updateOptions('unitRadius', event.target.value)
+    }
+
   render() {
+    const isUserDefined = this.isUserDefined;
     const buttons = this.props.config.units.map((unit) =>
       <Button
         key={'distance_button_' + unit}
@@ -25,6 +56,16 @@ class Options extends Component{
       </Button>
     );
 
+    let form;
+
+    if(this.props.options.units == "user defined"){
+        this.isUserDefined = true;
+        form = this.displayFields()
+    }
+    else{
+        this.isUserDefined = false;
+    }
+
     return(
       <Card>
         <CardBody>
@@ -32,6 +73,9 @@ class Options extends Component{
           <ButtonGroup>
             {buttons}
           </ButtonGroup>
+          <FormGroup>
+               {form}
+           </FormGroup>
         </CardBody>
       </Card>
     )
