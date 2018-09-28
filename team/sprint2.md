@@ -112,8 +112,7 @@ Last sprint we wasted time trying to find a place to meet because we did not res
 
 The team unexpectedly had the withdraw of a teammate after our week of sprint 2 planning. We told Dave as soon as possible so he could plan for missing member. The team was willing to continue to try and pursue what we had said we were going to accomplish. This was good because it showed we wanted to complete what we set out to complete. Our team also did well in trying to be flexible with change.
 
-#### What we
- need to work on
+#### What we need to work on
 
 We did not ask questions on things we needed to understand early in the sprint. This translated into delays when we went to implement the client view because we did not fully understand how ReactJS and JavaScript worked. An example of this is simple things like loading a file took the whole team an entire day to figure out. If we had asked questions sooner this could have been solved much quicker, and we could have allocated more time for the task(s) as needed. As a team, asking questions early on would have helped us to define the tasks better.
 
