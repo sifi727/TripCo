@@ -7,7 +7,7 @@
 
 ## Definition of Done
 
-* Sprint Review and Restrospectives completed (sprint2.md).
+* Sprint Review and Retrospectives completed (sprint2.md).
 * Version in pom.xml should be `<version>2.0.0</version>`.
 * Increment deployed for demo and testing.
 * Increment release `v2.0` created on GitHub with appropriate version number and name.
@@ -50,11 +50,9 @@
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *5* | *0* |
-| Tasks |  *13*   | *2* | 
-| Story Points |  *23*  | *2* | 
-
-*Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
+| Epics | *5* | *4* |
+| Tasks |  *13*   | *20* | 
+| Story Points |  *23*  | *39* | 
 
 
 ## Scrums
@@ -68,78 +66,66 @@
 | *09/24* | *none* | *#98, #117* | *need to finish the Client UI task in progress before we can pickup other tasks* |
 | *09/26* | *#98, #117* | *#142, #143, #144* | *none* |
 
-*Add a new row for each scrum session.*
-
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*Overall we believe that this sprint went well for our team despite some of our drawbacks.  Even though we were one team member short during the second half of the sprint, we were still able to complete four of our five planned epics.  As for the changes we agreed to make during the first sprint, we did better in reserving rooms for our meetings; however, we did not have the opportunity to mock up code.*
 
 #### Completed epics in Sprint Backlog 
 
-*Describe the solution based on the completed epics and list the epics below.*
+* 88 User: I want a map and itinerary for my trip: We have added server side code to handle this request, along with the client side magics necessary to get everything to show up for the user, once they have uploaded their trip. The map includes the path of the trip and the name supplied by the user. The distances for each leg are populated in the table, along with a running total and the names of each location along the way.
 
-* *90 User: I want to supply my own units for the distances:  We added two input fields when the `user defined` button is active; a field to add the unitName and a field to add the unitRadius.  We also added an uplooad file feature for the user to upload their own Trip TFFI object*
-* *91 TripCo: The solution must be responsive for mobile devices:  As a team, we made the decision to be mindful of this and continuously work on it as we made changes throughout the sprint. We did need to make a task that directly address this, to be sure things were good on deploy day, but as a direct result of our planning and execution, we were able to close this on the final day with no issue.*
+* 90 User: I want to supply my own units for the distances:  We added two input fields when the `user defined` button is active; a field to add the unit Name and a field to add the unitRadius.  We also added an upload file feature for the user to upload their own Trip TFFI object
+
+* 91 TripCo: The solution must be responsive for mobile devices:  As a team, we made the decision to be mindful of this and continuously work on it as we made changes throughout the sprint. We did need to make a task that directly address this, to be sure things were good on deploy day, but as a direct result of our planning and execution, we were able to close this on the final day with no issue.
+
+* 94 TripCo: All code shall be clean: By using the clean code output and adhering to the google standards outlined in the company handbook, this was again very easy to complete. Everything was done incrementally, during development, and it was essentially just a matter of moving this from in progress to done.
 
 #### Incomplete epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
-
-* *TripCo: All clients and servers must interoperate: While we are confident that everything should work with the other teams, we were not able to get with our assigned group partners and actually test this. We also had a task to add some configuration options related this epic that were not completed, and as such neither was the epic.*
-*
+* 93 TripCo: All clients and servers must interoperate: While we are confident that everything should work with the other teams, we were not able to get with our assigned group partners and actually test this. We also had a task to add some configuration options related this epic that were not completed, and as such neither was the epic.
 
 #### What went well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
-
-* *something*
-*
+* Team meetings were focused and concise. We were able to address each other's concerns and come to conclusions fairly easily, and each member's input contributed to the end goal
+* The server side implementation was very quick and pretty simple for us to do. Everyone had a good understanding of what was needed going in, and we were able to finish the epic very quickly
+* Using clean code and the other plugins was really good. It helped us to see where we needed to add in some testing, as well as reduce some functions and clean things up a bit
 
 #### Problems encountered and resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
-
-* *something*
-*
+* Loosing a member in the middle of the sprint was really difficult. It caused a ton of confusion and led to a lot of issues throughout the sprint
+* The client side implementation was much harder than originally anticipated, and ended up being a major time sync. Having a more candid discussion about what we know and do not know, and asking more questions could help us with this.
+* Communication was lacking in some meetings and is something we can improve on
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+Looking back, the sprint went very well considering everything that happened. We are able to carry over many positive changes from this sprint, as well as drop a few negative ones we uncovered. We still have things to work on going forward, but we are aware of them and plan to actively address them in the next sprint. 
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
-In the previous sprint we waisted time looking for places to meet for this sprint we reserved rooms so we could more effectively work together. This allowed us to meet for easily and make sure to discuss problems were facing since out last stand up.
+In the previous sprint we wasted time looking for places to meet for this sprint we reserved rooms so we could more effectively work together. This allowed us to meet for easily and make sure to discuss problems were facing since out last stand up.
 
-We were hoping to learn how to mock out code so the team would not accidently be blocked from doing code they need to do. We did not mock out anything on this sprint because we able to stay in different areas of the code.
-
+We were hoping to learn how to mock out code so the team would not accidentally be blocked from doing code they need to do. We did not mock out anything on this sprint because we able to stay in different areas of the code and work with each other when necessary
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+Last sprint we wasted time trying to find a place to meet because we did not reserve a room. We worked to change this by reserving rooms to meet and this worked out, so we did not waste as much time. Also, we reserved rooms where we could display a computer screen, this helped the team to understand a communicate over what tasks we need to accomplish.
 
-Last sprint we wasted time trying to find a place to meet because we did not reserve a room. We worked to change this by reserving rooms to meet and this worked out, so we did not waste as much time. Also, we reserved rooms where we could display a computer screen, this helped the team to understand a communicate over what tasks we need to accomplish. Our team also did well in trying to be flexible with change.
-
-The team unexpectedly had the withdraw of a teammate after our week of sprint 2 planning. We told Dave as soon as possible so he could plan for missing member. The team was willing to continue to try and pursue what we had said we were going to accomplish. This was good because it showed we wanted to complete what we set out to complete.
-
+The team unexpectedly had the withdraw of a teammate after our week of sprint 2 planning. We told Dave as soon as possible so he could plan for missing member. The team was willing to continue to try and pursue what we had said we were going to accomplish. This was good because it showed we wanted to complete what we set out to complete. Our team also did well in trying to be flexible with change.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+We did not ask questions on things we needed to understand early in the sprint. This translated into delays when we went to implement the client view because we did not fully understand how ReactJS and JavaScript worked. An example of this is simple things like loading a file took the whole team an entire day to figure out. If we had asked questions sooner this could have been solved much quicker, and we could have allocated more time for the task(s) as needed. As a team, asking questions early on would have helped us to define the tasks better.
 
-We as team did not ask questions on things we needed to understand early in the sprint. This translated into delays when we went to implement the client view because we did not fully understand how ReactJS and JavaScript worked. An example of this is simple things like loading a file took the whole team to figure out. If we had asked questions sooner this could have been figured out quicker and we could have allocated more time for the task as needed. As team as questions early on would have helped us to define the tasks better.
+As a team, we also noticed that each
+ member did not fully understand our discussions every time. This translated into members being blocked from doing work over the weekend at times, and other times having to re-discuss a topic from a previous meeting. Communication skills is something that needs continual improvement, so we will need to continue to work on it.
 
-As a team we also noticed that we did not fully understand our discussions. Sometimes this translated into members being blocked from doing work over the weekend and other times having to re-discuss a topic from a previous meeting. Communication skills is something that needs continual improvement, so we will need to continue to work on it.
+Near the end of the sprint we realized that certain tasks needed to get done that we did not account for. Because we did not create those tasks, we also underestimated the complexity of the epics and this contributed to us over committing on what we could deliver in the sprint. An example of this is, we had to make tasks in the last week to address that we needed to display the map and itinerary on the client view. In retrospect this should have been figured out and had a task during our planning stage. 
 
-Near the end of the sprint we realized that certain tasks needed to get done that we did not account for. Because we did not account for certain tasks we also underestimated the complexity of the epics and contributed to us over committing on what we could deliver in the sprint. Example of this is we had to make tasks in the last week that we needed to display the map and itinerary on the client view. In retrospect this should have been figured out and had a task after our planning stage. We also tried to accomplish multiple epics at once this limit how many epics we could complete.
-
-Instead of focusing on the epic “I want a map and itinerary for my trip” ee as worked in conjunction on the second epic on “I want to supply my own units for the distances.” This was mistake because it split our focus and did not guarantee that we would at least complete one requested functionality for the customer.
+We also tried to accomplish multiple epics at once this limit how many epics we could complete. Instead of just focusing on the first epic, “I want a map and itinerary for my trip” we also tried to work on the second epic, “I want to supply my own units for the distances.” This was mistake because it split our focus and did not guarantee that we would at least complete one requested functionality for the customer.
 
 
 #### What we will change next sprint 
 
-*Articulate at the end of the sprint.  Focus on one of things you need to work on.*
+We as team in the next sprint will focus on making sure during the planing phase that we ask questions early on and communicate with upper management when we have confusion. This will hopefully help to eliminate unforeseen problems, so we don’t over commit to the amount of epics we try to finish.
 
-We as team in the next sprint will focus on making sure during the planing phase we ask questions early on. This hopefully will help to eliminate unforeseen problems, so we don’t over commit to the amount of epics we try to finish
-
-For the next sprint we should work on focusing just on one epic at time and make sure the tasks to complete the epic are first on the list. This will to help us to deliver the most importance requested new functionality to the customer.
+For the next sprint we will also work on focusing just on one epic at time and making sure the tasks to complete the epic are first on zen-hub. This will to help us to deliver the most important thing the customer has requested first and be more successful overall. 
