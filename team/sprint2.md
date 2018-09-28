@@ -82,7 +82,6 @@
 #### Incomplete epics in Sprint Backlog 
 
 * *TripCo: All clients and servers must interoperate: While we are confident that everything should work with the other teams, we were not able to get with our assigned group partners and actually test this. We also had a task to add some configuration options related this epic that were not completed, and as such neither was the epic.*
-*
 
 #### What went well
 
