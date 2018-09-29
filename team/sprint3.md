@@ -1,9 +1,9 @@
-# Sprint 3 - *your team number* - *your team name*
+# Sprint 3 - t07 - double07
 
 ## Goal
 
 ### Build shorter trips!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: Alex Laswell
 
 ## Definition of Done
 
