@@ -12,6 +12,12 @@ class UploadTffi extends Component{
         this.readFuction = this.readFuction.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
         this.submit = this.submit.bind(this);
+      this.state = {
+        fileIsSelected:false
+
+
+
+      };
     }
 
     submit(){
@@ -25,12 +31,19 @@ class UploadTffi extends Component{
     }
 
     readFuction(e){
+
+            console.log("fileSelect"+this.state.fileIsSelected);
+      this.setState({
+        fileIsSelected: true
+      });
             let result = e.target.result;  //makes the json string store that some where.
             let json = JSON.parse(result);
             if(json.options === null || typeof json.options === 'undefined'){
                return;
             }
             this.props.updateTffiObject(json);
+
+      console.log("fileSelect"+this.state.fileIsSelected);
     }
 
     uploadFile(event){
@@ -51,7 +64,7 @@ class UploadTffi extends Component{
                             <FormText color="muted">
                                 Insert your TFFI file in the above input.
                             </FormText>
-                            <Button onClick={(event) => this.submit()}>Upload</Button>
+                            <Button disabled={!this.state.fileIsSelected} onClick={(event) => this.submit()}>Plan</Button>
                         </FormGroup>
                     </Form>
                 </CardBody>
