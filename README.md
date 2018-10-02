@@ -1,17 +1,13 @@
 # t07 - Team double 07
 ![Team double 07](/images/Team-double07-1820x1080.jpg "Team double 07")
-_Jerrel, David, Melvin, Alex_
+_Jerrel, David, and Alex_
 # Member Information
 
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
-| Melvin Gramke | gramkem | gramkem | gramkem@rams.colostate.edu |
 | David Jump | djump | DavidJump | David.Jump@Colostate.edu |
 | Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
 | Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
-
-### Melvin Gramke
-I have lived here in Fort Collins for almost 6 years now. Previously, I lived in Montrose for just over a year and prior to that in Florida, where it snows less frequently. I am an undergraduate here at Colorado State, and my major is in Computer Science. I have one year to go before graduation, and I am currently employed with CSU Facilities. I enjoy biking and CSU pickup soccer as well as listening to audiobooks, podcasts, and music. My favorite aspect of Computer Science is logical analysis and algorithms.
 
 ### David Jump
 
@@ -45,3 +41,4 @@ As for my hobbies, well I love being behind a computer (obviously) whether it is
 * Issues must be completed incrementally, and all issues must maintain the characteristics of simplicity and clarity. Team members may implement an issues hierarchy in order to facilitate this expectation. Members should always make frequent commits that demonstrate progression towards issue resolution. Members must also regularly implement valid testing procedures.
 * Our code will follow clean code guidelines. Members will work together to ensure the code follows Google style guidelines for Java and JavaScript and is also maintainable.
 * Mobile first! The solution should be designed/optimized for a mobile environment, but still work well in a desktop environment. Not the other way around.
+* All new code will include tests in the testing suite and will adhere to the clean code standards and suggestions where appropriate. 
