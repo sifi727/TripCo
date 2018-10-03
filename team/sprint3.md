@@ -7,7 +7,7 @@
 
 ## Definition of Done
 
-* Sprint Review and Restrospectives completed (sprint3.md).
+* Sprint Review and Retrospectives completed (sprint3.md).
 * Version in pom.xml should be `<version>3.0.0</version>`.
 * Increment deployed for demo and testing as server-3.0.jar.
 * Increment release `v3.0` created on GitHub with appropriate version number and name.
@@ -36,25 +36,34 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
+For this third sprint, we have pulled in several of the provided epics. We have also decided to copy over the TripCo epics from last sprint, as we feel they are more coding style and guidelines or concepts that we would like to continue to practice. We are really excited to have a new member, and are all hoping that the addition of a fourth member will boost our productivity and allow us to do much more this sprint. We are planning on going back and re-working a few aspects of the client that were rushed at the end of last sprint, as well as changing some things that were suggested in the demo. Finally, there was one epic that we did not complete that we are swarming on to finish first thing this sprint. 
 
-*Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph or each.
+![Sprint3 Client](/team/sprint3/client.jpg "An rough image of the expected look of the client at end of the sprint")
+This image was created during sprint planning. It was meant to be a rough image of how the client will look at the end of the sprint. 
+
+![Sprint3 Epics](/team/sprint3/epics.jpg "A list of the initial epics we expect to complete")
+This is just a list of the epics we agreed upon. We have actually added to this list now that we have an additional member. 
 
 Epics planned for this sprint.
 
-* *## epic title: description*
-*
-
+* #165 TripCo: The solution must be responsive for mobile devices.
+* #166 TripCo: All code shall be clean!
+* #93 TripCo: All clients and servers must inter-operate!
+* #169 User: I want to determine the distance between a pair of destinations
+* #168 TripCo: All code must be tested.
+* #188 User: I want to design a trip from scratch so I can stop using the other tool.
+* #189 User: I want to make and save changes to the trip.
+* #190 User: I want my trips to be shorter. 
 
 ## Metrics
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *value* | *value* |
-| Tasks |  *value*   | *value* | 
-| Story Points |  *value*  | *value* | 
+| Epics | 8 | *value* |
+| Tasks | 32 | *value* | 
+| Story Points | 36 | *value* | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+When compared to last sprint, this plan is pretty high, but we are trying to also factor in our new member and make sure that we are all being utilized at all times. As we meet and things progress, we can and will modify this to better reflect what is taking place and keep us on track. 
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
