@@ -44,15 +44,15 @@ This image was created during sprint planning. It was meant to be a rough image 
 ![Sprint3 Epics](/team/sprint3/epics.jpg "A list of the initial epics we expect to complete")
 This is just a list of the epics we agreed upon. We have actually added to this list now that we have an additional member. 
 
-![Sprint3 Component Diagram] (/team/sprint3/Sprint3PlanComponentLayout.jpg "Component View Layout")
+![Sprint3 Component Diagram](/team/sprint3/Sprint3PlanComponentLayout.jpg "Component View Layout")
 
 Above is a picture of our component diagram in the client view. In Sprint 3 we will be adding a CalcDistance component and Collapse component to be able to collapse other components in the view. The CalcDistance component is to allow a place for the user to calculate the distance between two latitude and longitude points. The collapse component is being added so the user will have an easier time choosing if they want to calculate a distance or if they want to plan an itinerary and allow it to perform well on a mobile device.
 
-![Sprint3 Component Diagram] (/team/sprint3/Sprint3PlanComponentHierarchy.jpg "Component Hierachy Flow")
+![Sprint3 Component Diagram](/team/sprint3/Sprint3PlanComponentHierarchy.jpg "Component Hierachy Flow")
 
 Above is a diagram of the client component hierarchy. It’s close to the hierarchy in sprint 2 except for the addition of Collapse and CalcDistance components. The props from the Application component will now need to be passed down through the Collapse to its children. CalcDistance will have state variables to monitor if user the has entered a latitude and longitude and the store the result retrieved from the POST to the /distance method in the server.
 
-![Sprint3 Component Diagram] (/team/sprint3/Sprint3PlanServerClientFlow.jpg "Server to Client Flow")
+![Sprint3 Component Diagram](/team/sprint3/Sprint3PlanServerClientFlow.jpg "Server to Client Flow")
 
 The above diagram of the server client flow shows there will not be any added new REST calls in sprint 3. Because the web API now supports TIFF 3 standard the version number and the optimization level will need to be update in the /config GET response to the client. 
 
