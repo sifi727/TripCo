@@ -64,7 +64,7 @@ class UploadTffi extends Component{
                             <FormText color="muted">
                                 Insert your TFFI file in the above input.
                             </FormText>
-                            <Button disabled={!this.state.fileIsSelected} onClick={(event) => this.submit()}>Plan</Button>
+                            <Button id="PlanTffiButtonId" disabled={!this.state.fileIsSelected} onClick={(event) => this.submit()}>Plan</Button>
                         </FormGroup>
                     </Form>
                 </CardBody>
