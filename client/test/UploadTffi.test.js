@@ -16,6 +16,7 @@ import UploadTffi from '../src/components/Application/UploadTffi'
 
 
 
+
 const  startProps = {
   config: null,
       trip: {
@@ -32,7 +33,7 @@ const  startProps = {
 };
 function updateTffi(object)
 {
-
+  return true;
 }
 
 
@@ -67,8 +68,51 @@ function testPlanTiffButtonDisabledAndEnableWhenFileSelected() {
 
 
 }
+function testPlanTiffChangeFile() {
+
+  var parentFunc = new Function("object", "expect(JSON.stringify(object)==JSON.stringify(tripTFFIVersion2).toEqual(true))");
+
+  const uploadTffi = shallow((
+      <UploadTffi trip={startProps.trip} updateTffiObject={parentFunc}/>
+));
+  var tripTFFIVersion2 = {
+    "version"   : 2,
+    "type"      : "trip",
+    "title"     : "Shopping loop",
+    "options" : {
+      "units"        : "miles"
+    },
+    "places"    : [
+      {"id":"dnvr", "name":"Denver", "latitude":39.7392, "longitude":-104.9903},
+      {"id":"bldr", "name":"Boulder", "latitude":40.01499, "longitude":-105.27055},
+      {"id":"foco", "name":"Fort Collins", "latitude":40.58258, "longitude":-105.084419}
+    ]
+
+  };
+
+  let actual = [];
+
+  uploadTffi.find('#PlanTffiButtonId').map((element) => actual.push(element.prop('disabled')));
+  expect(actual).toEqual([true]);
+
+
+
+
+
+  expect(uploadTffi.exists('#FileTffiInputFieldId')).toEqual(true);
+
+   uploadTffi.find('#FileTffiInputFieldId').simulate('change',{target: {files:[ new Blob([JSON.stringify(tripTFFIVersion2, null, 2)], {type : 'application/json'})] }});
+
+
+  actual = [];
+  uploadTffi.find('#PlanTffiButtonId').map((element) => actual.push(element.prop('disabled')));
+  expect(actual).toEqual([false]);
+
+
+}
+
 
 
 test('Check to see if button is created and disabled (Function)', testPlanTiffButtonDisabledAStartofPage);
-test('Check to see if button is created and disabled (Function)', testPlanTiffButtonDisabledAndEnableWhenFileSelected);
-
+test('Check to see if button is enabled when file is selected(Function)', testPlanTiffButtonDisabledAndEnableWhenFileSelected);
+test('Check to see if file upload on change(Function)', testPlanTiffChangeFile);

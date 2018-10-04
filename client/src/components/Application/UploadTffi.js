@@ -32,7 +32,7 @@ class UploadTffi extends Component{
 
     readFuction(e){
 
-            console.log("fileSelect"+this.state.fileIsSelected);
+
       this.setState({
         fileIsSelected: true
       });
@@ -43,15 +43,15 @@ class UploadTffi extends Component{
             }
             this.props.updateTffiObject(json);
 
-      console.log("fileSelect"+this.state.fileIsSelected);
     }
 
     uploadFile(event){
         let reader = new FileReader();
         let file = event.target.files[0];
 
-        reader.readAsText(file, 'UTF-8');
+
         reader.onload = this.readFuction;
+        reader.readAsText(file, 'UTF-8');
     }
 
     render() {
@@ -60,7 +60,7 @@ class UploadTffi extends Component{
                 <CardBody>
                     <Form>
                         <FormGroup>
-                            <input type="file" name="file" id="tffi" onChange={this.uploadFile} />
+                            <input id="FileTffiInputFieldId" type="file" name="file"  onChange={this.uploadFile} />
                             <FormText color="muted">
                                 Insert your TFFI file in the above input.
                             </FormText>
