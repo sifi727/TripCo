@@ -7,6 +7,7 @@ _Jerrel, David, and Alex_
 | ----------------- | ---------- | ---------- | ----------------------------------- |
 | David Jump | djump | DavidJump | David.Jump@Colostate.edu |
 | Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
+|Dmitry Melnikov   | dmelniko  | dmelniko | dmelniko@rams.colostate.edu    |
 | Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
 
 ### David Jump
@@ -18,6 +19,12 @@ Currently, I am student at Colorado State University. In December, I am completi
 I am a Colorado native, I grew up in and around Loveland and Fort Collins. I am a dad to two boys (ages 6 and 8) and a yellow lab (also 6). We live in town, under the giant ‘A’ (for Alex). I am only two classes (including this one) away from completing my BA in Computer Science!!
 
 My hobbies include watching anime, biking, camping, computers, food, football, hiking, netflix binging, pokémon, and video games (mostly First Person Shooters, but also Mario, Zelda, etc). My favourite colour is green, and I love all kinds of music from heavy metal to pop, in both English and Spanish. 
+
+### Dmitry Melnikov
+
+I'm a third year student at CSU majoring in computer science. Previously I've graduated from Colorado School of Mines with a degree in petroleum engineering in 2008. I worked as production and drilling engineer in Wyoming and Colorado, including a position as night time rig site supervisor. My focus on drilling optimization and frustration with lack of suitable software in the industry lead me to a career change with the goal of designing software that would fill that void. The industry experience helped me understand the importance of teamwork and communication. 
+
+Originally from Russia, I've lived in Colorado for most of my time in US. My hobbies are traveling and many outdoor activities that this area has to offer, as well as scuba diving.
 
 ### Jerrel Siler
 
