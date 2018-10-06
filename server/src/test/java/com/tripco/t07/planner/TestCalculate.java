@@ -34,16 +34,16 @@ public class TestCalculate {
         String distanceRequestJson = "{\"type\": \"distance\",\"version\": 3,"
                 + "\"origin\": {\"latitude\": 40.01499,\"longitude\": -105.27055, \"name\":\"Boulder\"},"
                 + "\"destination\": {\"latitude\": 40.585258,\"longitude\": -105.084419, \"name\":\"Fort Collins\"},"
-                + "\"units\": \"miles\",\"distance\": 0}";
+                + "\"units\": \"kilometers\",\"distance\": 0}";
 
         request = new RequestStub();
         request.setTffi(distanceRequestJson);
 
         delta = 0.1;
-        dist = 41;
+        dist = 65;
         version = 3;
         type = "distance";
-        units = "miles";
+        units = "kilometers";
 
         origin = new Place();
         origin.latitude = 40.01499;
@@ -58,7 +58,7 @@ public class TestCalculate {
 
     @Test
     public void testCalculateConstructor() {
-
+        // create a new calculate object directly
         calculate = new Calculate(request);
 
         assertEquals(calculate.distance.distance, dist);
@@ -75,4 +75,17 @@ public class TestCalculate {
         assertEquals(calculate.distance.origin.name, origin.name);
     }
 
+    @Test
+    public void testGetDistanceMethod() {
+        String expectedDistanceTffi = "{\"distance\":65,\"version\":3,"
+                + "\"origin\":{\"name\":\"Boulder\",\"latitude\":40.01499,\"longitude\":-105.27055},"
+                + "\"destination\":{\"name\":\"Fort Collins\",\"latitude\":40.585258,\"longitude\":-105.084419},"
+                + "\"type\":\"distance\",\"units\":\"kilometers\"}";
+
+        // create a new calculate object directly
+        calculate = new Calculate(request);
+        String actualDistanceTffi = calculate.getDistance();
+
+        assertEquals(expectedDistanceTffi, actualDistanceTffi);
+    }
 }
