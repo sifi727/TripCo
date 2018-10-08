@@ -13,7 +13,7 @@ import spark.Request;
  */
 public class Calculate {
 
-  public Distance distance;
+  private Distance distance;
 
   /** Instantiate a Calculate object
    * using valid request data.

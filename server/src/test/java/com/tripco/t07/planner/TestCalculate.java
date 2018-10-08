@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class TestCalculate {
     RequestStub request;
     Calculate calculate;
-    String distance;
+    Distance distance;
     Gson gson;
 
     double delta;
@@ -61,18 +61,26 @@ public class TestCalculate {
         // create a new calculate object directly
         calculate = new Calculate(request);
 
-        assertEquals(calculate.distance.distance, dist);
-        assertEquals(calculate.distance.type, type);
-        assertEquals(calculate.distance.units, units);
-        assertEquals(calculate.distance.version, version);
+        // parse the request data.
+        JsonParser jsonParser = new JsonParser();
+        JsonElement requestBody = jsonParser.parse(calculate.getDistance());
 
-        assertEquals(calculate.distance.destination.latitude, destination.latitude, delta);
-        assertEquals(calculate.distance.destination.longitude, destination.longitude, delta);
-        assertEquals(calculate.distance.destination.name, destination.name);
+        // initialize distance object with request data.
+        gson = new Gson();
+        distance = gson.fromJson(requestBody, Distance.class);
 
-        assertEquals(calculate.distance.origin.latitude, origin.latitude, delta);
-        assertEquals(calculate.distance.origin.longitude, origin.longitude, delta);
-        assertEquals(calculate.distance.origin.name, origin.name);
+        assertEquals(distance.distance, dist);
+        assertEquals(distance.type, type);
+        assertEquals(distance.units, units);
+        assertEquals(distance.version, version);
+
+        assertEquals(distance.destination.latitude, destination.latitude, delta);
+        assertEquals(distance.destination.longitude, destination.longitude, delta);
+        assertEquals(distance.destination.name, destination.name);
+
+        assertEquals(distance.origin.latitude, origin.latitude, delta);
+        assertEquals(distance.origin.longitude, origin.longitude, delta);
+        assertEquals(distance.origin.name, origin.name);
     }
 
     @Test
