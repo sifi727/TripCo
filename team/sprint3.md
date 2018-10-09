@@ -86,6 +86,9 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
+| 10/3 | #170, #171 | #194, #199, #203 | Upcoming midterm |
+| 10/5 | #194, #199, #203, | #172 | Studying for midterm  |
+| 10/8 | #172 | #101, #184, #183, #207 | none |
 
 *Add a new row for the scrum session after each lecture. *
 
