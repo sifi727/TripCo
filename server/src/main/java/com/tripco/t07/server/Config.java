@@ -12,6 +12,17 @@ public class Config {
 
   private List<String> units = Arrays.asList("miles", "kilometers", "nautical miles", "user defined");
 
+  //Getter methods for testing.
+  public short getVersion() {
+    return this.version;
+  }
+  public String getType() {
+    return this.type;
+  }
+  public List<String> getUnits() {
+    return this.units;
+  }
+
   static String getConfig() {
     Config conf = new Config();
     Gson gson = new Gson();

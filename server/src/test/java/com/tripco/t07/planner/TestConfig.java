@@ -25,16 +25,26 @@ public class TestConfig {
     @Before
     public void initialize() {
         version = 3;
-        type = "\"config\"";
-        units = Arrays.asList("\"miles\"","\"kilometers\"","\"nautical miles\"","\"user defined\"");
+        type = "config";
+        units = Arrays.asList("miles", "kilometers", "nautical miles", "user defined");
+    }
+
+    @Test
+    public void testConfigConstructor() {
+        // create a new config object directly
+        config = new Config();
+
+        assertEquals(version, config.getVersion());
+        assertEquals(type, config.getType());
+        assertEquals(units, config.getUnits());
     }
 
     @Test
     public void testGetConfigMethod() {
-        String expectedConfigTffi = "{\"version\":" + version + ",\"type\":" + type
+        String expectedConfigTffi = "{\"version\":" + version + ",\"type\":\"config\""
                 + ",\"units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"]}";
 
-        // create a new calculate object directly
+        // create a new config object directly
         config = new Config();
         String actualConfigTffi = config.getConfig();
 
