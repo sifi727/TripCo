@@ -1,0 +1,43 @@
+package com.tripco.t07.server;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/*
+  This class contains tests for the Config class.
+ */
+@RunWith(JUnit4.class)
+
+public class TestConfig {
+    Config config;
+
+    short version;
+    String type;
+    List<String> units;
+
+    // Setup to be done before every test in TestConfig
+    @Before
+    public void initialize() {
+        version = 3;
+        type = "\"config\"";
+        units = Arrays.asList("\"miles\"","\"kilometers\"","\"nautical miles\"","\"user defined\"");
+    }
+
+    @Test
+    public void testGetConfigMethod() {
+        String expectedConfigTffi = "{\"version\":" + version + ",\"type\":" + type
+                + ",\"units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"]}";
+
+        // create a new calculate object directly
+        config = new Config();
+        String actualConfigTffi = config.getConfig();
+
+        assertEquals(expectedConfigTffi, actualConfigTffi);
+    }
+}
