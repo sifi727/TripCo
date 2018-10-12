@@ -136,7 +136,7 @@ class Application extends Component {
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
           <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                       port={this.state.port} hostname={this.state.hostname}/>
-          <Calculator options={this.state.trip.options} />
+          <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
         </Container>
     )
   }
