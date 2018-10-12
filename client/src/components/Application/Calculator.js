@@ -97,7 +97,7 @@ class Calculator extends Component {
             <InputGroupText>
               From Latitude:
             </InputGroupText>
-          {this.inputTag("CalculatorLatitudeOriginId" ,this.state.distance.origin.latitude, (event)=>this.updateDistance("origin","latitude",event))}"
+          {this.inputTag("CalculatorLatitudeOriginId" ,this.state.distance.origin.latitude, (event)=>this.updateDistance("origin","latitude",event))}
         <InputGroupText>
               From Longitude:
         </InputGroupText>
