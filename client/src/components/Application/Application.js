@@ -15,6 +15,8 @@ class Application extends Component {
     super(props);
     this.state = {
       config: null,
+      port: location.port,
+      hostname: location.hostname,
       trip: {
         version: 3,
         type: "trip",
@@ -33,6 +35,8 @@ class Application extends Component {
     this.updateTffiObject = this.updateTffiObject.bind(this);
     this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
     this.updateTrip = this.updateTrip.bind(this);
+    this.updatePort = this.updatePort.bind(this);
+    this.updateHostname=this.updateHostname.bind(this);
   }
 
   componentWillMount() {
@@ -49,7 +53,16 @@ class Application extends Component {
     return (object === null || typeof object === 'undefined');
 
   }
-
+  updatePort(event) {
+      this.setState({
+          port:event.target.value
+      });
+  }
+  updateHostname(event){
+      this.setState({
+          hostname:event.target.value
+      });
+  }
   updateTrip(field, value) {
     let trip = this.state.trip;
     trip[field] = value;
@@ -118,9 +131,10 @@ class Application extends Component {
           <Map trip={this.state.trip}/>
           <Itinerary trip={this.state.trip}/>
           <Options options={this.state.trip.options} config={this.state.config}
-                   updateOptions={this.updateOptions}/>
-          <UploadTffi trip={this.state.trip}
-                      updateTffiObject={this.updateTffiObject}/>
+                   updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
+                   updatePort={this.updatePort} updateHostname={this.updateHostname} />
+          <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}
+                      port={this.state.port} hostname={this.state.hostname}/>
         </Container>
     )
   }
