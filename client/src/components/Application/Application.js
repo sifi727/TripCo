@@ -16,7 +16,7 @@ class Application extends Component {
     this.state = {
       config: null,
       trip: {
-        version: 2,
+        version: 3,
         type: "trip",
         title: "",
         options: {
