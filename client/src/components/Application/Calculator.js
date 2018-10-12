@@ -49,7 +49,7 @@ class Calculator extends Component {
 
     }
 
-    request(distance,'distance').then(response => {
+    request(distance,'distance',this.props.port, this.props.hostname).then(response => {
 
       this.setState({"distance": response});
 
