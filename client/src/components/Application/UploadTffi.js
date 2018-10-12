@@ -22,7 +22,7 @@ class UploadTffi extends Component{
 
     submit(){
 
-          request(this.props.trip,'plan').then(response => {
+        request(this.props.trip,'plan',this.props.port, this.props.hostname).then(response => {
             this.props.updateTffiObject(response);
 
     });
