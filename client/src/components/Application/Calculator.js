@@ -101,14 +101,14 @@ class Calculator extends Component {
         <InputGroupText>
               From Longitude:
         </InputGroupText>
-              <Input id = "CalculatorLongitudeOriginId"  value={this.state.distance.origin.longitude} onChange={(event)=>this.updateDistance("origin","longitude",event)} type = "number" />
+              <Input id = "CalculatorLongitudeOriginId"  value={this.state.distance.origin.longitude} onChange={(event)=>this.updateDistance("origin","longitude",event)} type = "number" step="any" />
         </InputGroup>
           );
   }
 
   inputTag(inputId, inputValue, onChangeEvent )
   {
-   return (<Input id = {inputId} value={inputValue} onChange={onChangeEvent} type = "number"  />);
+   return (<Input id = {inputId} value={inputValue} onChange={onChangeEvent} type = "number"  step="any" />);
 
   }
 

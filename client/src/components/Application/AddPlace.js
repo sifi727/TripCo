@@ -2,10 +2,9 @@ import React, {Component} from 'react'
 import {Card, CardBody,CardTitle,InputGroup, InputGroupAddon, InputGroupText, Input} from 'reactstrap'
 import {Button, Form, FormGroup, FormText} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
-import Add from "./AddPlace";
 
-/* The Add allows the user to upload their Trip TFFI file
- * and then updates the parent Trip object in the Application.js.
+
+/* The Add allows the user to add a place to itinerary using the function passed in to pass values to the parent.
  */
 class AddPlace extends Component {
   constructor(props) {
@@ -19,6 +18,12 @@ class AddPlace extends Component {
     this.updateState = this.updateState.bind(this);
     this.addValuesToItinerary-this.addValuesToItinerary.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.createInputText = this.createInputText.bind(this);
+    this.createInputNumber = this.createInputNumber.bind(this);
+    this.latitudeInputGroup = this.latitudeInputGroup.bind(this);
+    this.longitudeInputGroup = this.longitudeInputGroup.bind(this);
+    this.nameInputGroup = this.nameInputGroup.bind(this);
+    this.idInputGroup = this.idInputGroup.bind(this);
 
   };
   updateState(field,event){
@@ -45,37 +50,75 @@ class AddPlace extends Component {
 
   }
 
+  createInputText(id,valueName)
+  {
+    return(<Input id = {id}  value={this.state[valueName]}  onChange={(event)=>this.updateState(valueName,event)} type = "text" />);
+
+  }
+
+  createInputNumber(id,valueName)
+  {
+    return(<Input id = {id}  value={this.state[valueName]}  onChange={(event)=>this.updateState(valueName,event)} type = "number" step="any"/>);
+
+  }
+
+  nameInputGroup()
+  {
+    return (
+        <InputGroup>
+      <InputGroupText>
+        Name:
+      </InputGroupText>
+      {this.createInputText("AddPlaceInputNameId","name")};
+    </InputGroup>);
+
+  }
+
+  idInputGroup()
+  {
+    return(
+        <InputGroup>
+      <InputGroupText>
+        Id:
+      </InputGroupText>
+      {this.createInputText("AddPlaceInputPlaceIdId","id")};
+    </InputGroup>);
+  }
+
+  latitudeInputGroup()
+  {
+    return(
+        <InputGroup>
+          <InputGroupText>
+            Latitude:
+          </InputGroupText>
+          {this.createInputNumber("AddPlaceInputLatitudeId","latitude")};
+        </InputGroup>
+    );
+  }
+
+  longitudeInputGroup()
+  {
+    return(
+        <InputGroup>
+          <InputGroupText>
+            Longitude:
+          </InputGroupText>
+          {this.createInputNumber("AddPlaceInputLongitudeId","longitude")};
+        </InputGroup>
+    );
+
+  }
   render() {
 
     return (
         <Card>
           <CardBody>
             <CardTitle> Add </CardTitle>
-            <InputGroup>
-              <InputGroupText>
-                Name:
-              </InputGroupText>
-              <Input id = "AddPlaceInputNameId"  value={this.state.name}  onChange={(event)=>this.updateState("name",event)} type = "text" />
-            </InputGroup>
-            <InputGroup>
-              <InputGroupText>
-                Id:
-              </InputGroupText>
-              <Input id = "AddPlaceInputPlaceIdId"  value={this.state.id}  onChange={(event)=>this.updateState("id",event)} type = "text" />
-            </InputGroup>
-
-            <InputGroup>
-              <InputGroupText>
-                Latitude:
-              </InputGroupText>
-              <Input id = "AddPlaceInputLatitudeId"  value={this.state.latitude}  onChange={(event)=>this.updateState("latitude",event)} type = "number" />
-            </InputGroup>
-              <InputGroup>
-              <InputGroupText>
-                Longitude:
-              </InputGroupText>
-              <Input id = "AddPlaceInputLongitudeId"  value={this.state.longitude}  onChange={(event)=>this.updateState("longitude",event)} type = "number" />
-            </InputGroup>
+              {this.nameInputGroup()}
+              {this.idInputGroup()}
+              {this.latitudeInputGroup()}
+              {this.longitudeInputGroup()}
             <InputGroup>
               <Button id="AddPlaceButtonAddId" onClick={()=>this.addValuesToItinerary()}> Add</Button>
             </InputGroup>
