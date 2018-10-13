@@ -1,18 +1,23 @@
 import React, {Component} from 'react'
-import {Card, CardBody} from 'reactstrap'
+import {Button, Card, CardBody} from 'reactstrap'
 import {Container, Table, Form, FormGroup, FormText } from 'reactstrap'
 
 
 class Itinerary extends Component{
   constructor(props) {
     super(props);
-    this.getRows = this.getRows.bind(this);
+    this.changeTheStartingLocation = this.changeTheStartingLocation.bind(this);
     this.getDistance = this.getDistance.bind(this);
     this.getFirstRow = this.getFirstRow.bind(this);
     this.getNthRow = this.getNthRow.bind(this);
+    this.getRows = this.getRows.bind(this);
     this.getTotalDistance = this.getTotalDistance.bind(this);
     this.returnBlankPlaceHolder= this.returnBlankPlaceHolder.bind(this);
+  }
 
+
+  changeTheStartingLocation() {
+    return true;
   }
 
 
@@ -40,6 +45,7 @@ class Itinerary extends Component{
   getFirstRow (name) {
     //table is |place name| leg distance| total distance|
     return ( <tr key={'intinerary-row 0'}>
+      < td > <input type="radio" name={"start"} defaultChecked={true} onclick={this.changeTheStartingLocation()}></input> </td>
       < td > {name} </td>
       < td > 0 </td>
       < td > 0 </td>
@@ -52,6 +58,7 @@ class Itinerary extends Component{
    */
   getNthRow (index, name, totalDistance) {
     return ( <tr key={'intinerary-row '+(index+1)}>
+      < td > <input type="radio" name={"start"} onclick={this.changeTheStartingLocation()}></input> </td>
       < td > {name} </td>
       < td > {this.getDistance(index)} </td>
       < td > {totalDistance}</td>
@@ -95,6 +102,7 @@ class Itinerary extends Component{
 
     rows.push(
         <tr key ={'intererary-row74'}>
+          < td > <input type="radio" name={"start"} onclick={this.changeTheStartingLocation()}></input> </td>
           < td > {this.props.trip.places[0].name} </td>
           < td > {this.getDistance(index)} </td>
           < td > {totaldistance}</td>
@@ -112,15 +120,25 @@ class Itinerary extends Component{
       return (<Container></Container>);  //return nothing because there is not places to build a table from
     }
 
+    // Need to get the correct unit name for table headings
+    var unitname = "";
+    if( this.props.trip.options.units === "user defined") {
+      unitname = this.props.trip.options.unitName;
+    }
+    else {
+      unitname = this.props.trip.options.units;
+    }
+
     return (
         <Card>
           <CardBody>
             <Table>
               <thead>
               <tr>
+                <th>Starting Location</th>
                 <th>Destination</th>
-                <th>Leg of the Trip Distance</th>
-                <th>Total Trip Distance</th>
+                <th>{"Leg of the Trip (" + unitname + ")"}</th>
+                <th>{"Total Trip Distance (" + unitname + ")"}</th>
               </tr>
               </thead>
               <tbody>
