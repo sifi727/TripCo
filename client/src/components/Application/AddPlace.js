@@ -10,14 +10,31 @@ import Add from "./AddPlace";
 class AddPlace extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      latitude:"",
+      longitude:"",
+      name:""
+    };
+    this.updateState = this.updateState.bind(this);
 
   };
+  updateState(field,event){
+    let updateState = this.state;
+    updateState[field]=event.target.value;
+
+    this.setState(updateState);
+
+  }
   render() {
 
     return (
         <Card>
           <CardBody>
             <CardTitle> Add </CardTitle>
+            <InputGroup>
+              <Input id = "AddPlaceInputLongitudeOriginId"  value={this.state.longitude}  onChange={(event)=>this.updateState("longitude",event)} type = "text" />
+
+            </InputGroup>
 
 
           </CardBody>
