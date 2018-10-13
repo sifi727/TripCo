@@ -92,6 +92,7 @@ class Application extends Component {
       newArray.push(this.state.trip.places[i]);
     }
     this.updateTrip("places", newArray);
+    event.target.checked = false;
   }
 
   updateTffiObject(object) {
