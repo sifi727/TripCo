@@ -11,13 +11,14 @@ class AddPlace extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude:null,
-      longitude:null,
+      latitude:"",
+      longitude:"",
       name:"",
       id:""
     };
     this.updateState = this.updateState.bind(this);
     this.addValuesToItinerary-this.addValuesToItinerary.bind(this);
+    this.resetState = this.resetState.bind(this);
 
   };
   updateState(field,event){
@@ -27,8 +28,21 @@ class AddPlace extends Component {
     this.setState(updateState);
 
   }
-  addValuesToItinerary(event)
+  resetState() {
+    this.setState({
+      latitude: "",
+      longitude: "",
+      name: "",
+      id: ""
+    });
+  }
+
+
+  addValuesToItinerary()
   {
+    this.props.addPlace(this.state);
+    this.resetState();
+
   }
 
   render() {
@@ -45,9 +59,9 @@ class AddPlace extends Component {
             </InputGroup>
             <InputGroup>
               <InputGroupText>
-                Name:
+                Id:
               </InputGroupText>
-              <Input id = "AddPlaceInputPlaceIdId"  value={this.state.name}  onChange={(event)=>this.updateState("id",event)} type = "text" />
+              <Input id = "AddPlaceInputPlaceIdId"  value={this.state.id}  onChange={(event)=>this.updateState("id",event)} type = "text" />
             </InputGroup>
 
             <InputGroup>
@@ -63,7 +77,7 @@ class AddPlace extends Component {
               <Input id = "AddPlaceInputLongitudeId"  value={this.state.longitude}  onChange={(event)=>this.updateState("longitude",event)} type = "number" />
             </InputGroup>
             <InputGroup>
-              <Button id="AddPlaceButtonAddId" onclick={(event)=>this.addValuesToItinerary(event)}> Add</Button>
+              <Button id="AddPlaceButtonAddId" onClick={()=>this.addValuesToItinerary()}> Add</Button>
             </InputGroup>
           </CardBody>
         </Card>

@@ -7,22 +7,10 @@ import AddPlace from '../src/components/Application/AddPlace'
 
 
 function testLatitudeInput(){
- const prop = {
-    trip: {
-      version: 3,
-      type: "trip",
-      title: "",
-      options: {
-        units: "miles"
-      },
-      places: [],
-      distances: [],
-      map: ""
-    }
-  };
-    const addPlace = shallow((<AddPlace trip={prop.trip}/>));
+
+    const addPlace = shallow((<AddPlace AddPlace addPlace={()=>{}}/>));
     expect(addPlace.exists('#AddPlaceInputLatitudeId')).toEqual(true);
-    expect(addPlace.state().latitude).toEqual(null);
+    expect(addPlace.state().latitude).toEqual("");
     addPlace.find('#AddPlaceInputLatitudeId').simulate('change', {
     target: {
       value:50
@@ -32,22 +20,9 @@ function testLatitudeInput(){
 
 
 function testLongitudeInput(){
-  const prop = {
-    trip: {
-      version: 3,
-      type: "trip",
-      title: "",
-      options: {
-        units: "miles"
-      },
-      places: [],
-      distances: [],
-      map: ""
-    }
-  };
-  const addPlace = shallow((<AddPlace trip={prop.trip}/>));
+  const addPlace = shallow((<AddPlace AddPlace addPlace={()=>{}}/>));
   expect(addPlace.exists('#AddPlaceInputLongitudeId')).toEqual(true);
-  expect(addPlace.state().longitude).toEqual(null);
+  expect(addPlace.state().longitude).toEqual("");
   addPlace.find('#AddPlaceInputLongitudeId').simulate('change', {
     target: {
       value:65
@@ -57,38 +32,30 @@ function testLongitudeInput(){
 }
 
 function testAddButton(){
-  const prop = {
-    trip: {
-      version: 3,
-      type: "trip",
-      title: "",
-      options: {
-        units: "miles"
-      },
-      places: [],
-      distances: [],
-      map: ""
-    }
-  };
-  const addPlace = shallow((<AddPlace trip={prop.trip}/>));
+  var prop = null;
+  const expectedProps =   {"id":"testId", "name":"The test place", "latitude":39.7392, "longitude":-104.9903};
+  const addPlace = shallow((<AddPlace AddPlace addPlace={(object)=>{prop=object}}/>));
   expect(addPlace.exists('#AddPlaceButtonAddId')).toEqual(true);
+  addPlace.setState({"longitude":-104.9903});
+  addPlace.setState({"latitude":39.7392});
+  addPlace.setState({"id":"testId"});
+  addPlace.setState({"name":"The test place"});
+
+  addPlace.find('#AddPlaceButtonAddId').simulate('click');
+
+
+
+  expect(prop).toEqual(expectedProps);
+  expect(addPlace.state().longitude).toEqual("");
+  expect(addPlace.state().latitude).toEqual("");
+  expect(addPlace.state().name).toEqual("");
+  expect(addPlace.state().id).toEqual("");
+
+
 
 }
 function testNameInput(){
-  const prop = {
-    trip: {
-      version: 3,
-      type: "trip",
-      title: "",
-      options: {
-        units: "miles"
-      },
-      places: [],
-      distances: [],
-      map: ""
-    }
-  };
-  const addPlace = shallow((<AddPlace trip={prop.trip}/>));
+  const addPlace = shallow((<AddPlace AddPlace addPlace={()=>{}}/>));
   expect(addPlace.exists('#AddPlaceInputNameId')).toEqual(true);
   expect(addPlace.state().name).toEqual("");
   addPlace.find('#AddPlaceInputNameId').simulate('change', {
