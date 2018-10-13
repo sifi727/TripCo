@@ -16,8 +16,25 @@ class Itinerary extends Component{
   }
 
 
-  changeTheStartingLocation() {
-    return true;
+  changeTheStartingLocation(name) {
+    let index = 0;
+    let length = this.props.trip.places.length;
+    let newPlaces = [];
+    for(let i = 0; i < length; i++) {
+      if(this.props.trip.places.name === name) {
+        index = i;
+        break;
+      }
+    }
+    // copy old array starting at index
+    for(let i = index; i < length; i++) {
+      newPlaces.push(this.props.trip.places[i]);
+    }
+    // copy the begining of the old array
+    for(let i = 0; i < index; i++) {
+      newPlaces.push(this.props.trip.places[i]);
+    }
+    this.props.trip.places = newPlaces;
   }
 
 
@@ -45,7 +62,7 @@ class Itinerary extends Component{
   getFirstRow (name) {
     //table is |place name| leg distance| total distance|
     return ( <tr key={'intinerary-row 0'}>
-      < td > <input type="radio" name={"start"} defaultChecked={true} onclick={this.changeTheStartingLocation()}></input> </td>
+      < td > <input type="radio" name={"start"} defaultChecked={true} onclick={this.changeTheStartingLocation(name)}></input> </td>
       < td > {name} </td>
       < td > 0 </td>
       < td > 0 </td>
@@ -58,7 +75,7 @@ class Itinerary extends Component{
    */
   getNthRow (index, name, totalDistance) {
     return ( <tr key={'intinerary-row '+(index+1)}>
-      < td > <input type="radio" name={"start"} onclick={this.changeTheStartingLocation()}></input> </td>
+      < td > <input type="radio" name={"start"} onclick={this.changeTheStartingLocation(name)}></input> </td>
       < td > {name} </td>
       < td > {this.getDistance(index)} </td>
       < td > {totalDistance}</td>
@@ -102,7 +119,7 @@ class Itinerary extends Component{
 
     rows.push(
         <tr key ={'intererary-row74'}>
-          < td > <input type="radio" name={"start"} onclick={this.changeTheStartingLocation()}></input> </td>
+          < td > <input type="radio" name={"start"} onclick={this.changeTheStartingLocation(this.props.trip.places[0].name)}></input> </td>
           < td > {this.props.trip.places[0].name} </td>
           < td > {this.getDistance(index)} </td>
           < td > {totaldistance}</td>
