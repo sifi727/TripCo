@@ -32,9 +32,12 @@ class Application extends Component {
     };
     this.updateTrip = this.updateTrip.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
-    this.updateOptions = this.updateOptions.bind(this);
-    this.updateTffiObject = this.updateTffiObject.bind(this);
+    this.updateHostname=this.updateHostname.bind(this);
     this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
+    this.updateOptions = this.updateOptions.bind(this);
+    this.updatePort = this.updatePort.bind(this);
+    this.updatePlaces = this.updatePlaces.bind(this);
+    this.updateTffiObject = this.updateTffiObject.bind(this);
     this.updateTrip = this.updateTrip.bind(this);
     this.updatePort = this.updatePort.bind(this);
     this.updateHostname=this.updateHostname.bind(this);
@@ -79,6 +82,16 @@ class Application extends Component {
     let trip = this.state.trip;
     trip.options[option] = value;
     this.setState(trip);
+  }
+
+  updatePlaces(event) {
+    let startIndex = event.target.value;
+    var newArray = this.state.trip.places.slice(startIndex);
+    // copy the begining of the old array
+    for(let i = 0; i < startIndex; i++) {
+      newArray.push(this.state.trip.places[i]);
+    }
+    this.updateTrip("places", newArray);
   }
 
   updateTffiObject(object) {
@@ -140,6 +153,7 @@ class Application extends Component {
           <Map trip={this.state.trip}/>
           <Itinerary trip={this.state.trip}/>
           <AddPlace addPlace={this.addPlace}/>
+          <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
