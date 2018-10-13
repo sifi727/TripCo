@@ -90,6 +90,7 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 | 10/5 | #194, #199, #203, | #172 | Studying for midterm  |
 | 10/8 | #172 | #101, #184, #183, #207 | none |
 | 10/10 | | #101, #184, #183, #207 | none |
+| 10/12 | #207, #215, #176, #219, #153, #187, #178, #101, #184, #173, #183, #203, #170 | #216, #179, #222 | none |
 
 *Add a new row for the scrum session after each lecture. *
 
