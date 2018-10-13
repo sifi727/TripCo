@@ -3,7 +3,7 @@ import {Card, CardBody,CardTitle,InputGroup, InputGroupAddon, InputGroupText, In
 import {Button, Form, FormGroup, FormText} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
-/* The UploadTffi allows the user to upload their Trip TFFI file
+/* The Calculator allows the user to upload their Trip TFFI file
  * and then updates the parent Trip object in the Application.js.
  */
 class Calculator extends Component {

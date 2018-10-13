@@ -7,7 +7,7 @@ import UploadTffi from './UploadTffi'
 import {get_config} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
-
+import AddPlace from './AddPlace';
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
@@ -131,6 +131,7 @@ class Application extends Component {
           <Info/>
           <Map trip={this.state.trip}/>
           <Itinerary trip={this.state.trip}/>
+          <AddPlace trip={this.state.trip}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
