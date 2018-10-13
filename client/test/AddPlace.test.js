@@ -47,7 +47,26 @@ function testLongitudeInputExists(){
   // calculator.find('#DistanceFieldUnits').map((element) => actual.push(element.prop('value')));
   //};
 
+}
+
+function testAddButtonInputExists(){
+  const prop = {
+    trip: {
+      version: 3,
+      type: "trip",
+      title: "",
+      options: {
+        units: "miles"
+      },
+      places: [],
+      distances: [],
+      map: ""
+    }
+  };
+  const addPlace = shallow((<AddPlace trip={prop.trip}/>));
+  expect(addPlace.exists('#AddPlaceButtonAddId')).toEqual(true);
 
 }
-test("Test that a latitude field exists",testLatitudeInputExists());
-test("Test that a longitude field exists",testLongitudeInputExists());
+test("Test latitude field rendered",testLatitudeInputExists());
+test("Test longitude field rendered",testLongitudeInputExists());
+test("Test Add button rendered",testAddButtonInputExists());
