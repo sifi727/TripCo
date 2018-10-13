@@ -11,8 +11,8 @@ class ServerOptions extends Component{
                 <FormText color="muted">
                     Enter your server options:
                 </FormText>
-                <input type="text" value={this.props.port} onChange={this.props.updatePort}/>
-                <input type="text" value={this.props.hostname} onChange={this.props.updateHostname}/>
+                <input id="portId" type="text" value={this.props.port} onChange={this.props.updatePort}/>
+                <input id="hostnameId" type="text" value={this.props.hostname} onChange={this.props.updateHostname}/>
             </Form>
         )
     }
