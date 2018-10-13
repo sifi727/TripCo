@@ -107,6 +107,7 @@ Temporary Items
 client/node_modules/
 client/public/
 client/*.log
+client/package-lock.json
 
 client_bundle/
 target/
