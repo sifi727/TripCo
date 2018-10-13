@@ -13,7 +13,8 @@ class AddPlace extends Component {
     this.state = {
       latitude:null,
       longitude:null,
-      name:""
+      name:"",
+      id:""
     };
     this.updateState = this.updateState.bind(this);
     this.addValuesToItinerary-this.addValuesToItinerary.bind(this);
@@ -38,6 +39,19 @@ class AddPlace extends Component {
             <CardTitle> Add </CardTitle>
             <InputGroup>
               <InputGroupText>
+                Name:
+              </InputGroupText>
+              <Input id = "AddPlaceInputNameId"  value={this.state.name}  onChange={(event)=>this.updateState("name",event)} type = "text" />
+            </InputGroup>
+            <InputGroup>
+              <InputGroupText>
+                Name:
+              </InputGroupText>
+              <Input id = "AddPlaceInputPlaceIdId"  value={this.state.name}  onChange={(event)=>this.updateState("id",event)} type = "text" />
+            </InputGroup>
+
+            <InputGroup>
+              <InputGroupText>
                 Latitude:
               </InputGroupText>
               <Input id = "AddPlaceInputLatitudeId"  value={this.state.latitude}  onChange={(event)=>this.updateState("latitude",event)} type = "number" />
@@ -51,8 +65,6 @@ class AddPlace extends Component {
             <InputGroup>
               <Button id="AddPlaceButtonAddId" onclick={(event)=>this.addValuesToItinerary(event)}> Add</Button>
             </InputGroup>
-
-
           </CardBody>
         </Card>
     );
