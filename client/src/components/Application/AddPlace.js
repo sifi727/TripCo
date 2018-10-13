@@ -11,8 +11,8 @@ class AddPlace extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      latitude:"",
-      longitude:"",
+      latitude:null,
+      longitude:null,
       name:""
     };
     this.updateState = this.updateState.bind(this);
@@ -32,9 +32,18 @@ class AddPlace extends Component {
           <CardBody>
             <CardTitle> Add </CardTitle>
             <InputGroup>
-              <Input id = "AddPlaceInputLongitudeOriginId"  value={this.state.longitude}  onChange={(event)=>this.updateState("longitude",event)} type = "text" />
-
+              <InputGroupText>
+                Latitude:
+              </InputGroupText>
+              <Input id = "AddPlaceInputLatitudeId"  value={this.state.latitude}  onChange={(event)=>this.updateState("latitude",event)} type = "number" />
             </InputGroup>
+              <InputGroup>
+              <InputGroupText>
+                Longitude:
+              </InputGroupText>
+              <Input id = "AddPlaceInputLongitudeId"  value={this.state.longitude}  onChange={(event)=>this.updateState("longitude",event)} type = "number" />
+            </InputGroup>
+    
 
 
           </CardBody>

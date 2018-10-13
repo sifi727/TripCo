@@ -21,7 +21,26 @@ function testLatitudeInputExists(){
     }
   };
     const addPlace = shallow((<AddPlace trip={prop.trip}/>));
-    expect(addPlace.exists('#AddPlaceInputLongitudeOriginId')).toEqual(true);
+    expect(addPlace.exists('#AddPlaceInputLongitudeId')).toEqual(true);
+}
+
+
+function testLongitudeInputExists(){
+  const prop = {
+    trip: {
+      version: 3,
+      type: "trip",
+      title: "",
+      options: {
+        units: "miles"
+      },
+      places: [],
+      distances: [],
+      map: ""
+    }
+  };
+  const addPlace = shallow((<AddPlace trip={prop.trip}/>));
+  expect(addPlace.exists('#AddPlaceInputLatitudeId')).toEqual(true);
   //   actual = [];
   //   addPlace.find('#AddPlaceLatitudeInputId').map((element) => actual.push(element.prop('value')));
   //   expect(actual.length).
@@ -30,5 +49,5 @@ function testLatitudeInputExists(){
 
 
 }
-
 test("Test that a latitude field exists",testLatitudeInputExists());
+test("Test that a longitude field exists",testLongitudeInputExists());
