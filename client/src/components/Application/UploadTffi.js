@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Card, CardBody} from 'reactstrap'
-import {Button, Form, FormGroup, FormText} from 'reactstrap'
+import {Button, Form, FormGroup, FormText, ButtonGroup} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
 /* The UploadTffi allows the user to upload their Trip TFFI file
@@ -64,7 +64,10 @@ class UploadTffi extends Component{
                             <FormText color="muted">
                                 Insert your TFFI file in the above input.
                             </FormText>
-                            <Button id="PlanTffiButtonId" disabled={!this.state.fileIsSelected} onClick={(event) => this.submit()}>Plan</Button>
+                            <ButtonGroup>
+                                <Button id="PlanTffiButtonId" disabled={!this.state.fileIsSelected} onClick={(event) => this.submit()}>Plan</Button>
+                                <Button id="SaveButtonId" onClick={}> Save </Button>
+                            </ButtonGroup>
                         </FormGroup>
                     </Form>
                 </CardBody>
