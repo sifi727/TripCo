@@ -39,8 +39,6 @@ class Application extends Component {
     this.updatePlaces = this.updatePlaces.bind(this);
     this.updateTffiObject = this.updateTffiObject.bind(this);
     this.updateTrip = this.updateTrip.bind(this);
-    this.updatePort = this.updatePort.bind(this);
-    this.updateHostname=this.updateHostname.bind(this);
     this.addPlace= this.addPlace.bind(this);
   }
 
@@ -152,7 +150,6 @@ class Application extends Component {
         <Container id="Application">
           <Info/>
           <Map trip={this.state.trip}/>
-          <Itinerary trip={this.state.trip}/>
           <AddPlace addPlace={this.addPlace}/>
           <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces}/>
           <Options options={this.state.trip.options} config={this.state.config}
