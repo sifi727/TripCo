@@ -4,8 +4,6 @@ import { shallow } from 'enzyme'
 import AddPlace from '../src/components/Application/AddPlace'
 
 
-
-
 function testLatitudeInput(){
 
     const addPlace = shallow((<AddPlace AddPlace addPlace={()=>{}}/>));
