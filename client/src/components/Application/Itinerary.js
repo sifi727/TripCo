@@ -11,6 +11,7 @@ class Itinerary extends Component{
     this.getNthRow = this.getNthRow.bind(this);
     this.getRows = this.getRows.bind(this);
     this.getTotalDistance = this.getTotalDistance.bind(this);
+    this.getUnitName = this.getUnitName.bind(this);
     this.returnBlankPlaceHolder= this.returnBlankPlaceHolder.bind(this);
   }
 
@@ -102,14 +103,29 @@ class Itinerary extends Component{
 
     totaldistance = this.getTotalDistance(totaldistance,index);
 
-    rows.push(
-        <tr key ={'intererary-row74'}>
-          < td > <input type="radio" name={"start"} value={index+1} onChange={this.props.updatePlaces}/> </td>
-          < td > {this.props.trip.places[0].name} </td>
-          < td > {this.getDistance(index)} </td>
-          < td > {totaldistance}</td>
-        </tr>);
+    rows.push( <tr key={'itinerary-row'+(index+1)}>
+                  < td > <input type="radio" name={"start"}  value={index+1} onChange={this.props.updatePlaces}/> </td>
+                  < td > {this.props.trip.places[0].name} </td>
+                  < td > {this.getDistance(index)} </td>
+                  < td > {totaldistance}</td>
+                </tr>);
     return rows;
+  }
+
+
+  /**
+   *   Get the correct unit name for table headings
+   *   @return unitname as a String
+   */
+  getUnitName() {
+    var unitname = "";
+    if( this.props.trip.options.units === "user defined") {
+      unitname = this.props.trip.options.unitName;
+    }
+    else {
+      unitname = this.props.trip.options.units;
+    }
+    return unitname;
   }
 
 
@@ -122,14 +138,7 @@ class Itinerary extends Component{
       return (<Container/>);  //return nothing because there is not places to build a table from
     }
 
-    // Need to get the correct unit name for table headings
-    var unitname = "";
-    if( this.props.trip.options.units === "user defined") {
-      unitname = this.props.trip.options.unitName;
-    }
-    else {
-      unitname = this.props.trip.options.units;
-    }
+    var unitname = this.getUnitName();
 
     return (
         <Card>
