@@ -4,7 +4,7 @@
 import './enzyme.config.js'                   // (1)
 import React from 'react'
 import { shallow } from 'enzyme'              // (2)
-import UploadTffi from '../src/components/Application/UploadTffi'
+import PlanUtilities from '../src/components/Application/PlanUtilities'
 
 
 
@@ -55,14 +55,14 @@ var tripTFFIVersion2 = {
 };
 
 /**
- *This function test the Plan button is disabled when UploadTffi is created and file has not been uploaded
+ *This function test the Plan button is disabled when PlanUtilities is created and file has not been uploaded
 */
 function testPlanTiffButtonDisabledAStartofPage() {
 
   var parentFunc = new Function("object", ""); //do nothing
 
   const uploadTffi = shallow((
-      <UploadTffi trip={startProps.trip} updateTffiObject={parentFunc}/>
+      <PlanUtilities trip={startProps.trip} updateTffiObject={parentFunc}/>
 ));
 
   let actual = [];
@@ -80,7 +80,7 @@ function testPlanTiffButtonDisabledAndEnableWhenFileSelectedIsTrue() {
   var parentFunc = new Function("object", ""); //do nothing
 
   const uploadTffi = shallow((
-      <UploadTffi trip={startProps.trip} updateTffiObject={parentFunc}/>
+      <PlanUtilities trip={startProps.trip} updateTffiObject={parentFunc}/>
 ));
 
   uploadTffi.setState({fileIsSelected: true});
@@ -101,7 +101,7 @@ function testPlanTiffChangeFile() {
       "expect(JSON.stringify(object)==JSON.stringify(tripTFFIVersion2).toEqual(true))");
 
   const uploadTffi = shallow((
-      < UploadTffi trip = {startProps.trip} updateTffiObject = {parentFunc} />
+      < PlanUtilities trip = {startProps.trip} updateTffiObject = {parentFunc} />
 ));
 
 

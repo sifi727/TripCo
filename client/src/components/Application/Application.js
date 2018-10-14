@@ -3,7 +3,7 @@ import {Container} from 'reactstrap';
 import Info from './Info'
 import Map from './Map';
 import Options from './Options';
-import UploadTffi from './UploadTffi'
+import PlanUtilities from './PlanUtilities'
 import {get_config} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
@@ -134,8 +134,8 @@ class Application extends Component {
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
-          <UploadTffi trip={this.state.trip} updateTffiObject={this.updateTffiObject}
-                      port={this.state.port} hostname={this.state.hostname}/>
+          <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
+                         port={this.state.port} hostname={this.state.hostname}/>
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
         </Container>
     )

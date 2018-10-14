@@ -3,10 +3,10 @@ import {Card, CardBody} from 'reactstrap'
 import {Button, Form, FormGroup, FormText, ButtonGroup} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
-/* The UploadTffi allows the user to upload their Trip TFFI file
+/* The PlanUtilities allows the user to upload their Trip TFFI file
  * and then updates the parent Trip object in the Application.js.
  */
-class UploadTffi extends Component{
+class PlanUtilities extends Component{
     constructor(props) {
         super(props);
         this.readFuction = this.readFuction.bind(this);
@@ -68,7 +68,7 @@ class UploadTffi extends Component{
                             </FormText>
                             <ButtonGroup>
                                 <Button id="PlanTffiButtonId" disabled={!this.state.fileIsSelected} onClick={(event) => this.submit()}>Plan</Button>
-                                <a className="btn btn-secondary text-light" href={`data:text/json;charset=utf-8,${
+                                <a className="btn btn-secondary text-white" href={`data:text/json;charset=utf-8,${
                                     encodeURIComponent(JSON.stringify(this.props.trip))}`} download="data.json">
                                     Save
                                 </a>
@@ -82,4 +82,4 @@ class UploadTffi extends Component{
     }
 }
 
-export default UploadTffi;
+export default PlanUtilities;
