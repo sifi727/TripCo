@@ -54,7 +54,9 @@ class UploadTffi extends Component{
         reader.readAsText(file, 'UTF-8');
     }
 
+
     render() {
+
         return (
             <Card>
                 <CardBody>
@@ -66,7 +68,10 @@ class UploadTffi extends Component{
                             </FormText>
                             <ButtonGroup>
                                 <Button id="PlanTffiButtonId" disabled={!this.state.fileIsSelected} onClick={(event) => this.submit()}>Plan</Button>
-                                <Button id="SaveButtonId" onClick={}> Save </Button>
+                                 <a class="btn btn-secondary"  href={`data:text/json;charset=utf-8,${
+                                     encodeURIComponent(JSON.stringify(this.props.trip))}`} download="data.json" > Save
+
+                                 </a>
                             </ButtonGroup>
                         </FormGroup>
                     </Form>
