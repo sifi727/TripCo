@@ -103,12 +103,8 @@ class Itinerary extends Component{
 
     totaldistance = this.getTotalDistance(totaldistance,index);
 
-    rows.push( <tr key={'itinerary-row'+(index+1)}>
-                  < td > <input type="radio" name={"start"}  value={index+1} onChange={this.props.updatePlaces}/> </td>
-                  < td > {this.props.trip.places[0].name} </td>
-                  < td > {this.getDistance(index)} </td>
-                  < td > {totaldistance}</td>
-                </tr>);
+    var lastrow = ( this.getNthRow(index, this.props.trip.places[0].name, totaldistance) );
+    rows.push( lastrow );
     return rows;
   }
 
