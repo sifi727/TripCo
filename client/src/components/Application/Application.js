@@ -30,16 +30,15 @@ class Application extends Component {
         map: ""
       }
     };
-    this.updateTrip = this.updateTrip.bind(this);
+    this.addPlace= this.addPlace.bind(this);
+    this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateHostname=this.updateHostname.bind(this);
-    this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
     this.updatePort = this.updatePort.bind(this);
     this.updatePlaces = this.updatePlaces.bind(this);
     this.updateTffiObject = this.updateTffiObject.bind(this);
     this.updateTrip = this.updateTrip.bind(this);
-    this.addPlace= this.addPlace.bind(this);
   }
 
   componentWillMount() {
