@@ -21,7 +21,7 @@ class Itinerary extends Component{
    *   @return true if object IS invalid
    */
   returnBlankPlaceHolder() {
-    if( this.props.trip.distances === null || typeof this.props.trip.distances === 'undefined'  || this.props.trip.distances.length===0) {
+    if( this.props.tripHasChanged == true || this.props.trip.distances === null || typeof this.props.trip.distances === 'undefined'  || this.props.trip.distances.length===0) {
       return true;
     }
   }
