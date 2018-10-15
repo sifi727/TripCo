@@ -7,7 +7,7 @@ import UploadTffi from './UploadTffi'
 import {get_config} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
-
+import AddPlace from './AddPlace';
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
@@ -38,6 +38,7 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.updatePort = this.updatePort.bind(this);
     this.updateHostname=this.updateHostname.bind(this);
+    this.addPlace= this.addPlace.bind(this);
   }
 
   componentWillMount() {
@@ -120,6 +121,13 @@ class Application extends Component {
     }
     this.setState({"trip": trip});
   }
+  addPlace(object)
+  {
+    let place = object;
+    let trip = this.state.trip;
+    trip.places.push(place);
+    this.setState({"trip":trip})
+  }
 
   render() {
     if (!this.state.config) {
@@ -131,6 +139,7 @@ class Application extends Component {
           <Info/>
           <Map trip={this.state.trip}/>
           <Itinerary trip={this.state.trip}/>
+          <AddPlace addPlace={this.addPlace}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />

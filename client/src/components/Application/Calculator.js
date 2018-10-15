@@ -3,7 +3,7 @@ import {Card, CardBody,CardTitle,InputGroup, InputGroupAddon, InputGroupText, In
 import {Button, Form, FormGroup, FormText} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
-/* The UploadTffi allows the user to upload their Trip TFFI file
+/* The Calculator allows the user to upload their Trip TFFI file
  * and then updates the parent Trip object in the Application.js.
  */
 class Calculator extends Component {
@@ -101,14 +101,14 @@ class Calculator extends Component {
         <InputGroupText>
               From Longitude:
         </InputGroupText>
-              <Input id = "CalculatorLongitudeOriginId"  value={this.state.distance.origin.longitude} onChange={(event)=>this.updateDistance("origin","longitude",event)} type = "number" />
+              <Input id = "CalculatorLongitudeOriginId"  value={this.state.distance.origin.longitude} onChange={(event)=>this.updateDistance("origin","longitude",event)} type = "number" step="any" />
         </InputGroup>
           );
   }
 
   inputTag(inputId, inputValue, onChangeEvent )
   {
-   return (<Input id = {inputId} value={inputValue} onChange={onChangeEvent} type = "number"  />);
+   return (<Input id = {inputId} value={inputValue} onChange={onChangeEvent} type = "number"  step="any" />);
 
   }
 
