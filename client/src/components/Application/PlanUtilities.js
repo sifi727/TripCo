@@ -75,6 +75,7 @@ class PlanUtilities extends Component{
 
                             </ButtonGroup>
                             <Button id="PlanTffiButtonId" disabled={ (this.props.trip.places.length >= 1) ? true : false} onClick={(event) => this.submit()}>Plan</Button>
+                            <Button id="PlanTffiButtonId" disabled={!this.props.trip.places.length} onClick={(event) => this.submit()}>Plan</Button>
                         </FormGroup>
                     </Form>
                 </CardBody>
