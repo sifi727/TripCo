@@ -11,6 +11,9 @@ public class Config {
   private String type = "config";
 
   private List<String> units = Arrays.asList("miles", "kilometers", "nautical miles", "user defined");
+  private List<OptimizationLevel> optimization = Arrays.asList(new OptimizationLevel("none","The trip is not optimized."),
+      new OptimizationLevel("short","Nearest neighbor."));
+
 
   //Getter methods for testing.
   public short getVersion() {

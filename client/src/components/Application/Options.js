@@ -45,6 +45,17 @@ class Options extends Component{
 
   render() {
     const isUserDefined = this.isUserDefined;
+    const optimizationButtons = this.props.config.optimization.map((optimizationLevel) =>
+        <Button
+    key={'optimization_button_' + optimizationLevel.label}
+    className='btn-outline-dark unit-button'
+    active={this.props.options.optimization === optimizationLevel.label}
+    value={optimizationLevel.label}
+    onClick={(event) => this.props.updateOptions('optimization', event.target.value)}
+  >
+    {optimizationLevel.label.charAt(0).toUpperCase() + optimizationLevel.label.slice(1)}
+  </Button>
+  );
     const buttons = this.props.config.units.map((unit) =>
       <Button
         key={'distance_button_' + unit}
@@ -74,6 +85,17 @@ class Options extends Component{
           <ButtonGroup>
             {buttons}
           </ButtonGroup>
+        <FormGroup>
+    <FormText color="muted">
+        Select Optimization Level.
+        </FormText>
+<Form>
+    <ButtonGroup>
+
+    {optimizationButtons}
+    </ButtonGroup>
+        </Form>
+        </FormGroup>
           <FormGroup>
                {form}
               <ServerOptions port= {this.props.port} hostname = {this.props.hostname}

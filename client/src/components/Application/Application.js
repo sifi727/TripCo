@@ -23,7 +23,8 @@ class Application extends Component {
         type: "trip",
         title: "",
         options: {
-          units: "miles"
+          units: "miles",
+          optimization: "none"
         },
         places: [],
         distances: [],
