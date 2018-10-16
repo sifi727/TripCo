@@ -67,7 +67,7 @@ class AddPlace extends Component {
           <InputGroupText>
             {inputGroupText}
           </InputGroupText>
-          {this.createInputNumber(id,value)};
+          {this.createInputNumber(id,value)}
         </InputGroup>);
 
   }
@@ -78,7 +78,7 @@ class AddPlace extends Component {
           <InputGroupText>
             {inputGroupText}
           </InputGroupText>
-          {this.createInputText(id, value)};
+          {this.createInputText(id, value)}
         </InputGroup>
     );
 }
