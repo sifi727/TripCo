@@ -3,7 +3,7 @@
 import './enzyme.config.js'                   // (1)
 import React from 'react'
 import {shallow} from 'enzyme'              // (2)
-import UploadTffi from '../src/components/Application/UploadTffi'
+import PlanUtilities from '../src/components/Application/PlanUtilities'
 
 const startProps = {
   config: null,
@@ -51,21 +51,21 @@ var tripTFFIVersion2 = {
 
 /**
  *  This function tests that the Plan button is
- *  disabled when UploadTffi is created
- *  and a file has not been uploaded
+ *  disabled when PlanUtilities is created
  */
 function testPlanTffiButtonDisabledAtStartofPage() {
 
   var parentFunc = new Function("object", ""); //do nothing
 
-  const uploadTffi = shallow((
-      <UploadTffi trip={startProps.trip} updateTffiObject={parentFunc}/>
+  const planUtil = shallow((
+      <PlanUtilities trip={startProps.trip} updateTffiObject={parentFunc}/>
   ));
 
   let actual = [];
-  uploadTffi.find('#PlanTffiButtonId').map(
+  planUtil.find('#PlanTffiButtonId').map(
       (element) => actual.push(element.prop('disabled')));
   expect(actual).toEqual([true]);
+
 }
 
 /**
@@ -78,13 +78,13 @@ function testPlanTffiButtonDisabledWhenABlankFileIsUploaded() {
 
   var parentFunc = new Function("object", ""); //do nothing
 
-  const uploadTffi = shallow((
-      <UploadTffi trip={startProps.trip} updateTffiObject={parentFunc}/>
+  const planUtil = shallow((
+      <PlanUtilities trip={startProps.trip} updateTffiObject={parentFunc}/>
   ));
 
-  uploadTffi.setState({fileIsSelected: true});
+  planUtil.setState({fileIsSelected: true});
   let actual = [];
-  uploadTffi.find('#PlanTffiButtonId').map(
+  planUtil.find('#PlanTffiButtonId').map(
       (element) => actual.push(element.prop('disabled')));
   expect(actual).toEqual([true]);
 
@@ -93,20 +93,18 @@ function testPlanTffiButtonDisabledWhenABlankFileIsUploaded() {
 /**
  *   This function test that the Plan button will
  *   be enabled when the TFFI object has valid places
- *   NOTE: places may be added via the 'add' or 'upload'
- *         either way we will see the same result
  */
 
 function testPlanTffiButtonEnabledWhenTffiHasPlaces() {
 
   var parentFunc = new Function("object", ""); //do nothing
 
-  const uploadTffi = shallow((
-      < UploadTffi trip={tripTFFIVersion2} updateTffiObject={parentFunc}/>
+  const planUtil = shallow((
+      <PlanUtilities trip={tripTFFIVersion2} updateTffiObject={parentFunc}/>
   ));
 
   let actual = [];
-  uploadTffi.find('#PlanTffiButtonId').map(
+  planUtil.find('#PlanTffiButtonId').map(
       (element) => actual.push(element.prop('disabled')));
   expect(actual).toEqual([false]);
 }
@@ -121,19 +119,19 @@ function testPlanTffiChangeFile() {
   var parentFunc = new Function("object",
       "expect(JSON.stringify(object)==JSON.stringify(tripTFFIVersion2).toEqual(true))");
 
-  const uploadTffi = shallow((
-      < UploadTffi trip={startProps.trip} updateTffiObject={parentFunc}/>
+  const planUtil = shallow((
+      <PlanUtilities trip={startProps.trip} updateTffiObject={parentFunc}/>
   ));
 
   let actual = [];
 
-  uploadTffi.find('#PlanTffiButtonId').map(
+  planUtil.find('#PlanTffiButtonId').map(
       (element) => actual.push(element.prop('disabled')));
   expect(actual).toEqual([true]);
 
-  expect(uploadTffi.exists('#FileTffiInputFieldId')).toEqual(true);
+  expect(planUtil.exists('#FileTffiInputFieldId')).toEqual(true);
 
-  uploadTffi.find('#FileTffiInputFieldId').simulate('change', {
+  planUtil.find('#FileTffiInputFieldId').simulate('change', {
     target: {
       files: [new Blob([JSON.stringify(tripTFFIVersion2, null, 2)],
           {type: 'application/json'})]
@@ -141,7 +139,7 @@ function testPlanTffiChangeFile() {
   });
 
   actual = [];
-  uploadTffi.find('#PlanTffiButtonId').map(
+  planUtil.find('#PlanTffiButtonId').map(
       (element) => actual.push(element.prop('disabled')));
   expect(actual).toEqual([false]);
 }
