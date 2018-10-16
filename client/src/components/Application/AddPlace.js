@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {Card, CardBody,CardTitle,InputGroup, InputGroupAddon, InputGroupText, Input} from 'reactstrap'
-import {Button, Form, FormGroup, FormText} from 'reactstrap'
-import {request, get_comfig} from '../../api/api.js'
+import {Card, CardBody,CardTitle,InputGroup, InputGroupText, Input} from 'reactstrap'
+import {Button} from 'reactstrap'
+import {get_comfig} from '../../api/api.js'
 
 
 /* The Add allows the user to add a place to itinerary using the function passed in to pass values to the parent.
@@ -16,7 +16,7 @@ class AddPlace extends Component {
       id:""
     };
     this.updateState = this.updateState.bind(this);
-    this.addValuesToItinerary-this.addValuesToItinerary.bind(this);
+    this.addValuesToItinerary = this.addValuesToItinerary.bind(this);
     this.resetState = this.resetState.bind(this);
     this.createInputText = this.createInputText.bind(this);
     this.createInputNumber = this.createInputNumber.bind(this);
@@ -67,7 +67,7 @@ class AddPlace extends Component {
           <InputGroupText>
             {inputGroupText}
           </InputGroupText>
-          {this.createInputNumber(id,value)};
+          {this.createInputNumber(id,value)}
         </InputGroup>);
 
   }
@@ -78,7 +78,7 @@ class AddPlace extends Component {
           <InputGroupText>
             {inputGroupText}
           </InputGroupText>
-          {this.createInputText(id, value)};
+          {this.createInputText(id, value)}
         </InputGroup>
     );
 }
@@ -89,9 +89,13 @@ class AddPlace extends Component {
           <CardBody>
             <CardTitle> Add </CardTitle>
               {this.textInputGroup("AddPlaceInputNameId","name","Name:")}
+              <br/>
               {this.textInputGroup("AddPlaceInputPlaceIdId","id","Id:")}
+              <br/>
               {this.numberInputGroup("AddPlaceInputLatitudeId","latitude","Latitude:")}
+              <br/>
               {this.numberInputGroup("AddPlaceInputLongitudeId","longitude","Longitude:")}
+              <br/>
             <InputGroup>
               <Button id="AddPlaceButtonAddId" onClick={()=>this.addValuesToItinerary()}> Add</Button>
             </InputGroup>
