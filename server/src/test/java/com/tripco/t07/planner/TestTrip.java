@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -128,6 +129,7 @@ public class TestTrip {
 
   }
 
+  @Ignore
   @Test
   public void testDistancesWithPlaces() {
     trip.places = new ArrayList<>();
@@ -150,6 +152,7 @@ public class TestTrip {
     assertEquals(expectedDistances, trip.distances);
 
   }
+  @Ignore
   @Test
   public void testDistanceWithMinTripTFFI () {
     String placesJson = getJsonMinVersionTwoTripTFFI();
@@ -225,6 +228,7 @@ public class TestTrip {
 
   }
 
+  @Ignore
   @Test
   public void testWithPlacesNoTitleMap() {
     trip.places = new ArrayList<>();

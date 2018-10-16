@@ -222,6 +222,12 @@ public class Trip {
       return dist;
 
     }
+    if(options.optimization!=null && options.optimization.equals("short")){
+      ShortOptimization optimizedPLaces = new ShortOptimization(places);
+      places = optimizedPLaces.nearestNeighbor();
+
+    }
+
     int originIndex = 0;     //start at first city
     int destinationIndex = 1; //first destination
 
