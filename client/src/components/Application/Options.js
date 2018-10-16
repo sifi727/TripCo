@@ -70,7 +70,6 @@ class Options extends Component{
           <FormText color="muted">
             Select Optimization Level.
           </FormText>
-
           <Form>
             <ButtonGroup>
               {buttons}
