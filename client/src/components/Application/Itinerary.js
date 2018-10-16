@@ -138,6 +138,9 @@ class Itinerary extends Component{
 
     return (
         <Card>
+            <CardBody>
+              <Button id="reverseButton" onClick={this.props.reverseTrip} > Reverse Trip Order </Button>
+            </CardBody>
           <CardBody>
             <Table>
               <thead>

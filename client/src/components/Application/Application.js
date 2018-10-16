@@ -4,7 +4,7 @@ import Info from './Info'
 import Map from './Map';
 import Options from './Options';
 import PlanUtilities from './PlanUtilities'
-import {get_config} from '../../api/api';
+import {get_config, request} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
 import AddPlace from './AddPlace';
@@ -40,6 +40,7 @@ class Application extends Component {
     this.updatePlaces = this.updatePlaces.bind(this);
     this.updateTffiObject = this.updateTffiObject.bind(this);
     this.updateTrip = this.updateTrip.bind(this);
+    this.reverseTrip = this.reverseTrip.bind(this);
   }
 
   componentWillMount() {
@@ -150,6 +151,16 @@ class Application extends Component {
     this.setState({"trip":trip})
   }
 
+  reverseTrip(){
+    let trip = this.state.trip;
+    trip.places.reverse();
+    request(trip, 'plan', this.props.port, this.props.hostname).then(
+        response => {
+           this.updateTffiObject(response);
+
+        });
+  }
+
   render() {
     if (!this.state.config) {
       return <div/>
@@ -160,7 +171,7 @@ class Application extends Component {
           <Info/>
           <Map trip={this.state.trip}/>
           <AddPlace addPlace={this.addPlace}/>
-          <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged}/>
+          <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
