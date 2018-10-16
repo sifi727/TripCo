@@ -15,6 +15,7 @@ class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tripHasChanged : false,
       config: null,
       port: location.port,
       hostname: location.hostname,
@@ -30,15 +31,15 @@ class Application extends Component {
         map: ""
       }
     };
-    this.updateTrip = this.updateTrip.bind(this);
-    this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
-    this.updateOptions = this.updateOptions.bind(this);
-    this.updateTffiObject = this.updateTffiObject.bind(this);
-    this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
-    this.updateTrip = this.updateTrip.bind(this);
-    this.updatePort = this.updatePort.bind(this);
-    this.updateHostname=this.updateHostname.bind(this);
     this.addPlace= this.addPlace.bind(this);
+    this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
+    this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
+    this.updateHostname=this.updateHostname.bind(this);
+    this.updateOptions = this.updateOptions.bind(this);
+    this.updatePort = this.updatePort.bind(this);
+    this.updatePlaces = this.updatePlaces.bind(this);
+    this.updateTffiObject = this.updateTffiObject.bind(this);
+    this.updateTrip = this.updateTrip.bind(this);
   }
 
   componentWillMount() {
@@ -81,9 +82,21 @@ class Application extends Component {
     this.setState(trip);
   }
 
+  updatePlaces(event) {
+    this.setState({'tripHasChanged':true});
+    let startIndex = event.target.value;
+    var newArray = this.state.trip.places.slice(startIndex);
+    // copy the begining of the old array
+    for(let i = 0; i < startIndex; i++) {
+      newArray.push(this.state.trip.places[i]);
+    }
+    this.updateTrip("places", newArray);
+    event.target.checked = false;
+  }
+
   updateTffiObject(object) {
     //version, type, and places elements
-
+    this.setState({'tripHasChanged':false});
     let trip = object;
 
     this.updateTrip("places", trip.places); //required
@@ -138,8 +151,8 @@ class Application extends Component {
         <Container id="Application">
           <Info/>
           <Map trip={this.state.trip}/>
-          <Itinerary trip={this.state.trip}/>
           <AddPlace addPlace={this.addPlace}/>
+          <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
