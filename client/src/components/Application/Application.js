@@ -24,7 +24,7 @@ class Application extends Component {
         type: "trip",
         title: "",
         options: {
-          units: "miles"
+          units: "miles",
         },
         places: [],
         distances: [],
@@ -45,6 +45,11 @@ class Application extends Component {
   componentWillMount() {
     get_config().then(
         config => {
+
+          if(config.optimization){
+            this.updateOptions("optimization","none");
+          }
+
           this.setState({
             config: config
           })
@@ -103,6 +108,7 @@ class Application extends Component {
     this.updateTrip("type", trip.type);
     this.updateTrip("version", trip.version);
 
+
     if (this.isObjNullorUndefined(trip.title)) {
 
       this.updateTrip("", trip.title);
@@ -112,7 +118,7 @@ class Application extends Component {
     }
 
     if (this.isObjNullorUndefined(trip.options)) {
-      //do nothing keep units as defined by buttons
+      //do nothing keep units as defined by button
     }
     else {
       this.updateOptions("units", trip.options.units);
@@ -134,6 +140,8 @@ class Application extends Component {
     }
     this.setState({"trip": trip});
   }
+
+
   addPlace(object)
   {
     let place = object;

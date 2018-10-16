@@ -41,8 +41,10 @@ public class TestConfig {
 
     @Test
     public void testGetConfigMethod() {
-        String expectedConfigTffi = "{\"version\":" + version + ",\"type\":\"config\""
-                + ",\"units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"]}";
+        String expectedConfigTffi = "{\"version\":" + version + ",\"type\":\"config\",\""+
+            "units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"],"+
+            "\"optimization\":[{\"label\":\"none\",\"description\":\"The trip is not optimized.\"}"+
+            ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"}]}";
 
         // create a new config object directly
         config = new Config();

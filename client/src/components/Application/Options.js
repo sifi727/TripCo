@@ -14,6 +14,8 @@ class Options extends Component{
     this.displayFields = this.displayFields.bind(this);
     this.handleUnitName = this.handleUnitName.bind(this);
     this.handleUnitRadius = this.handleUnitRadius.bind(this);
+    this.buildOptimizationButtons = this.buildOptimizationButtons.bind(this);
+    this.buildOptimizationForm = this.buildOptimizationForm.bind(this);
     this.isUserDefined = false;
   }
 
@@ -43,8 +45,48 @@ class Options extends Component{
         this.props.updateOptions('unitRadius', event.target.value)
     }
 
+    buildOptimizationButtons()
+    {
+      const buttons = this.props.config.optimization.map( (optimizationLevel) =>
+        < Button
+            key = {'optimization_button_' +optimizationLevel.label}
+            className = 'btn-outline-dark unit-button'
+            active = {this.props.options.optimization === optimizationLevel.label}
+            value = {optimizationLevel.label}
+            onClick = {(event) => this.props.updateOptions('optimization', event.target.value)}
+         >
+          {optimizationLevel.label.charAt(0).toUpperCase() + optimizationLevel.label.slice(1)}
+        </Button>
+    );
+      return(buttons);
+
+    }
+
+  buildOptimizationForm()
+  {
+    const buttons =  this.buildOptimizationButtons();
+    return(
+        <FormGroup>
+          <FormText color="muted">
+            Select Optimization Level.
+          </FormText>
+          <Form>
+            <ButtonGroup>
+              {buttons}
+            </ButtonGroup>
+          </Form>
+        </FormGroup>
+    );
+
+  }
+
   render() {
     const isUserDefined = this.isUserDefined;
+    var optimizationForm = null;
+    if(this.props.config.optimization) {
+      optimizationForm = this.buildOptimizationForm();
+
+    }
     const buttons = this.props.config.units.map((unit) =>
       <Button
         key={'distance_button_' + unit}
@@ -74,6 +116,7 @@ class Options extends Component{
           <ButtonGroup>
             {buttons}
           </ButtonGroup>
+          {optimizationForm}
           <FormGroup>
                {form}
               <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
