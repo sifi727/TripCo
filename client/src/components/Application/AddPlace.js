@@ -89,9 +89,13 @@ class AddPlace extends Component {
           <CardBody>
             <CardTitle> Add </CardTitle>
               {this.textInputGroup("AddPlaceInputNameId","name","Name:")}
+              <br/>
               {this.textInputGroup("AddPlaceInputPlaceIdId","id","Id:")}
+              <br/>
               {this.numberInputGroup("AddPlaceInputLatitudeId","latitude","Latitude:")}
+              <br/>
               {this.numberInputGroup("AddPlaceInputLongitudeId","longitude","Longitude:")}
+              <br/>
             <InputGroup>
               <Button id="AddPlaceButtonAddId" onClick={()=>this.addValuesToItinerary()}> Add</Button>
             </InputGroup>
