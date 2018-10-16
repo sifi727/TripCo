@@ -49,7 +49,7 @@ class Options extends Component{
     {
       const buttons = this.props.config.optimization.map( (optimizationLevel) =>
         < Button
-            key = {'optimization_button_' +o ptimizationLevel.label}
+            key = {'optimization_button_' +optimizationLevel.label}
             className = 'btn-outline-dark unit-button'
             active = {this.props.options.optimization === optimizationLevel.label}
             value = {optimizationLevel.label}
