@@ -46,6 +46,7 @@ class PlanUtilities extends Component {
     if(window.confirm("Are sure you want to clear your current itinerary?"))
     {
       this.props.resetTrip();
+      document.getElementById("FileTffiInputFieldId").value=null;
 
     }
 
@@ -82,9 +83,9 @@ class PlanUtilities extends Component {
                      download="data.json">
                     Save
                   </a>
+                   <Button id="ClearTffiButtonId" onClick={(event)=> this.clearTrip()}>Clear Trip</Button>
                 </ButtonGroup>
-                         <Button id="ClearTffiButtonId"
-    onClick={(event)=> this.clearTrip()}>Clear Trip</Button>
+
               </FormGroup>
             </Form>
           </CardBody>
