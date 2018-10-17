@@ -40,6 +40,7 @@ class Application extends Component {
     this.updatePlaces = this.updatePlaces.bind(this);
     this.updateTffiObject = this.updateTffiObject.bind(this);
     this.updateTrip = this.updateTrip.bind(this);
+    this.resetTrip = this.resetTrip.bind(this);
   }
 
   componentWillMount() {
@@ -150,6 +151,21 @@ class Application extends Component {
     this.setState({"trip":trip})
   }
 
+  resetTrip()
+  {
+    var blanktrip = {
+    version: this.state.trip.version,
+        type: "trip",
+        title: "",
+        options: this.state.trip.options,
+    places: [],
+        distances: [],
+        map: ""
+  };
+    this.updateTffiObject(blanktrip);
+
+  }
+
   render() {
     if (!this.state.config) {
       return <div/>
@@ -165,7 +181,7 @@ class Application extends Component {
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
-                         port={this.state.port} hostname={this.state.hostname}/>
+                         port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
         </Container>
     )
