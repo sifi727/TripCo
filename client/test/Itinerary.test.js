@@ -1,6 +1,6 @@
 import './enzyme.config.js'
 import React from 'react'
-import { mount } from 'enzyme'
+import {mount} from 'enzyme'
 import Itinerary from '../src/components/Application/Itinerary'
 
 describe("Itinerary", () => {
@@ -83,7 +83,12 @@ describe("Itinerary", () => {
 
   describe("when `props.trip.distances.length` is greater than zero", () => {
     beforeEach(() => {
-      props.trip.places = [{"id":"fake", "name":"Fake", "latitude":12.3456, "longitude":-123.4567}];
+      props.trip.places = [{
+        "id": "fake",
+        "name": "Fake",
+        "latitude": 12.3456,
+        "longitude": -123.4567
+      }];
     });
 
     it("renders a single Card", () => {
@@ -98,7 +103,7 @@ describe("Itinerary", () => {
 
     it("renders a `Reverse Trip Order` button", () => {
       expect(itinerary().exists('#reverseButton')).toEqual(true);
-    })
+    });
 
     it("renders a table", () => {
       const Tables = itinerary().find("Table");
@@ -126,8 +131,18 @@ describe("Itinerary", () => {
   describe("when `props.tripHasChanged` is true", () => {
     beforeEach(() => {
       props.tripHasChanged = true;
-      props.trip.places = [{"id":"fake0", "name":"Fake0", "latitude":12.3456, "longitude":-123.4567},
-                            {"id":"fake1", "name":"Fake1", "latitude":23.4567, "longitude":-102.4567}];
+      props.trip.places = [{
+        "id": "fake0",
+        "name": "Fake0",
+        "latitude": 12.3456,
+        "longitude": -123.4567
+      },
+        {
+          "id": "fake1",
+          "name": "Fake1",
+          "latitude": 23.4567,
+          "longitude": -102.4567
+        }];
     });
 
     it("renders a two CardBodies", () => {
@@ -137,7 +152,7 @@ describe("Itinerary", () => {
 
     it("renders a `Reverse Trip Order` button", () => {
       expect(itinerary().exists('#reverseButton')).toEqual(true);
-    })
+    });
 
     it("renders a table", () => {
       const Tables = itinerary().find("Table");

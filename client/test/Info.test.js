@@ -1,6 +1,6 @@
 import './enzyme.config.js'
 import React from 'react'
-import { mount } from 'enzyme'
+import {mount} from 'enzyme'
 import Info from '../src/components/Application/Info'
 
 describe("Info", () => {
