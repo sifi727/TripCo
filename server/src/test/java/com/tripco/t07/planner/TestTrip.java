@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.junit.Ignore;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +25,7 @@ public class TestTrip {
   //Helper Class
   private String getJsonThreeCityWithMiles() {
     return " {\"options\" : {\n" +
-        "\"units\":\"miles\"\n" +
+        "\"units\":\"miles\" , \"optimization\": \"short\" \n" +
         "},\"places\"    : [\n" +
         "  {\"id\":\"dnvr\", \"name\":\"Denver\", \"latitude\":39.7392, \"longitude\":-104.9903},\n"
         +
@@ -33,6 +34,19 @@ public class TestTrip {
         "  {\"id\":\"foco\", \"name\":\"Fort Collins\", \"latitude\":40.58258, \"longitude\":-105.084419}\n"
         +
         "  ]}";
+  }
+
+  private String getJsonShortTripThreeCityWithMiles() {
+    return " {\"options\" : {\n" +
+            "\"units\":\"miles\"\n" +
+            "},\"places\"    : [\n" +
+            "  {\"id\":\"dnvr\", \"name\":\"Denver\", \"latitude\":39.7392, \"longitude\":-104.9903},\n"
+            +
+            "  {\"id\":\"bldr\", \"name\":\"Boulder\", \"latitude\":40.01499, \"longitude\":-105.27055},\n"
+            +
+            "  {\"id\":\"foco\", \"name\":\"Fort Collins\", \"latitude\":40.58258, \"longitude\":-105.084419}\n"
+            +
+            "  ]}";
   }
   private String getJsonMinVersionTwoTripTFFI ()
   {
@@ -128,6 +142,7 @@ public class TestTrip {
 
   }
 
+  @Ignore
   @Test
   public void testDistancesWithPlaces() {
     trip.places = new ArrayList<>();
@@ -141,6 +156,21 @@ public class TestTrip {
     assertEquals(expectedDistances, trip.distances);
   }
 
+
+
+  @Test
+  public void testShortTripDistancesWithPlaces() {
+    trip.places = new ArrayList<>();
+    String placesJson = getJsonShortTripThreeCityWithMiles();
+
+    Gson gson = new Gson();
+    trip = gson.fromJson(placesJson, Trip.class);
+    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
+    Collections.addAll(expectedDistances,  24, 40, 58);
+    trip.plan();
+    assertEquals(expectedDistances, trip.distances);
+  }
+
   @Test
   public void testDistanceWithNullPlaces() {
     trip.places = null;
@@ -150,6 +180,7 @@ public class TestTrip {
     assertEquals(expectedDistances, trip.distances);
 
   }
+
   @Test
   public void testDistanceWithMinTripTFFI () {
     String placesJson = getJsonMinVersionTwoTripTFFI();
@@ -224,6 +255,7 @@ public class TestTrip {
 
 
   }
+
 
   @Test
   public void testWithPlacesNoTitleMap() {

@@ -62,6 +62,7 @@ public class Trip {
 
 
     this.map = svg();
+    this.places=optimizePlaces();
     this.distances = calculateLegDistances();
 
   }
@@ -236,5 +237,12 @@ public class Trip {
     return dist;
   }
 
-
+  private  ArrayList<Place> optimizePlaces(){
+    ArrayList<Place> updatedPlaces=places;
+    if(options.optimization!=null && !options.optimization.equalsIgnoreCase("none")){
+      ShortOptimization optimizedPlaces = new ShortOptimization(places);
+      updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
+    }
+    return updatedPlaces;
+  }
 }
