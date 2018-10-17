@@ -61,9 +61,10 @@ public class Trip {
     }
 
 
-    this.map = svg();
+
     this.places=optimizePlaces();
     this.distances = calculateLegDistances();
+    this.map = svg();
 
   }
 
