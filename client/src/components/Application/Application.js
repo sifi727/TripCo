@@ -40,6 +40,7 @@ class Application extends Component {
     this.updatePlaces = this.updatePlaces.bind(this);
     this.updateTffiObject = this.updateTffiObject.bind(this);
     this.updateTrip = this.updateTrip.bind(this);
+    this.resetTrip = this.resetTrip.bind(this);
     this.reverseTrip = this.reverseTrip.bind(this);
   }
 
@@ -151,13 +152,26 @@ class Application extends Component {
     this.setState({"trip":trip})
   }
 
+
+  resetTrip()
+  {
+    var blanktrip = {
+    version: this.state.trip.version,
+        type: "trip",
+        title: "",
+        options: this.state.trip.options,
+    places: [],
+        distances: [],
+        map: ""
+  };
+    this.updateTffiObject(blanktrip);
+
   reverseTrip(){
     let trip = this.state.trip;
     trip.places.reverse();
     request(trip, 'plan', this.props.port, this.props.hostname).then(
         response => {
            this.updateTffiObject(response);
-
         });
   }
 
@@ -176,7 +190,7 @@ class Application extends Component {
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
-                         port={this.state.port} hostname={this.state.hostname}/>
+                         port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
         </Container>
     )

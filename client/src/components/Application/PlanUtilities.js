@@ -42,6 +42,17 @@ class PlanUtilities extends Component {
 
   }
 
+  clearTrip(event) {
+    if(window.confirm("Are sure you want to clear your current itinerary?"))
+    {
+      this.props.resetTrip();
+      document.getElementById("FileTffiInputFieldId").value=null;
+
+    }
+
+
+  }
+
   uploadFile(event) {
     let reader = new FileReader();
     let file = event.target.files[0];
@@ -72,7 +83,9 @@ class PlanUtilities extends Component {
                      download="data.json">
                     Save
                   </a>
+                   <Button id="ClearTffiButtonId" onClick={(event)=> this.clearTrip()}>Clear Trip</Button>
                 </ButtonGroup>
+
               </FormGroup>
             </Form>
           </CardBody>
