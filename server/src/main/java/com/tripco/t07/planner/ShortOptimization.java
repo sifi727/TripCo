@@ -9,28 +9,40 @@ public class ShortOptimization {
         this.places=places;
     }
 
-    ArrayList<Place> nearestNeighbor(){
-        boolean[] visitedPlaces = new boolean[places.size()];
-        boolean finished = false;
-        ArrayList<Place> sortedPlaces = new ArrayList<>();
-        sortedPlaces.add(places.get(0));
-        visitedPlaces[0] = true;
-        while (!finished) {
-            Place currentPlace = closestPlace(places.get(0), places, visitedPlaces);
-            visitedPlaces[places.indexOf(currentPlace)] = true;
-            sortedPlaces.add(currentPlace);
 
-            for (boolean visitedPlace : visitedPlaces) {
-                if (!visitedPlace) {
-                    finished = false;
-                    break;
+    ArrayList<Place> nearestNeighborShortestPlaces(){
+
+        int shortestTrip = Integer.MAX_VALUE;
+        ArrayList<Place> shortestTripPlaces = new ArrayList<>();
+        for(Place origin:places){
+            ArrayList<Place> sortedPlaces = new ArrayList<>();
+            boolean[] visitedPlaces = new boolean[places.size()];
+            boolean finished = false;
+            int totalTripDistance = 0;
+            sortedPlaces.add(origin);
+            visitedPlaces[places.indexOf(origin)] = true;
+            while (!finished) {
+                Place nextVisitedPlace = closestPlace(origin, places, visitedPlaces);
+                visitedPlaces[places.indexOf(nextVisitedPlace)] = true;
+                sortedPlaces.add(nextVisitedPlace);
+                totalTripDistance += legDistance(origin, nextVisitedPlace);
+                for (boolean visitedPlace : visitedPlaces) {
+                    if (!visitedPlace) {
+                        finished = false;
+                        break;
+                    }
+
+                    finished = true;
                 }
-
-                finished = true;
+            }
+            if(totalTripDistance<=shortestTrip){
+                shortestTrip=totalTripDistance;
+                shortestTripPlaces=sortedPlaces;
             }
         }
 
-        return sortedPlaces;
+
+        return shortestTripPlaces;
     }
 
 
@@ -40,14 +52,19 @@ public class ShortOptimization {
         Place closestPlace = null;
         for (int placeIndex = 0; placeIndex < places.size(); placeIndex++) {
             if (!places.get(placeIndex).equals(origin) && !visitedPlaces[placeIndex]) {
-                Distance distance = new Distance(origin,places.get(placeIndex),"miles", "miles", -1);
-                distance.calculateTotalDistance();
-                if (distance.distance <= shortestDistance) {
-                    shortestDistance = distance.distance;
+                int distance = legDistance(origin, places.get(placeIndex));
+                if (distance <= shortestDistance) {
+                    shortestDistance = distance;
                     closestPlace = places.get(placeIndex);
                 }
             }
         }
      return closestPlace;
+    }
+
+    private int legDistance(Place origin, Place destination) {
+        Distance distance = new Distance(origin, destination, null, "miles", -1);
+        distance.calculateTotalDistance();
+        return distance.distance;
     }
 }

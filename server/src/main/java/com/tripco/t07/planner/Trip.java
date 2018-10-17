@@ -62,6 +62,7 @@ public class Trip {
 
 
     this.map = svg();
+    optimizePlaces();
     this.distances = calculateLegDistances();
 
   }
@@ -222,12 +223,6 @@ public class Trip {
       return dist;
 
     }
-    if(options.optimization!=null && options.optimization.equals("short")){
-      ShortOptimization optimizedPLaces = new ShortOptimization(places);
-      places = optimizedPLaces.nearestNeighbor();
-
-    }
-
     int originIndex = 0;     //start at first city
     int destinationIndex = 1; //first destination
 
@@ -242,5 +237,15 @@ public class Trip {
     return dist;
   }
 
+  private  void optimizePlaces(){
+    ArrayList <Place>  updatedPlaces = places;
+    if(options.optimization!=null && options.optimization.equals("short")){
+      ShortOptimization optimizedPlaces = new ShortOptimization(places);
+      updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
+      for(Place place:places){
+        System.out.println(place.name);
+      }
+    }
 
+  }
 }
