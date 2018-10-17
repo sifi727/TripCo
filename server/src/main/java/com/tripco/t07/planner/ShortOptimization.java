@@ -21,11 +21,13 @@ public class ShortOptimization {
             int totalTripDistance = 0;
             sortedPlaces.add(origin);
             visitedPlaces[places.indexOf(origin)] = true;
+            Place previousPlace = origin;
             while (!finished) {
-                Place nextVisitedPlace = closestPlace(origin, places, visitedPlaces);
+                Place nextVisitedPlace = closestPlace(previousPlace, places, visitedPlaces);
                 visitedPlaces[places.indexOf(nextVisitedPlace)] = true;
                 sortedPlaces.add(nextVisitedPlace);
-                totalTripDistance += legDistance(origin, nextVisitedPlace);
+                totalTripDistance += legDistance(previousPlace, nextVisitedPlace);
+                previousPlace=nextVisitedPlace;
                 for (boolean visitedPlace : visitedPlaces) {
                     if (!visitedPlace) {
                         finished = false;
@@ -35,6 +37,7 @@ public class ShortOptimization {
                     finished = true;
                 }
             }
+            totalTripDistance+=legDistance(origin,previousPlace); //add to make it round trip
             if(totalTripDistance<=shortestTrip){
                 shortestTrip=totalTripDistance;
                 shortestTripPlaces=sortedPlaces;
