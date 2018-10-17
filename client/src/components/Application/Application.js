@@ -153,18 +153,20 @@ class Application extends Component {
   }
 
 
-  resetTrip()
-  {
-    var blanktrip = {
-    version: this.state.trip.version,
-        type: "trip",
-        title: "",
-        options: this.state.trip.options,
-    places: [],
-        distances: [],
-        map: ""
-  };
-    this.updateTffiObject(blanktrip);
+  resetTrip() {
+      var blanktrip = {
+          version: this.state.trip.version,
+          type: "trip",
+          title: "",
+          options: this.state.trip.options,
+          places: [],
+          distances: [],
+          map: ""
+      };
+
+      this.updateTffiObject(blanktrip);
+  }
+
 
   reverseTrip(){
     let trip = this.state.trip;
