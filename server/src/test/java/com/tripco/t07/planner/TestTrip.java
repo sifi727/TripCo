@@ -23,7 +23,7 @@ public class TestTrip {
   Trip trip;
 
   //Helper Class
-  private String getJsonThreeCityWithMiles() {
+  private String getJsonShortTripThreeCityWithMiles() {
     return " {\"options\" : {\n" +
         "\"units\":\"miles\" , \"optimization\": \"short\" \n" +
         "},\"places\"    : [\n" +
@@ -36,7 +36,7 @@ public class TestTrip {
         "  ]}";
   }
 
-  private String getJsonShortTripThreeCityWithMiles() {
+  private String getJsonThreeCityWithMiles() {
     return " {\"options\" : {\n" +
             "\"units\":\"miles\"\n" +
             "},\"places\"    : [\n" +
@@ -166,7 +166,7 @@ public class TestTrip {
     Gson gson = new Gson();
     trip = gson.fromJson(placesJson, Trip.class);
     ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances,  24, 40, 58);
+    Collections.addAll(expectedDistances,  40, 24, 58);
     trip.plan();
     assertEquals(expectedDistances, trip.distances);
   }
