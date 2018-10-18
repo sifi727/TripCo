@@ -137,7 +137,7 @@ class Itinerary extends Component {
               Trip Order </Button>
           </CardBody>
           <CardBody>
-            <Table>
+            <Table responsive={true}>
               <thead>
               <tr>
                 <th>Starting Location</th>
