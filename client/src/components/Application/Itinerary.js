@@ -42,8 +42,7 @@ class Itinerary extends Component {
   getFirstRow(name) {
     //table is |place name| leg distance| total distance|
     return (<tr key={'intinerary-row 0'}>
-      < td><input type="radio" name={"start"} defaultChecked={true} value={0}
-                  onChange={this.props.updatePlaces}/></td>
+      < td><input type="radio" name={"start"} checked={true} value={0} readOnly={true}/></td>
       < td> {name} </td>
       < td> 0</td>
       < td> 0</td>
