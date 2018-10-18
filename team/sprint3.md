@@ -92,8 +92,7 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 | 10/10 | | #101, #184, #183, #207 | none |
 | 10/12 | #207, #215, #176, #219, #153, #187, #178, #101, #184, #173, #183, #203, #170 | #216, #179, #222 | none |
 | 10/15 | #216, #222 | #179, #195, #196 | Midterm exams in other classes. David's computer is broken |
-
-*Add a new row for the scrum session after each lecture. *
+| 10/17 | #93, #110, #154, #157, #175, #185, #191, #192, #193, #195, #196, #201, #202, #225, #230, #233, #236, #239 | #179, #245, #247 | David's computer is still broken (waiting on parts) |
 
 ## Review
 
