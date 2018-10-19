@@ -96,7 +96,7 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+Overall the team performed really well. We were able schedule our tasks during scrums and successfully deliver quality solutions. The new team composition allowed us to take on more work than during previous sprint. We have completed all outstanding tasks from Sprint 2 and added a lot of new functionality as part of Sprint 3. The webapp has the new ability to add and delete places, reorder and optimize a trip, set different starting location, create new blank trip and select a different server. 
 
 #### Completed Epics in Sprint Backlog 
 
@@ -114,10 +114,12 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+The team performed well together, there was good communication, task planning and work distribution throughout the sprint.
 
-* *something*
-*
+*	We were able to finish the webapp's planned functionality on time. We completed most of the planned Epics.
+*	The team communicated well over Slak and during team meetings after class. We were very successful in creating tasks and adequately distributing workload among team members.
+*	Team members were very helpful in sharing information and assisting each other.
+
 
 #### Problems Encountered and Resolutions
 
