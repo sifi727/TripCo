@@ -132,15 +132,16 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+In this sprint, we took more time to plan out what tasks needed to be accomplished. To help us visualize what we needed to build we drew out diagrams to guide our thoughts. We as team worked on making sure we did not take on more than we could do in the sprint. This meant that we decided not to try and implement any of the search and 2-opt functionality until the next sprint because we knew getting at least 50% code coverage would be a challenge and code coverage was placed at a higher priority in the product backlog than the search, and 2-opt functionality.
 
 #### What we did well
+In this sprint we were able to split up the epics into better tasks. We still had to add tasks that we did not account for, but it seemed less than in previous sprints. These tasks were organized better based off of priority of the epics and allowed the team to move forward faster after our midterms. Communication has also improved.
 
-*Articulate what went well at the end of the sprint.*
+Concepts and discussions have also been better by taking time to ask if everyone is understanding what is being discussed at the current time. This has allowed us to work better together and be more productive and avoid possible miscommunications. Even though this has improved we are still learning better ways to communicate.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+Things we can work on is learning to deploy more often to Black-Bottle. Not only will this help us to see what the status of the product is in production, but it will be a benefit to other teams. A possible way of going about this is to publish every 3 days whatever is in master to the server.
 
 #### What we will change next sprint 
 
