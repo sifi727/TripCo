@@ -72,14 +72,13 @@ Epics planned for this sprint.
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | 8 | *value* |
-| Tasks | 32 | *value* | 
-| Story Points | 36 | *value* | 
+| Epics | 8 | 7 |
+| Tasks | 32 | 41 | 
+| Story Points | 36 | 64 | 
 
 When compared to last sprint, this plan is pretty high, but we are trying to also factor in our new member and make sure that we are all being utilized at all times. As we meet and things progress, we can and will modify this to better reflect what is taking place and keep us on track. 
 
-*Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
-
+The number planned is still really low, but we are definitely getting better at estimating things and breaking down our tasks. As the team gets to better know each others capabilities and strengths, we expect to get more accurate and precise. 
 
 ## Scrums
 
@@ -96,41 +95,46 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 
 ## Review
 
-Overall the team performed really well. We were able schedule our tasks during scrums and successfully deliver quality solutions. The new team composition allowed us to take on more work than during previous sprint. We have completed all outstanding tasks from Sprint 2 and added a lot of new functionality as a part of Sprint 3. The webapp has the new ability to add and delete places, reorder and optimize a trip, set different starting location, create new blank trip, select a different server, and find the distance between two locations. Further, we did this all while maintaing Clean Code guidelines, code coverage, and a mobile responsive design. 
+Overall the team performed really well. We were able schedule our tasks during scrums and successfully deliver quality solutions. The new team composition allowed us to take on more work than during previous sprint. We have completed all outstanding tasks from Sprint 2 and added a lot of new functionality as a part of Sprint 3. The web app has the new ability to add and delete places, reorder and optimize a trip, set different starting location, create new blank trip, select a different server, and find the distance between two locations. Further, we did this all while maintaining Clean Code guidelines, code coverage, and a mobile responsive design. 
 
 #### Completed Epics in Sprint Backlog 
 
-*Describe the solution based on the completed epics and list the epics below.*
-
-* *## epic title: comments*
-* 
+* __#165 TripCo: The solution must be responsive for mobile devices__ - because we planned for this in the beginning and really made it a focus for every task/epic, and other than getting a responsive itinerary, this was completed pretty easily.
+* __#166 TripCo: All code shall be clean!__ - as with #165, this was something we took into consideration right from the beginning, and it make keeping up with it very simple.
+* __#93 TripCo: All clients and servers must inter-operate!__ - this was carried over from Sprint 2 and was our first priority. It took some work, but was completed early in Sprint 3. 
+* __#169 User: I want to determine the distance between a pair of destinations__ - This was our second epic that we focused on. We were able to get it done without many issues at all. 
+* __#168 TripCo: All code must be tested.__ - this was a major focus of our sprint, and something we took very serious. We all contributed in both Java and ECMAScript, and we were able to achieve the illusive 50% mark after a lot of hard work and accountability for new code. 
+* __#188 User: I want to design a trip from scratch so I can stop using the other tool.__ - This was probably the second biggest epic we took on. It added a ton to the user interface and has really rounded out the tool. Lots of work for each developer went into completing this epic
+* __#190 User: I want my trips to be shorter.__ - this was a pretty straight forward implementation of the provided algorithm, and as such was a fairly easy epic to complete. 
 
 #### Incomplete Epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
+The user is able to do nearly everything that we had planned to complete, however there is not currently a way for them to search the database for possible destinations to add to the trip. Which is why the following epic was not completed:
 
-* *## epic title: explanation*
-*
+* __#189 User: I want to make and save changes to the trip.__ - although we were able to complete nearly everything that was required for this epic (7/8 Issues), we were not able to get to the Maria Db implementation, which was required to complete this. We plan for it to be our number one priority going into sprint 4.
 
 #### What Went Well
 
 The team performed well together, there was good communication, task planning and work distribution throughout the sprint.
 
-*	We were able to finish the webapp's planned functionality on time. We completed most of the planned Epics.
+*	We were able to finish the web app's planned functionality on time. We completed most of the planned Epics.
 *	The team communicated well over Slack and during team meetings after class. We were very successful in creating tasks and adequately distributing workload among team members.
 *	Team members were very helpful in sharing information and assisting each other.
 
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+Overall, the sprint was extremely successful. That said, there were some minor problems. Having to deal with midterms mid-sprint really impacted our productivity and is pretty evident in the burn-down chart for sprint 3. Additionally, one member of the team had some technical issues and another had some illnesses at home, which both contributed to some lost developer time. 
 
-* *something*
-*
+We spent a lot of developer time working on setting up a decent
+ testing foundation, because the initial code base had very little, and while we all agree that this was beneficial, it also slowed us down substantially and is the primary reason why we were not able to complete even more epics. This was planned for.
+
+* Planning for studying and being a little more proactive will help us to be able to minimize the impact of other classes. However, we all understand this is not anyone's only class. We plan to be flexible and help cover for one another if and/or when necessary
+* Testing is necessary, but trying to finish it all in one sprint is too much. We plan to split this up a bit more over the next few sprints. 
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+As a whole, this sprint was hugely successful. Especially when considering we had a new member joint the development team this sprint. Everything flowed very well though and we were able to greatly increase our velocity. There were some minor hiccups, of course, but overall we are extremely happy with our progress this sprint. 
 
 #### What we changed this sprint
 
@@ -147,4 +151,4 @@ Things we can work on is learning to deploy more often to Black-Bottle. Not only
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+We are committing to deploy to Black-Bottle more often. In order to achieve this, we plan to add an epic to deploy every 3 days, with a task for specific day. Each member will deploy at least once before the final day of the sprint. 
