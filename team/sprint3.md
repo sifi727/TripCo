@@ -96,7 +96,7 @@ When compared to last sprint, this plan is pretty high, but we are trying to als
 
 ## Review
 
-Overall the team performed really well. We were able schedule our tasks during scrums and successfully deliver quality solutions. The new team composition allowed us to take on more work than during previous sprint. We have completed all outstanding tasks from Sprint 2 and added a lot of new functionality as part of Sprint 3. The webapp has the new ability to add and delete places, reorder and optimize a trip, set different starting location, create new blank trip and select a different server. 
+Overall the team performed really well. We were able schedule our tasks during scrums and successfully deliver quality solutions. The new team composition allowed us to take on more work than during previous sprint. We have completed all outstanding tasks from Sprint 2 and added a lot of new functionality as a part of Sprint 3. The webapp has the new ability to add and delete places, reorder and optimize a trip, set different starting location, create new blank trip, select a different server, and find the distance between two locations. Further, we did this all while maintaing Clean Code guidelines, code coverage, and a mobile responsive design. 
 
 #### Completed Epics in Sprint Backlog 
 
@@ -117,7 +117,7 @@ Overall the team performed really well. We were able schedule our tasks during s
 The team performed well together, there was good communication, task planning and work distribution throughout the sprint.
 
 *	We were able to finish the webapp's planned functionality on time. We completed most of the planned Epics.
-*	The team communicated well over Slak and during team meetings after class. We were very successful in creating tasks and adequately distributing workload among team members.
+*	The team communicated well over Slack and during team meetings after class. We were very successful in creating tasks and adequately distributing workload among team members.
 *	Team members were very helpful in sharing information and assisting each other.
 
 
