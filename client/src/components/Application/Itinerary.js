@@ -11,6 +11,7 @@ class Itinerary extends Component {
     this.getTotalDistance = this.getTotalDistance.bind(this);
     this.getUnitName = this.getUnitName.bind(this);
     this.returnBlankPlaceHolder = this.returnBlankPlaceHolder.bind(this);
+    this.deleteRowInItinerary = this.deleteRowInItinerary.bind(this);
   }
 
   /**
@@ -46,7 +47,15 @@ class Itinerary extends Component {
       < td> {name} </td>
       < td> 0</td>
       < td> 0</td>
+        < td> <Button id="DeleteButton0" onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>
     </tr>);
+  }
+  deleteRowInItinerary(row)
+  {
+
+
+    this.props.removePlace(row.target.parentNode.parentNode.rowIndex-1);
+
   }
 
   /**
@@ -59,6 +68,7 @@ class Itinerary extends Component {
       < td> {name} </td>
       < td> {this.getDistance(index)} </td>
       < td> {totalDistance}</td>
+    < td> <Button  id={"DeleteButton"+index} onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>
     </tr>)
   }
 

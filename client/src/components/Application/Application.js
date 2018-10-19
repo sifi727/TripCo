@@ -15,7 +15,7 @@ class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tripHasChanged : false,
+      tripHasChanged: false,
       config: null,
       port: location.port,
       hostname: location.hostname,
@@ -31,10 +31,10 @@ class Application extends Component {
         map: ""
       }
     };
-    this.addPlace= this.addPlace.bind(this);
+    this.addPlace = this.addPlace.bind(this);
     this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
-    this.updateHostname=this.updateHostname.bind(this);
+    this.updateHostname = this.updateHostname.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
     this.updatePort = this.updatePort.bind(this);
     this.updatePlaces = this.updatePlaces.bind(this);
@@ -42,7 +42,9 @@ class Application extends Component {
     this.updateTrip = this.updateTrip.bind(this);
     this.resetTrip = this.resetTrip.bind(this);
     this.reverseTrip = this.reverseTrip.bind(this);
+    this.removePlace = this.removePlace.bind(this);
   }
+
 
   componentWillMount() {
     get_config().then(
@@ -57,6 +59,19 @@ class Application extends Component {
           })
         }
     );
+  }
+
+  removePlace(index){
+    if(index==this.state.trip.places.length) {
+      index=0;
+    }
+
+    let trip = this.state.trip;
+    trip.places.splice(index,1);
+    this.setState({"trip":trip});
+    this.setState({"tripHasChanged":true});
+
+
   }
 
   isObjNullorUndefined(object) {
@@ -187,7 +202,8 @@ class Application extends Component {
           <Info/>
           <Map trip={this.state.trip}/>
           <AddPlace addPlace={this.addPlace}/>
-          <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}/>
+          <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}
+          removePlace={this.removePlace}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname} />
