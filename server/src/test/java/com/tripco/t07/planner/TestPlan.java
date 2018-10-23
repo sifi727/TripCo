@@ -2,6 +2,7 @@ package com.tripco.t07.planner;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import com.google.gson.Gson;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
 public class TestPlan {
     RequestStub request;
     Plan plan;
+    Trip trip;
     String tripRequestJson;
     String expectedTrip;
     String actualTrip;
@@ -24,40 +26,30 @@ public class TestPlan {
                                 "\"map\": \"\"," +
                                 "\"type\": \"trip\"," +
                                 "\"title\": \"Test\"," +
+                                "\"places\": []," +
                                 "\"version\": 3" +
                             "}";
 
         request = new RequestStub();
         request.setTffi(tripRequestJson);
-        Plan plan = new Plan(request);
+        plan = new Plan(request);
 
-        BufferedReader reader;
-        reader = new BufferedReader(
-                new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
-
-        stringBuilder = new StringBuilder();
-        String line = "";
-        try {
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line + "\n");
-            }
-        } catch (Exception e) {
-            fail();
-        }
+        Gson gson = new Gson();
+        trip = gson.fromJson(tripRequestJson, Trip.class);
+        trip.plan();
     }
 
     @Test
     public void testGetTrip() {
-        expectedTrip = "{\n" +
-                            "\"type\":\"trip\"," +
-                            "\"title\":\"\"," +
-                            "\"options\": {\"units\":\"miles\"},\n" +
-                            "\"places\":[]," +
-                            "\"distances\": [0],\n" +
-                            "\"map\": " + stringBuilder.toString()  + "\n" +
-                            "\"version\":3," +
-                        "}";
-        actualTrip = plan.getTrip();
-        assertEquals(expectedTrip, actualTrip);
+        Gson gson = new Gson();
+        Trip trip = gson.fromJson(plan.getTrip(), Trip.class);
+
+        assertEquals(this.trip.type, trip.type);
+        assertEquals(this.trip.title, trip.title);
+        assertEquals(this.trip.options.units, trip.options.units);
+        assertEquals(this.trip.places, trip.places);
+        assertEquals(this.trip.distances, trip.distances);
+        assertEquals(this.trip.map, trip.map);
+        assertEquals(this.trip.version, trip.version);
     }
 }
