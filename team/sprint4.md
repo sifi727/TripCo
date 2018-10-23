@@ -1,9 +1,9 @@
-# Sprint 4 - *your team number* - *your team name*
+# Sprint 4 - t07 - double07
 
 ## Goal
 
 ### Interactive Maps and Shorter Trips!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: David Jump
 
 ## Definition of Done
 
@@ -38,14 +38,16 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
+On the forth sprint, we have pulled in several of the provided epics. The highest goal is implement the search functionality to complete an epic we planned but did not complete last sprint and to optimize the nearest neighbor algorithm. After this is finished the team will focus on making the itinerary and map more user friendly by allowing the user to choose what information is displayed. Then  give the user tha ability to optimise their trip more than the nearest neighbor and finally allow user to plan trips across the world.
 
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
 
 Epics planned for this sprint.
 
-* *## epic title: description*
-*
+* #189 User: I want to make and save changes to the trip.
+* #271 User: I want to choose what information is displayed in the itinerary and map.
+* #275 User: I'd like even shorter trips.
+* #262 User: I want to plan trips worldwide.
 
 
 ## Metrics
@@ -66,6 +68,7 @@ Epics planned for this sprint.
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
+| 10/22 | | #179, #279 | |
 
 *Add a new row for the scrum session after each lecture. *
 
