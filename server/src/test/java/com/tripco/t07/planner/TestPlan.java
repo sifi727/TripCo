@@ -1,7 +1,5 @@
 package com.tripco.t07.planner;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import com.google.gson.Gson;
 import org.junit.*;
 
