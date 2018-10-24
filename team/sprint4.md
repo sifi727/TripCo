@@ -69,6 +69,7 @@ Epics planned for this sprint.
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
 | 10/22 | | #179, #279 | |
+| 10/24 | #179 | #279 | Ailing teammates |
 
 *Add a new row for the scrum session after each lecture. *
 
