@@ -7,7 +7,7 @@
 
 ## Definition of Done
 
-* Sprint Review and Restrospectives completed (sprint4.md).
+* Sprint Review and Retrospectives completed (sprint4.md).
 * Version in pom.xml should be `<version>4.0.0</version>`.
 * Increment deployed for demo and testing as server-4.0.jar on the production server.
 * Increment release `v4.0` created on GitHub with appropriate version number and name.
@@ -38,7 +38,7 @@
 
 ## Plan
 
-On the forth sprint, we have pulled in several of the provided epics. The highest goal is implement the search functionality to complete an epic we planned but did not complete last sprint and to optimize the nearest neighbor algorithm. After this is finished the team will focus on making the itinerary and map more user friendly by allowing the user to choose what information is displayed. Then  give the user tha ability to optimise their trip more than the nearest neighbor and finally allow user to plan trips across the world.
+On the forth sprint, we have pulled in several of the provided epics. The highest priority goal is to implement the database search functionality to complete an epic we planned but did not complete last sprint, and to optimize the nearest neighbor algorithm. After this is finished, the team will focus on making the itinerary and map more user friendly by allowing the user to choose what information is displayed. We then plan to give the user the ability to optimize their trip with both the nearest neighbor and 2-opt algorithms. Finally, the team plans to allow user to plan trips across the world.
 
 *Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
 
