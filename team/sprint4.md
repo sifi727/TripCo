@@ -40,7 +40,31 @@
 
 On the forth sprint, we have pulled in several of the provided epics. The highest priority goal is to implement the database search functionality to complete an epic we planned but did not complete last sprint, and to optimize the nearest neighbor algorithm. After this is finished, the team will focus on making the itinerary and map more user friendly by allowing the user to choose what information is displayed. We then plan to give the user the ability to optimize their trip with both the nearest neighbor and 2-opt algorithms. Finally, the team plans to allow user to plan trips across the world.
 
-*Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
+
+![Sprint4 Component Layout Diagram](./sprint4/sprint4PlanComponentLayout.png "Component View Layout")
+
+Above is a picture of our component diagram in the client view. In Sprint 4 we will be adding a Search component and Collapse/Menu component to be able to collapse other components in the view. The Search component is to allow a place for the user to search for new locations in the database to add to their trip. 
+
+Additional changes to the component diagram are:
+* Map - Only show the things the user has requested
+* Add - Additional fields for **User Provided Attributes**
+* Itinerary - Only populate rows for `name` | `id` | `all` | `user` | `requested` | `attributes` | ...
+* Itinerary - Zero out the values in the table if/when units are changed
+* Options - New button for `shorter` optimization  
+* Options - New section for map type `static` or `interactive`
+* Calculate - Zero out the values in the table if/when units are changed
+* **Search** - New ***labels*** for: `Search`, `Filters`, `Name`, `Continent`, `Country`, and `Region` 
+* **Search** - New ***field*** for the client to enter search phrases
+* **Search** - New ***dropdowns*** for: `Name`, `Continent`, `Country`, and `Region` (populated from the MariaDB)
+* Collapsable panels for all Cards
+
+![Sprint4 Component Hierarchy Diagram](./sprint4/sprint4PlanComponentHierarchy.png "Component Hierachy Flow")
+
+Above is a diagram of the client component hierarchy. With the exception of the Search component and associated vars in Application, the component heirarchy is the same as in sprint 3. The newly added component likely will not need a state and should just inherrit props as described in the diagram. 
+
+![Sprint4 Server/Client Diagram](./sprint4/sprint4PlanServerClientFlow.png "Server to Client Flow")
+
+The above diagram of the server client flow shows there will not be any added new REST calls in sprint 4. Because the web API now supports TFFI 4 standard the version number and the optimization level will need to be update in the /config GET response to the client. Finally, the server will need an option to filer, which will be added. 
 
 Epics planned for this sprint.
 
