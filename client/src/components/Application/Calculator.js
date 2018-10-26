@@ -26,8 +26,8 @@ class Calculator extends Component {
         "units"         : "miles",
         "distance"      : 0
     },
-        calculationHasChanged:false,
-        calculationUnit:"miles"
+        latitudeandLongitudeHasChanged:false,
+        unitsUsedInCalculation:"miles"
 
     };
 
@@ -56,8 +56,8 @@ class Calculator extends Component {
     request(distance,'distance',this.props.port, this.props.hostname).then(response => {
 
       this.setState({"distance": response});
-      this.setState({"calculationHasChanged":false});
-      this.setState({"calculationUnit":response.units});
+      this.setState({"latitudeandLongitudeHasChanged":false});
+      this.setState({"unitsUsedInCalculation":response.units});
 
   });
 
@@ -67,13 +67,12 @@ class Calculator extends Component {
     let distance = this.state.distance;
     distance[field][field1] = event.target.value;
     this.setState({distance:distance});
-      this.setState({"calculationHasChanged":true});
+      this.setState({"latitudeandLongitudeHasChanged":true});
   }
     getDistance()
     {
-        if (this.state.calculationHasChanged || (this.state.calculationUnit !== this.props.options.units)) {
+        if (this.state.latitudeandLongitudeHasChanged || (this.state.unitsUsedInCalculation !== this.props.options.units)) {
             return "";
-
         }
         else
         {
