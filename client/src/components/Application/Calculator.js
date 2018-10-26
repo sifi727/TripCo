@@ -25,7 +25,9 @@ class Calculator extends Component {
             "name":""},
         "units"         : "miles",
         "distance"      : 0
-    }
+    },
+        latitudeandLongitudeHasChanged:false,
+        unitsUsedInCalculation:"miles"
 
     };
 
@@ -35,23 +37,25 @@ class Calculator extends Component {
     this.originFields = this.originFields.bind(this);
     this.destinationFields = this.destinationFields.bind(this);
     this.inputTag = this.inputTag.bind(this);
+      this.getDistance = this.getDistance.bind(this);
 
   };
+
 
 
 
   submit(){
     let distance = this.state.distance;
     distance.units=this.props.options.units;
-    if(distance.units=='user defined')
-    {
+    if(distance.units=='user defined') {
       distance.unitRadius=this.props.options.unitRadius;
-
     }
 
     request(distance,'distance',this.props.port, this.props.hostname).then(response => {
 
       this.setState({"distance": response});
+      this.setState({"latitudeandLongitudeHasChanged":false});
+      this.setState({"unitsUsedInCalculation":response.units});
 
   });
 
@@ -61,14 +65,24 @@ class Calculator extends Component {
     let distance = this.state.distance;
     distance[field][field1] = event.target.value;
     this.setState({distance:distance});
+      this.setState({"latitudeandLongitudeHasChanged":true});
   }
+    getDistance()
+    {
+        if (this.state.latitudeandLongitudeHasChanged || (this.state.unitsUsedInCalculation !== this.props.options.units)) {
+            return "";
+        }
+        else {
+            return this.state.distance.distance;
+        }
+    }
 
   distanceFields()
   {
     if(this.props.options.units =="user defined"){
       return(
           <InputGroup>
-             <Input id = "DistanceField"  value={this.state.distance.distance} readOnly  type = "text" />
+             <Input id = "DistanceField"  value={this.getDistance()} readOnly  type = "text" />
              <Input id = "DistanceFieldUnits"  value={this.props.options.unitName?"Unit: " + this.props.options.unitName:"Unit: User defined"} readOnly  type = "text" /> <InputGroupAddon addonType="append">
           <Input id = "DistanceFieldCustomRadiusName"  value="Unit Radius"  readOnly type = "text" />
           </InputGroupAddon>
@@ -82,7 +96,7 @@ class Calculator extends Component {
     else{
       return(
           <InputGroup>
-            < Input id = "DistanceField"  value={this.state.distance.distance} readOnly  type = "text" />
+            < Input id = "DistanceField"  value={this.getDistance()} readOnly  type = "text" />
             < Input id = "DistanceFieldUnits"  value={"Unit: " + this.props.options.units} readOnly  type = "text" />
           </InputGroup>
       );

@@ -102,6 +102,9 @@ class Application extends Component {
     let trip = this.state.trip;
     trip.options[option] = value;
     this.setState(trip);
+    if(option=="units") {
+        this.setState({'tripHasChanged': true});
+    }
   }
 
   updatePlaces(event) {
@@ -118,7 +121,7 @@ class Application extends Component {
 
   updateTffiObject(object) {
     //version, type, and places elements
-    this.setState({'tripHasChanged':false});
+
     let trip = object;
 
     this.updateTrip("places", trip.places); //required
@@ -155,6 +158,7 @@ class Application extends Component {
     else {
       this.updateTrip("distances", trip.distances);
     }
+      this.setState({'tripHasChanged':false});
     this.setState({"trip": trip});
   }
 
