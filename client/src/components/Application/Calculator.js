@@ -47,10 +47,8 @@ class Calculator extends Component {
   submit(){
     let distance = this.state.distance;
     distance.units=this.props.options.units;
-    if(distance.units=='user defined')
-    {
+    if(distance.units=='user defined') {
       distance.unitRadius=this.props.options.unitRadius;
-
     }
 
     request(distance,'distance',this.props.port, this.props.hostname).then(response => {
@@ -74,8 +72,7 @@ class Calculator extends Component {
         if (this.state.latitudeandLongitudeHasChanged || (this.state.unitsUsedInCalculation !== this.props.options.units)) {
             return "";
         }
-        else
-        {
+        else {
             return this.state.distance.distance;
         }
     }
