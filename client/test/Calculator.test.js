@@ -211,6 +211,47 @@ function testDistanceNotShownWhenUnitDifferent(){
 
 }
 
+function testDistanceNotShownWhenLatitudeIsChanged(){
+    const initProps = {
+        options: {
+            units: "miles"
+        }
+    };
+
+    const calculator = shallow((<Calculator options={initProps.options} />));
+    let initVal= calculator.find('#DistanceField').prop('value');
+    expect(initVal).toEqual(0);
+
+
+    calculator.find('#CalculatorLatitudeDestinationId').simulate('change', {
+        target: {
+            value:50
+        }
+    });
+    expect(calculator.find('#DistanceField').prop('value')).toEqual("");
+
+}
+
+function testDistanceNotShownWhenLongitudeIsChanged(){
+    const initProps = {
+        options: {
+            units: "miles"
+        }
+    };
+
+    const calculator = shallow((<Calculator options={initProps.options} />));
+    let initVal= calculator.find('#DistanceField').prop('value');
+    expect(initVal).toEqual(0);
+
+
+    calculator.find('#CalculatorLongitudeDestinationId').simulate('change', {
+        target: {
+            value:42
+        }
+    });
+    expect(calculator.find('#DistanceField').prop('value')).toEqual("");
+
+}
 
 
 
@@ -225,3 +266,5 @@ test("Checks to see that when parent component user Defined unit with out name r
 test("Checks to see that when parent component user Defined unit with name rendered correct", testUserDefinedFieldsUnitNamePopululated());
 
 test("Checks to see that when parent component changes units calculated distance value is not shown", testDistanceNotShownWhenUnitDifferent());
+test("Checks to see that when latitude is changed distance value is not shown", testDistanceNotShownWhenLatitudeIsChanged());
+test("Checks to see that when longitude is changed distance value is not shown", testDistanceNotShownWhenLongitudeIsChanged());
