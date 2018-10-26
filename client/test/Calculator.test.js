@@ -186,6 +186,32 @@ function testUserDefinedFieldsUnitNamePopululated() {
 
 }
 
+function testDistanceNotShownWhenUnitDifferent(){
+    const initProps = {
+            options: {
+                units: "miles"
+            }
+    };
+
+    const calculator = shallow((<Calculator options={initProps.options} />));
+    let initVal= calculator.find('#DistanceField').prop('value');
+    expect(initVal).toEqual(0);
+
+    let currentProps = calculator.instance().props;
+    currentProps.options.units="kilometers";
+    calculator.setProps({options:currentProps.options});
+    let changedVal= calculator.find('#DistanceField').prop('value');
+    expect(changedVal).toEqual("");
+
+    currentProps = calculator.instance().props;
+    currentProps.options.units="miles";
+    calculator.setProps({options:currentProps.options});
+    let revertVal= calculator.find('#DistanceField').prop('value');
+    expect(revertVal).toEqual(0);
+
+}
+
+
 
 
 
@@ -197,3 +223,5 @@ test("Checks to see that when parent component user Defined unit is selected it 
 test("Checks to see that when parent component user Defined unit when not selected it is shown in Calculator", testUserDefinedFieldsNotShownWhenNotSelected());
 test("Checks to see that when parent component user Defined unit with out name rendered correct", testUserDefinedFieldsUnitNameEmpty());
 test("Checks to see that when parent component user Defined unit with name rendered correct", testUserDefinedFieldsUnitNamePopululated());
+
+test("Checks to see that when parent component changes units calculated distance value is not shown", testDistanceNotShownWhenUnitDifferent());
