@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Card, CardBody, CardTitle, FormText, Input, InputGroup, InputGroupText} from 'reactstrap'
+import {Button, Card, CardBody, CardTitle, FormText, Input, InputGroup, InputGroupText, Container, Row, Col} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
 class Search extends Component {
@@ -20,19 +20,33 @@ class Search extends Component {
             this.searchField = this.searchField.bind(this);
             this.updateSearch = this.updateSearch.bind(this);
             this.searchButton = this.searchButton.bind(this);
+            this.submit = this.submit.bind(this);
         }
 
     searchField() {
         return (
-            <InputGroup>
-                <Input id = "SearchField" value={this.state.search.match} type = "text" onChange={(event)=>this.updateSearch(event)} />
-            </InputGroup>
+            <Container>
+                <Row>
+                    <Col>
+                        <FormText color="muted">
+                            Enter your search below
+                        </FormText>
+                        <Input id = "SearchField" value={this.state.search.match} type = "text" onChange={(event)=>this.updateSearch('match', event)} />
+                    </Col>
+                    <Col>
+                        <FormText color="muted">
+                            Enter your search limit
+                        </FormText>
+                        <Input id = "SearchLimitField" value={this.state.search.limit} type = "number" onChange={(event)=>this.updateSearch('limit', event)} />
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 
-    updateSearch(event) {
+    updateSearch(field, event) {
             let search = this.state.search;
-            search.match = event.target.value;
+            search[field] = event.target.value;
             this.setState({search:search});
     }
 
@@ -58,9 +72,6 @@ class Search extends Component {
             <Card>
                 <CardBody>
                     <CardTitle>Seach and Add New Destinations</CardTitle>
-                    <FormText color="muted">
-                        Enter your search below
-                    </FormText>
                     {searchField}
                     <br />
                     {searchButton}
