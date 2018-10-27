@@ -21,24 +21,29 @@ class Search extends Component {
             this.updateSearch = this.updateSearch.bind(this);
             this.searchButton = this.searchButton.bind(this);
             this.submit = this.submit.bind(this);
+            this.buildCol = this.buildCol.bind(this);
         }
 
+    buildCol(text, id, value, type, field) {
+            return (
+                <Col>
+                    <FormText color="muted" >
+                        {text}
+                    </FormText>
+                    <Input id ={id} value={value} type ={type} onChange={(event)=>this.updateSearch(field, event)} />
+                </Col>
+            );
+    }
+
     searchField() {
+        const buildCol = this.buildCol;
+
         return (
             <Container>
                 <Row>
-                    <Col>
-                        <FormText color="muted">
-                            Enter your search below
-                        </FormText>
-                        <Input id = "SearchField" value={this.state.search.match} type = "text" onChange={(event)=>this.updateSearch('match', event)} />
-                    </Col>
-                    <Col>
-                        <FormText color="muted">
-                            Enter your search limit
-                        </FormText>
-                        <Input id = "SearchLimitField" value={this.state.search.limit} type = "number" onChange={(event)=>this.updateSearch('limit', event)} />
-                    </Col>
+                    {buildCol('Enter your search below', 'SearchField', this.state.search.match, 'text', 'match')}
+                    {buildCol('Enter your search limit', 'SearchLimitField', this.state.search.limit, 'number', 'limit')}
+
                 </Row>
             </Container>
         );
