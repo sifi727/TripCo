@@ -5,6 +5,17 @@ import {request, get_comfig} from '../../api/api.js'
 class Search extends Component {
         constructor(props) {
             super(props);
+            this.state = {
+                search:{
+                    "version"   : 4,
+                    "type"      : "search",
+                    "match"     : "",
+                    "filters"   : [],
+                    "limit"     : 0,
+                    "found"     : 0,
+                    "places"    : []
+                }
+            }
         }
 
 
@@ -13,7 +24,8 @@ class Search extends Component {
         return (
             <Card>
                 <CardBody>
-                    Testing.......
+                    <CardTitle>Seach and Add New Destinations</CardTitle>
+
                 </CardBody>
             </Card>
         )
