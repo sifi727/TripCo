@@ -4,7 +4,7 @@ public class Distance {
 
   //The variables in this class should match the REST API definition.
   public Double unitRadius;
-  public int distance;
+  public Integer distance;
   public int version;
   public Place origin;
   public Place destination;
@@ -82,6 +82,6 @@ public class Distance {
     double denominator = left_denominator_component + right_denominator_component;
 
     //Calculate the distance between the origin and the destination.
-    this.distance = (int) (Math.round(radius * Math.atan2(numerator, denominator)));
+    this.distance = new Integer( (int) (Math.round(radius * Math.atan2(numerator, denominator))));
   }
 }

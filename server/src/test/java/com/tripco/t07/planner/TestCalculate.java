@@ -69,7 +69,9 @@ public class TestCalculate {
         gson = new Gson();
         distance = gson.fromJson(requestBody, Distance.class);
 
-        assertEquals(distance.distance, dist);
+        Integer expectedInt = new Integer(65);
+
+        assertEquals(distance.distance, expectedInt);
         assertEquals(distance.type, type);
         assertEquals(distance.units, units);
         assertEquals(distance.version, version);
