@@ -3,10 +3,10 @@ package com.tripco.t07.planner;
 import java.util.ArrayList;
 
 public class ShortOptimization {
-    private ArrayList<Place> places;
+    private Place [] places;
 
     ShortOptimization(ArrayList<Place> places){
-        this.places=places;
+        this.places=places.toArray(new Place[places.size()]);
     }
 
 
@@ -14,17 +14,18 @@ public class ShortOptimization {
 
         int shortestTrip = Integer.MAX_VALUE;
         ArrayList<Place> shortestTripPlaces = new ArrayList<>();
-        for(Place origin:places){
+        for(int i=0; i<places.length; i++){
             ArrayList<Place> sortedPlaces = new ArrayList<>();
-            boolean[] visitedPlaces = new boolean[places.size()];
+            boolean[] visitedPlaces = new boolean[places.length];
             boolean finished = false;
             int totalTripDistance = 0;
-            sortedPlaces.add(origin);
-            visitedPlaces[places.indexOf(origin)] = true;
-            Place previousPlace = origin;
+            sortedPlaces.add(places[i]);
+            visitedPlaces[i] = true;
+            Place previousPlace = places[i];
             while (!finished) {
-                Place nextVisitedPlace = closestPlace(previousPlace, places, visitedPlaces);
-                visitedPlaces[places.indexOf(nextVisitedPlace)] = true;
+                int nextVisitedPlaceIndex = closestPlace(i, places, visitedPlaces);
+                Place nextVisitedPlace=places[nextVisitedPlaceIndex];
+                visitedPlaces[nextVisitedPlaceIndex] = true;
                 sortedPlaces.add(nextVisitedPlace);
                 totalTripDistance += legDistance(previousPlace, nextVisitedPlace);
                 previousPlace=nextVisitedPlace;
@@ -37,7 +38,7 @@ public class ShortOptimization {
                     finished = true;
                 }
             }
-            totalTripDistance+=legDistance(origin,previousPlace); //add to make it round trip
+            totalTripDistance+=legDistance(places[i],previousPlace); //add to make it round trip
             if(totalTripDistance<=shortestTrip){
                 shortestTrip=totalTripDistance;
                 shortestTripPlaces=sortedPlaces;
@@ -49,20 +50,20 @@ public class ShortOptimization {
     }
 
 
-    public Place closestPlace(Place origin, ArrayList<Place> places, boolean[] visitedPlaces) {
+    public int closestPlace(int originIndex, Place[] places, boolean[] visitedPlaces) {
 
         int shortestDistance = Integer.MAX_VALUE;
-        Place closestPlace = null;
-        for (int placeIndex = 0; placeIndex < places.size(); placeIndex++) {
-            if (!places.get(placeIndex).equals(origin) && !visitedPlaces[placeIndex]) {
-                int distance = legDistance(origin, places.get(placeIndex));
+        int closestPlaceIndex = 0;
+        for (int placeIndex = 0; placeIndex < places.length; placeIndex++) {
+            if (placeIndex!=originIndex && !visitedPlaces[placeIndex]) {
+                int distance = legDistance(places[originIndex], places[placeIndex]);
                 if (distance <= shortestDistance) {
                     shortestDistance = distance;
-                    closestPlace = places.get(placeIndex);
+                    closestPlaceIndex = placeIndex;
                 }
             }
         }
-     return closestPlace;
+     return closestPlaceIndex;
     }
 
     private int legDistance(Place origin, Place destination) {
