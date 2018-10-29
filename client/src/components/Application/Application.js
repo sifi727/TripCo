@@ -190,10 +190,10 @@ class Application extends Component {
   reverseTrip(){
     let trip = this.state.trip;
     trip.places.reverse();
-    request(trip, 'plan', this.props.port, this.props.hostname).then(
-        response => {
-           this.updateTffiObject(response);
-        });
+    trip.distances.reverse();
+    this.setState({"trip":trip});
+    this.setState({'tripHasChanged':true});
+
   }
 
   render() {
