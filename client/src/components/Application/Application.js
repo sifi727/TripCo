@@ -8,6 +8,7 @@ import {get_config, request} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
 import AddPlace from './AddPlace';
+import Search from './Search';
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
@@ -20,7 +21,7 @@ class Application extends Component {
       port: location.port,
       hostname: location.hostname,
       trip: {
-        version: 3,
+        version: 4,
         type: "trip",
         title: "",
         options: {
@@ -214,6 +215,7 @@ class Application extends Component {
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
+          <Search port={this.state.port} hostname={this.state.hostname} />
         </Container>
     )
   }
