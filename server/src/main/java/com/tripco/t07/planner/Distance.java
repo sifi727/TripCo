@@ -22,7 +22,22 @@ public class Distance {
     this.units = units;
     // only set these for user defined units
     if (radius > 0) {
-      this.unitRadius = new Double(radius);
+      this.unitRadius = radius;
+      this.unitName = unitname;
+    }
+  }
+
+  // A constructor to manually initialize all fields (mostly for testing)
+  public Distance(Integer distance, int version, Place origin, Place destination, String type, String unitname, String units, double radius) {
+    this.distance = distance;
+    this.destination = destination;
+    this.origin = origin;
+    this.type = type;
+    this.units = units;
+    this.version = version;
+    // only set these for user defined units
+    if (radius > 0) {
+      this.unitRadius = radius;
       this.unitName = unitname;
     }
   }
@@ -45,7 +60,7 @@ public class Distance {
       case "nautical miles":
         return 3440.0;
       case "user defined":
-        return this.unitRadius.doubleValue();
+        return this.unitRadius;
       default:
         return 0;
     }
@@ -65,9 +80,9 @@ public class Distance {
     // the radius of the Earth
     double radius = getRadiusFromUnits();
 
-    /**
-     *  We have broken the formula into several lines, calculating the innermost components first and then plugging into a more general formula,
-     *  Reference source to the haversineVincenty formula: https://en.wikipedia.org/wiki/Great-circle_distance (Vincenty formula)
+    /*
+       We have broken the formula into several lines, calculating the innermost components first and then plugging into a more general formula,
+       Reference source to the haversineVincenty formula: https://en.wikipedia.org/wiki/Great-circle_distance (Vincenty formula)
      */
 
     double left_sqrt_component = Math
@@ -82,6 +97,6 @@ public class Distance {
     double denominator = left_denominator_component + right_denominator_component;
 
     //Calculate the distance between the origin and the destination.
-    this.distance = new Integer( (int) (Math.round(radius * Math.atan2(numerator, denominator))));
+    this.distance = (int) (Math.round(radius * Math.atan2(numerator, denominator)));
   }
 }
