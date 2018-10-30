@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Config {
 
-  private short version = 3;
+  private short version = 4;
   private String type = "config";
 
   private List<String> units = Arrays
@@ -15,6 +15,7 @@ public class Config {
   private List<OptimizationLevel> optimization = Arrays
       .asList(new OptimizationLevel("none", "The trip is not optimized."),
           new OptimizationLevel("short", "Nearest neighbor."));
+  private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
 
 
   //Getter methods for testing.

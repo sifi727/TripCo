@@ -24,7 +24,7 @@ public class TestConfig {
     // Setup to be done before every test in TestConfig
     @Before
     public void initialize() {
-        version = 3;
+        version = 4;
         type = "config";
         units = Arrays.asList("miles", "kilometers", "nautical miles", "user defined");
     }
@@ -44,7 +44,7 @@ public class TestConfig {
         String expectedConfigTffi = "{\"version\":" + version + ",\"type\":\"config\",\""+
             "units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"],"+
             "\"optimization\":[{\"label\":\"none\",\"description\":\"The trip is not optimized.\"}"+
-            ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"}]}";
+            ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"}],\"attributes\":[\"name\",\"id\",\"latitude\",\"longitude\"]}";
 
         // create a new config object directly
         config = new Config();
