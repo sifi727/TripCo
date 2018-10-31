@@ -20,6 +20,7 @@ class Application extends Component {
       config: null,
       port: location.port,
       hostname: location.hostname,
+      attributesToShow: [],
       trip: {
         version: 4,
         type: "trip",
@@ -61,7 +62,9 @@ class Application extends Component {
 
           this.setState({
             config: config
-          })
+          });
+
+          this.setState({attributesToShow:config.attributes.slice(0)});
         }
     );
   }
@@ -211,7 +214,7 @@ class Application extends Component {
           <Info/>
           <Map trip={this.state.trip}/>
           <AddPlace addPlace={this.addPlace}/>
-          <Itinerary trip={this.state.trip} attributes={this.state.config.attributes} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}
+          <Itinerary trip={this.state.trip} attributes={this.state.attributesToShow} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}
           removePlace={this.removePlace}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
