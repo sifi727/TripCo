@@ -12,6 +12,9 @@ class Itinerary extends Component {
     this.getUnitName = this.getUnitName.bind(this);
     this.returnBlankPlaceHolder = this.returnBlankPlaceHolder.bind(this);
     this.deleteRowInItinerary = this.deleteRowInItinerary.bind(this);
+    this.getTableHeader = this.getTableHeader.bind(this);
+    this.userFriendlyHeader = this.userFriendlyHeader.bind(this);
+    this.buildRow = this.buildRow.bind(this);
   }
 
   /**
@@ -37,14 +40,33 @@ class Itinerary extends Component {
     return this.props.trip.distances[index];
   }
 
+  buildRow(place,distance,totalDistance,isFirstRow, deleteElementId, rowElementId)
+  {
+   let row  = this.props.attributes.map((attribute) => {
+      return (<td>{place[attribute]}</td>);
+
+    });
+      row.unshift(< td><input type="radio" name={"start"} checked={isFirstRow} value={0} readOnly={isFirstRow}/></td>);
+      row.push(< td> {distance} </td>);
+      row.push(< td> {totalDistance}</td>);
+      row.push(< td> <Button  id={deleteElementId} onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>);
+
+    return (<tr key={rowElementId}>
+      {row}
+      </tr>
+  );
+     // return row;
+
+  }
   /**
    *   Build the First row in the table
    */
-  getFirstRow(name) {
+  getFirstRow(place) {
     //table is |place name| leg distance| total distance|
     return (<tr key={'intinerary-row 0'}>
       < td><input type="radio" name={"start"} checked={true} value={0} readOnly={true}/></td>
-      < td> {name} </td>
+      < td> {place.name} </td>
+        <td> {place.id} </td>
       < td> 0</td>
       < td> 0</td>
         < td> <Button id="DeleteButton0" onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>
@@ -96,20 +118,24 @@ class Itinerary extends Component {
     const rows = this.props.trip.places.map((place) => {
       if (index === -1) { // the first entry in the table and is special because leg and total at both 0
         index++;
-        return this.getFirstRow(place.name);
+        //return this.getFirstRow(place);
+      return this.buildRow(place,0,0,true,"DeleteButton"+index,'intinerary-row 0');
       }
       totaldistance = this.getTotalDistance(totaldistance, index);
       //table is |place name| leg distance| total distance|
       //table entry for middle destinations
-      var row = (this.getNthRow(index, place.name, totaldistance));
+      //var row = (this.getNthRow(index, place.name, totaldistance));
+    var row =this.buildRow(place,this.getDistance(index),totaldistance,false,"DeleteButton"+index,'intinerary-row ' + (index + 1));
       index++;
       return row;
     });
 
     totaldistance = this.getTotalDistance(totaldistance, index);
 
-    var lastrow = (this.getNthRow(index, this.props.trip.places[0].name,
-        totaldistance));
+    // var lastrow = (this.getNthRow(index, this.props.trip.places[0].name,
+    //     totaldistance));
+
+    var lastrow=this.buildRow(this.props.trip.places[0],this.getDistance(index),totaldistance,false,"DeleteButton"+index,'intinerary-row ' + (index +1));
     rows.push(lastrow);
     return rows;
   }
@@ -121,12 +147,60 @@ class Itinerary extends Component {
   getUnitName() {
     var unitname = "";
     if (this.props.trip.options.units === "user defined") {
-      unitname = this.props.trip.options.unitName;
+      unitname = this.props.trip.options.unitName?this.props.trip.options.unitName:"";
     }
     else {
       unitname = this.props.trip.options.units;
     }
     return unitname;
+  }
+
+  userFriendlyHeader(header)
+  {
+    let words = header.split("-").map((word)=> {
+      return word.charAt(0).toUpperCase()+word.slice(1);
+
+    });
+    return(words.join(' '));
+  }
+
+  getTableHeader()
+  {
+
+    var unitname = this.getUnitName();
+
+    let header = this.props.attributes.map((attribute) => {
+      if(attribute=='name'){
+
+          return(<th>Destination</th>);
+      }
+
+      return( <th> {this.userFriendlyHeader(attribute)} </th>);
+  });
+      header.unshift(<th>Starting Location</th>);
+      header.push(<th>{"Leg of the Trip (" + unitname + ")"}</th>);
+      header.push(<th>{"Total Trip Distance (" + unitname + ")"}</th>);
+  header.push(<th></th>); //for delete
+
+    //header.push(<th></th>); //for delete
+
+    return(
+        <tr>
+        {header}
+        </tr>
+    );
+
+  //   return(
+  //
+  //       <tr>
+  //       <th>Starting Location</th>
+  // <th>Destination</th>
+  //<th>{"Leg of the Trip (" + unitname + ")"}</th>
+  // <th>{"Total Trip Distance (" + unitname + ")"}</th>
+  // </tr>
+  //
+  //   );
+
   }
 
   /**
@@ -148,14 +222,9 @@ class Itinerary extends Component {
           </CardBody>
           <CardBody style={{overflow:'scroll', maxHeight:'500px'}}>
             <Table>
-              <thead>
-              <tr>
-                <th>Starting Location</th>
-                <th>Destination</th>
-                <th>{"Leg of the Trip (" + unitname + ")"}</th>
-                <th>{"Total Trip Distance (" + unitname + ")"}</th>
-              </tr>
-              </thead>
+    <thead>
+    {this.getTableHeader()}
+  </thead>
               <tbody>
               {this.getRows()}
               </tbody>
