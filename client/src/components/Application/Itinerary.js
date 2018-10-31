@@ -40,18 +40,18 @@ class Itinerary extends Component {
     return this.props.trip.distances[index];
   }
 
-  buildRow(place,distance,totalDistance,isFirstRow, deleteElementId, rowElementId)
+  buildRow(place,distance,totalDistance,isFirstRow,rowNumber)
   {
    let row  = this.props.attributes.map((attribute) => {
       return (<td>{place[attribute]}</td>);
 
     });
-      row.unshift(< td><input type="radio" name={"start"} checked={isFirstRow} value={0} readOnly={isFirstRow}/></td>);
+      row.unshift(< td><input type="radio" name={"start"} checked={isFirstRow} value={rowNumber}  onChange={this.props.updatePlaces}/></td>);
       row.push(< td> {distance} </td>);
       row.push(< td> {totalDistance}</td>);
-      row.push(< td> <Button  id={deleteElementId} onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>);
+      row.push(< td> <Button  id={"DeleteButton"+rowNumber} onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>);
 
-    return (<tr key={rowElementId}>
+    return (<tr key={'intinerary-row ' + (rowNumber)}>
       {row}
       </tr>
   );
@@ -119,13 +119,13 @@ class Itinerary extends Component {
       if (index === -1) { // the first entry in the table and is special because leg and total at both 0
         index++;
         //return this.getFirstRow(place);
-      return this.buildRow(place,0,0,true,"DeleteButton"+index,'intinerary-row 0');
+      return this.buildRow(place,0,0,true,index);
       }
       totaldistance = this.getTotalDistance(totaldistance, index);
       //table is |place name| leg distance| total distance|
       //table entry for middle destinations
       //var row = (this.getNthRow(index, place.name, totaldistance));
-    var row =this.buildRow(place,this.getDistance(index),totaldistance,false,"DeleteButton"+index,'intinerary-row ' + (index + 1));
+    var row =this.buildRow(place,this.getDistance(index),totaldistance,false, (index + 1));
       index++;
       return row;
     });
