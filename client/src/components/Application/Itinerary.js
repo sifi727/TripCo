@@ -44,16 +44,16 @@ class Itinerary extends Component {
       return (<td>{place[attribute]}</td>);
 
     });
-      row.unshift(< td><input type="radio" name={"start"} checked={isFirstRow} value={rowNumber}  onChange={this.props.updatePlaces}/></td>);
-      row.push(< td> {distance} </td>);
-      row.push(< td> {totalDistance}</td>);
-      row.push(< td> <Button  id={"DeleteButton"+rowNumber} onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>);
+
+    row.unshift(< td><input type="radio" name={"start"} checked={isFirstRow} value={rowNumber}  onChange={this.props.updatePlaces}/></td>);
+    row.push(< td> {distance} </td>);
+    row.push(< td> {totalDistance}</td>);
+    row.push(< td> <Button  id={"DeleteButton"+rowNumber} onClick={(event)=>this.deleteRowInItinerary(event)}>Delete</Button> </td>);
 
     return (<tr key={'intinerary-row ' + (rowNumber)}>
       {row}
       </tr>
-  );
-     // return row;
+    );
 
   }
 

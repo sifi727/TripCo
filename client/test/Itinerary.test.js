@@ -10,7 +10,7 @@ describe("Itinerary", () => {
   const itinerary = () => {
     if (!mountedItinerary) {
       mountedItinerary = mount(
-          <Itinerary trip={props.trip}/>
+          <Itinerary trip={props.trip} attributes={props.trip.options.attributes}/>
       );
     }
     return mountedItinerary;
@@ -23,11 +23,12 @@ describe("Itinerary", () => {
       port: 8088,
       hostname: "localhost:",
       trip: {
-        version: 3,
+        version: 4,
         type: "trip",
         title: "",
         options: {
           units: "miles",
+          attributes : ["name", "id", "latitude", "longitude"],
         },
         places: [],
         distances: [],

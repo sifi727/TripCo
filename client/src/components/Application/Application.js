@@ -52,7 +52,11 @@ class Application extends Component {
         config => {
 
           if(config.optimization){
-            this.updateOptions("optimization","none");
+            const minAttributes = ["name", "id", "latitude", "longitude"];
+            config["attributes"] = minAttributes;
+          }
+          if(config.attributes){
+            this.updateOptions()
           }
 
           this.setState({
