@@ -37,12 +37,12 @@ function testTextFieldOnChange() {
 function testNumberFieldOnChange() {
     const wrapper = shallow(( <Search port={startProps.port} hostname={startProps.hostname}  />));
     expect(wrapper.state().search.limit).toEqual(0);
-    wrapper.find('#SearchField').simulate('change', {
+    wrapper.find('#SearchLimitField').simulate('change', {
         target: {
             value:7
         }
     });
-    expect(wrapper.state().search.match).toEqual(7);
+    expect(wrapper.state().search.limit).toEqual(7);
 }
 
 test('Checks to see that the search text field renders',testTextFieldExist());
