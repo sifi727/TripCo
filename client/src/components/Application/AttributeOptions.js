@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardBody, FormText, Input, ListGroup,ListGroupItem} from 'reactstrap'
+import {Card, CardBody, FormText, Input, ListGroup,ListGroupItem, Row, Col} from 'reactstrap'
 import {ButtonGroup, Button, Form, FormGroup} from 'reactstrap'
 import {userFriendlyAttribute} from '../../api/api.js'
 
@@ -21,9 +21,14 @@ class AttributeOptions extends Component{
   buildListofAttributes(attribute)
   {
     return(
-        <ListGroup>
+        <Row>
+        <Col>
+       <p>Attributes to display</p>
+        <ListGroup style={{overflow:'scroll', maxHeight:'150px'}}>
         {this.props.attributes.map((attribute)=>this.buildAttributeListItem(attribute))}
         </ListGroup>
+    </Col>
+      </Row>
     );
 
   }

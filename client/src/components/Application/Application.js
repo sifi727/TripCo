@@ -217,7 +217,6 @@ class Application extends Component {
     }
     this.setState({attributesToShow:attributesToShow});
 
-
   }
 
 

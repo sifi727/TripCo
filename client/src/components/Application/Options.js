@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Card, CardBody, FormText} from 'reactstrap'
-import {ButtonGroup, Button, Form, FormGroup} from 'reactstrap'
+import {ButtonGroup, Button, Form, FormGroup, Col, Row} from 'reactstrap'
 import ServerOptions from './ServerOptions'
 import AttributeOptions from './AttributeOptions'
 
@@ -113,17 +113,36 @@ class Options extends Component{
     return(
       <Card>
         <CardBody>
+        <Row>
+        <Col>
           <p>Select the options you wish to use.</p>
-          <ButtonGroup>
-            {buttons}
-          </ButtonGroup>
-          {optimizationForm}
-          <FormGroup>
-               {form}
-              <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
-                             updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
-           </FormGroup>
-    <AttributeOptions attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
+        </Col>
+        </Row>
+        <Row>
+        <Col>
+ <ButtonGroup>
+    {buttons}
+    </ButtonGroup>
+
+    {optimizationForm}
+  <FormGroup>
+    {form}
+
+
+    <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
+    updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
+    </FormGroup>
+
+    </Col>
+    <Col>
+    <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
+    </Col>
+
+    </Row>
+
+        <Row>
+
+</Row>
         </CardBody>
       </Card>
     )
