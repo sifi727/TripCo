@@ -45,6 +45,7 @@ class Application extends Component {
     this.resetTrip = this.resetTrip.bind(this);
     this.reverseTrip = this.reverseTrip.bind(this);
     this.removePlace = this.removePlace.bind(this);
+    this.updateAttributesToShow = this.updateAttributesToShow.bind(this);
   }
 
 
@@ -203,6 +204,22 @@ class Application extends Component {
            this.updateTffiObject(response);
         });
   }
+  updateAttributesToShow(attributeValue)
+  {
+    let attributesToShow  = this.state.attributesToShow;
+
+
+    if(this.state.attributesToShow.includes(attributeValue)) {
+      attributesToShow= attributesToShow.filter((value, index, arg) => {return(value != attributeValue);});
+    }
+    else {
+      attributesToShow.push(attributeValue);
+    }
+    this.setState({attributesToShow:attributesToShow});
+
+
+  }
+
 
   render() {
     if (!this.state.config) {
@@ -218,7 +235,11 @@ class Application extends Component {
           removePlace={this.removePlace}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
-                   updatePort={this.updatePort} updateHostname={this.updateHostname} />
+                   updatePort={this.updatePort} updateHostname={this.updateHostname}
+                   attributes={this.state.config.attributes}
+                   attributesToShow={this.state.attributesToShow}
+                   updateAttributesToShow={this.updateAttributesToShow}
+                   />
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Button, Card, CardBody, Container, Table} from 'reactstrap'
+import {userFriendlyAttribute} from '../../api/api.js'
 
 class Itinerary extends Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class Itinerary extends Component {
     this.returnBlankPlaceHolder = this.returnBlankPlaceHolder.bind(this);
     this.deleteRowInItinerary = this.deleteRowInItinerary.bind(this);
     this.getTableHeader = this.getTableHeader.bind(this);
-    this.userFriendlyHeader = this.userFriendlyHeader.bind(this);
     this.buildRow = this.buildRow.bind(this);
   }
 
@@ -123,9 +123,9 @@ class Itinerary extends Component {
     return unitname;
   }
 
-  userFriendlyHeader(header)
+  userFriendlyAttribute(attribute)
   {
-    let words = header.split("-").map((word)=> {
+    let words = attribute.split("-").map((word)=> {
       return word.charAt(0).toUpperCase()+word.slice(1);
 
     });
@@ -143,7 +143,7 @@ class Itinerary extends Component {
             return(<th>Destination</th>);
         }
 
-        return( <th> {this.userFriendlyHeader(attribute)} </th>);
+        return( <th> {this.userFriendlyAttribute(attribute)} </th>);
 
      });
 
