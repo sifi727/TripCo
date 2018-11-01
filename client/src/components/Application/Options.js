@@ -124,9 +124,9 @@ class Options extends Component{
                 {buttons}
               </ButtonGroup>
 
-                {optimizationForm}
                 <FormGroup>
                   {form}
+                  {optimizationForm}
                   <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
                    updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
                   </FormGroup>
