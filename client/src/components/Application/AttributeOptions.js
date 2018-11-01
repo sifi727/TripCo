@@ -15,20 +15,19 @@ class AttributeOptions extends Component{
   buildAttributeListItem(attribute)
   {
     return(<ListGroupItem><Input type="checkbox" value={attribute} checked={this.props.attributesToShow.includes(attribute)} onClick={ (event)=> this.props.updateAttributesToShow(event.target.value)} /> {userFriendlyAttribute(attribute)}</ListGroupItem>);
-
   }
 
   buildListofAttributes(attribute)
   {
     return(
         <Row>
-        <Col>
-       <p>Attributes to display</p>
-        <ListGroup style={{overflow:'scroll', maxHeight:'150px'}}>
-        {this.props.attributes.map((attribute)=>this.buildAttributeListItem(attribute))}
-        </ListGroup>
-    </Col>
-      </Row>
+          <Col>
+            <p>Attributes to display</p>
+            <ListGroup style={{overflow:'scroll', maxHeight:'150px'}}>
+              {this.props.attributes.map((attribute)=>this.buildAttributeListItem(attribute))}
+            </ListGroup>
+          </Col>
+        </Row>
     );
 
   }
@@ -36,8 +35,8 @@ class AttributeOptions extends Component{
     return(
 
         <ListGroup>
-        {this.buildListofAttributes()}
-    </ListGroup>
+          {this.buildListofAttributes()}
+        </ListGroup>
   );
   }
 }

@@ -113,36 +113,28 @@ class Options extends Component{
     return(
       <Card>
         <CardBody>
-        <Row>
-        <Col>
-          <p>Select the options you wish to use.</p>
-        </Col>
-        </Row>
-        <Row>
-        <Col>
- <ButtonGroup>
-    {buttons}
-    </ButtonGroup>
+          <Row>
+            <Col>
+              <p>Select the options you wish to use.</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <ButtonGroup>
+                {buttons}
+              </ButtonGroup>
 
-    {optimizationForm}
-  <FormGroup>
-    {form}
-
-
-    <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
-    updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
-    </FormGroup>
-
-    </Col>
-    <Col>
-    <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
-    </Col>
-
-    </Row>
-
-        <Row>
-
-</Row>
+                {optimizationForm}
+                <FormGroup>
+                  {form}
+                  <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
+                   updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
+                  </FormGroup>
+            </Col>
+            <Col>
+              <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
+            </Col>
+          </Row>
         </CardBody>
       </Card>
     )
