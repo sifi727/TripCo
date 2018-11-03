@@ -2,7 +2,7 @@ package com.tripco.t07.planner;
 
 public class ShorterOptimization {
 
-  public void reverseBetweeniIndecency([int]route, leftIndex, rightIndex) {
+  public void reverseBetweeniIndecency(int[]route, int leftIndex, int rightIndex) {
     int temp;
     while (leftIndex < rightIndex) {
       temp = route[leftIndex];
@@ -22,8 +22,20 @@ public class ShorterOptimization {
 //    }
 //    }
 //
-  int distanceBetweenCity(int[][] distance, int[] route, cityIndex1, cityIindex2) {
-    return distance[route[index1]][route[cityIindex2]];
+  int distanceBetweenCity(int[][] distance, int[] route, int cityIndex1, int cityIindex2) {
+    return distance[route[cityIndex1]][route[cityIindex2]];
+  }
+
+  int totalDistanceOfRoute(int[][] distance, int [] route)
+  {
+    int totalDistance = 0;
+    for(int i =0; i-1<route.length; i++)
+    {
+      totalDistance = distance[route[i]][route[i+1]];
+
+    }
+    return totalDistance;
+
   }
 
   public int twoOpt(int[] route, int[][] distance) {
@@ -32,8 +44,8 @@ public class ShorterOptimization {
     int delta;
     while (improvement) {
       improvement = false;
-      for (i = 0; i <= n - 3; i++) {
-        for (k = i + 2; k <= n - 1; k++) {
+      for (int i = 0; i <= n - 3; i++) {
+        for (int k = i + 2; k <= n - 1; k++) {
           delta =
               -distanceBetweenCity(distance, route, i, i + 1) - distanceBetweenCity(distance, route,
                   k, k + 1) + distanceBetweenCity(distance, route, i, k) + distanceBetweenCity(
@@ -45,6 +57,7 @@ public class ShorterOptimization {
         }
       }
     }
+    return totalDistanceOfRoute(distance,route);
   }
 }
 
