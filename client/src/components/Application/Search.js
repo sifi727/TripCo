@@ -66,7 +66,7 @@ class Search extends Component {
     getTableRow() {
         const td = this.td;
         const rows = this.state.search.places.map((place) =>
-            <tr key={Math.random() + '_row'}>
+            <tr key={Math.random() + '_row'} >
                 {td(place['name'])}
                 {td(place['id'])}
                 {td(place['latitude'])}
@@ -83,6 +83,7 @@ class Search extends Component {
     searchButton() {
         return (
             <Button id="SearchButtonId"  onClick={(event) => this.submit()}>Search</Button>
+
         );
     }
 
@@ -133,7 +134,7 @@ class Search extends Component {
                     {searchField}
                     <br />
                     {searchButton}
-                    <br />
+                    <br /><br />
                     {getTable}
                 </CardBody>
             </Card>
