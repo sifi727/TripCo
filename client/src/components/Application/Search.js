@@ -13,8 +13,38 @@ class Search extends Component {
                     "filters"   : [],
                     "limit"     : 0,
                     "found"     : 0,
-                    "places"    : []
-                }
+                    "places"    : [
+                        {
+                            "id": 61,
+                            "county": "Teller County",
+                            "name": "Cripple Creek",
+                            "latitude": 38.87,
+                            "longitude": -105.18
+                        },
+                        {
+                            "id": 62,
+                            "county": "Washington County",
+                            "name": "Akron",
+                            "latitude": 39.97,
+                            "longitude": -103.21
+                        },
+                        {
+                            "id": 63,
+                            "county": "Weld County",
+                            "name": "Greeley",
+                            "latitude": 40.56,
+                            "longitude": -104.38
+                        },
+                        {
+                            "id": 64,
+                            "county": "Yuma County",
+                            "name": "Wray",
+                            "latitude": 40,
+                            "longitude": -102.42
+                        }
+                    ]
+                },
+                buttonIndex: 0
             }
 
             this.buildCol = this.buildCol.bind(this);
@@ -25,6 +55,7 @@ class Search extends Component {
             this.searchField = this.searchField.bind(this);
             this.submit = this.submit.bind(this);
             this.td = this.td.bind(this);
+            this.updateButtonIndex = this.updateButtonIndex.bind(this);
             this.updateSearch = this.updateSearch.bind(this);
         }
 
@@ -34,7 +65,7 @@ class Search extends Component {
                     <FormText color="muted" >
                         {text}
                     </FormText>
-                    <Input id ={id} value={value} type ={type} onChange={(event)=>this.updateSearch(field, event)} />
+                    <Input id ={id} value={value} type ={type} onChange={(event)=>this.updateSearch()} />
                 </Col>
             );
     }
@@ -72,12 +103,19 @@ class Search extends Component {
                 {td(place['latitude'])}
                 {td(place['longitude'])}
                 <td key={place['name'] + '_button'} align="center" >
-                    <Button>Add</Button>
+                    <Button id={this.state.buttonIndex} onLoad={(event) => this.updateButtonIndex()} >Add</Button>
                 </td>
             </tr>
         );
 
+        this.resetButtonIndex()
         return rows
+    }
+
+    resetButtonIndex() {
+        let buttonIndex = this.state.buttonIndex;
+        buttonIndex = 0;
+        this.setState({buttonIndex:buttonIndex});
     }
 
     searchButton() {
@@ -112,6 +150,12 @@ class Search extends Component {
         return (
             <td key={field + '_field'} > {field} </td>
         )
+    }
+
+    updateButtonIndex() {
+        let buttonIndex = this.state.buttonIndex;
+        buttonIndex += 1;
+        this.setState({buttonIndex:buttonIndex});
     }
 
     updateSearch(field, event) {
