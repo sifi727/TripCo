@@ -38,7 +38,7 @@ public class ShorterOptimization {
 
   }
 
-  public int twoOpt(int[] route, int[][] distance) {
+  public int twoOpt(int[] route, int[][] distance) { 
     boolean improvement = true;
     int n = route.length;
     int delta;
