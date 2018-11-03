@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Card, CardBody, CardTitle, FormText, Input, InputGroup, InputGroupText, Container, Row, Col} from 'reactstrap'
+import {Button, Card, CardBody, CardTitle, Col, Container, FormText, Input, Row, Table} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
 class Search extends Component {
@@ -17,11 +17,15 @@ class Search extends Component {
                 }
             }
 
-            this.searchField = this.searchField.bind(this);
-            this.updateSearch = this.updateSearch.bind(this);
-            this.searchButton = this.searchButton.bind(this);
-            this.submit = this.submit.bind(this);
             this.buildCol = this.buildCol.bind(this);
+            this.getTable = this.getTable.bind(this);
+            this.getTableHeader = this.getTableHeader.bind(this);
+            this.getTableRow = this.getTableRow.bind(this);
+            this.searchButton = this.searchButton.bind(this);
+            this.searchField = this.searchField.bind(this);
+            this.submit = this.submit.bind(this);
+            this.td = this.td.bind(this);
+            this.updateSearch = this.updateSearch.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -35,6 +39,53 @@ class Search extends Component {
             );
     }
 
+    getTable() {
+        const getTableHeader = this.getTableHeader();
+        const getTableRow = this.getTableRow();
+
+        if(this.state.search.places.length > 0)  {
+            return (
+                <Table striped={true} bordered={true}>
+                    {getTableHeader}
+                    <tbody>
+                    {getTableRow}
+                    </tbody>
+                </Table>
+            );
+        }
+    }
+
+    getTableHeader() {
+        return (
+            <thead>
+                <tr><th>Destination</th><th>Id</th><th>Latitude</th><th>Longitude</th><th>Add to Itinerary</th></tr>
+            </thead>
+        )
+    }
+
+    getTableRow() {
+        const td = this.td;
+        const rows = this.state.search.places.map((place) =>
+            <tr key={Math.random() + '_row'}>
+                {td(place['name'])}
+                {td(place['id'])}
+                {td(place['latitude'])}
+                {td(place['longitude'])}
+                <td key={place['name'] + '_button'} align="center" >
+                    <Button>Add</Button>
+                </td>
+            </tr>
+        );
+
+        return rows
+    }
+
+    searchButton() {
+        return (
+            <Button id="SearchButtonId"  onClick={(event) => this.submit()}>Search</Button>
+        );
+    }
+
     searchField() {
         const buildCol = this.buildCol;
 
@@ -43,21 +94,8 @@ class Search extends Component {
                 <Row>
                     {buildCol('Enter your search below', 'SearchField', this.state.search.match, 'text', 'match')}
                     {buildCol('Enter your search limit', 'SearchLimitField', this.state.search.limit, 'number', 'limit')}
-
                 </Row>
             </Container>
-        );
-    }
-
-    updateSearch(field, event) {
-            let search = this.state.search;
-            search[field] = event.target.value;
-            this.setState({search:search});
-    }
-
-    searchButton() {
-        return (
-            <Button id="SearchButtonId"  onClick={(event) => this.submit()}>Search</Button>
         );
     }
 
@@ -69,9 +107,24 @@ class Search extends Component {
         });
     }
 
+    td(field) {
+        return (
+            <td key={field + '_field'} > {field} </td>
+        )
+    }
+
+    updateSearch(field, event) {
+        let search = this.state.search;
+        search[field] = event.target.value;
+        this.setState({search:search});
+    }
+
+
+
     render() {
         const searchField = this.searchField();
         const searchButton = this.searchButton();
+        const getTable = this.getTable();
 
         return (
             <Card>
@@ -80,6 +133,8 @@ class Search extends Component {
                     {searchField}
                     <br />
                     {searchButton}
+                    <br />
+                    {getTable}
                 </CardBody>
             </Card>
         )
