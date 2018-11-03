@@ -241,7 +241,7 @@ public class Trip {
   private  ArrayList<Place> optimizePlaces(){
     ArrayList<Place> updatedPlaces=places;
     if(options.optimization!=null && !options.optimization.equalsIgnoreCase("none")){
-      ShortOptimization optimizedPlaces = new ShortOptimization(places);
+      ShortOptimization optimizedPlaces = new ShortOptimization(places,options.optimization);
       updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
     }
     return updatedPlaces;
