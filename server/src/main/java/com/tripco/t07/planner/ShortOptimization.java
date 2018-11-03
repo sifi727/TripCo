@@ -13,31 +13,34 @@ public class ShortOptimization {
     ArrayList<Place> nearestNeighborShortestPlaces(){
 
         int shortestTrip = Integer.MAX_VALUE;
-        ArrayList<Place> shortestTripPlaces = new ArrayList<>();
+        ArrayList<Place> shortestTripPlaces = new ArrayList<>(places.length);
         for(int i=0; i<places.length; i++){
-            ArrayList<Place> sortedPlaces = new ArrayList<>();
+            int visitedCount = 1;
+            ArrayList<Place> sortedPlaces = new ArrayList<>(places.length);
             boolean[] visitedPlaces = new boolean[places.length];
-            boolean finished = false;
             int totalTripDistance = 0;
             sortedPlaces.add(places[i]);
             visitedPlaces[i] = true;
             Place previousPlace = places[i];
-            while (!finished) {
+            while (visitedCount<places.length) {
                 int nextVisitedPlaceIndex = closestPlace(i, places, visitedPlaces);
                 Place nextVisitedPlace=places[nextVisitedPlaceIndex];
                 visitedPlaces[nextVisitedPlaceIndex] = true;
                 sortedPlaces.add(nextVisitedPlace);
                 totalTripDistance += legDistance(previousPlace, nextVisitedPlace);
                 previousPlace=nextVisitedPlace;
-                for (boolean visitedPlace : visitedPlaces) {
-                    if (!visitedPlace) {
-                        finished = false;
-                        break;
-                    }
+                visitedCount++;
 
-                    finished = true;
                 }
-            }
+//                for (boolean visitedPlace : visitedPlaces) {
+//                    if (!visitedPlace) {
+//                        finished = false;
+//                        break;
+//                    }
+//
+//                    finished = true;
+//                }
+//            }
             totalTripDistance+=legDistance(places[i],previousPlace); //add to make it round trip
             if(totalTripDistance<=shortestTrip){
                 shortestTrip=totalTripDistance;
