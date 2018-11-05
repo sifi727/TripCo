@@ -14,7 +14,8 @@ public class Config {
       .asList("miles", "kilometers", "nautical miles", "user defined");
   private List<OptimizationLevel> optimization = Arrays
       .asList(new OptimizationLevel("none", "The trip is not optimized."),
-          new OptimizationLevel("short", "Nearest neighbor."));
+          new OptimizationLevel("short", "Nearest neighbor."),
+              new OptimizationLevel("shorter", "2-opt."));
   private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
 
 
