@@ -36,16 +36,14 @@ public class SearchObject {
     }
 
     public void updatePlaces(ArrayList<Place> places, ResultSet query) throws SQLException {
-        System.out.println("called correctly");
+
         while(query.next()){
-            System.out.println("found ");
             Place foundPLace = new Place();
             foundPLace.name = query.getString("name");
             foundPLace.id = query.getString("id");
             foundPLace.latitude = Double.parseDouble(query.getString("latitude"));
             foundPLace.longitude = Double.parseDouble(query.getString("longitude"));
             places.add(foundPLace);
-            System.out.println(foundPLace);
         }
     }
 

@@ -16,7 +16,7 @@ public class Search {
 
     // db configuration information
     private static  String myDriver = "com.mysql.jdbc.Driver";
-    private static  String myUrl = "jdbc:mysql://127.0.0.1:31407/cs314"; //to access from ssh/port forwarded machine use port 31407
+    private static  String myUrl = "jdbc:mysql://127.0.0.1:31407/cs314"; //to access from ssh/port forwarded machine use port 31407, see GitHub guide
     private static final String user="cs314-db";
     private static final String pass="eiK5liet1uej";
     // fill in SQL queries to count the number of records and to retrieve the data
