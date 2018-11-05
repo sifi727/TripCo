@@ -26,14 +26,19 @@ import Options from '../src/components/Application/Options'
  */
 const startProps = {
   'config': { 'units': ['miles', 'kilometers'] },
-  'options': { 'unit': 'miles' }
+  'options': { 'unit': 'miles' },
+  'attributes' : ["name", "id", "latitude", "longitude"],
+  'attributesToShow': ["name", "id", "latitude", "longitude"]
+
 };
 
 /* Test example using a pre-defined function */
 function testExample() {
   const options = mount((
-      <Options config={startProps.config} options={startProps.options}/>
+      <Options config={startProps.config} options={startProps.options} attributes={startProps.attributes}
+  attributesToShow={startProps.attributesToShow}/>
     ));
+
 
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));
@@ -55,7 +60,7 @@ test('Check to see if table gets made correctly (Lambda)', () => {
    *  given the example input (3).
   */
   const options = mount((   // (1)
-      <Options config={startProps.config} options={startProps.options}/>
+      <Options config={startProps.config} options={startProps.options} attributes={startProps.attributes}  attributesToShow={startProps.attributesToShow}/>
     ));
 
   let actual = [];

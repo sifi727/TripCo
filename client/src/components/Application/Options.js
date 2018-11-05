@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {Card, CardBody, FormText} from 'reactstrap'
-import {ButtonGroup, Button, Form, FormGroup} from 'reactstrap'
-import ServerOptions from './ServerOptions';
+import {ButtonGroup, Button, Form, FormGroup, Col, Row} from 'reactstrap'
+import ServerOptions from './ServerOptions'
+import AttributeOptions from './AttributeOptions'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -112,16 +113,28 @@ class Options extends Component{
     return(
       <Card>
         <CardBody>
-          <p>Select the options you wish to use.</p>
-          <ButtonGroup>
-            {buttons}
-          </ButtonGroup>
-          {optimizationForm}
-          <FormGroup>
-               {form}
-              <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
-                             updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
-           </FormGroup>
+          <Row>
+            <Col>
+              <p>Select the options you wish to use.</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <ButtonGroup>
+                {buttons}
+              </ButtonGroup>
+
+                <FormGroup>
+                  {form}
+                  {optimizationForm}
+                  <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
+                   updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
+                  </FormGroup>
+            </Col>
+            <Col>
+              <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
+            </Col>
+          </Row>
         </CardBody>
       </Card>
     )

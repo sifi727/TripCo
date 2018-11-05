@@ -16,7 +16,7 @@ public class Search {
 
     // db configuration information
     private static  String myDriver = "com.mysql.jdbc.Driver";
-    private static  String myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
+    private static  String myUrl = "jdbc:mysql://127.0.0.1:31407/cs314"; //to access from ssh/port forwarded machine use port 31407
     private static final String user="cs314-db";
     private static final String pass="eiK5liet1uej";
     // fill in SQL queries to count the number of records and to retrieve the data
@@ -34,36 +34,20 @@ public class Search {
 
         try {
             searchObject = gson.fromJson(requestBody, SearchObject.class);
-
             String temp = searchObject.createSearch(searchObject.match);
             temp = searchObject.applyLimit(searchObject.limit, temp, searchObject);
             search = temp;
+
         } catch (Exception e) {
 
         }
 
     }
 
-    public Search(String request, int limit){
-
-        try {
-            searchObject = new SearchObject();
-            searchObject.match = request;
-            searchObject.limit = limit;
-            searchObject.type = "search";
-            searchObject.version = 4;
-            searchObject.places = new ArrayList<Place>();
-            String temp = searchObject.createSearch(searchObject.match);
-            temp = searchObject.applyLimit(searchObject.limit, temp, searchObject);
-            search = temp;
-        } catch (Exception e) {
-
-        }
-    }
 
     public  void contactDB(){
 
-        try { //Send a search to the database, then process the results
+        try {  //Send a search to the database, then process the results
             Class.forName(myDriver);
             try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
                  Statement stQuery = conn.createStatement();
