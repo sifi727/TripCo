@@ -20,7 +20,6 @@ public class Search {
     private static final String user="cs314-db";
     private static final String pass="eiK5liet1uej";
     // fill in SQL queries to count the number of records and to retrieve the data
-    private static String count = "select count(*) from airports;";
     private static String search = "";
     // Arguments contain the username and password for the database
 
