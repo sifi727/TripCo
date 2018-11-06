@@ -13,41 +13,12 @@ class Search extends Component {
                     "filters"   : [],
                     "limit"     : 0,
                     "found"     : 0,
-                    "places"    : [
-                        {
-                            "id": 61,
-                            "county": "Teller County",
-                            "name": "Cripple Creek",
-                            "latitude": 38.87,
-                            "longitude": -105.18
-                        },
-                        {
-                            "id": 62,
-                            "county": "Washington County",
-                            "name": "Akron",
-                            "latitude": 39.97,
-                            "longitude": -103.21
-                        },
-                        {
-                            "id": 63,
-                            "county": "Weld County",
-                            "name": "Greeley",
-                            "latitude": 40.56,
-                            "longitude": -104.38
-                        },
-                        {
-                            "id": 64,
-                            "county": "Yuma County",
-                            "name": "Wray",
-                            "latitude": 40,
-                            "longitude": -102.42
-                        }
-                    ]
-                },
-                buttonIndex: 0
+                    "places"    : []
+                }
             }
 
             this.buildCol = this.buildCol.bind(this);
+            this.deleteRowInTable = this.deleteRowInTable.bind(this);
             this.getTable = this.getTable.bind(this);
             this.getTableHeader = this.getTableHeader.bind(this);
             this.getTableRow = this.getTableRow.bind(this);
@@ -55,7 +26,6 @@ class Search extends Component {
             this.searchField = this.searchField.bind(this);
             this.submit = this.submit.bind(this);
             this.td = this.td.bind(this);
-            this.updateButtonIndex = this.updateButtonIndex.bind(this);
             this.updateSearch = this.updateSearch.bind(this);
         }
 
@@ -70,13 +40,27 @@ class Search extends Component {
             );
     }
 
+    deleteRowInTable(place) {
+        let places = this.state.search.places;
+        let index = places.indexOf(place);
+
+        /*
+         * The reference source to the line below: https://blog.mariusschulz.com/2016/07/16/removing-elements-from-javascript-arrays
+         */
+        if (index !== -1) {
+            places.splice(index, 1);
+        }
+
+        this.setState({places:places});
+    }
+
     getTable() {
         const getTableHeader = this.getTableHeader();
         const getTableRow = this.getTableRow();
 
         if(this.state.search.places.length > 0)  {
             return (
-                <Table striped={true} bordered={true}>
+                <Table striped={true} bordered={true} responsive={true}>
                     {getTableHeader}
                     <tbody>
                     {getTableRow}
@@ -103,19 +87,11 @@ class Search extends Component {
                 {td(place['latitude'])}
                 {td(place['longitude'])}
                 <td key={place['name'] + '_button'} align="center" >
-                    <Button id={this.state.buttonIndex} onLoad={(event) => this.updateButtonIndex()} >Add</Button>
+                    <Button id={place['name'] + '_add'} onClick={(event) => {this.props.addPlace(place), this.deleteRowInTable(place)}} >Add</Button>
                 </td>
             </tr>
         );
-
-        this.resetButtonIndex()
         return rows
-    }
-
-    resetButtonIndex() {
-        let buttonIndex = this.state.buttonIndex;
-        buttonIndex = 0;
-        this.setState({buttonIndex:buttonIndex});
     }
 
     searchButton() {
@@ -152,12 +128,6 @@ class Search extends Component {
         )
     }
 
-    updateButtonIndex() {
-        let buttonIndex = this.state.buttonIndex;
-        buttonIndex += 1;
-        this.setState({buttonIndex:buttonIndex});
-    }
-
     updateSearch(field, event) {
         let search = this.state.search;
         search[field] = event.target.value;
@@ -173,7 +143,7 @@ class Search extends Component {
 
         return (
             <Card>
-                <CardBody>
+                <CardBody style={{overflow:'scroll', maxHeight:'77%'}} >
                     <CardTitle>Seach and Add New Destinations</CardTitle>
                     {searchField}
                     <br />
