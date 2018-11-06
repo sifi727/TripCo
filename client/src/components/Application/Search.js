@@ -35,7 +35,7 @@ class Search extends Component {
                     <FormText color="muted" >
                         {text}
                     </FormText>
-                    <Input id ={id} value={value} type ={type} onChange={(event)=>this.updateSearch()} />
+                    <Input id ={id} value={value} type ={type} onChange={(event)=>this.updateSearch(field, event)} />
                 </Col>
             );
     }
