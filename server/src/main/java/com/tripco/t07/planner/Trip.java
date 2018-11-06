@@ -1,10 +1,5 @@
 package com.tripco.t07.planner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.tripco.t07.server.HTTP;
-
 import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.ArrayList;
@@ -28,17 +23,17 @@ public class Trip {
   public int version;
 
   // Constants
-  public static final String CO_BACKGROUND_FILE_PATH = "/CObackground.svg";
+  public static final String CO_BACKGROUND_FILE_PATH = "/World_map_with_nations.svg";
   // Map image size (in points)
-  public static final double CO_SVG_MAP_HEIGHT = 783.0824;
-  public static final double CO_SVG_MAP_WIDTH = 1066.6073;
+  public static final double CO_SVG_MAP_HEIGHT = 512;
+  public static final double CO_SVG_MAP_WIDTH = 1024;
 
   //Map borders lat and long
   //These values came from here https://commons.wikimedia.org/wiki/File:USA_Colorado_location_map.svg
-  public static final double CO_SVG_MAP_MAX_LATITUDE = 41.2;
-  public static final double CO_SVG_MAP_MAX_LONGITUDE = -101.8;
-  public static final double CO_SVG_MAP_MIN_LATITUDE = 36.8;
-  public static final double CO_SVG_MAP_MIN_LONGITUDE = -109.3;
+  public static final double CO_SVG_MAP_MAX_LATITUDE = 90;
+  public static final double CO_SVG_MAP_MAX_LONGITUDE = 180;
+  public static final double CO_SVG_MAP_MIN_LATITUDE = -90;
+  public static final double CO_SVG_MAP_MIN_LONGITUDE = -180;
 
   //SVG path style
   public static final String CO_SVG_MAP_PATH_LINE_STYLE = "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"";
@@ -64,7 +59,7 @@ public class Trip {
 
     this.places=optimizePlaces();
     this.distances = calculateLegDistances();
-    this.map = svg();
+    this.map = svg(CO_BACKGROUND_FILE_PATH);
 
   }
 
@@ -171,8 +166,8 @@ public class Trip {
     if (places == null || places.size() == 0) {
       return stringBuilder.toString();
     }
-    int indexOfFirstClosingGroupTag = map.indexOf("</g>");  //find the second to last group tag
-    stringBuilder.insert(indexOfFirstClosingGroupTag - 1,
+    int indexOfFirstClosingGroupTag = map.lastIndexOf("</svg>");  //find last svg tag tag
+    stringBuilder.insert(indexOfFirstClosingGroupTag,
         "\n" + path + "\n"); //insert the path before group tag
     return stringBuilder.toString();
 
@@ -181,18 +176,21 @@ public class Trip {
 
   /**
    * Returns an SVG containing the background and the legs of the trip.
+   * @param fileLocation
    */
-  private String svg() {
+  private String svg(String fileLocation) {
     String coBackGroundSvg = "";
     try {
 
-      coBackGroundSvg = addPathToSvgMap(getMapFromFile(CO_BACKGROUND_FILE_PATH), getSvgPath());
+
+      coBackGroundSvg = addPathToSvgMap(getMapFromFile(fileLocation), getSvgPath());
     } catch (Exception e) {
       return "";
     }
     return coBackGroundSvg;
 
   }
+
 
   /**
    * Returns the distances between consecutive places, including the return to the starting point to
