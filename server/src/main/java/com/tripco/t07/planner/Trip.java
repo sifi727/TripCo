@@ -23,20 +23,20 @@ public class Trip {
   public int version;
 
   // Constants
-  public static final String CO_BACKGROUND_FILE_PATH = "/World_map_with_nations.svg";
+  public static final String SVG_BACKGROUND_FILE_PATH = "/World_map_with_nations.svg";
   // Map image size (in points)
-  public static final double CO_SVG_MAP_HEIGHT = 512;
-  public static final double CO_SVG_MAP_WIDTH = 1024;
+  public static final double SVG_MAP_HEIGHT = 512;
+  public static final double SVG_MAP_WIDTH = 1024;
 
   //Map borders lat and long
   //These values came from here https://commons.wikimedia.org/wiki/File:USA_Colorado_location_map.svg
-  public static final double CO_SVG_MAP_MAX_LATITUDE = 90;
-  public static final double CO_SVG_MAP_MAX_LONGITUDE = 180;
-  public static final double CO_SVG_MAP_MIN_LATITUDE = -90;
-  public static final double CO_SVG_MAP_MIN_LONGITUDE = -180;
+  public static final double SVG_MAP_MAX_LATITUDE = 90;
+  public static final double SVG_MAP_MAX_LONGITUDE = 180;
+  public static final double SVG_MAP_MIN_LATITUDE = -90;
+  public static final double SVG_MAP_MIN_LONGITUDE = -180;
 
   //SVG path style
-  public static final String CO_SVG_MAP_PATH_LINE_STYLE = "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"";
+  public static final String SVG_MAP_PATH_LINE_STYLE = "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"";
 
 
   /**
@@ -59,7 +59,7 @@ public class Trip {
 
     this.places=optimizePlaces();
     this.distances = calculateLegDistances();
-    this.map = svg(CO_BACKGROUND_FILE_PATH);
+    this.map = svg(SVG_BACKGROUND_FILE_PATH);
 
   }
 
@@ -102,18 +102,49 @@ public class Trip {
     // source https://stackoverflow.com/questions/14329691/convert-latitude-longitude-point-to-a-pixels-x-y-on-mercator-projection
 
 // Determine the map scale (points per degree)
-    double xAxisScale = CO_SVG_MAP_WIDTH / (CO_SVG_MAP_MAX_LONGITUDE - CO_SVG_MAP_MIN_LONGITUDE);
-    double yAxisScale = CO_SVG_MAP_HEIGHT / (CO_SVG_MAP_MAX_LATITUDE - CO_SVG_MAP_MIN_LATITUDE);
+    double xAxisScale = SVG_MAP_WIDTH / (SVG_MAP_MAX_LONGITUDE - SVG_MAP_MIN_LONGITUDE);
+    double yAxisScale = SVG_MAP_HEIGHT / (SVG_MAP_MAX_LATITUDE - SVG_MAP_MIN_LATITUDE);
 
 // position of map image for point
-    double x = (place.longitude - CO_SVG_MAP_MIN_LONGITUDE) * xAxisScale;
-    double y = (CO_SVG_MAP_MAX_LATITUDE - place.latitude) * yAxisScale;
+    double x = (place.longitude - SVG_MAP_MIN_LONGITUDE) * xAxisScale;
+    double y = (SVG_MAP_MAX_LATITUDE - place.latitude) * yAxisScale;
 
     return new Point2D.Double(x, y);
 
   }
+  private String OffMapToRightPath(Point2D previousPoint, Point2D currentPoint){
+    double rightoffMap = currentPoint.getX()+ SVG_MAP_WIDTH;
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(
+        String.format(" L %f,%f",rightoffMap, currentPoint.getY()));
+    stringBuilder
+        .append(String.format(" M %f,%f",
+            -previousPoint.getX(), previousPoint.getY()));
+    stringBuilder.append(
+        String.format(" L %f,%f", currentPoint.getX(), currentPoint.getY()));
+    return stringBuilder.toString();
+  }
 
-  private boolean wrapAroundMap(Place p1, Place p2) {
+  private String OffMapToLeftPath(Point2D previousPoint, Point2D currentPoint)
+  {
+    StringBuilder stringBuilder = new StringBuilder();
+
+    double leftOfMapX= SVG_MAP_WIDTH -currentPoint.getX()-previousPoint.getX();
+    double rightOfMapX=previousPoint.getX()+ SVG_MAP_WIDTH;
+    stringBuilder.append(
+        String.format(" L %f,%f",leftOfMapX, currentPoint.getY()));
+
+    stringBuilder
+        .append(String.format(" M %f,%f",
+            rightOfMapX, previousPoint.getY()));
+    stringBuilder.append(
+        String.format(" L %f,%f", currentPoint.getX(), currentPoint.getY()));
+
+    return stringBuilder.toString();
+
+  }
+
+  private boolean needToWrapAroundMap(Place p1, Place p2) {
     return (Math.abs(p1.longitude-p2.longitude)>180); //need to take in account going left and right off map
   }
 
@@ -121,64 +152,40 @@ public class Trip {
    * Converts the trip.places to a SVG path string
    */
   private String placesToSvgPath() {
-    //List<Point2D> points = calculalateSvgPoints();
-    boolean createdMarker = false;
 
+    places.add(places.get(0)); // add the start to the end.
     StringBuilder stringBuilder = new StringBuilder("d= ");
 
-    for (int i=0; i<places.size()-1; i++) {
+    for (int i=0; i<places.size(); i++) {
       Place currentPlace = places.get(i);
       Point2D point = calculatePoint(currentPlace);
       if(i==0)
       {
-
         stringBuilder
             .append(String.format("\"M %f,%f",
                 point.getX(), point.getY()));
       }
-      else if(wrapAroundMap(places.get(i),places.get(i-1)))
+      else if(needToWrapAroundMap(places.get(i),places.get(i-1))) //places greater than 180 degrees apart
       {
         Place prevPlace = places.get(i-1);
         Point2D prevPoint = calculatePoint(prevPlace);
 
         if(prevPlace.longitude>currentPlace.longitude) //go right off map
         {
-          double preX = -prevPoint.getX();
-          double currentX = point.getX()+CO_SVG_MAP_WIDTH;
-          stringBuilder.append(
-              String.format(" L %f,%f",currentX, point.getY()));
-          stringBuilder
-              .append(String.format(" M %f,%f",
-                  -prevPoint.getX(), prevPoint.getY()));
-          stringBuilder.append(
-              String.format(" L %f,%f", point.getX(), point.getY()));
-
-
+          stringBuilder.append(OffMapToRightPath(prevPoint,point));
         }
         else { //go left off map
-
-
+          stringBuilder.append(OffMapToLeftPath(prevPoint,point));
         }
-
-
-
       }
-      else
+      else //closer than 180 degrees apart.
       {
         stringBuilder.append(
             String.format(" L %f,%f", point.getX(), point.getY()));
       }
-//      if (!createdMarker) {
-//        stringBuilder
-//            .append(String.format("\"M %f,%f", point.getX(), point.getY())); //start place for path
-//        createdMarker = true;
-//      } else {
-//        stringBuilder.append(
-//            String.format(" L %f,%f", point.getX(), point.getY())); // line from previous place
-//      }
-
     }
-    stringBuilder.append(" z\""); //closes path to end on start place
+    places.remove(places.size()-1); //duplicate city for the end point
+    stringBuilder.append(" \""); //closes path
     return stringBuilder.toString();
 
   }
@@ -193,7 +200,7 @@ public class Trip {
     }
     StringBuilder stringBuilder = new StringBuilder("<path\n"); //start of path tag
     stringBuilder.append(placesToSvgPath() + "\n");
-    stringBuilder.append(CO_SVG_MAP_PATH_LINE_STYLE + "\n");  //sets the way the line will look
+    stringBuilder.append(SVG_MAP_PATH_LINE_STYLE + "\n");  //sets the way the line will look
     stringBuilder.append(
         String.format("\tid=\"path-%s\"\n" + "\t\t\t/>\n", title)); //if no title set will be null
     return stringBuilder.toString();
