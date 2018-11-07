@@ -113,24 +113,69 @@ public class Trip {
 
   }
 
+  private boolean wrapAroundMap(Place p1, Place p2) {
+    return (Math.abs(p1.longitude-p2.longitude)>180); //need to take in account going left and right off map
+  }
+
   /**
    * Converts the trip.places to a SVG path string
    */
   private String placesToSvgPath() {
-    List<Point2D> points = calculalateSvgPoints();
+    //List<Point2D> points = calculalateSvgPoints();
     boolean createdMarker = false;
 
     StringBuilder stringBuilder = new StringBuilder("d= ");
 
-    for (Point2D point : points) {
-      if (!createdMarker) {
+    for (int i=0; i<places.size()-1; i++) {
+      Place currentPlace = places.get(i);
+      Point2D point = calculatePoint(currentPlace);
+      if(i==0)
+      {
+
         stringBuilder
-            .append(String.format("\"M %f,%f", point.getX(), point.getY())); //start place for path
-        createdMarker = true;
-      } else {
-        stringBuilder.append(
-            String.format(" L %f,%f", point.getX(), point.getY())); // line from previous place
+            .append(String.format("\"M %f,%f",
+                point.getX(), point.getY()));
       }
+      else if(wrapAroundMap(places.get(i),places.get(i-1)))
+      {
+        Place prevPlace = places.get(i-1);
+        Point2D prevPoint = calculatePoint(prevPlace);
+
+        if(prevPlace.longitude>currentPlace.longitude) //go right off map
+        {
+          double preX = -prevPoint.getX();
+          double currentX = point.getX()+CO_SVG_MAP_WIDTH;
+          stringBuilder.append(
+              String.format(" L %f,%f",currentX, point.getY()));
+          stringBuilder
+              .append(String.format(" M %f,%f",
+                  -prevPoint.getX(), prevPoint.getY()));
+          stringBuilder.append(
+              String.format(" L %f,%f", point.getX(), point.getY()));
+
+
+        }
+        else { //go left off map
+
+
+        }
+
+
+
+      }
+      else
+      {
+        stringBuilder.append(
+            String.format(" L %f,%f", point.getX(), point.getY()));
+      }
+//      if (!createdMarker) {
+//        stringBuilder
+//            .append(String.format("\"M %f,%f", point.getX(), point.getY())); //start place for path
+//        createdMarker = true;
+//      } else {
+//        stringBuilder.append(
+//            String.format(" L %f,%f", point.getX(), point.getY())); // line from previous place
+//      }
 
     }
     stringBuilder.append(" z\""); //closes path to end on start place
