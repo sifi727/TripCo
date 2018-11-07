@@ -20,6 +20,7 @@ class Application extends Component {
       config: null,
       port: location.port,
       hostname: location.hostname,
+      attributesToShow: [],
       trip: {
         version: 4,
         type: "trip",
@@ -44,6 +45,7 @@ class Application extends Component {
     this.resetTrip = this.resetTrip.bind(this);
     this.reverseTrip = this.reverseTrip.bind(this);
     this.removePlace = this.removePlace.bind(this);
+    this.updateAttributesToShow = this.updateAttributesToShow.bind(this);
   }
 
 
@@ -52,12 +54,18 @@ class Application extends Component {
         config => {
 
           if(config.optimization){
-            this.updateOptions("optimization","none");
+            const minAttributes = ["name", "id", "latitude", "longitude"];
+            config["attributes"] = minAttributes;
+          }
+          if(config.attributes){
+            this.updateOptions()
           }
 
           this.setState({
             config: config
-          })
+          });
+
+          this.setState({attributesToShow:config.attributes.slice(0)});
         }
     );
   }
@@ -169,6 +177,7 @@ class Application extends Component {
     let place = object;
     let trip = this.state.trip;
     trip.places.push(place);
+    this.setState({'tripHasChanged':true});
     this.setState({"trip":trip})
   }
 
@@ -191,11 +200,26 @@ class Application extends Component {
   reverseTrip(){
     let trip = this.state.trip;
     trip.places.reverse();
-    request(trip, 'plan', this.props.port, this.props.hostname).then(
-        response => {
-           this.updateTffiObject(response);
-        });
+    trip.distances.reverse();
+    this.setState({"trip":trip});
+    this.setState({'tripHasChanged':true});
+
   }
+  updateAttributesToShow(attributeValue)
+  {
+    let attributesToShow  = this.state.attributesToShow;
+
+
+    if(this.state.attributesToShow.includes(attributeValue)) {
+      attributesToShow= attributesToShow.filter((value, index, arg) => {return(value != attributeValue);});
+    }
+    else {
+      attributesToShow.push(attributeValue);
+    }
+    this.setState({attributesToShow:attributesToShow});
+
+  }
+
 
   render() {
     if (!this.state.config) {
@@ -207,15 +231,19 @@ class Application extends Component {
           <Info/>
           <Map trip={this.state.trip}/>
           <AddPlace addPlace={this.addPlace}/>
-          <Itinerary trip={this.state.trip} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}
+          <Itinerary trip={this.state.trip} attributes={this.state.attributesToShow} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}
           removePlace={this.removePlace}/>
           <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
-                   updatePort={this.updatePort} updateHostname={this.updateHostname} />
+                   updatePort={this.updatePort} updateHostname={this.updateHostname}
+                   attributes={this.state.config.attributes}
+                   attributesToShow={this.state.attributesToShow}
+                   updateAttributesToShow={this.updateAttributesToShow}
+                   />
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
-          <Search port={this.state.port} hostname={this.state.hostname} />
+          <Search port={this.state.port} hostname={this.state.hostname} addPlace={this.addPlace} />
         </Container>
     )
   }

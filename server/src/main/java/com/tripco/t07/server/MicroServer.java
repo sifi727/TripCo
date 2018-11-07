@@ -47,6 +47,8 @@ public class MicroServer {
     // client is sending data, so a HTTP POST is used instead of a GET
     post("/plan", this::plan);
     post("/distance",this::distance);
+    post("/search",this::search);
+
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
   }
@@ -151,5 +153,21 @@ public class MicroServer {
     String distance = calculate.getDistance();
     return distance;
 
+  }
+
+  /** A REST API to implement database search.
+   *
+   * @param request
+   * @param response
+   * @return
+   */
+  private String search(Request request, Response response) {
+
+    response.type("application/json");
+    response.header("Access-Control-Allow-Origin", "*");
+    Search search = new Search(request);
+    search.contactDB();
+
+    return search.getSearch();
   }
 }

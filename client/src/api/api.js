@@ -16,3 +16,12 @@ export async function get_config(type, port=get_port()) {
     method:"GET"
   }).then(response => {return response.json()}).catch(err => {console.error(err)});
 }
+
+export function userFriendlyAttribute(attribute)
+{
+  let words = attribute.split("-").map((word)=> {
+    return word.charAt(0).toUpperCase()+word.slice(1);
+
+});
+  return(words.join(' '));
+}
