@@ -142,7 +142,7 @@ public class TestTrip {
 
   }
 
-  @Ignore
+
   @Test
   public void testDistancesWithPlaces() {
     trip.places = new ArrayList<>();
@@ -210,7 +210,7 @@ public class TestTrip {
     trip.plan();
     BufferedReader reader;
     reader = new BufferedReader(
-        new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
+        new InputStreamReader(getClass().getResourceAsStream("/World_map_with_nations.svg")));
 
     StringBuilder stringBuilder = new StringBuilder();
     String line = "";
@@ -232,7 +232,7 @@ public class TestTrip {
     trip = gson.fromJson(placesJson, Trip.class);
     String svgPathActual = trip.getSvgPath();
     assertEquals("<path\n"
-        + "d= \"M 36.406863,747.665719 L 1032.333652,748.733558 L 1032.333652,35.594655 L 36.406863,35.594655 z\"\n"
+        + "d= \"M 201.830400,150.758400 L 221.750044,150.775467 L 221.750044,139.377778 L 201.830400,139.377778 L 201.830400,150.758400 \"\n"
         + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
         + "\tid=\"path-Four Corners of CO State\"\n"
         + "\t\t\t/>\n", svgPathActual);
@@ -248,7 +248,7 @@ public class TestTrip {
     trip = gson.fromJson(placesJson, Trip.class);
     String svgPathActual = trip.getSvgPath();
     assertEquals("<path\n"
-        + "d= \"M 36.406863,747.665719 L 1032.333652,748.733558 L 1030.911509,213.034007 L 36.406863,35.594655 z\"\n"
+        + "d= \"M 201.830400,150.758400 L 221.750044,150.775467 L 221.721600,142.213689 L 201.830400,139.377778 L 201.830400,150.758400 \"\n"
         + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
         + "\tid=\"path-Shopping loop\"\n"
         + "\t\t\t/>\n", svgPathActual);
@@ -266,7 +266,7 @@ public class TestTrip {
     trip = gson.fromJson(placesJson, Trip.class);
     BufferedReader reader;
     reader = new BufferedReader(
-        new InputStreamReader(getClass().getResourceAsStream("/CObackground.svg")));
+        new InputStreamReader(getClass().getResourceAsStream("/World_map_with_nations.svg")));
 
     StringBuilder stringBuilder = new StringBuilder();
     String line = "";
@@ -277,12 +277,60 @@ public class TestTrip {
     } catch (Exception e) {
       fail();
     }
-    int indexOfClosingSvgTag = stringBuilder.indexOf("</g>");
-    stringBuilder.insert(indexOfClosingSvgTag - 1, "\n" + "<path\n"
-        + "d= \"M 612.900997,259.983357 L 573.045438,210.900108 L 599.515929,109.884258 z\"\n"
+    int indexOfClosingSvgTag = stringBuilder.indexOf("</svg>");
+    stringBuilder.insert(indexOfClosingSvgTag, "\n<path\n"
+            + "d= \"M 213.360924,142.964053 L 212.563769,142.179584 L 213.093208,140.565106 L 213.360924,142.964053 \"\n"
+            + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
+            + "\tid=\"path-\"\n"
+            + "\t\t\t/>\n"
+            + "\n");
+    trip.plan();
+
+    assertEquals(stringBuilder.toString(), trip.map);
+
+
+  }
+
+  @Test
+  public void TestShorterPathGoingOppoositeDirection() {
+    trip.places = new ArrayList<>();
+    String placesJson = "{\n"
+        + " \"type\" : \"trip\",\n"
+        + " \"version\" : 3,\n"
+        + " \"title\" : \"Test Trip\",\n"
+        + " \"options\" : {\n"
+        + "    \"units\":\"miles\"\n"
+        + "    },\n"
+        + " \"places\" : [\n"
+        + "    {\"id\":\"ch\", \"name\":\"China\", \"latitude\":30.29365, \"longitude\":120.16142}, \n"
+        + "    {\"id\":\"bldr\", \"name\":\"Boulder\", \"latitude\":40.01499, \"longitude\":-105.27055}, \n"
+        + "    {\"id\":\"mx\", \"name\":\"Mexico\", \"latitude\":31.73333, \"longitude\":-106.48333}\n"
+        + "\n"
+        + "    ]\n"
+        + "}";
+
+    Gson gson = new Gson();
+    trip = gson.fromJson(placesJson, Trip.class);
+    BufferedReader reader;
+    reader = new BufferedReader(
+        new InputStreamReader(getClass().getResourceAsStream("/World_map_with_nations.svg")));
+
+    StringBuilder stringBuilder = new StringBuilder();
+    String line = "";
+    try {
+      while ((line = reader.readLine()) != null) {
+        stringBuilder.append(line + "\n");
+      }
+    } catch (Exception e) {
+      fail();
+    }
+    int indexOfClosingSvgTag = stringBuilder.indexOf("</svg>");
+    stringBuilder.insert(indexOfClosingSvgTag, "\n<path\n"
+        + "d= \"M 853.792484,169.831396 L 1236.563769,142.179584 M -853.792484,169.831396 L 212.563769,142.179584 L 209.114084,165.736306 L -38.906567,169.831396 M 1233.114084,165.736306 L 853.792484,169.831396 \"\n"
         + "style=\"fill:none; fill-rule:evenodd;stroke:green;stroke-width:3.62829995;stroke-linejoin:round;stroke-miterlimit:3.8636899\"\n"
-        + "\tid=\"path-\"\n"
-        + "\t\t\t/>\n\n");
+        + "\tid=\"path-Test Trip\"\n"
+        + "\t\t\t/>\n"
+        + "\n");
     trip.plan();
 
     assertEquals(stringBuilder.toString(), trip.map);

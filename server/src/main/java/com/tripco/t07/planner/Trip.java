@@ -80,18 +80,6 @@ public class Trip {
     return stringBuilder.toString();
   }
 
-  /**
-   * Calculates the x,y pixel coordinates for all the trip.places on the CObackground.svg This
-   * method uses the trip.places longitude and latitude
-   */
-  private List<Point2D> calculalateSvgPoints() {
-    List<Point2D> points = new ArrayList<Point2D>();
-    for (Place place : places) {
-      points.add(calculatePoint(place));
-    }
-    return points;
-
-  }
 
   /**
    * Calculates the x,y pixel coordinates to be placed on the CObackground.svg. This method uses the
