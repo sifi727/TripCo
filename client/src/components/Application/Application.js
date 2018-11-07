@@ -177,6 +177,7 @@ class Application extends Component {
     let place = object;
     let trip = this.state.trip;
     trip.places.push(place);
+    this.setState({'tripHasChanged':true});
     this.setState({"trip":trip})
   }
 
@@ -242,7 +243,7 @@ class Application extends Component {
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
-          <Search port={this.state.port} hostname={this.state.hostname} />
+          <Search port={this.state.port} hostname={this.state.hostname} addPlace={this.addPlace} />
         </Container>
     )
   }
