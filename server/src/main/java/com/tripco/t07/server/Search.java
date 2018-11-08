@@ -40,7 +40,6 @@ public class Search {
             temp = searchObject.applyLimit(searchObject.limit, temp, searchObject);
             search = temp;
 
-
         } catch (Exception e) {
 
         }

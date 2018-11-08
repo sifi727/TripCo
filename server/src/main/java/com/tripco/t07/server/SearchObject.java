@@ -17,7 +17,6 @@ public class SearchObject {
 
 
 
-
     public String createSearch(String match){
 
 
@@ -29,11 +28,9 @@ public class SearchObject {
             + "INNER JOIN world_airports ON region.id = world_airports.iso_region\n"
             + "Where ";
 
-//        String search = "SELECT world_airports.name, world_airports.municipality, region.name, country.name,\n"
-//            + "continents.name ";
 
-        String matcher = "world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
-                 match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
+        String matcher = "(world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
+                 match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name)";
         search += matcher;
 
         return search;
