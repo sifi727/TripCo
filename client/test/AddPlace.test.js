@@ -5,14 +5,14 @@ import AddPlace from '../src/components/Application/AddPlace'
 
 function testAddButton(){
   var prop = null;
-  const expectedProps =   {"id":"testId", "name":"The test place", "latitude":39.7392, "longitude":-104.9903, "municiplality":"test", "region":"testRegion", "country":"England", "continent":"Europe"};
+  const expectedProps =   {"id":"testId", "name":"The test place", "latitude":39.7392, "longitude":-104.9903, "municipality":"test", "region":"testRegion", "country":"England", "continent":"Europe"};
   const addPlace = shallow((<AddPlace AddPlace addPlace={(object)=>{prop=object}}/>));
   expect(addPlace.exists('#AddPlaceButtonAddId')).toEqual(true);
   addPlace.setState({"longitude":-104.9903});
   addPlace.setState({"latitude":39.7392});
   addPlace.setState({"id":"testId"});
   addPlace.setState({"name":"The test place"});
-  addPlace.setState({"municiplality":"test"});
+  addPlace.setState({"municipality":"test"});
   addPlace.setState({"region":"testRegion"});
   addPlace.setState({"country":"England"});
   addPlace.setState({"continent":"Europe"});
@@ -94,7 +94,7 @@ function testMuniciplaityInput(){
     target: {
       value: "The name of the municipality is test place"
     }});
-  expect(addPlace.state().municipality).toEqual("The municipality of the place is test place");
+  expect(addPlace.state().municipality).toEqual("The name of the municipality is test place");
 }
 
 function testNameInput(){
