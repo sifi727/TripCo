@@ -5,7 +5,7 @@ import com.tripco.t07.planner.Place;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-import org.xml.sax.SAXException;
+
 
 public class SearchObject {
     String type;
@@ -14,6 +14,8 @@ public class SearchObject {
     Integer limit;
     ArrayList<Place> places;
     Integer found;
+    ArrayList<String> filters;
+
 
 
 
@@ -29,8 +31,8 @@ public class SearchObject {
             + "Where ";
 
 
-        String matcher = "(world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
-                 match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name)";
+        String matcher = "world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
+                 match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
         search += matcher;
 
         return search;
@@ -44,8 +46,6 @@ public class SearchObject {
         }
 
         match += " limit " + Integer.toString(limit) + ";";
-
-        System.out.println("search string: "+match);
         return match;
     }
 
@@ -62,7 +62,7 @@ public class SearchObject {
         String matcher = "world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
             match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
         countQuery += matcher;
-        System.out.println("count string: "+countQuery);
+
         return countQuery;
     }
 

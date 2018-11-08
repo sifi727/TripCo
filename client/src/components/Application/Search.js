@@ -11,7 +11,7 @@ class Search extends Component {
                     "type"      : "search",
                     "match"     : "",
                     "filters"   : [],
-                    "limit"     : 50,
+                    "limit"     : 25,
                     "found"     : 0,
                     "places"    : []
                 }
@@ -108,7 +108,7 @@ class Search extends Component {
             <Container>
                 <Row>
                     {buildCol('Enter your search below', 'SearchField', this.state.search.match, 'text', 'match')}
-                    {buildCol('Found', 'FoundSearchId', this.state.search.found, 'text', "found")}
+      {buildCol('Found', 'FoundSearchId', this.state.search.found, 'text', 'match')}
                 </Row>
             </Container>
         );
@@ -143,7 +143,7 @@ class Search extends Component {
 
         return (
             <Card>
-                <CardBody style={{overflow:'scroll', maxHeight:'150px'>
+                <CardBody style={{overflow:'scroll', maxHeight:'77%'}} >
                     <CardTitle>Seach and Add New Destinations</CardTitle>
                     {searchField}
                     <br />
