@@ -106,11 +106,11 @@ class AddPlace extends Component {
             <br/>
             {this.textInputGroup("AddPlaceInputMunicipalityId","municipality","Municipality:")}
             <br/>
-            {this.textInputGroup("AddPlaceInputPlaceRegionId","region","Region:")}
+            {this.textInputGroup("AddPlaceInputRegionId","region","Region:")}
             <br/>
             {this.textInputGroup("AddPlaceInputCountryId","country","Country:")}
             <br/>
-            {this.textInputGroup("AddPlaceInputPlaceContinentId","continent","Continent:")}
+            {this.textInputGroup("AddPlaceInputContinentId","continent","Continent:")}
             <br/>
             <InputGroup>
               <Button id="AddPlaceButtonAddId" onClick={()=>this.addValuesToItinerary()}> Add</Button>
