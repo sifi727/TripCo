@@ -15,7 +15,7 @@ function testTextFieldExist() {
 
 function testNumberFieldExist() {
     const wrapper = shallow((<Search port={startProps.port} hostname={startProps.hostname}/>));
-    expect(wrapper.exists('#SearchLimitField')).toEqual(true);
+    expect(wrapper.exists('#FoundSearchId')).toEqual(true);
 }
 
 function testSearchButtonExist() {
@@ -34,19 +34,26 @@ function testTextFieldOnChange() {
     expect(wrapper.state().search.match).toEqual("Den");
 }
 
-function testNumberFieldOnChange() {
+function testFoundFieldUpdatedWithNewSearch() {
     const wrapper = shallow(( <Search port={startProps.port} hostname={startProps.hostname}  />));
-    expect(wrapper.state().search.limit).toEqual(0);
-    wrapper.find('#SearchLimitField').simulate('change', {
-        target: {
-            value:7
+  let updateSearch ={
+    "version"   : 4,
+        "type"      : "search",
+        "match"     : "",
+        "filters"   : [],
+        "limit"     : 25,
+        "found"     : 12,
+        "places"    : []
+  };
+    wrapper.setState({"search":updateSearch});
+    let foundVal= wrapper.find('#FoundSearchId').prop('value');
+    expect(12).toEqual(foundVal);
         }
-    });
-    expect(wrapper.state().search.limit).toEqual(7);
-}
+
+
 
 test('Checks to see that the search text field renders',testTextFieldExist());
 test('Checks to see that the search number field renders',testNumberFieldExist());
 test('Checks to see that the search button renders',testSearchButtonExist());
 test('Checks to see that the search text field changes the \"match\" field in the search state',testTextFieldOnChange());
-test('Checks to see that the search number field changes the \"limit\" field in the search state',testNumberFieldOnChange());
+testFoundFieldUpdatedWithNewSearch
