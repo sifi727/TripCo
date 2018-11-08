@@ -33,6 +33,7 @@ public class Search {
 
         try {
             searchObject = gson.fromJson(requestBody, SearchObject.class);
+            searchObject.places = new ArrayList<Place>();
             String temp = searchObject.createSearch(searchObject.match);
             temp = searchObject.applyLimit(searchObject.limit, temp, searchObject);
             search = temp;
