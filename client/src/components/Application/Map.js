@@ -13,7 +13,7 @@ class Map extends Component{
             <Card>
               <CardBody>
                 <h3>{this.props.trip.title}</h3>
-                <Media object src={'data:image/svg+xml;utf8,' + this.props.trip.map} alt={"Upload your trip to view it here"}/>
+                <Media object src={'data:image/svg+xml;base64,' + btoa(this.props.trip.map)} alt={"Upload your trip to view it here"}/>
               </CardBody>
             </Card>
         )
