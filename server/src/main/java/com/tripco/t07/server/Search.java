@@ -21,7 +21,8 @@ public class Search {
     private static final String pass="eiK5liet1uej";
     // fill in SQL queries to count the number of records and to retrieve the data
     private static String search = "";
-    // Arguments contain the username and password for the database
+    // Arguments contain the username and password for the
+    private static String countQuery ="";
 
     private SearchObject searchObject;
 
@@ -33,6 +34,8 @@ public class Search {
 
         try {
             searchObject = gson.fromJson(requestBody, SearchObject.class);
+            searchObject.places = new ArrayList<Place>();
+            countQuery = searchObject.createCount(searchObject.match);
             String temp = searchObject.createSearch(searchObject.match);
             temp = searchObject.applyLimit(searchObject.limit, temp, searchObject);
             search = temp;
@@ -50,13 +53,34 @@ public class Search {
             Class.forName(myDriver);
             try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
                  Statement stQuery = conn.createStatement();
-                 ResultSet rsQuery = stQuery.executeQuery(search)
+                 ResultSet rsQuery = stQuery.executeQuery(search);
+
+
             ) {
-                searchObject.updatePlaces(searchObject.places, rsQuery);
+                SearchObject.updatePlaces(searchObject.places, rsQuery);
+
             }
         } catch (Exception e) {
             System.err.println("Exception: " + e.getMessage());
         }
+
+        try {  //Send a search to the database, then process the results
+            Class.forName(myDriver);
+            try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
+                Statement stQuery = conn.createStatement();
+                ResultSet countResults = stQuery.executeQuery(countQuery);
+
+
+            ) {
+                SearchObject.updateFound(searchObject,countResults);
+
+            }
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+        }
+
+
+
     }
 
 
