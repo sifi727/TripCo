@@ -1,6 +1,7 @@
 package com.tripco.t07.planner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ShortOptimization {
     private Place [] places;
@@ -19,56 +20,63 @@ public class ShortOptimization {
 
         createDistanceMatrix();
         int shortestTrip = Integer.MAX_VALUE;
-        ArrayList<Place> shortestTripPlaces = new ArrayList<>(places.length);
+        int [] shortestRoute = new int[places.length+1];
         for(int i=0; i<places.length; i++){
-            int [] route = new int[places.length+1];
+            int [] route = new int[places.length+1]; //+1 to include round trip
             int routeIndex=0;
-            int visitedCount = 1;
-            ArrayList<Place> sortedPlaces = new ArrayList<>(places.length);
             boolean[] visitedPlaces = new boolean[places.length];
-            int totalTripDistance = 0;
-            sortedPlaces.add(places[i]);
-            route[0] = i;
+           // int totalTripDistance = 0;
+            route[0] = i; //starting place
             route[places.length]=i; //to make it a round trip route
             visitedPlaces[i] = true;
             int previousPlaceIndex = i;
-            while (visitedCount<places.length) {
-                int nextVisitedPlaceIndex = closestPlace(i, places, visitedPlaces);
-                Place nextVisitedPlace=places[nextVisitedPlaceIndex];
+            while (true) {
+                int nextVisitedPlaceIndex = closestPlace(previousPlaceIndex, places, visitedPlaces);
+                if(nextVisitedPlaceIndex==previousPlaceIndex){ //out of places to visit
+                    route[routeIndex] = previousPlaceIndex;
+                    break;
+                }
                 visitedPlaces[nextVisitedPlaceIndex] = true;
-                sortedPlaces.add(nextVisitedPlace);
-                totalTripDistance += distances[previousPlaceIndex][ nextVisitedPlaceIndex];
-                previousPlaceIndex = nextVisitedPlaceIndex;
-                visitedCount++;
+                //totalTripDistance += distances[previousPlaceIndex][ nextVisitedPlaceIndex];
                 route[routeIndex] = previousPlaceIndex;
+                previousPlaceIndex = nextVisitedPlaceIndex;
                 routeIndex++;
                 }
 
-            totalTripDistance+=distances[i][previousPlaceIndex]; //add to make it round trip
+            int routeDistance=sumRoute(route);
             if(optimizationLevel.equalsIgnoreCase("shorter")){
-
-               if(twoOpt(route, distances)<totalTripDistance){
-                   sortedPlaces = new ArrayList<>(places.length);
-                   for (int j = 0; j < route.length-1; j++) {
-                       sortedPlaces.add(places[route[j]]);
-                   }
+               int twoOptDistance= twoOpt(route, distances);
+               if(twoOptDistance<routeDistance){
+                   routeDistance=twoOptDistance;
                }
             }
-            if(totalTripDistance<=shortestTrip){
-                shortestTrip=totalTripDistance;
-                shortestTripPlaces=sortedPlaces;
+
+            routeDistance+=distances[previousPlaceIndex][i]; //add to make it round trip
+            if(routeDistance<shortestTrip){
+                shortestTrip=routeDistance;
+                shortestRoute= Arrays.copyOf(route, route.length);
             }
         }
 
-
+        ArrayList<Place> shortestTripPlaces = new ArrayList<>(places.length);
+        for (int j = 0; j < shortestRoute.length-1; j++) {
+            shortestTripPlaces.add(places[shortestRoute[j]]);
+        }
         return shortestTripPlaces;
     }
 
+    public int sumRoute(int [] route){
+        int distance =0;
+        for (int i = 0; i <route.length-1 ; i++) {
+            distance+=distances[route[i]][route[i+1]];
+        }
+        return distance;
+    }
 
     public int closestPlace(int originIndex, Place[] places, boolean[] visitedPlaces) {
 
         int shortestDistance = Integer.MAX_VALUE;
-        int closestPlaceIndex = 0;
+        int closestPlaceIndex = originIndex;
         for (int placeIndex = 0; placeIndex < places.length; placeIndex++) {
             if (placeIndex!=originIndex && !visitedPlaces[placeIndex]) {
                 int distance = distances[originIndex][placeIndex];
