@@ -119,7 +119,7 @@ Epics planned for this sprint.
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* **#262 User: I want to plan trips worldwide.** - *
+* **#262 User: I want to plan trips worldwide.** - *We were able to update the svg to a worldwide map and added the ability to connect to new databases; however, we did not have enough time to implement the ability to choose which fields that would be displayed in the search results.*
 
 #### What Went Well
 
