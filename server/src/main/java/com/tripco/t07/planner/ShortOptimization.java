@@ -38,23 +38,26 @@ public class ShortOptimization {
                 visitedPlaces[nextVisitedPlaceIndex] = true;
                 sortedPlaces.add(nextVisitedPlace);
                 totalTripDistance += distances[previousPlaceIndex][ nextVisitedPlaceIndex];
-                previousPlaceIndex = nextVisitedPlaceIndex;
                 visitedCount++;
                 route[routeIndex] = previousPlaceIndex;
                 routeIndex++;
+                previousPlaceIndex = nextVisitedPlaceIndex;
+
                 }
 
-            totalTripDistance+=distances[i][previousPlaceIndex]; //add to make it round trip
+            totalTripDistance+=distances[previousPlaceIndex][i]; //add to make it round trip
             if(optimizationLevel.equalsIgnoreCase("shorter")){
-
-               if(twoOpt(route, distances)<totalTripDistance){
+               int twoOptDistance= twoOpt(route, distances);
+               if(twoOptDistance<totalTripDistance){
                    sortedPlaces = new ArrayList<>(places.length);
                    for (int j = 0; j < route.length-1; j++) {
                        sortedPlaces.add(places[route[j]]);
                    }
+                   totalTripDistance=twoOptDistance;
                }
             }
-            if(totalTripDistance<=shortestTrip){
+
+            if(totalTripDistance<shortestTrip){
                 shortestTrip=totalTripDistance;
                 shortestTripPlaces=sortedPlaces;
             }
