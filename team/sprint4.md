@@ -119,7 +119,6 @@ Epics planned for this sprint.
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
 * **#262 User: I want to plan trips worldwide.** - *
 
 #### What Went Well
