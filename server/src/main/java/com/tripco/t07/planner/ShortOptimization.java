@@ -24,7 +24,7 @@ public class ShortOptimization {
         for(int i=0; i<places.length; i++){
             int [] route = new int[places.length+1]; //+1 to include round trip
             int routeIndex=0;
-            int visitedCount = 1;
+            int visitedCount = 0;
             boolean[] visitedPlaces = new boolean[places.length];
             int totalTripDistance = 0;
             route[0] = i;
