@@ -82,7 +82,7 @@ Epics planned for this sprint.
 | Tasks |  19   | *total* | 
 | Story Points |  37  | *total* | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+*In comparison to the previous sprint, we did not plan as many story points as we were anticipating to having tasks that were more time consuming than the tasks in sprint 3.   Researching and Implementing the database as well as adding shorter trip with the 2-opt, for example, we expected that these tasks would take the most time to implement.*
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
