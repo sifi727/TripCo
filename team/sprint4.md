@@ -111,15 +111,16 @@ Epics planned for this sprint.
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
-* 
+* **#189 User: I want to make and save changes to the trip.** - *There were several tasks that were needed to complete this epic.  Implantation of the search query, creating a new ‘Search.java’ and ‘Search.js’ classes, and populating the search results and adding them to the itinerary were some of the tasks.*
+* **#271 User: I want to choose what information is displayed in the itinerary and map.** -
+* **#275 User: I'd like even shorter trips.** -
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
 * *## epic title: explanation*
-*
+* **#262 User: I want to plan trips worldwide.** - *
 
 #### What Went Well
 
