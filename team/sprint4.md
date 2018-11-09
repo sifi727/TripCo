@@ -113,7 +113,7 @@ Epics planned for this sprint.
 
 * **#189 User: I want to make and save changes to the trip.** - *There were several tasks that were needed to complete this epic.  Implantation of the search query, creating a new ‘Search.java’ and ‘Search.js’ classes, and populating the search results and adding them to the itinerary were some of the tasks.*
 * **#271 User: I want to choose what information is displayed in the itinerary** - *we have added filter fields to the search that allows the user to pick what to display*
-* **#275 User: I'd like even shorter trips.** - *Here we added the "shorter" button, improved our nearest neighbour algorithm, and implemented 2-opt*
+* **#275 User: I'd like even shorter trips.** - *Here we added the "shorter" button, improved our nearest neighbour algorithm, and implemented 2-opt. The algorithm could be optimized to produce even more improved trip in the future*
 
 #### Incomplete Epics in Sprint Backlog 
 
