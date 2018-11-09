@@ -123,7 +123,7 @@ Epics planned for this sprint.
 
 #### What Went Well
 
-The ways we split up the components allowed for separation of concerns when we developed.
+The ways we split up the components allowed for separation of concerns when we developed. Comminication between teammates in person and over Slak continues to improve, we are able to effectively assist each other during planning and development.
 
 * The search component was able to be developed and tested without affecting the other developers.
 * Attributes was able to be added to itinerary with any problems.
@@ -138,7 +138,9 @@ The technical problem faced by the team was the Java update causing problems and
 
 ## Retrospective
 
-Understanding what was expected in the team’s performance at the beginning of the Sprint helped for members to complete tasks that they felt comfortable with and helped them to learn more. The team faced hindrances in communication due to absences and a failure to update each other when someone missed. This affected the ability of the team to coordinate when faced with problems. We will need to plan for this in the next sprint.
+Understanding what was expected in the team’s performance at the beginning of the Sprint helped for members to complete tasks that they felt comfortable with and helped them to learn more. Early planning stages were critical in understanding of tasks and layout of future development. The team member were effective in visualizing the goals and solution process of each epic.
+
+The team faced hindrances in communication due to absences and a failure to update each other when someone missed. This affected the ability of the team to coordinate when faced with problems. We will need to plan for this in the next sprint.
 
 #### What we changed this sprint
 
@@ -156,6 +158,7 @@ In this sprint unexpected absences had a negative impact on the team’s perform
 Planning for absences and having more team members present during team meetings would help with overall communication and progress. When absences are unavoidable, for whatever reason, then updating the team members with meeting notes on Slack and/or teleconferencing them in would help mitigate the impact of teammates absence.
 In this sprint we had the goal of deploying to black-bottle more often then before. While we did deploy our code, it was not as often as we like.
 
+The team will need to discuss our "definition of done" and how we view task completeness. This was a discussion we had at the end of the sprint while reviewing finished epics. 
 
 #### What we will change next sprint 
 We missed our goal of deploying every three days to black-bottle. For the next sprint we are thinking of making it a day in the week, so it will be easier to remember and hopefully this will allow us to complete this goal next sprint.
