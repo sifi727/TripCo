@@ -99,7 +99,7 @@ Epics planned for this sprint.
 | 10/31 | #288 #296 | #279 #272 #295 #267 #298 #276 | Java update broke Maven |
 | 11/02 | #295 #279| #276 #272 #264 #298 #303 #278 #267 | Sickness |
 | 11/05 |#273 #272 #303 #278 #279 #276 | #264 #267 #266 #242 #298 | |
-
+| 11/07 |#298 | #264 #242 #265 #267 #266 | | 
 
 *Add a new row for the scrum session after each lecture. *
 
@@ -123,34 +123,40 @@ Epics planned for this sprint.
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+The ways we split up the components allowed for separation of concerns when we developed.
 
-* *something*
-*
+* The search component was able to be developed and tested without affecting the other developers.
+* Attributes was able to be added to itinerary with any problems.
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+The technical problem faced by the team was the Java update causing problems and the dependency needed with the newly implemented search functionality. 
 
-* *something*
-*
+* The Java update breaking Maven cause multiple days of down time as teammates worked to fix their machines, and they could not compile their code. Eventually meeting together on the weekend allowed teammates to discuss how they were able to fix their own machine and the problem was solved.
+* With the search functionality it was found out that the query code was not working because of the lack of MySQL decencies installed on machine. This problem was mitigated by installing MySQL on the computers used for development.
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+Understanding what was expected in the team’s performance at the beginning of the Sprint helped for members to complete tasks that they felt comfortable with and helped them to learn more. The team faced hindrances in communication due to absences. This affected the ability of the team to coordinate when faced with problems. We will need to plan for this in the next sprint.
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+Before this sprint we were committed to deploying to black-bottle more often and planned to deploy every 3 days. With each member deploying at least once.
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+The team continues to help each other when hindrances were faced. Team members when present in meeting were helpful and continued to share their knowledge with their teammates. This continued to help the team to learn and complete task.
+After discussing as a team what our team dynamics were, there was less pressure to perform and this allowed for more flexibility on choosing the way tasks were delegated. This gave team members the ability to complete tasks at their comfort level which allowed for better learning opportunities.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+In this sprint unexpected absences had a negative impact on the team’s performance. The team experienced a high number of absences in class lectures and meetings. This caused a slow down in communication across the team and impacted the overall performance of completing tasks.
+
+Planning for absences and having more team members present during lecture and meetings would help with teammate communication. If absences are unavoidable, like unexpected sickness, then meeting notes on Slack could possibly help mitigate the teammates absence. 
+In this sprint we had the goal of deploying to black-bottle more often then before. While we did deploy our code, it was not as often as we like.
+
 
 #### What we will change next sprint 
+We missed our goal of deploying every three days to black-bottle. For the next sprint we are thinking of making it a day in the week, so it will be easier to remember and hopefully this will allow us to complete this goal next sprint.
+We also need to work on a plan for team members absences from the lecture and meetings. This needs to be discussed in the planning phase so we will know if teammates are planning on being absent. Then we will be able to plan the work load and figure out viable communication alternatives.
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
