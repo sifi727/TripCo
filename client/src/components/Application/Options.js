@@ -120,9 +120,13 @@ class Options extends Component{
           </Row>
           <Row>
             <Col>
-              <ButtonGroup>
+              <FormText color="muted">
+                Select the units or define your own:
+              </FormText>
+              <ButtonGroup vertical>
                 {buttons}
               </ButtonGroup>
+              <p></p>
 
                 <FormGroup>
                   {form}
