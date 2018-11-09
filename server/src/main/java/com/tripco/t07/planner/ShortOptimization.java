@@ -1,6 +1,7 @@
 package com.tripco.t07.planner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ShortOptimization {
     private Place [] places;
@@ -19,51 +20,46 @@ public class ShortOptimization {
 
         createDistanceMatrix();
         int shortestTrip = Integer.MAX_VALUE;
-        ArrayList<Place> shortestTripPlaces = new ArrayList<>(places.length);
+        int [] shortestRoute = new int[places.length+1];
         for(int i=0; i<places.length; i++){
-            int [] route = new int[places.length+1];
+            int [] route = new int[places.length+1]; //+1 to include round trip
             int routeIndex=0;
             int visitedCount = 1;
-            ArrayList<Place> sortedPlaces = new ArrayList<>(places.length);
             boolean[] visitedPlaces = new boolean[places.length];
             int totalTripDistance = 0;
-            sortedPlaces.add(places[i]);
             route[0] = i;
             route[places.length]=i; //to make it a round trip route
             visitedPlaces[i] = true;
             int previousPlaceIndex = i;
             while (visitedCount<places.length) {
                 int nextVisitedPlaceIndex = closestPlace(i, places, visitedPlaces);
-                Place nextVisitedPlace=places[nextVisitedPlaceIndex];
                 visitedPlaces[nextVisitedPlaceIndex] = true;
-                sortedPlaces.add(nextVisitedPlace);
                 totalTripDistance += distances[previousPlaceIndex][ nextVisitedPlaceIndex];
-                visitedCount++;
                 route[routeIndex] = previousPlaceIndex;
-                routeIndex++;
                 previousPlaceIndex = nextVisitedPlaceIndex;
-
+                visitedCount++;
+                routeIndex++;
                 }
 
             totalTripDistance+=distances[previousPlaceIndex][i]; //add to make it round trip
             if(optimizationLevel.equalsIgnoreCase("shorter")){
                int twoOptDistance= twoOpt(route, distances);
                if(twoOptDistance<totalTripDistance){
-                   sortedPlaces = new ArrayList<>(places.length);
-                   for (int j = 0; j < route.length-1; j++) {
-                       sortedPlaces.add(places[route[j]]);
-                   }
+                   shortestRoute= Arrays.copyOf(route,route.length);
                    totalTripDistance=twoOptDistance;
                }
             }
 
             if(totalTripDistance<shortestTrip){
                 shortestTrip=totalTripDistance;
-                shortestTripPlaces=sortedPlaces;
+                shortestRoute= Arrays.copyOf(route, route.length);
             }
         }
 
-
+        ArrayList<Place> shortestTripPlaces = new ArrayList<>(places.length);
+        for (int j = 0; j < shortestRoute.length-1; j++) {
+            shortestTripPlaces.add(places[shortestRoute[j]]);
+        }
         return shortestTripPlaces;
     }
 

@@ -159,6 +159,7 @@ public class TestTrip {
 
 
   @Test
+  @Ignore
   public void testShortTripDistancesWithPlaces() {
     trip.places = new ArrayList<>();
     String placesJson = getJsonShortTripThreeCityWithMiles();
