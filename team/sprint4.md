@@ -112,8 +112,8 @@ Epics planned for this sprint.
 *Describe the solution based on the completed epics and list the epics below.*
 
 * **#189 User: I want to make and save changes to the trip.** - *There were several tasks that were needed to complete this epic.  Implantation of the search query, creating a new ‘Search.java’ and ‘Search.js’ classes, and populating the search results and adding them to the itinerary were some of the tasks.*
-* **#271 User: I want to choose what information is displayed in the itinerary and map.** -
-* **#275 User: I'd like even shorter trips.** -
+* **#271 User: I want to choose what information is displayed in the itinerary** - *we have added filter fields to the search that allows the user to pick what to display*
+* **#275 User: I'd like even shorter trips.** - *Here we added the "shorter" button, improved our nearest neighbour algorithm, and implemented 2-opt*
 
 #### Incomplete Epics in Sprint Backlog 
 
@@ -127,6 +127,7 @@ The ways we split up the components allowed for separation of concerns when we d
 
 * The search component was able to be developed and tested without affecting the other developers.
 * Attributes was able to be added to itinerary with any problems.
+* The team meeting with our Product Owner helped to clear the air on some minor issues, and gave us all a better understanding of our roles and expectations.*
 
 #### Problems Encountered and Resolutions
 
@@ -137,7 +138,7 @@ The technical problem faced by the team was the Java update causing problems and
 
 ## Retrospective
 
-Understanding what was expected in the team’s performance at the beginning of the Sprint helped for members to complete tasks that they felt comfortable with and helped them to learn more. The team faced hindrances in communication due to absences. This affected the ability of the team to coordinate when faced with problems. We will need to plan for this in the next sprint.
+Understanding what was expected in the team’s performance at the beginning of the Sprint helped for members to complete tasks that they felt comfortable with and helped them to learn more. The team faced hindrances in communication due to absences and a failure to update each other when someone missed. This affected the ability of the team to coordinate when faced with problems. We will need to plan for this in the next sprint.
 
 #### What we changed this sprint
 
@@ -145,18 +146,18 @@ Before this sprint we were committed to deploying to black-bottle more often and
 
 #### What we did well
 
-The team continues to help each other when hindrances were faced. Team members when present in meeting were helpful and continued to share their knowledge with their teammates. This continued to help the team to learn and complete task.
+The team continues to help each other when hindrances were faced and our team coding experiences greatly imporved. Team members when present in meeting were helpful and continued to share their knowledge with their teammates. This continued to help the team to learn and complete task.
 After discussing as a team what our team dynamics were, there was less pressure to perform and this allowed for more flexibility on choosing the way tasks were delegated. This gave team members the ability to complete tasks at their comfort level which allowed for better learning opportunities.
 
 #### What we need to work on
 
-In this sprint unexpected absences had a negative impact on the team’s performance. The team experienced a high number of absences in class lectures and meetings. This caused a slow down in communication across the team and impacted the overall performance of completing tasks.
+In this sprint unexpected absences had a negative impact on the team’s performance. The team experienced a high number of absences in team meetings. This caused a slow down in communication across the team and impacted the overall performance of completing tasks.
 
-Planning for absences and having more team members present during lecture and meetings would help with teammate communication. If absences are unavoidable, like unexpected sickness, then meeting notes on Slack could possibly help mitigate the teammates absence. 
+Planning for absences and having more team members present during team meetings would help with overall communication and progress. When absences are unavoidable, for whatever reason, then updating the team members with meeting notes on Slack and/or teleconferencing them in would help mitigate the impact of teammates absence.
 In this sprint we had the goal of deploying to black-bottle more often then before. While we did deploy our code, it was not as often as we like.
 
 
 #### What we will change next sprint 
 We missed our goal of deploying every three days to black-bottle. For the next sprint we are thinking of making it a day in the week, so it will be easier to remember and hopefully this will allow us to complete this goal next sprint.
-We also need to work on a plan for team members absences from the lecture and meetings. This needs to be discussed in the planning phase so we will know if teammates are planning on being absent. Then we will be able to plan the work load and figure out viable communication alternatives.
+We also need to work on a plan for what to do when a team member is not able to physically attend the meetings. This will be discussed in the planning phase so we can try to plan for any lost days of development and/or avoid them wherever possible. We also plan to figure out viable communication alternatives for when these situations arrise.
 
