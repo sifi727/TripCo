@@ -10,10 +10,14 @@ class AddPlace extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id:"",
+      name:"",
       latitude:"",
       longitude:"",
-      name:"",
-      id:""
+      municipality:"",
+      region:"",
+      country:"",
+      continent:""
     };
     this.updateState = this.updateState.bind(this);
     this.addValuesToItinerary = this.addValuesToItinerary.bind(this);
@@ -33,10 +37,14 @@ class AddPlace extends Component {
 
   resetState() {
     this.setState({
-      latitude: "",
-      longitude: "",
-      name: "",
-      id: ""
+        id:"",
+        name:"",
+        latitude:"",
+        longitude:"",
+        municipality:"",
+        region:"",
+        country:"",
+        continent:""
     });
   }
 
@@ -88,14 +96,22 @@ class AddPlace extends Component {
         <Card>
           <CardBody>
             <CardTitle> Add </CardTitle>
-              {this.textInputGroup("AddPlaceInputNameId","name","Name:")}
-              <br/>
-              {this.textInputGroup("AddPlaceInputPlaceIdId","id","Id:")}
-              <br/>
-              {this.numberInputGroup("AddPlaceInputLatitudeId","latitude","Latitude:")}
-              <br/>
-              {this.numberInputGroup("AddPlaceInputLongitudeId","longitude","Longitude:")}
-              <br/>
+            {this.textInputGroup("AddPlaceInputNameId","name","Name:")}
+            <br/>
+            {this.textInputGroup("AddPlaceInputPlaceIdId","id","Id:")}
+            <br/>
+            {this.numberInputGroup("AddPlaceInputLatitudeId","latitude","Latitude:")}
+            <br/>
+            {this.numberInputGroup("AddPlaceInputLongitudeId","longitude","Longitude:")}
+            <br/>
+            {this.textInputGroup("AddPlaceInputMunicipalityId","municipality","Municipality:")}
+            <br/>
+            {this.textInputGroup("AddPlaceInputRegionId","region","Region:")}
+            <br/>
+            {this.textInputGroup("AddPlaceInputCountryId","country","Country:")}
+            <br/>
+            {this.textInputGroup("AddPlaceInputContinentId","continent","Continent:")}
+            <br/>
             <InputGroup>
               <Button id="AddPlaceButtonAddId" onClick={()=>this.addValuesToItinerary()}> Add</Button>
             </InputGroup>

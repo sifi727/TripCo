@@ -78,11 +78,11 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | 4 | *total* |
-| Tasks |  19   | *total* | 
-| Story Points |  37  | *total* | 
+| Epics | 4 | 3 |
+| Tasks |  27   | 18 | 
+| Story Points |  47  | 35 | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+*In comparison to the previous sprint, we did not plan as many story points as we were anticipating to having tasks that were more time consuming than the tasks in sprint 3.   Researching and Implementing the database as well as adding shorter trip with the 2-opt, for example, we expected that these tasks would take the most time to implement.*
 
 *Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
@@ -99,7 +99,7 @@ Epics planned for this sprint.
 | 10/31 | #288 #296 | #279 #272 #295 #267 #298 #276 | Java update broke Maven |
 | 11/02 | #295 #279| #276 #272 #264 #298 #303 #278 #267 | Sickness |
 | 11/05 |#273 #272 #303 #278 #279 #276 | #264 #267 #266 #242 #298 | |
-
+| 11/07 |#298 | #264 #242 #265 #267 #266 | | 
 
 *Add a new row for the scrum session after each lecture. *
 
@@ -111,46 +111,56 @@ Epics planned for this sprint.
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
-* 
+* **#189 User: I want to make and save changes to the trip.** - *There were several tasks that were needed to complete this epic.  Implantation of the search query, creating a new ‘Search.java’ and ‘Search.js’ classes, and populating the search results and adding them to the itinerary were some of the tasks.*
+* **#271 User: I want to choose what information is displayed in the itinerary** - *we have added filter fields to the search that allows the user to pick what to display*
+* **#275 User: I'd like even shorter trips.** - *Here we added the "shorter" button, improved our nearest neighbour algorithm, and implemented 2-opt. The algorithm could be optimized to produce even more improved trip in the future*
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
-*
+* **#262 User: I want to plan trips worldwide.** - *We were able to update the svg to a worldwide map and added the ability to connect to new databases; however, we did not have enough time to implement the ability to choose which fields that would be displayed in the search results.*
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+The ways we split up the components allowed for separation of concerns when we developed. Comminication between teammates in person and over Slak continues to improve, we are able to effectively assist each other during planning and development.
 
-* *something*
-*
+* The search component was able to be developed and tested without affecting the other developers.
+* Attributes was able to be added to itinerary with any problems.
+* The team meeting with our Product Owner helped to clear the air on some minor issues, and gave us all a better understanding of our roles and expectations.*
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+The technical problem faced by the team was the Java update causing problems and the dependency needed with the newly implemented search functionality. 
 
-* *something*
-*
+* The Java update breaking Maven cause multiple days of down time as teammates worked to fix their machines, and they could not compile their code. Eventually meeting together on the weekend allowed teammates to discuss how they were able to fix their own machine and the problem was solved.
+* With the search functionality it was found out that the query code was not working because of the lack of MySQL decencies installed on machine. This problem was mitigated by installing MySQL on the computers used for development.
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+Understanding what was expected in the team’s performance at the beginning of the Sprint helped for members to complete tasks that they felt comfortable with and helped them to learn more. Early planning stages were critical in understanding of tasks and layout of future development. The team member were effective in visualizing the goals and solution process of each epic.
+
+The team faced hindrances in communication due to absences and a failure to update each other when someone missed. This affected the ability of the team to coordinate when faced with problems. We will need to plan for this in the next sprint.
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+Before this sprint we were committed to deploying to black-bottle more often and planned to deploy every 3 days. With each member deploying at least once.
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+The team continues to help each other when hindrances were faced and our team coding experiences greatly imporved. Team members when present in meeting were helpful and continued to share their knowledge with their teammates. This continued to help the team to learn and complete task.
+After discussing as a team what our team dynamics were, there was less pressure to perform and this allowed for more flexibility on choosing the way tasks were delegated. This gave team members the ability to complete tasks at their comfort level which allowed for better learning opportunities.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+In this sprint unexpected absences had a negative impact on the team’s performance. The team experienced a high number of absences in team meetings. This caused a slow down in communication across the team and impacted the overall performance of completing tasks.
+
+Planning for absences and having more team members present during team meetings would help with overall communication and progress. When absences are unavoidable, for whatever reason, then updating the team members with meeting notes on Slack and/or teleconferencing them in would help mitigate the impact of teammates absence.
+In this sprint we had the goal of deploying to black-bottle more often then before. While we did deploy our code, it was not as often as we like.
+
+The team will need to discuss our "definition of done" and how we view task completeness. This was a discussion we had at the end of the sprint while reviewing finished epics. 
 
 #### What we will change next sprint 
+We missed our goal of deploying every three days to black-bottle. For the next sprint we are thinking of making it a day in the week, so it will be easier to remember and hopefully this will allow us to complete this goal next sprint.
+We also need to work on a plan for what to do when a team member is not able to physically attend the meetings. This will be discussed in the planning phase so we can try to plan for any lost days of development and/or avoid them wherever possible. We also plan to figure out viable communication alternatives for when these situations arrise.
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
