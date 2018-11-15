@@ -39,9 +39,19 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint that will achieve the goal.*
+We are planning to finish the pending tasks from Sprint 4, and to fix issues that our team noticed during our review of Sprint 4. Additionaly we plan to add about section to inroduce our team members to the web app. The main focus after that will be to improve user experience of our web app.
 
-*Include any design diagrams prepared during sprint planning (user interface, component diagram, component/state/hierarchy, etc.) with a short paragraph for each.
+![Sprint5 Component Layout Diagram](./sprint5/Sprint5Comp.jpg "Component Hierachy View")
+
+Above is a diagram of the client component hierarchy.In Sprint 5 we will be adding Filter and map options to state of our app, no additional components will be created and the hierarchy will be similar to Sprint 4.
+
+![Sprint5 Component Hierarchy Diagram](./sprint5/Sprint5Layout.png "Component Layout")
+
+Above is a picture of our component diagram in the client view. In Sprint 5 we will be upgrading user experience to utilize tabs instead of having all of the functionality visible on the page at once.
+
+![Sprint5 Client Server Flow](./sprint5/Sprint5PlanClientServerFlow.png "Client Server Flow")
+
+The above diagram of the server client flow shows there will not be any added new REST calls in sprint 5. No new changes will be introduced to client - server flow this sprint.
 
 Epics planned for this sprint.
 
