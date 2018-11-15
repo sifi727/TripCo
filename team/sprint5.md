@@ -55,17 +55,21 @@ The above diagram of the server client flow shows there will not be any added ne
 
 Epics planned for this sprint.
 
-* *## epic title: description*
-*
-
+* #264 User: I want to plan trips worldwide.
+* #321 TripCo: Update the application to adhere to sprint 4 TFFI specs and demo results 
+* #317 User: I want to view my trip in other tools. 
+* #325 User: I want to know who to thank for this application 
+* #338 User: Make the system easier to use. 
 
 ## Metrics
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *total* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Epics | 5 | *total* |
+| Tasks |  24   | *total* | 
+| Story Points |  25  | *total* | 
+
+We have more epics planned for this Sprint as a result of few tasks rolling over from Sprint 4. We have less story points planned compared to previous Sprints to ensure that we will be able to finish our planned deliverables by the end of the Sprint.
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
