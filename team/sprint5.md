@@ -7,7 +7,7 @@
 
 ## Definition of Done
 
-* Sprint Review and Restrospectives completed (sprint5.md).
+* Sprint Review and Retrospectives completed (sprint5.md).
 * Version in pom.xml should be `<version>5.0.0</version>`.
 * Increment deployed for demo and testing as server-5.0.jar on the production server.
 * Increment release `v5.0` created on GitHub with appropriate version number and name.
@@ -39,11 +39,11 @@
 
 ## Plan
 
-We are planning to finish the pending tasks from Sprint 4, and to fix issues that our team noticed during our review of Sprint 4. Additionaly we plan to add about section to inroduce our team members to the web app. The main focus after that will be to improve user experience of our web app.
+We are planning to finish the pending tasks from Sprint 4, and to fix issues that our team noticed during our review of Sprint 4. Additionally we plan to add about section to introduce our team members to the web app. The main focus after that will be to improve user experience of our web app.
 
-![Sprint5 Component Layout Diagram](./sprint5/Sprint5Comp.jpg "Component Hierachy View")
+![Sprint5 Component Layout Diagram](./sprint5/Sprint5Comp.jpg "Component Hierarchy View")
 
-Above is a diagram of the client component hierarchy.In Sprint 5 we will be adding Filter and map options to state of our app, no additional components will be created and the hierarchy will be similar to Sprint 4.
+Above is a diagram of the client component hierarchy. In Sprint 5 we will be adding Filter and map options to state of our app, no additional components will be created and the hierarchy will be similar to Sprint 4.
 
 ![Sprint5 Component Hierarchy Diagram](./sprint5/Sprint5Layout.jpg "Component Layout")
 
