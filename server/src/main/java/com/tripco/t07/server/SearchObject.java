@@ -31,7 +31,7 @@ public class SearchObject {
             + "Where ";
 
 
-        String matcher = "world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
+        String matcher = "continents.name  like '%"+ match +"%' or world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
                  match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
         search += matcher;
 
@@ -59,7 +59,7 @@ public class SearchObject {
             + "Where ";
 
 
-        String matcher = "world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
+        String matcher = "continents.name  like '%"+ match +"%' or world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
             match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
         countQuery += matcher;
 
