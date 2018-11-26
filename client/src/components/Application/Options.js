@@ -72,7 +72,7 @@ class Options extends Component{
             Select Optimization Level.
           </FormText>
           <Form>
-            <ButtonGroup>
+            <ButtonGroup vertical>
               {buttons}
             </ButtonGroup>
           </Form>
@@ -126,18 +126,20 @@ class Options extends Component{
               <ButtonGroup vertical>
                 {buttons}
               </ButtonGroup>
-              <p></p>
-
-                <FormGroup>
-                  {form}
-                  {optimizationForm}
-                  <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
-                   updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
-                  </FormGroup>
             </Col>
+             <Col>
+                 <FormGroup >
+                     {form}
+                     {optimizationForm}
+                 </FormGroup>
+             </Col>
             <Col>
               <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
             </Col>
+          </Row>
+          <Row>
+              <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
+                             updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
           </Row>
         </CardBody>
       </Card>
