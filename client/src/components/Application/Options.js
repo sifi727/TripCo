@@ -137,10 +137,8 @@ class Options extends Component{
               <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
             </Col>
           </Row>
-          <Row>
-              <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
-                             updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
-          </Row>
+          <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
+                         updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
         </CardBody>
       </Card>
     )
