@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {Card, CardBody, FormText} from 'reactstrap'
-import {ButtonGroup, Button, Col, Form, FormGroup, Row} from 'reactstrap'
+import {FormText, Input} from 'reactstrap'
+import {Button, Col, Form, FormGroup, Row} from 'reactstrap'
 
 class ServerOptions extends Component{
     constructor(props){
@@ -9,29 +9,34 @@ class ServerOptions extends Component{
         this.buildColumn = this.buildColumn.bind(this);
     }
 
-    buildColumn(txt, state) {
+    buildColumn(field, id, options, state, txt) {
         return (
             <Col>
-                <Form>
+                <Form key={state + "_form"}>
                     <FormText style={{fontSize : "16px"}}>
                         {txt}
                     </FormText>
                     <h3 style={{color : "#00006a"}}>
                         {state}
                     </h3>
+                    <p>
+                        {options}
+                    </p>
+                    <Input id ={id} type ={"text"} value={this.props[field]} onChange={(event)=>this.props.updateOptionState(field, event)} />
                 </Form>
             </Col>
-        );
+        )
     }
 
     render() {
-        const buildColumn = this.buildColumn();
+        const buildColumn = this.buildColumn;
 
         return (
             <Row>
-                {buildColumn('Current Hostname:', this.props.hostname)}
-                {buildColumn('Current Port:', this.props.port)}
-                /*
+                {buildColumn("hostName", "hostnameID", "Enter a hostname:", this.props.hostname, "Current Hostname:")}
+                {buildColumn("portNumber", "portID", "Enter a port number:", this.props.port, "Current Port:")}
+            </Row>
+ /*
                 <Col>
                     <Form>
                         <FormText style={{fontSize : "16px"}}>
@@ -52,10 +57,6 @@ class ServerOptions extends Component{
                         </h3>
                     </Form>
                 </Col>
-                */
-            </Row>
-
-            /*
 
             <Row>
 

@@ -12,11 +12,18 @@ import AttributeOptions from './AttributeOptions'
 class Options extends Component{
   constructor(props) {
     super(props);
+
+      this.state = {
+          hostName: "",
+          portNumber: ""
+      }
+
     this.displayFields = this.displayFields.bind(this);
     this.handleUnitName = this.handleUnitName.bind(this);
     this.handleUnitRadius = this.handleUnitRadius.bind(this);
     this.buildOptimizationButtons = this.buildOptimizationButtons.bind(this);
     this.buildOptimizationForm = this.buildOptimizationForm.bind(this);
+    this.updateOptionState = this.updateOptionState.bind(this);
     this.isUserDefined = false;
   }
 
@@ -81,6 +88,19 @@ class Options extends Component{
 
   }
 
+   updateOptionState(field, event) {
+      if(field == "hostName") {
+          this.setState({
+              hostName: event.target.value
+          });
+      }
+      else {
+          this.setState({
+              portNumber: event.target.value
+          });
+      }
+   }
+
   render() {
     const isUserDefined = this.isUserDefined;
     var optimizationForm = null;
@@ -137,8 +157,12 @@ class Options extends Component{
               <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
             </Col>
           </Row>
-          <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
-                         updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
+          <ServerOptions port={this.props.port} hostname ={this.props.hostname}
+                         portNumber={this.state.portNumber} hostName={this.state.hostName}
+                         updatePort={this.props.updatePort} updateHostname={this.props.updateHostname} updateOptionState={this.updateOptionState}/>
+          <Row>
+              <Button color={"success"} size={"lg"}>Update</Button>
+          </Row>
         </CardBody>
       </Card>
     )
