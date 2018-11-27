@@ -133,6 +133,17 @@ class Application extends Component {
 
     let trip = object;
 
+    if (!trip.options)
+    {
+      console.log("In options");
+      trip["options"]={
+        units: "miles",
+      };
+
+    }
+    console.log("inside update tffi json");
+    console.log(trip);
+
     this.updateTrip("places", trip.places); //required
     this.updateTrip("type", trip.type);
     this.updateTrip("version", trip.version);

@@ -35,9 +35,6 @@ class PlanUtilities extends Component {
     });
     let result = e.target.result;  //makes the json string store that some where.
     let json = JSON.parse(result);
-    if (json.options === null || typeof json.options === 'undefined') {
-      return;
-    }
     this.props.updateTffiObject(json);
 
   }
