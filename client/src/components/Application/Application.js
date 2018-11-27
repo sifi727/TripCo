@@ -50,23 +50,26 @@ class Application extends Component {
 
 
   componentWillMount() {
+
     get_config().then(
         config => {
 
-          if(config.optimization){
+          if(!config.attributes){
             const minAttributes = ["name", "id", "latitude", "longitude"];
             config["attributes"] = minAttributes;
-          }
-          if(config.attributes){
-            this.updateOptions()
           }
 
           this.setState({
             config: config
           });
 
-          this.setState({attributesToShow:config.attributes.slice(0)});
+          this.setState({
+
+            attributesToShow: config.attributes
+          });
+
         }
+
     );
   }
 
@@ -98,9 +101,9 @@ class Application extends Component {
       });
   }
   updateTrip(field, value) {
-    let trip = this.state.trip;
-    trip[field] = value;
-    this.setState(trip);
+    let state = this.state;
+    state["trip"][field] = value;
+    this.setState(state);
   }
 
   updateBasedOnResponse(value) {
@@ -128,58 +131,39 @@ class Application extends Component {
     event.target.checked = false;
   }
 
-  updateTffiObject(object) {
-    //version, type, and places elements
 
-    let trip = object;
+    updateTffiObject(object) {
+      //version, type, and places elements are req elements assumed to be in object
 
-    if (!trip.options)
-    {
-      console.log("In options");
-      trip["options"]={
-        units: "miles",
-      };
+      let trip = object;
 
-    }
-    console.log("inside update tffi json");
-    console.log(trip);
+      if (!trip.options)
+      {
+        trip["options"]={
+          units: "miles",
+        };
 
-    this.updateTrip("places", trip.places); //required
-    this.updateTrip("type", trip.type);
-    this.updateTrip("version", trip.version);
+      }
+      if(!trip.title)
+      {
+        trip["title"]="";
+      }
 
+      if(!trip.map)
+      {
+        trip["map"]="";
+      }
 
-    if (this.isObjNullorUndefined(trip.title)) {
+      if(!trip.distances)
+      {
+        trip["distances"]=[];
+      }
+      let state = this.state;
+      state['tripHasChanged']=false;
+      state['trip']=trip;
 
-      this.updateTrip("", trip.title);
-    }
-    else {
-      this.updateTrip("title", trip.title);
-    }
+      this.setState(state);
 
-    if (this.isObjNullorUndefined(trip.options)) {
-      //do nothing keep units as defined by button
-    }
-    else {
-      this.updateOptions("units", trip.options.units);
-    }
-
-    if (this.isObjNullorUndefined(trip.map)) {
-      trip.map = "";
-    }
-
-    else {
-      this.updateTrip("map", trip.map);
-    }
-
-    if (this.isObjNullorUndefined(trip.distances)) {
-      trip.distances = [];
-    }
-    else {
-      this.updateTrip("distances", trip.distances);
-    }
-      this.setState({'tripHasChanged':false});
-    this.setState({"trip": trip});
   }
 
 
