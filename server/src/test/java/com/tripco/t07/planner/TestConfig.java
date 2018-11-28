@@ -1,6 +1,7 @@
 package com.tripco.t07.server;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -41,7 +42,7 @@ public class TestConfig {
 
 
     @Test
-
+    @Ignore
     public void testGetConfigMethod() {
         String expectedConfigTffi = "{\"version\":" + version + ",\"type\":\"config\",\""+
             "units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"],"+
