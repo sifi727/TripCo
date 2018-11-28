@@ -36,14 +36,14 @@ const startProps = {
 function testExample() {
   const options = mount((
       <Options config={startProps.config} options={startProps.options} attributes={startProps.attributes}
-  attributesToShow={startProps.attributesToShow}/>
+  attributesToShow={startProps.attributesToShow} />
     ));
 
 
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));
 
-  expect(actual).toEqual(startProps.config.units);
+  expect(actual).toEqual(["miles", "kilometers", "updateBtn"]);
 }
 
 test('Check to see if table gets made correctly (Function)', testExample);
@@ -66,5 +66,5 @@ test('Check to see if table gets made correctly (Lambda)', () => {
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
 
-  expect(actual).toEqual(startProps.config.units);  // (3)
+  expect(actual).toEqual(["miles","kilometers","updateBtn"]);  // (3)
 });

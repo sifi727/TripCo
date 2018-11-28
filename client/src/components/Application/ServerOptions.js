@@ -33,8 +33,8 @@ class ServerOptions extends Component{
 
         return (
             <Row>
-                {buildColumn("hostName", "hostnameID", "Enter a hostname:", this.props.hostname, "Current Hostname:")}
-                {buildColumn("portNumber", "portID", "Enter a port number:", this.props.port, "Current Port:")}
+                {buildColumn("hostName", "hostnameId", "Enter a hostname:", this.props.hostname, "Current Hostname:")}
+                {buildColumn("portNumber", "portId", "Enter a port number:", this.props.port, "Current Port:")}
             </Row>
 
         )
