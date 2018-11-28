@@ -17,7 +17,11 @@ public class SearchObject {
     ArrayList<String> filters;
 
 
-
+private String createMatcher(String match) {
+    String matcher = " region.name like '%"+ match +"%' or country.name like '%" + match +"%' or continents.name  like '%"+ match +"%' or world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
+        match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
+    return matcher;
+}
 
     public String createSearch(String match){
 
@@ -31,9 +35,8 @@ public class SearchObject {
             + "Where ";
 
 
-        String matcher = "world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
-                 match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
-        search += matcher;
+
+        search += createMatcher(match);
 
         return search;
     }
@@ -59,9 +62,7 @@ public class SearchObject {
             + "Where ";
 
 
-        String matcher = "world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
-            match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
-        countQuery += matcher;
+        countQuery += createMatcher(match);
 
         return countQuery;
     }
