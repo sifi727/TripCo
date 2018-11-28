@@ -49,17 +49,8 @@ class Application extends Component {
     this.initConfig =  this.initConfig.bind(this);
   }
 initConfig(port=this.state.port,hostname=this.state.hostname){
-    console.log("in initConfig");
-    console.log(port);
-    console.log(hostname);
   get_config('config',port,hostname).then(
       config => {
-
-        console.log("init config");
-        console.log(config);
-  console.log(this.state.hostname);
-  console.log(this.state.port);
-
     if(!config.attributes){
     const minAttributes = ["name", "id", "latitude", "longitude"];
     config["attributes"] = minAttributes;
@@ -109,8 +100,6 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
       });
   }
   updateHostname(value){
-    console.log("I am in hostname");
-    console.log(value);
       this.setState({
           hostname:value
       });
