@@ -42,12 +42,11 @@ public class TestConfig {
 
 
     @Test
-    @Ignore
     public void testGetConfigMethod() {
         String expectedConfigTffi = "{\"version\":" + version + ",\"type\":\"config\",\""+
             "units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"],"+
             "\"optimization\":[{\"label\":\"none\",\"description\":\"The trip is not optimized.\"}"+
-            ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"},{\"label\":\"shorter\",\"description\":\"2-opt.\"}],\"attributes\":[\"name\",\"id\",\"latitude\",\"longitude\"]}";
+            ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"},{\"label\":\"shorter\",\"description\":\"2-opt.\"}],\"attributes\":[\"name\",\"id\",\"latitude\",\"longitude\"],\"maps\":[\"svg\"]}";
 
         // create a new config object directly
         config = new Config();
