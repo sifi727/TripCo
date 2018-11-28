@@ -23,6 +23,7 @@ class Options extends Component{
     this.handleUnitRadius = this.handleUnitRadius.bind(this);
     this.buildOptimizationButtons = this.buildOptimizationButtons.bind(this);
     this.buildOptimizationForm = this.buildOptimizationForm.bind(this);
+    this.submit = this.submit.bind(this);
     this.updateOptionState = this.updateOptionState.bind(this);
     this.isUserDefined = false;
   }
@@ -85,6 +86,9 @@ class Options extends Component{
           </Form>
         </FormGroup>
     );
+
+  }
+  submit() {
 
   }
 
@@ -161,7 +165,7 @@ class Options extends Component{
                          portNumber={this.state.portNumber} hostName={this.state.hostName}
                          updatePort={this.props.updatePort} updateHostname={this.props.updateHostname} updateOptionState={this.updateOptionState}/>
           <Row>
-              <Button color={"success"} size={"lg"}>Update</Button>
+              <Button color={"success"} size={"lg"} onClick={(event) => {this.submit()}} >Update</Button>
           </Row>
         </CardBody>
       </Card>
