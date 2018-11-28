@@ -4,7 +4,7 @@ import Info from './Info'
 import Map from './Map';
 import Options from './Options';
 import PlanUtilities from './PlanUtilities'
-import {get_config, request} from '../../api/api';
+import {get_config, request, get_port} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
 import AddPlace from './AddPlace';
@@ -48,8 +48,19 @@ class Application extends Component {
     this.updateAttributesToShow = this.updateAttributesToShow.bind(this);
     this.initConfig =  this.initConfig.bind(this);
   }
-initConfig(config){
-  if(!config.attributes){
+initConfig(port=this.state.port,hostname=this.state.hostname){
+    console.log("in initConfig");
+    console.log(port);
+    console.log(hostname);
+  get_config('config',port,hostname).then(
+      config => {
+
+        console.log("init config");
+        console.log(config);
+  console.log(this.state.hostname);
+  console.log(this.state.port);
+
+    if(!config.attributes){
     const minAttributes = ["name", "id", "latitude", "longitude"];
     config["attributes"] = minAttributes;
   }
@@ -64,15 +75,15 @@ initConfig(config){
   });
 }
 
-  componentWillMount() {
+);
 
-    get_config().then(
-        config => {
-
-      initConfig(config);
 }
 
-    );
+  componentWillMount() {
+
+    this.initConfig(get_port());
+
+
   }
 
   removePlace(index){
@@ -92,14 +103,16 @@ initConfig(config){
     return (object === null || typeof object === 'undefined');
 
   }
-  updatePort(event) {
+  updatePort(value) {
       this.setState({
-          port:event.target.value
+          port:value
       });
   }
-  updateHostname(event){
+  updateHostname(value){
+    console.log("I am in hostname");
+    console.log(value);
       this.setState({
-          hostname:event.target.value
+          hostname:value
       });
   }
   updateTrip(field, value) {
@@ -236,6 +249,7 @@ initConfig(config){
                    attributes={this.state.config.attributes}
                    attributesToShow={this.state.attributesToShow}
                    updateAttributesToShow={this.updateAttributesToShow}
+                     initConfig={this.initConfig}
                    />
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />

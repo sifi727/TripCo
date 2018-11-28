@@ -1,4 +1,4 @@
-function get_port() {
+export function get_port() {
   return (!process.env.dev) ?
     location.port :
     process.env.dev
@@ -12,6 +12,8 @@ export async function request(body, type, port=get_port(), host=location.hostnam
 }
 
 export async function get_config(type, port=get_port(), host=location.hostname) {
+  console.log("get url");
+  console.log('http://' + host + ":" + port + '/config');
   return fetch('http://' + host + ":" + port + '/config', {
     method:"GET"
   }).then(response => {return response.json()}).catch(err => {console.error(err)});

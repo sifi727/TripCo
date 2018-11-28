@@ -36,39 +36,7 @@ class ServerOptions extends Component{
                 {buildColumn("hostName", "hostnameID", "Enter a hostname:", this.props.hostname, "Current Hostname:")}
                 {buildColumn("portNumber", "portID", "Enter a port number:", this.props.port, "Current Port:")}
             </Row>
- /*
-                <Col>
-                    <Form>
-                        <FormText style={{fontSize : "16px"}}>
-                            Current Hostname:
-                        </FormText>
-                        <h3 style={textSyle}>
-                            {this.props.hostname}
-                        </h3>
-                    </Form>
-                </Col>
-                <Col>
-                    <Form>
-                        <FormText style={{fontSize : "16px"}}>
-                            Current Port:
-                        </FormText>
-                        <h3 style={textSyle}>
-                            {this.props.port}
-                        </h3>
-                    </Form>
-                </Col>
 
-            <Row>
-
-            </Row>
-            <Form>
-                <FormText color="muted">
-                    Enter your server options:
-                </FormText>
-                <input id="portId" type="text" value={this.props.port} onChange={this.props.updatePort}/>
-                <input id="hostnameId" type="text" value={this.props.hostname} onChange={this.props.updateHostname}/>
-            </Form>
-             */
         )
     }
 }
