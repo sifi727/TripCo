@@ -46,29 +46,31 @@ class Application extends Component {
     this.reverseTrip = this.reverseTrip.bind(this);
     this.removePlace = this.removePlace.bind(this);
     this.updateAttributesToShow = this.updateAttributesToShow.bind(this);
+    this.initConfig =  this.initConfig.bind(this);
+  }
+initConfig(config){
+  if(!config.attributes){
+    const minAttributes = ["name", "id", "latitude", "longitude"];
+    config["attributes"] = minAttributes;
   }
 
+  this.setState({
+    config: config
+  });
+
+  this.setState({
+
+    attributesToShow: config.attributes
+  });
+}
 
   componentWillMount() {
 
     get_config().then(
         config => {
 
-          if(!config.attributes){
-            const minAttributes = ["name", "id", "latitude", "longitude"];
-            config["attributes"] = minAttributes;
-          }
-
-          this.setState({
-            config: config
-          });
-
-          this.setState({
-
-            attributesToShow: config.attributes
-          });
-
-        }
+      initConfig(config);
+}
 
     );
   }
