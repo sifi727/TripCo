@@ -80,7 +80,8 @@ We have more epics planned for this Sprint as a result of few tasks rolling over
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* | *none* | 
+|11/26/18| 0| #315, #323, #326, #337, #290| none|
+|11/28/18| #337|  #315, #323, #326,  #290| none|
 
 *Add a new row for the scrum session after each lecture. *
 
