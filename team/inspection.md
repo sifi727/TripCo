@@ -16,7 +16,8 @@
 ### Problems found
 
 | file:line | problem | hi/med/low | who found | github#  |
-| ShortOptimization:6 |Class name has short in it but the class has to do with optimization| low | David |  | 
+| :--- | :--- | :--- | :--- | :--- |
+| ShortOptimization:6 | Class name has short in it but the class has to do with optimization | low | David |  | 
 | ShortOptimization:107 | reverseBetweeniIndecency has i in it| low | David | |
 | ShortOptimization:12-14  | places could be null or size = 0 does not check | low | David | |
 | ShortOptimization:18,135,107,76,68,135 | methods are public should the be private | low | David | |
