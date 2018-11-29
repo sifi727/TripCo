@@ -4,7 +4,7 @@ import Info from './Info'
 import Map from './Map';
 import Options from './Options';
 import PlanUtilities from './PlanUtilities'
-import {get_config, request} from '../../api/api';
+import {get_config, request, get_port} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
 import AddPlace from './AddPlace';
@@ -46,31 +46,35 @@ class Application extends Component {
     this.reverseTrip = this.reverseTrip.bind(this);
     this.removePlace = this.removePlace.bind(this);
     this.updateAttributesToShow = this.updateAttributesToShow.bind(this);
+    this.initConfig =  this.initConfig.bind(this);
+  }
+initConfig(port=this.state.port,hostname=this.state.hostname){
+  get_config('config',port,hostname).then(
+      config => {
+    if(!config.attributes){
+    const minAttributes = ["name", "id", "latitude", "longitude"];
+    config["attributes"] = minAttributes;
   }
 
+  this.setState({
+    config: config
+  });
+
+  this.setState({
+
+    attributesToShow: config.attributes
+  });
+}
+
+);
+
+}
 
   componentWillMount() {
 
-    get_config().then(
-        config => {
+    this.initConfig(get_port());
 
-          if(!config.attributes){
-            const minAttributes = ["name", "id", "latitude", "longitude"];
-            config["attributes"] = minAttributes;
-          }
 
-          this.setState({
-            config: config
-          });
-
-          this.setState({
-
-            attributesToShow: config.attributes
-          });
-
-        }
-
-    );
   }
 
   removePlace(index){
@@ -90,14 +94,14 @@ class Application extends Component {
     return (object === null || typeof object === 'undefined');
 
   }
-  updatePort(event) {
+  updatePort(value) {
       this.setState({
-          port:event.target.value
+          port:value
       });
   }
-  updateHostname(event){
+  updateHostname(value){
       this.setState({
-          hostname:event.target.value
+          hostname:value
       });
   }
   updateTrip(field, value) {
@@ -234,6 +238,7 @@ class Application extends Component {
                    attributes={this.state.config.attributes}
                    attributesToShow={this.state.attributesToShow}
                    updateAttributesToShow={this.updateAttributesToShow}
+                     initConfig={this.initConfig}
                    />
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />

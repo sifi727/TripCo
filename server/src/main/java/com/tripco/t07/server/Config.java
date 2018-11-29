@@ -17,6 +17,8 @@ public class Config {
           new OptimizationLevel("short", "Nearest neighbor."),
               new OptimizationLevel("shorter", "2-opt."));
   private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
+  private List<String> maps = Arrays
+      .asList("svg");
 
 
   //Getter methods for testing.

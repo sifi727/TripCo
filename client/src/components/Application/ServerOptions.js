@@ -1,19 +1,42 @@
 import React, {Component} from 'react'
-import {Card, CardBody, FormText} from 'reactstrap'
-import {ButtonGroup, Button, Form, FormGroup} from 'reactstrap'
+import {FormText, Input} from 'reactstrap'
+import {Button, Col, Form, FormGroup, Row} from 'reactstrap'
+
 class ServerOptions extends Component{
     constructor(props){
         super(props);
+
+        this.buildColumn = this.buildColumn.bind(this);
     }
-    render(){
-        return(
-            <Form>
-                <FormText color="muted">
-                    Enter your server options:
-                </FormText>
-                <input id="portId" type="text" value={this.props.port} onChange={this.props.updatePort}/>
-                <input id="hostnameId" type="text" value={this.props.hostname} onChange={this.props.updateHostname}/>
-            </Form>
+
+    buildColumn(field, id, options, state, txt) {
+        return (
+            <Col>
+                <Form key={state + "_form"}>
+                    <FormText style={{fontSize : "16px"}}>
+                        {txt}
+                    </FormText>
+                    <h3 style={{color : "#00006a"}}>
+                        {state}
+                    </h3>
+                    <p>
+                        {options}
+                    </p>
+                    <Input id ={id} type ={"text"} value={this.props[field]} onChange={(event)=>this.props.updateOptionState(field, event)} />
+                </Form>
+            </Col>
+        )
+    }
+
+    render() {
+        const buildColumn = this.buildColumn;
+
+        return (
+            <Row>
+                {buildColumn("hostName", "hostnameId", "Enter a hostname:", this.props.hostname, "Current Hostname:")}
+                {buildColumn("portNumber", "portId", "Enter a port number:", this.props.port, "Current Port:")}
+            </Row>
+
         )
     }
 }

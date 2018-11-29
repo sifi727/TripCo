@@ -12,11 +12,19 @@ import AttributeOptions from './AttributeOptions'
 class Options extends Component{
   constructor(props) {
     super(props);
+
+      this.state = {
+          hostName: "",
+          portNumber: ""
+      }
+
     this.displayFields = this.displayFields.bind(this);
     this.handleUnitName = this.handleUnitName.bind(this);
     this.handleUnitRadius = this.handleUnitRadius.bind(this);
     this.buildOptimizationButtons = this.buildOptimizationButtons.bind(this);
     this.buildOptimizationForm = this.buildOptimizationForm.bind(this);
+    this.submitServerInfo = this.submitServerInfo.bind(this);
+    this.updateOptionState = this.updateOptionState.bind(this);
     this.isUserDefined = false;
   }
 
@@ -72,7 +80,7 @@ class Options extends Component{
             Select Optimization Level.
           </FormText>
           <Form>
-            <ButtonGroup>
+            <ButtonGroup vertical>
               {buttons}
             </ButtonGroup>
           </Form>
@@ -80,6 +88,25 @@ class Options extends Component{
     );
 
   }
+  submitServerInfo() {
+    this.props.updateHostname(this.state.hostName);
+    this.props.updatePort(this.state.portNumber);
+    this.props.initConfig(this.state.portNumber,this.state.hostName);
+
+  }
+
+   updateOptionState(field, event) {
+      if(field == "hostName") {
+          this.setState({
+              hostName: event.target.value
+          });
+      }
+      else {
+          this.setState({
+              portNumber: event.target.value
+          });
+      }
+   }
 
   render() {
     const isUserDefined = this.isUserDefined;
@@ -126,18 +153,22 @@ class Options extends Component{
               <ButtonGroup vertical>
                 {buttons}
               </ButtonGroup>
-              <p></p>
-
-                <FormGroup>
-                  {form}
-                  {optimizationForm}
-                  <ServerOptions port= {this.props.port} hostname = {this.props.hostname}
-                   updatePort={this.props.updatePort} updateHostname={this.props.updateHostname}/>
-                  </FormGroup>
             </Col>
+             <Col>
+                 <FormGroup >
+                     {form}
+                     {optimizationForm}
+                 </FormGroup>
+             </Col>
             <Col>
               <AttributeOptions  attributes={this.props.attributes} attributesToShow={this.props.attributesToShow} updateAttributesToShow={this.props.updateAttributesToShow} />
             </Col>
+          </Row>
+          <ServerOptions port={this.props.port} hostname ={this.props.hostname}
+                         portNumber={this.state.portNumber} hostName={this.state.hostName}
+                         updatePort={this.props.updaButtontePort} updateHostname={this.props.updateHostname} updateOptionState={this.updateOptionState}/>
+          <Row>
+              <Button color={"success"} size={"lg"} value="updateBtn" onClick={(event) => {this.submitServerInfo()}} >Update</Button>
           </Row>
         </CardBody>
       </Card>

@@ -1,6 +1,7 @@
 package com.tripco.t07.server;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -41,12 +42,11 @@ public class TestConfig {
 
 
     @Test
-
     public void testGetConfigMethod() {
         String expectedConfigTffi = "{\"version\":" + version + ",\"type\":\"config\",\""+
             "units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"],"+
             "\"optimization\":[{\"label\":\"none\",\"description\":\"The trip is not optimized.\"}"+
-            ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"},{\"label\":\"shorter\",\"description\":\"2-opt.\"}],\"attributes\":[\"name\",\"id\",\"latitude\",\"longitude\"]}";
+            ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"},{\"label\":\"shorter\",\"description\":\"2-opt.\"}],\"attributes\":[\"name\",\"id\",\"latitude\",\"longitude\"],\"maps\":[\"svg\"]}";
 
         // create a new config object directly
         config = new Config();
