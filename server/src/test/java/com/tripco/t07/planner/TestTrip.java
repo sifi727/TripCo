@@ -166,7 +166,7 @@ public class TestTrip {
     Gson gson = new Gson();
     trip = gson.fromJson(placesJson, Trip.class);
     ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances,  24, 58, 40);
+    Collections.addAll(expectedDistances,  24, 40, 58);
     trip.plan();
     assertEquals(expectedDistances, trip.distances);
   }
