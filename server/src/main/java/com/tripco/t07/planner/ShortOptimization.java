@@ -51,7 +51,7 @@ public class ShortOptimization {
                }
             }
 
-            routeDistance+=distances[previousPlaceIndex][i]; //add to make it round trip
+           // routeDistance+=distances[previousPlaceIndex][i]; //add to make it round trip
             if(routeDistance<shortestTrip){
                 shortestTrip=routeDistance;
                 shortestRoute= Arrays.copyOf(route, route.length);
@@ -151,6 +151,6 @@ public class ShortOptimization {
                 }
             }
         }
-        return totalDistanceOfRoute(distance,route);
+        return sumRoute(route);
     }
 }
