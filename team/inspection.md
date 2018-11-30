@@ -10,7 +10,7 @@
 
 | Name | Preparation Time |
 | ---- | ---- |
-| David | 1 hr  |
+| David | 1.75 hr  |
 |  |  |
 
 ### Problems found
@@ -28,3 +28,4 @@
 | ShortOptimization:40 | comment out line of code | low | David | |
 | ShortOptimization:123,68 | sumRoute and totalDistance supose to do the same this | low | David | |
 | ShortOptimization:128 | totalDistance does not calculate the total distance missing +=  | high | David | |
+| ShortOptimization:57 | sumroute adds includes the return so this line is not needed | high | David | |
