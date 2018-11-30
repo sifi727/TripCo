@@ -9,6 +9,7 @@ import Itinerary from './Itinerary';
 import Calculator from './Calculator';
 import AddPlace from './AddPlace';
 import Search from './Search';
+import About from './About';
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
@@ -244,7 +245,9 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
           <Search port={this.state.port} hostname={this.state.hostname} addPlace={this.addPlace} />
+          <About/>
         </Container>
+
     )
   }
 }
