@@ -14,12 +14,49 @@ public class SearchObject {
     Integer limit;
     ArrayList<Place> places;
     Integer found;
-    ArrayList<String> filters;
+    ArrayList<Filter> filters;
 
+private String addFilters()
+{
+    if(filters!=null && filters.isEmpty()==false) {
+        String filterMatch = "(";
+        for(int i=0; i<filters.size(); i++)
+        {
+            Filter filter = filters.get(i);
+            for(int j=0; j<filter.values.length; j++) {
+                String value = filter.values[j];
+                filterMatch = filterMatch + filter.name + "=" + "'"+value+"'";
+                if (j + 1 < filter.values.length) {
+                    filterMatch = filterMatch + " or ";
+                }
 
+            }
+
+        }
+        return filterMatch +")";
+
+    }
+    return "";
+}
 private String createMatcher(String match) {
-    String matcher = " region.name like '%"+ match +"%' or country.name like '%" + match +"%' or continents.name  like '%"+ match +"%' or world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
-        match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%' order by world_airports.name";
+    String matcher = "";
+    if(match==null || "".equals(match))
+    {
+        if(filters==null || filters.isEmpty()) {
+            return  " order by world_airports.name ";
+        }
+
+        return "Where"+addFilters()+ " order by world_airports.name ";
+    }
+
+     matcher = "Where (region.name like '%"+ match +"%' or country.name like '%" + match +"%' or continents.name  like '%"+ match +"%' or world_airports.name like '%" + match + "%' or world_airports.id like '%" + match + "%' or municipality like '%" +
+        match + "%' or type like '%" + match + "%' or latitude like '%" + match + "%' or longitude like '%" + match + "%')";
+    if(filters!=null && filters.isEmpty()==false) {
+        matcher = matcher + " AND " + addFilters();
+    }
+
+    matcher = matcher + " order by world_airports.name ";
+
     return matcher;
 }
 
@@ -31,11 +68,7 @@ private String createMatcher(String match) {
             + "FROM continents\n"
             + "INNER JOIN country ON continents.id = country.continent\n"
             + "INNER JOIN region ON country.id = region.iso_country\n"
-            + "INNER JOIN world_airports ON region.id = world_airports.iso_region\n"
-            + "Where ";
-
-
-
+            + "INNER JOIN world_airports ON region.id = world_airports.iso_region ";
         search += createMatcher(match);
 
         return search;
@@ -58,8 +91,7 @@ private String createMatcher(String match) {
             + "FROM continents\n"
             + "INNER JOIN country ON continents.id = country.continent\n"
             + "INNER JOIN region ON country.id = region.iso_country\n"
-            + "INNER JOIN world_airports ON region.id = world_airports.iso_region\n"
-            + "Where ";
+            + "INNER JOIN world_airports ON region.id = world_airports.iso_region\n";
 
 
         countQuery += createMatcher(match);
