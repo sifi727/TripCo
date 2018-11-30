@@ -32,4 +32,4 @@
 | ShortOptimization:57 | sumroute adds includes the return so this line is not needed | high | David | #348|
 | ShortOptimization:119,123,135 | methods do not need distance[][] in parameters, its a class variable | low | Dmitry | |
 | ShortOptimization:28,40,54 | unnecessary comments from previous attempts | low | Dmitry | |
-| ShortOptimization:15,77,99 | Possibly an unnecessary empty line that could be removed | low | Jerrel | |
+| ShortOptimization:15,77,99 | Possibly an unnecessary empty line(s) that could be removed | low | Jerrel | |
