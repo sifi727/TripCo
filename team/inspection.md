@@ -2,15 +2,16 @@
  
 | Inspection | Details |
 | ----- | ----- |
-| Subject | *file and methods/line range to review for meeting* |
-| Meeting | *date, time, location* |
-| Checklist | *reference, URL, etc.* |
+| Subject | ShortestOptimization.java|
+| Meeting | 11/30/18|
+| Checklist | java checklist from slides|
 
 ### Roles
 
 | Name | Preparation Time |
 | ---- | ---- |
 | David | 1.75 hr  |
+|Dmitry| 1 hr|
 |  |  |
 
 ### Problems found
@@ -27,5 +28,7 @@
 | ShortOptimization:19 | method name states it does nearestNeighbor but it also does 2-opt | low | David | |
 | ShortOptimization:40 | comment out line of code | low | David | |
 | ShortOptimization:123,68 | sumRoute and totalDistance supose to do the same this | low | David | |
-| ShortOptimization:128 | totalDistance does not calculate the total distance missing +=  | high | David | |
-| ShortOptimization:57 | sumroute adds includes the return so this line is not needed | high | David | |
+| ShortOptimization:128 | totalDistance does not calculate the total distance missing +=  | high | David |#348 |
+| ShortOptimization:57 | sumroute adds includes the return so this line is not needed | high | David | #348|
+| ShortOptimization:119,123,135 | methods do not need distance[][] in parameters, its a class variable | low | Dmitry | |
+| ShortOptimization:28,40 | unnecessary comments from previous attempts | low | Dmitry | |
