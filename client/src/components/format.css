@@ -10,6 +10,17 @@ body {
   padding: 0 15px 0 15px;
 }
 
+/* WIDTH OF CONTACT IMAGES */
+.contact_image_rectangle{
+  height:192;
+  width:128;
+}
+
+.contact_image_square{
+  height:128;
+  width:128;
+}
+
 /* FONTS */
 
 body {
