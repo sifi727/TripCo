@@ -58,7 +58,9 @@ class About extends Component{
                     <Media object src={jerrel} alt={"Jerrel"} className='contact_image_square'/>
                   </Media>
                   <Media body>
-                    <p>Stub</p>
+                    <p>I am originally from the east coast and lived in Pittsburgh, Pennsylvania for most of my life in a town southeast of Pittsburgh called McKeesport. I am currently majoring in two degrees: Computer Science and Applied Computing Technology. I have been in Colorado since August 2010 and before that, I lived in Georgia for nearly seven years in the city of Columbus. I developed a passion for computers once I was out of high school and I have always enjoyed math when I was younger, so computer science fits well with what I wanted to do as a career.</p>
+
+                      <p>As for my hobbies, well I love being behind a computer (obviously) whether it is surfing the web, playing games (I currently like to play Terraria by the way), or even working on personal computing projects. Also when time and money allows it, I love to travel and visit new places. Colorado is the furtherest west that I have been in the US, so eventually I would like to travel west to visit California and Las Vegas!</p>
                   </Media>
                 </Media>
               </CardBody>
