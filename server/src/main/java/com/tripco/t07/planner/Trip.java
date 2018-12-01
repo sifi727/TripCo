@@ -1,7 +1,6 @@
 package com.tripco.t07.planner;
 
 import java.awt.geom.Point2D;
-import java.util.List;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,19 +44,15 @@ public class Trip {
    */
   public void plan() {
 
-    if(options ==null)
-    {
+    if (options == null) {
       options = new Option();
-      options.units="miles";
+      options.units = "miles";
     }
-    if(title==null)
-    {
-      title="";
+    if (title == null) {
+      title = "";
     }
 
-
-
-    this.places=optimizePlaces();
+    this.places = optimizePlaces();
     this.distances = calculateLegDistances();
     this.map = svg(SVG_BACKGROUND_FILE_PATH);
 
@@ -100,11 +95,12 @@ public class Trip {
     return new Point2D.Double(x, y);
 
   }
-  private String OffMapToRightPath(Point2D previousPoint, Point2D currentPoint){
-    double rightoffMap = currentPoint.getX()+ SVG_MAP_WIDTH;
+
+  private String OffMapToRightPath(Point2D previousPoint, Point2D currentPoint) {
+    double rightoffMap = currentPoint.getX() + SVG_MAP_WIDTH;
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(
-        String.format(" L %f,%f",rightoffMap, currentPoint.getY()));
+        String.format(" L %f,%f", rightoffMap, currentPoint.getY()));
     stringBuilder
         .append(String.format(" M %f,%f",
             -previousPoint.getX(), previousPoint.getY()));
@@ -113,14 +109,13 @@ public class Trip {
     return stringBuilder.toString();
   }
 
-  private String OffMapToLeftPath(Point2D previousPoint, Point2D currentPoint)
-  {
+  private String OffMapToLeftPath(Point2D previousPoint, Point2D currentPoint) {
     StringBuilder stringBuilder = new StringBuilder();
 
-    double leftOfMapX= SVG_MAP_WIDTH -currentPoint.getX()-previousPoint.getX();
-    double rightOfMapX=previousPoint.getX()+ SVG_MAP_WIDTH;
+    double leftOfMapX = SVG_MAP_WIDTH - currentPoint.getX() - previousPoint.getX();
+    double rightOfMapX = previousPoint.getX() + SVG_MAP_WIDTH;
     stringBuilder.append(
-        String.format(" L %f,%f",leftOfMapX, currentPoint.getY()));
+        String.format(" L %f,%f", leftOfMapX, currentPoint.getY()));
 
     stringBuilder
         .append(String.format(" M %f,%f",
@@ -133,7 +128,8 @@ public class Trip {
   }
 
   private boolean needToWrapAroundMap(Place p1, Place p2) {
-    return (Math.abs(p1.longitude-p2.longitude)>180); //need to take in account going left and right off map
+    return (Math.abs(p1.longitude - p2.longitude)
+        > 180); //need to take in account going left and right off map
   }
 
   /**
@@ -144,35 +140,32 @@ public class Trip {
     places.add(places.get(0)); // add the start to the end.
     StringBuilder stringBuilder = new StringBuilder("d= ");
 
-    for (int i=0; i<places.size(); i++) {
+    for (int i = 0; i < places.size(); i++) {
       Place currentPlace = places.get(i);
       Point2D point = calculatePoint(currentPlace);
-      if(i==0)
-      {
+      if (i == 0) {
         stringBuilder
             .append(String.format("\"M %f,%f",
                 point.getX(), point.getY()));
-      }
-      else if(needToWrapAroundMap(places.get(i),places.get(i-1))) //places greater than 180 degrees apart
+      } else if (needToWrapAroundMap(places.get(i),
+          places.get(i - 1))) //places greater than 180 degrees apart
       {
-        Place prevPlace = places.get(i-1);
+        Place prevPlace = places.get(i - 1);
         Point2D prevPoint = calculatePoint(prevPlace);
 
-        if(prevPlace.longitude>currentPlace.longitude) //go right off map
+        if (prevPlace.longitude > currentPlace.longitude) //go right off map
         {
-          stringBuilder.append(OffMapToRightPath(prevPoint,point));
+          stringBuilder.append(OffMapToRightPath(prevPoint, point));
+        } else { //go left off map
+          stringBuilder.append(OffMapToLeftPath(prevPoint, point));
         }
-        else { //go left off map
-          stringBuilder.append(OffMapToLeftPath(prevPoint,point));
-        }
-      }
-      else //closer than 180 degrees apart.
+      } else //closer than 180 degrees apart.
       {
         stringBuilder.append(
             String.format(" L %f,%f", point.getX(), point.getY()));
       }
     }
-    places.remove(places.size()-1); //duplicate city for the end point
+    places.remove(places.size() - 1); //duplicate city for the end point
     stringBuilder.append(" \""); //closes path
     return stringBuilder.toString();
 
@@ -216,12 +209,10 @@ public class Trip {
 
   /**
    * Returns an SVG containing the background and the legs of the trip.
-   * @param fileLocation
    */
   private String svg(String fileLocation) {
     String coBackGroundSvg = "";
     try {
-
 
       coBackGroundSvg = addPathToSvgMap(getMapFromFile(fileLocation), getSvgPath());
     } catch (Exception e) {
@@ -276,10 +267,10 @@ public class Trip {
     return dist;
   }
 
-  private  ArrayList<Place> optimizePlaces(){
-    ArrayList<Place> updatedPlaces=places;
-    if(options.optimization!=null && !options.optimization.equalsIgnoreCase("none")){
-      ShortOptimization optimizedPlaces = new ShortOptimization(places,options.optimization);
+  private ArrayList<Place> optimizePlaces() {
+    ArrayList<Place> updatedPlaces = places;
+    if (options.optimization != null && !options.optimization.equalsIgnoreCase("none")) {
+      ShortOptimization optimizedPlaces = new ShortOptimization(places, options.optimization);
       updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
     }
     return updatedPlaces;
