@@ -19,6 +19,7 @@ public class Config {
   private List<String> attributes = Arrays.asList("name", "id", "latitude", "longitude");
   private List<String> maps = Arrays
       .asList("svg");
+  private List<Filter> filters = Arrays.asList(new Filter("type", new String []{"balloonport", "heliport", "airport", "seaplane base"}));
 
 
   //Getter methods for testing.
