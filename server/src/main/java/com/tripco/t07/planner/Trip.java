@@ -39,8 +39,7 @@ public class Trip {
 
 
   /**
-   * The top level method that does planning. At this point it just adds the map and distances for
-   * the places in order. It might need to reorder the places in the future.
+   * The top level method that does planning. At this point it just adds the map and distances for the places in order. It might need to reorder the places in the future.
    */
   public void plan() {
 
@@ -54,9 +53,13 @@ public class Trip {
 
     this.places = optimizePlaces();
     this.distances = calculateLegDistances();
-    this.map = svg(SVG_BACKGROUND_FILE_PATH);
-
+    if (options.map != null && options.map.toLowerCase().equals("kml")) {
+      this.map = getKML();
+    } else {
+      this.map = svg(SVG_BACKGROUND_FILE_PATH);
+    }
   }
+
 
   /**
    * Uses the path to access a file and then returns the value as string.
@@ -77,8 +80,7 @@ public class Trip {
 
 
   /**
-   * Calculates the x,y pixel coordinates to be placed on the CObackground.svg. This method uses the
-   * Place.java longitude and latitude
+   * Calculates the x,y pixel coordinates to be placed on the CObackground.svg. This method uses the Place.java longitude and latitude
    */
   private Point2D calculatePoint(Place place) {
     //This some of this code copied or modified from this
@@ -124,7 +126,6 @@ public class Trip {
         String.format(" L %f,%f", currentPoint.getX(), currentPoint.getY()));
 
     return stringBuilder.toString();
-
   }
 
   private boolean needToWrapAroundMap(Place p1, Place p2) {
@@ -168,7 +169,6 @@ public class Trip {
     places.remove(places.size() - 1); //duplicate city for the end point
     stringBuilder.append(" \""); //closes path
     return stringBuilder.toString();
-
   }
 
   /**
@@ -185,12 +185,10 @@ public class Trip {
     stringBuilder.append(
         String.format("\tid=\"path-%s\"\n" + "\t\t\t/>\n", title)); //if no title set will be null
     return stringBuilder.toString();
-
   }
 
   /**
-   * This adds the SVG path to the map. Inserts it before the second to last </g> Returns the map
-   * with the path inserted. If trip.places is empty or null returns the map without a path.
+   * This adds the SVG path to the map. Inserts it before the second to last </g> Returns the map with the path inserted. If trip.places is empty or null returns the map without a path.
    */
 
   private String addPathToSvgMap(String map, String path) {
@@ -203,7 +201,6 @@ public class Trip {
     stringBuilder.insert(indexOfFirstClosingGroupTag,
         "\n" + path + "\n"); //insert the path before group tag
     return stringBuilder.toString();
-
   }
 
 
@@ -219,13 +216,11 @@ public class Trip {
       return "";
     }
     return coBackGroundSvg;
-
   }
 
 
   /**
-   * Returns the distances between consecutive places, including the return to the starting point to
-   * make a round trip.
+   * Returns the distances between consecutive places, including the return to the starting point to make a round trip.
    */
 
   private int legDistance(Place origin, Place destination) {
@@ -241,8 +236,7 @@ public class Trip {
   }
 
   /**
-   * Returns the distances between consecutive places, including the return to the starting point to
-   * make a round trip.
+   * Returns the distances between consecutive places, including the return to the starting point to make a round trip.
    */
   private ArrayList<Integer> calculateLegDistances() {
 
@@ -274,5 +268,133 @@ public class Trip {
       updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
     }
     return updatedPlaces;
+  }
+
+
+  /**
+   * Creates a KML formatted string with all the places in trip.places
+   *
+   * @return a string representation of the trip in KML format
+   */
+  private String getKML() {
+    int count = 2;
+    // initialize KML with heading and starting tags
+    String KML = getKMLStartTag();
+    // setup the style for the line
+    KML += getKMLStyleTag();
+    // draw the path through each location in places
+    KML += getKMLPlacemarkTagWithLineString();
+    // add a placemark for each location in places
+    KML += getKMLPlacemarkForEachPlace();
+    // end any open tags
+    KML += indent(2) + "</Document>\n" +
+        indent(0) + "</kml>\n";
+    return KML;
+  }
+
+
+  /**
+   * Get a KML tag with the correct heading, Document, description
+   *
+   * @return String with the KML information
+   */
+  private String getKMLStartTag() {
+    String KML = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+        "<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n" +
+        indent(2) + "<Document>\n";
+
+    // Add a title if one exists
+    if (title != null && title.length() > 0) {
+      KML += indent(4) + "<name>" + title + "</name>\n";
+    }
+
+    // description
+    KML += indent(4) + "<description>Aggregated trip from all places</description>\n";
+
+    return KML;
+  }
+
+
+  /**
+   * Get a KML tag with the correct style tag and info
+   *
+   * @return String with the KML information
+   */
+  private String getKMLStyleTag() {
+    String KML = indent(4) + "<Style id=\"blueLineRedPoly\">\n" +
+        indent(6) + "<LineStyle>\n" +
+        indent(8) + "<color>0000FF</color>\n" +
+        indent(8) + "<width>4</width>\n" +
+        indent(6) + "</LineStyle>\n" +
+        indent(6) + "<PolyStyle>\n" +
+        indent(8) + "<color>FF0000</color>\n" +
+        indent(6) + "</PolyStyle>\n" +
+        indent(4) + "</Style>\n";
+    return KML;
+  }
+
+
+  /**
+   * Get a KML tag with the correct style tag and info
+   *
+   * @return String with the KML information
+   */
+  private String getKMLPlacemarkForEachPlace() {
+    String KML = "";
+
+    for (Place place : places) {
+      KML += indent(4) + "<Placemark>\n" +
+          indent(6) + "<name>" + place.name + "</name>\n" +
+          indent(6) + "<description>" + place.id + "</description>\n" +
+          indent(6) + "<Point>" +
+          indent(8) + "<coordinates>" + place.latitude + "," + place.longitude + "," + "2357\n" + "</coordinates>" +
+          indent(6) + "</Point>" +
+          indent(4) + "</Placemark>\n";
+    }
+    return KML;
+  }
+
+
+  /**
+   * Get a KML tag with the correct style tag and info
+   *
+   * @return String with the KML information
+   */
+  private String getKMLPlacemarkTagWithLineString() {
+    String KML = indent(4) + "<Placemark>\n" +
+        indent(6) + "<name>" + places.get(0).name + "</name>\n" +
+        indent(6) + "<description>" + places.get(0).id + "</description>\n" +
+        indent(6) + "<styleUrl>#blueLineRedPoly</styleUrl>\n" +
+        indent(6) + "<LineString>\n" +
+        indent(8) + "<extrude>1</extrude>\n" +
+        indent(8) + "<altitudeMode>absolute</altitudeMode>\n" +
+        indent(8) + "<coordinates>\n";
+
+    // add the lat, long, and altitude - for each place in places
+    for (Place place : places) {
+      KML += indent(10) + place.latitude + "," + place.longitude + "," + "2357\n";
+    }
+
+    // end open tags
+    KML += indent(8) + "</coordinates>\n" +
+        indent(6) + "</LineString>\n" +
+        indent(4) + "</Placemark>\n";
+
+    return KML;
+  }
+
+
+  /**
+   * Get an indent string the length of count
+   *
+   * @param count => the length of spaces to return\
+   * @return an indented string the length of count
+   */
+  private String indent(int count) {
+    String retString = "";
+    for (int i = 0; i < count; i++) {
+      retString += " ";
+    }
+    return retString;
   }
 }
