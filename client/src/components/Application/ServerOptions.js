@@ -12,15 +12,15 @@ class ServerOptions extends Component {
     return (
         <Col>
           <Form key={state + "_form"}>
-            <FormText style={{fontSize: "16px"}}>
+            <h3>
               {txt}
-            </FormText>
-            <h3 style={{color: "#00006a"}}>
-              {state}
             </h3>
-            <p>
+            <h4 style={{color: "#00006a"}}>
+              {state}
+            </h4>
+            <FormText color="muted">
               {options}
-            </p>
+            </FormText>
             <Input id={id} type={"text"} value={this.props[field]}
                    onChange={(event) => {
                      return this.props.updateOptionState(field,
@@ -36,9 +36,9 @@ class ServerOptions extends Component {
 
     return (
         <Row>
-          {buildColumn("hostName", "hostnameId", "Enter a hostname:",
+          {buildColumn("hostName", "hostnameId", "Enter a new hostname:",
               this.props.hostname, "Current Hostname:")}
-          {buildColumn("portNumber", "portId", "Enter a port number:",
+          {buildColumn("portNumber", "portId", "Enter a new port number:",
               this.props.port, "Current Port:")}
         </Row>
 
