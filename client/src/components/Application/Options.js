@@ -168,7 +168,11 @@ class Options extends Component{
                          portNumber={this.state.portNumber} hostName={this.state.hostName}
                          updatePort={this.props.updaButtontePort} updateHostname={this.props.updateHostname} updateOptionState={this.updateOptionState}/>
           <Row>
-              <Button  value="updateBtn" onClick={(event) => {this.submitServerInfo()}} >Update</Button>
+            <Col/>
+            <Col>
+              <Button  value="updateBtn" onClick={(event) => {this.submitServerInfo()}} >Update hostname and port</Button>
+            </Col>
+            <Col/>
           </Row>
         </CardBody>
       </Card>
