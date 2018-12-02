@@ -47,7 +47,7 @@ public class TestConfig {
             "units\":[\"miles\",\"kilometers\",\"nautical miles\",\"user defined\"],"+
             "\"optimization\":[{\"label\":\"none\",\"description\":\"The trip is not optimized.\"}"+
             ",{\"label\":\"short\",\"description\":\"Nearest neighbor.\"},{\"label\":\"shorter\",\"description\":\"2-opt.\"}]"+
-            ",\"attributes\":[\"name\",\"id\",\"latitude\",\"longitude\"],\"maps\":[\"svg\"],\"filters\":[{\"name\":\"type\",\"values\""+
+            ",\"attributes\":[\"name\",\"id\",\"latitude\",\"longitude\"],\"maps\":[\"svg\",\"kml\"],\"filters\":[{\"name\":\"type\",\"values\""+
             ":[\"balloonport\",\"heliport\",\"airport\",\"seaplane base\"]}]}";
 
         // create a new config object directly
