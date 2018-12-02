@@ -25,7 +25,7 @@ import Options from '../src/components/Application/Options'
  * component on construction.
  */
 const startProps = {
-  'config': { 'units': ['miles', 'kilometers'] },
+  'config': { 'units': ['miles', 'kilometers'], 'maps': ["svg", "kml"] },
   'options': { 'unit': 'miles' },
   'attributes' : ["name", "id", "latitude", "longitude"],
   'attributesToShow': ["name", "id", "latitude", "longitude"]
@@ -43,7 +43,7 @@ function testExample() {
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));
 
-  expect(actual).toEqual(["miles", "kilometers", "updateBtn"]);
+  expect(actual).toEqual(["miles", "kilometers", "svg", "kml", "updateBtn"]);
 }
 
 test('Check to see if table gets made correctly (Function)', testExample);
@@ -66,5 +66,5 @@ test('Check to see if table gets made correctly (Lambda)', () => {
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
 
-  expect(actual).toEqual(["miles","kilometers","updateBtn"]);  // (3)
+  expect(actual).toEqual(["miles","kilometers","svg","kml","updateBtn"]);  // (3)
 });
