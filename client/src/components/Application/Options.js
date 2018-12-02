@@ -16,7 +16,7 @@ class Options extends Component {
     this.state = {
       hostName: "",
       portNumber: ""
-    }
+    };
 
     this.displayFields = this.displayFields.bind(this);
     this.handleUnitName = this.handleUnitName.bind(this);
@@ -101,7 +101,7 @@ class Options extends Component {
   }
 
   updateOptionState(field, event) {
-    if (field == "hostName") {
+    if (field === "hostName") {
       this.setState({
         hostName: event.target.value
       });
@@ -132,9 +132,22 @@ class Options extends Component {
         </Button>
     );
 
+    const mapBtns = this.props.config.maps.map((type) =>
+        <Button
+            key={'map_button_' + type}
+            className='btn-outline-dark unit-button'
+            active={this.props.options.map === type}
+            value={type}
+            onClick={(event) => this.props.updateOptions('map',
+                event.target.value)}
+        >
+          {type}
+        </Button>
+    );
+
     let form;
 
-    if (this.props.options.units == "user defined") {
+    if (this.props.options.units === "user defined") {
       this.isUserDefined = true;
       form = this.displayFields()
     } else {
@@ -163,6 +176,15 @@ class Options extends Component {
                   {form}
                   {optimizationForm}
                 </FormGroup>
+              </Col>
+
+              <Col>
+                <FormText color="muted">
+                  Select the version of map:
+                </FormText>
+                <ButtonGroup vertical>
+                  {mapBtns}
+                </ButtonGroup>
               </Col>
               <Col>
                 <AttributeOptions attributes={this.props.attributes}
