@@ -132,18 +132,24 @@ class Options extends Component {
         </Button>
     );
 
-    const mapBtns = this.props.config.maps.map((type) =>
-        <Button
-            key={'map_button_' + type}
-            className='btn-outline-dark unit-button'
-            active={this.props.options.map === type}
-            value={type}
-            onClick={(event) => this.props.updateOptions('map',
-                event.target.value)}
-        >
-          {type}
-        </Button>
-    );
+    let mapBtns;
+    if(this.props.config.maps !== null) {
+      mapBtns = this.props.config.maps.map((type) =>
+          <Button
+              key={'map_button_' + type}
+              className='btn-outline-dark unit-button'
+              active={this.props.options.map === type}
+              value={type}
+              onClick={(event) => this.props.updateOptions('map',
+                  event.target.value)}
+          >
+            {type}
+          </Button>
+      );
+    }
+    else {
+      mapBtns = "";
+    }
 
     let form;
 
