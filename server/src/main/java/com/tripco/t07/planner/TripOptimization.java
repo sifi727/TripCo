@@ -43,7 +43,7 @@ public class TripOptimization {
 
             int routeDistance=sumRoute(route);
             if(optimizationLevel.equalsIgnoreCase("shorter")){
-               int twoOptDistance= twoOpt(route, distances);
+               int twoOptDistance= twoOpt(route);
                if(twoOptDistance<routeDistance){
                    routeDistance=twoOptDistance;
                }
@@ -62,7 +62,7 @@ public class TripOptimization {
         return shortestTripPlaces;
     }
 
-    public int sumRoute(int [] route){
+    private int sumRoute(int [] route){
         int distance =0;
         for (int i = 0; i <route.length-1 ; i++) {
             distance+=distances[route[i]][route[i+1]];
@@ -70,7 +70,7 @@ public class TripOptimization {
         return distance;
     }
 
-    public int closestPlace(int originIndex, Place[] places, boolean[] visitedPlaces) {
+    private int closestPlace(int originIndex, Place[] places, boolean[] visitedPlaces) {
 
         int shortestDistance = Integer.MAX_VALUE;
         int closestPlaceIndex = originIndex;
@@ -101,7 +101,7 @@ public class TripOptimization {
         }
     }
 
-    public void reverseBetweenIndeces(int[]route, int leftIndex, int rightIndex) {
+    private void reverseBetweenIndeces(int[]route, int leftIndex, int rightIndex) {
         int temp;
         while (leftIndex < rightIndex) {
             temp = route[leftIndex];
@@ -113,12 +113,12 @@ public class TripOptimization {
     }
 
 
-    int distanceBetweenCity(int[][] distance, int[] route, int cityIndex1, int cityIindex2) {
-        return distance[route[cityIndex1]][route[cityIindex2]];
+   private int distanceBetweenCity(int[] route, int cityIndex1, int cityIindex2) {
+        return distances[route[cityIndex1]][route[cityIindex2]];
     }
 
 
-    public int twoOpt(int[] route, int[][] distance) {
+    private int twoOpt(int[] route) {
         boolean improvement = true;
         int n = route.length-1;
         int delta;
@@ -127,9 +127,9 @@ public class TripOptimization {
             for (int i = 0; i <= n - 3; i++) {
                 for (int k = i + 2; k <= n - 1; k++) {
                     delta =
-                            -distanceBetweenCity(distance, route, i, i + 1) - distanceBetweenCity(distance, route,
-                                    k, k + 1) + distanceBetweenCity(distance, route, i, k) + distanceBetweenCity(
-                                    distance, route, i + 1, k + 1);
+                            -distanceBetweenCity(route, i, i + 1) - distanceBetweenCity(route,
+                                    k, k + 1) + distanceBetweenCity(route, i, k) + distanceBetweenCity(
+                                    route, i + 1, k + 1);
                     if (delta < 0) {
                         reverseBetweenIndeces(route, i + 1, k);
                         improvement = true;
