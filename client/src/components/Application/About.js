@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Card, CardBody, Media} from 'reactstrap'
 import alex from './Alex.jpg'
 import jerrel from './Jerrel.png'
+import david from './David.jpg'
 
 class About extends Component{
     constructor(props) {
@@ -31,7 +32,7 @@ class About extends Component{
                 <h3>David J.</h3>
                 <Media>
                   <Media left>
-                    <Media object src={''} alt={"David"} className='contact_image_square'/>
+                    <Media object src={david} alt={"David"} className='contact_image_rectangle'/>
                   </Media>
                   <Media body>
                     <p>Stub</p>
