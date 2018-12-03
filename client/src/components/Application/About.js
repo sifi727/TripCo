@@ -35,7 +35,9 @@ class About extends Component{
                     <Media object src={david} alt={"David"} className='contact_image_rectangle'/>
                   </Media>
                   <Media body>
-                    <p>Stub</p>
+                    <p>Currently, I am student at Colorado State University. In December, I am completing a bachelor’s degree in computer engineering with a minor in computer science. One of my goals with this degree is to learn how to develop software that brings value to individuals. </p>
+                    <p>When I am not programing you will probably find me working on my truck, reading a good book or hanging out with friends.</p>
+
                   </Media>
                 </Media>
               </CardBody>
