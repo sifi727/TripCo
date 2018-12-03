@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Container} from 'reactstrap';
+import {Container, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
+import classnames from 'classnames';
 import Info from './Info'
 import Map from './Map';
 import Options from './Options';
@@ -17,6 +18,7 @@ class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeTab: '1',
       tripHasChanged: false,
       config: null,
       port: location.port,
@@ -35,7 +37,10 @@ class Application extends Component {
       }
     };
     this.addPlace = this.addPlace.bind(this);
+    this.initConfig =  this.initConfig.bind(this);
     this.isObjNullorUndefined = this.isObjNullorUndefined.bind(this);
+    this.getTabTag = this.getTabTag.bind(this);
+    this.getNavTag = this.getNavTag.bind(this);
     this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
     this.updateHostname = this.updateHostname.bind(this);
     this.updateOptions = this.updateOptions.bind(this);
@@ -46,8 +51,8 @@ class Application extends Component {
     this.resetTrip = this.resetTrip.bind(this);
     this.reverseTrip = this.reverseTrip.bind(this);
     this.removePlace = this.removePlace.bind(this);
+    this.toggle = this.toggle.bind(this);
     this.updateAttributesToShow = this.updateAttributesToShow.bind(this);
-    this.initConfig =  this.initConfig.bind(this);
   }
 initConfig(port=this.state.port,hostname=this.state.hostname){
   get_config('config',port,hostname).then(
@@ -95,6 +100,69 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
     return (object === null || typeof object === 'undefined');
 
   }
+
+  getTabTag() {
+    return <TabContent activeTab={this.state.activeTab}>
+      <TabPane tabId="1">
+        <Itinerary trip={this.state.trip}
+                   attributes={this.state.attributesToShow}
+                   updatePlaces={this.updatePlaces}
+                   tripHasChanged={this.state.tripHasChanged}
+                   reverseTrip={this.reverseTrip}
+                   removePlace={this.removePlace}/>
+        <AddPlace addPlace={this.addPlace}/>
+        <Search port={this.state.port} hostname={this.state.hostname}
+                addPlace={this.addPlace}/>
+        <PlanUtilities trip={this.state.trip}
+                       updateTffiObject={this.updateTffiObject}
+                       port={this.state.port} hostname={this.state.hostname}
+                       resetTrip={this.resetTrip}/>
+      </TabPane>
+      <TabPane tabId="2">
+        <Calculator options={this.state.trip.options} port={this.state.port}
+                    hostname={this.state.hostname}/>
+      </TabPane>
+      <TabPane tabId="3">
+        <About/>
+      </TabPane>
+    </TabContent>;
+  }
+
+  getNavTag() {
+    return <Nav tabs>
+      <NavItem>
+        <NavLink
+            classname={classnames({active: this.state.activeTab === '1'})}
+            onClick={() => {
+              this.toggle('1');
+            }}
+        >
+          Plan A Trip
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink
+            classname={classnames({active: this.state.activeTab === '2'})}
+            onClick={() => {
+              this.toggle('2');
+            }}
+        >
+          Calculate a Distance
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink
+            classname={classnames({active: this.state.activeTab === '3'})}
+            onClick={() => {
+              this.toggle('3');
+            }}
+        >
+          About Us
+        </NavLink>
+      </NavItem>
+    </Nav>;
+  }
+
   updatePort(value) {
       this.setState({
           port:value
@@ -182,6 +250,14 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
   }
 
 
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
+
   resetTrip() {
       var blanktrip = {
           version: this.state.trip.version,
@@ -226,14 +302,16 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
       return <div/>
     }
 
+    const getTabTag = this.getTabTag();
+    const getNavTag = this.getNavTag();
+
     return (
         <Container id="Application">
-          <Info/>
-          <Map trip={this.state.trip}/>
-          <AddPlace addPlace={this.addPlace}/>
-          <Itinerary trip={this.state.trip} attributes={this.state.attributesToShow} updatePlaces={this.updatePlaces} tripHasChanged={this.state.tripHasChanged} reverseTrip={this.reverseTrip}
-          removePlace={this.removePlace}/>
-          <Options options={this.state.trip.options} config={this.state.config}
+            <Info/>
+            <Map trip={this.state.trip}/>
+            {getNavTag}
+            {getTabTag}
+            <Options options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname}
                    attributes={this.state.config.attributes}
@@ -241,13 +319,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
                    updateAttributesToShow={this.updateAttributesToShow}
                      initConfig={this.initConfig}
                    />
-          <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
-                         port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
-          <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
-          <Search port={this.state.port} hostname={this.state.hostname} addPlace={this.addPlace} />
-          <About/>
         </Container>
-
     )
   }
 }
