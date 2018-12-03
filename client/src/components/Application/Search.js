@@ -60,7 +60,7 @@ class Search extends Component {
 
         if(this.state.search.places.length > 0)  {
             return (
-                <Table striped={true} bordered={true} responsive={true}>
+                <Table striped={true} bordered={true} responsive={true} >
                     {getTableHeader}
                     <tbody>
                     {getTableRow}
@@ -143,13 +143,15 @@ class Search extends Component {
 
         return (
             <Card>
-                <CardBody style={{overflow:'scroll', maxHeight:'77%'}} >
+                <CardBody >
                     <CardTitle>Seach and Add New Destinations</CardTitle>
                     {searchField}
                     <br />
                     {searchButton}
                     <br /><br />
+                    <div style={{overflow:'scroll', maxHeight:'400px'}} >
                     {getTable}
+                    </div>
                 </CardBody>
             </Card>
         )
