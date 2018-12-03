@@ -3,12 +3,12 @@ package com.tripco.t07.planner;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ShortOptimization {
+public class TripOptimization {
     private Place [] places;
     private int[][] distances;
     private String optimizationLevel;
 
-    ShortOptimization(ArrayList<Place> places, String optimizationLevel){
+    public TripOptimization(ArrayList<Place> places, String optimizationLevel){
         this.places=places.toArray(new Place[places.size()]);
         this.distances = new int[places.size()][places.size()];
         this.optimizationLevel=optimizationLevel;
@@ -16,7 +16,7 @@ public class ShortOptimization {
     }
 
 
-    ArrayList<Place> nearestNeighborShortestPlaces(){
+   public ArrayList<Place> nearestNeighborShortestPlaces(){
 
         createDistanceMatrix();
         int shortestTrip = Integer.MAX_VALUE;
