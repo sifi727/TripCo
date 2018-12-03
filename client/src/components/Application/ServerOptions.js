@@ -1,43 +1,49 @@
 import React, {Component} from 'react'
-import {FormText, Input} from 'reactstrap'
-import {Button, Col, Form, FormGroup, Row} from 'reactstrap'
+import {Col, Form, FormText, Input, Row} from 'reactstrap'
 
-class ServerOptions extends Component{
-    constructor(props){
-        super(props);
+class ServerOptions extends Component {
+  constructor(props) {
+    super(props);
 
-        this.buildColumn = this.buildColumn.bind(this);
-    }
+    this.buildColumn = this.buildColumn.bind(this);
+  }
 
-    buildColumn(field, id, options, state, txt) {
-        return (
-            <Col>
-                <Form key={state + "_form"}>
-                    <FormText style={{fontSize : "16px"}}>
-                        {txt}
-                    </FormText>
-                    <h3 style={{color : "#00006a"}}>
-                        {state}
-                    </h3>
-                    <p>
-                        {options}
-                    </p>
-                    <Input id ={id} type ={"text"} value={this.props[field]} onChange={(event)=>this.props.updateOptionState(field, event)} />
-                </Form>
-            </Col>
-        )
-    }
+  buildColumn(field, id, options, state, txt) {
+    return (
+        <Col>
+          <Form key={state + "_form"}>
+            <h3>
+              {txt}
+            </h3>
+            <h4 style={{color: "#00006a"}}>
+              {state}
+            </h4>
+            <FormText color="muted">
+              {options}
+            </FormText>
+            <Input id={id} type={"text"} value={this.props[field]}
+                   onChange={(event) => {
+                     return this.props.updateOptionState(field,
+                         event);
+                   }}/>
+          </Form>
+        </Col>
+    )
+  }
 
-    render() {
-        const buildColumn = this.buildColumn;
+  render() {
+    const buildColumn = this.buildColumn;
 
-        return (
-            <Row>
-                {buildColumn("hostName", "hostnameId", "Enter a hostname:", this.props.hostname, "Current Hostname:")}
-                {buildColumn("portNumber", "portId", "Enter a port number:", this.props.port, "Current Port:")}
-            </Row>
+    return (
+        <Row>
+          {buildColumn("hostName", "hostnameId", "Enter a new hostname:",
+              this.props.hostname, "Current Hostname:")}
+          {buildColumn("portNumber", "portId", "Enter a new port number:",
+              this.props.port, "Current Port:")}
+        </Row>
 
-        )
-    }
+    )
+  }
 }
+
 export default ServerOptions;

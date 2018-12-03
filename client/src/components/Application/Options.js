@@ -77,7 +77,7 @@ class Options extends Component{
     return(
         <FormGroup>
           <FormText color="muted">
-            Select Optimization Level.
+            Select optimization level:
           </FormText>
           <Form>
             <ButtonGroup vertical>
@@ -142,7 +142,7 @@ class Options extends Component{
         <CardBody>
           <Row>
             <Col>
-              <p>Select the options you wish to use.</p>
+              <h3>Select the options you wish to use</h3>
             </Col>
           </Row>
           <Row>
@@ -168,7 +168,11 @@ class Options extends Component{
                          portNumber={this.state.portNumber} hostName={this.state.hostName}
                          updatePort={this.props.updaButtontePort} updateHostname={this.props.updateHostname} updateOptionState={this.updateOptionState}/>
           <Row>
-              <Button  value="updateBtn" onClick={(event) => {this.submitServerInfo()}} >Update</Button>
+            <Col/>
+            <Col>
+              <Button  value="updateBtn" onClick={(event) => {this.submitServerInfo()}} >Update hostname and port</Button>
+            </Col>
+            <Col/>
           </Row>
         </CardBody>
       </Card>
