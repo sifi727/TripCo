@@ -1,7 +1,6 @@
 package com.tripco.t07.planner;
 
 import java.awt.geom.Point2D;
-import java.util.List;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -279,8 +278,8 @@ public class Trip {
   private  ArrayList<Place> optimizePlaces(){
     ArrayList<Place> updatedPlaces=places;
     if(options.optimization!=null && !options.optimization.equalsIgnoreCase("none")){
-      ShortOptimization optimizedPlaces = new ShortOptimization(places,options.optimization);
-      updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
+      TripOptimization optimizedPlaces = new TripOptimization(places,options.optimization);
+      updatedPlaces = optimizedPlaces.optimizedTripPlaces();
     }
     return updatedPlaces;
   }
