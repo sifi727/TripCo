@@ -18,7 +18,7 @@ class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: 1,
+      activeTab: '1',
       tripHasChanged: false,
       config: null,
       port: location.port,
