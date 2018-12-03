@@ -288,9 +288,24 @@ public class Trip {
     KML += getKMLPlacemarkForEachPlace();
     // end any open tags
     KML += indent(2) + "</Document>\n" +
-        indent(0) + "</kml>\n";
+        indent(0) + "</kml>";
     return KML;
   }
+
+
+  /**
+   * Get a KML tag with the correct LookAt tag to focus view when loaded
+   *
+   * @return String with the KML information
+   */
+  private String getKMLLookAtTag() {
+      String KML = indent(6) + "<LookAt>\n" +
+            indent(8) + "<longitude>" +  places.get(0).longitude + "</longitude>\n" +
+            indent(8) + "<latitude>" + places.get(0).latitude + "</latitude>\n" +
+            indent(8) + "<altitude>2357</altitude>\n" +
+            indent(6) + "</LookAt>\n";
+      return KML;
+    }
 
 
   /**
@@ -323,11 +338,11 @@ public class Trip {
   private String getKMLStyleTag() {
     String KML = indent(4) + "<Style id=\"blueLineRedPoly\">\n" +
         indent(6) + "<LineStyle>\n" +
-        indent(8) + "<color>0000FF</color>\n" +
+        indent(8) + "<color>FFff0000</color>\n" +
         indent(8) + "<width>4</width>\n" +
         indent(6) + "</LineStyle>\n" +
         indent(6) + "<PolyStyle>\n" +
-        indent(8) + "<color>FF0000</color>\n" +
+        indent(8) + "<color>FF0000ff</color>\n" +
         indent(6) + "</PolyStyle>\n" +
         indent(4) + "</Style>\n";
     return KML;
@@ -341,14 +356,20 @@ public class Trip {
    */
   private String getKMLPlacemarkForEachPlace() {
     String KML = "";
+    int count = 0;
 
     for (Place place : places) {
       KML += indent(4) + "<Placemark>\n" +
           indent(6) + "<name>" + place.name + "</name>\n" +
-          indent(6) + "<description>" + place.id + "</description>\n" +
-          indent(6) + "<Point>" +
-          indent(8) + "<coordinates>" + place.latitude + "," + place.longitude + "," + "2357\n" + "</coordinates>" +
-          indent(6) + "</Point>" +
+          indent(6) + "<description>" + place.id + "</description>\n";
+      if(count == 0) {
+        // the first tag focuses the camera
+        KML += getKMLLookAtTag();
+        count++;
+      }
+      KML += indent(6) + "<Point>\n" +
+          indent(8) + "<coordinates>" + place.longitude + "," + place.latitude + ",2357</coordinates>\n" +
+          indent(6) + "</Point>\n" +
           indent(4) + "</Placemark>\n";
     }
     return KML;
@@ -362,7 +383,7 @@ public class Trip {
    */
   private String getKMLPlacemarkTagWithLineString() {
     String KML = indent(4) + "<Placemark>\n" +
-        indent(6) + "<name>" + places.get(0).name + "</name>\n" +
+        indent(6) + "<name>Path of the Trip</name>\n" +
         indent(6) + "<description>" + places.get(0).id + "</description>\n" +
         indent(6) + "<styleUrl>#blueLineRedPoly</styleUrl>\n" +
         indent(6) + "<LineString>\n" +
@@ -372,8 +393,11 @@ public class Trip {
 
     // add the lat, long, and altitude - for each place in places
     for (Place place : places) {
-      KML += indent(10) + place.latitude + "," + place.longitude + "," + "2357\n";
+      KML += indent(10) + place.longitude + "," + place.latitude + "," + "2357\n";
     }
+
+    // add the start to make it a round trip
+    KML += indent( 10) + places.get(0).longitude + "," + places.get(0).latitude + "," + "2357\n";
 
     // end open tags
     KML += indent(8) + "</coordinates>\n" +
