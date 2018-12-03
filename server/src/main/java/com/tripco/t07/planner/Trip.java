@@ -279,7 +279,7 @@ public class Trip {
     ArrayList<Place> updatedPlaces=places;
     if(options.optimization!=null && !options.optimization.equalsIgnoreCase("none")){
       TripOptimization optimizedPlaces = new TripOptimization(places,options.optimization);
-      updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
+      updatedPlaces = optimizedPlaces.optimizedTripPlaces();
     }
     return updatedPlaces;
   }

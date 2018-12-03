@@ -16,7 +16,7 @@ public class TripOptimization {
     }
 
 
-   public ArrayList<Place> nearestNeighborShortestPlaces(){
+   public ArrayList<Place> optimizedTripPlaces(){
 
         createDistanceMatrix();
         int shortestTrip = Integer.MAX_VALUE;
@@ -104,7 +104,7 @@ public class TripOptimization {
         }
     }
 
-    public void reverseBetweeniIndecency(int[]route, int leftIndex, int rightIndex) {
+    public void reverseBetweenIndeces(int[]route, int leftIndex, int rightIndex) {
         int temp;
         while (leftIndex < rightIndex) {
             temp = route[leftIndex];
@@ -145,7 +145,7 @@ public class TripOptimization {
                                     k, k + 1) + distanceBetweenCity(distance, route, i, k) + distanceBetweenCity(
                                     distance, route, i + 1, k + 1);
                     if (delta < 0) {
-                        reverseBetweeniIndecency(route, i + 1, k);
+                        reverseBetweenIndeces(route, i + 1, k);
                         improvement = true;
                     }
                 }
