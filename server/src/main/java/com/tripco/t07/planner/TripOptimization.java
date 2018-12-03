@@ -25,7 +25,6 @@ public class TripOptimization {
             int [] route = new int[places.length+1]; //+1 to include round trip
             int routeIndex=0;
             boolean[] visitedPlaces = new boolean[places.length];
-           // int totalTripDistance = 0;
             route[0] = i; //starting place
             route[places.length]=i; //to make it a round trip route
             visitedPlaces[i] = true;
@@ -37,7 +36,6 @@ public class TripOptimization {
                     break;
                 }
                 visitedPlaces[nextVisitedPlaceIndex] = true;
-                //totalTripDistance += distances[previousPlaceIndex][ nextVisitedPlaceIndex];
                 route[routeIndex] = previousPlaceIndex;
                 previousPlaceIndex = nextVisitedPlaceIndex;
                 routeIndex++;
@@ -51,7 +49,6 @@ public class TripOptimization {
                }
             }
 
-           // routeDistance+=distances[previousPlaceIndex][i]; //add to make it round trip
             if(routeDistance<shortestTrip){
                 shortestTrip=routeDistance;
                 shortestRoute= Arrays.copyOf(route, route.length);
@@ -120,17 +117,6 @@ public class TripOptimization {
         return distance[route[cityIndex1]][route[cityIindex2]];
     }
 
-    int totalDistanceOfRoute(int[][] distance, int [] route)
-    {
-        int totalDistance = 0;
-        for(int i =0; i<route.length-1; i++)
-        {
-            totalDistance = distance[route[i]][route[i+1]];
-
-        }
-        return totalDistance;
-
-    }
 
     public int twoOpt(int[] route, int[][] distance) {
         boolean improvement = true;
