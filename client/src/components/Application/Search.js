@@ -46,6 +46,7 @@ class Search extends Component {
             this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
           this.toggle = this.toggle.bind(this);
           this.updateSearchFilter = this.updateSearchFilter.bind(this);
+          this.addValueToSearchFilter = this.addValueToSearchFilter.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -155,12 +156,44 @@ class Search extends Component {
     }
     updateSearchFilter(search,name,values)
     {
-      for (var i in search["filters"]) {
+      for (var i in search["filters"]) { // modified from here https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
         if (search["filters"][i].name == name) {
           search["filters"][i].values = values;
           this.setState({search: search});
-          break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
+          break;
         }
+      }
+
+    }
+
+    removeValueFromValues(values, value)
+    {
+      let rtnValues= values.filter((elementValue,index,arr)=>{  //filter out the value you don't want
+        return elementValue != value;
+      });
+
+      return rtnValues;
+
+    }
+
+    addValueToSearchFilter(search,event){
+      var type = search.filters.find(
+          x => x.name === event.target.name);
+
+      if (!type) {  // the filter do not have type filter in it.
+        let obj = {
+          "name": event.target.name,
+          "values": [event.target.value]
+        };
+
+        search["filters"].push(obj);
+        this.setState({search: search});
+      }
+      else {  // the filter has the key but not the value
+
+        type["values"].push(event.target.value);
+        this.updateSearchFilter(search,event.target.name,type.values);
+
       }
 
     }
@@ -171,44 +204,17 @@ class Search extends Component {
           let search = this.state.search;
 
           if(event.target.checked) {
-            var type = search.filters.find(
-                x => x.name === event.target.name);
 
-            if (!type) {  // the filter do not have type filter in it.
-              let obj = {
-                "name": event.target.name,
-                "values": [event.target.value]
-              };
-
-              search["filters"].push(obj);
-              this.setState({search: search});
-            } else {  // the filter has the key but not the value
-
-              type["values"].push(event.target.value);
-              this.updateSearchFilter(search,event.target.name,type.values);
-
-
-
-
-            }
+            this.addValueToSearchFilter(search,event);
           }
-          else
+          else   //removing a filter
           {
               var values = search.filters.find(
                   x => x.name === event.target.name).values;
-              values= values.filter((value,index,arr)=>{
-                return value != event.target.value;
-               }
 
-            );
+            values=this.removeValueFromValues(values, event.target.value);
 
-                for (var i in search["filters"]) {
-                  if (search["filters"][i].name == event.target.name) {
-                    search["filters"][i].values = values;
-                    this.setState({search: search});
-                    break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
-                  }
-                }
+            this.updateSearchFilter(search,event.target.name,values);
 
              values = search.filters.find(
                 x => x.name === event.target.name).values;
@@ -222,17 +228,9 @@ class Search extends Component {
                   type=[];
                 }
                 search["filters"] = type;
-                console.log("remove all");
-                console.log(type);
                 this.setState({search: search});
               }
-
-
-
           }
-
-
-
     }
 
   innerCheckboxGroup(filter)
