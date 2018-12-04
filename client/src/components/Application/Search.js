@@ -269,7 +269,7 @@ class Search extends Component {
       // console.log(this.state.search.filters.find(x=> x.name===filter.name).values.includes(value));
      // console.log(this.state.search.filters[filter.name].includes(value));
       return(
-          <FormGroup check>
+          <FormGroup check  className="ml-4">
             <Input type="checkbox" name={filter.name} value={value} id={filter.name+value} onClick={(event)=>this.onCheckBoxClick(event)} />
             <Label for={value} check>{value}</Label>
           </FormGroup>
@@ -282,8 +282,8 @@ class Search extends Component {
     {
      let checkboxes= this.props.config.filters.map((filter)=>{
          return(
-             <FormGroup check>
-             <Input type="checkbox" name="key" value={filter.name} id={filter.name+"key"} onClick={(event)=>this.onCheckBoxClick(event)}/>
+             <FormGroup check >
+             {/*<Input type="checkbox" name="key" value={filter.name} id={filter.name+"key"} onClick={(event)=>this.onCheckBoxClick(event)}/>*/}
              <Label>{filter.name}</Label>
 
 
