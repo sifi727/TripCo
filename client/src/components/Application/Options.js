@@ -25,6 +25,7 @@ class Options extends Component {
     this.buildOptimizationForm = this.buildOptimizationForm.bind(this);
     this.submitServerInfo = this.submitServerInfo.bind(this);
     this.updateOptionState = this.updateOptionState.bind(this);
+    this.updateMap = this.updateMap.bind(this);
     this.isUserDefined = false;
   }
 
@@ -112,6 +113,16 @@ class Options extends Component {
     }
   }
 
+  updateMap(event) {
+    if(window.confirm("If you change this option, you will have to plan a new trip to view the map in this new format.")) {
+      // clear out the map
+      this.props.updateTrip('map', '');
+      // change the map type in options
+      this.props.updateOptions('map',
+          event.target.value);
+    }
+  }
+
   render() {
     const isUserDefined = this.isUserDefined;
     var optimizationForm = null;
@@ -140,15 +151,11 @@ class Options extends Component {
               className='btn-outline-dark unit-button'
               active={this.props.options.map === type}
               value={type}
-              onClick={(event) => this.props.updateOptions('map',
-                  event.target.value)}
+              onClick={(event) => this.updateMap(event)}
           >
             {type}
           </Button>
       );
-    }
-    else {
-      mapBtns = "";
     }
 
     let form;

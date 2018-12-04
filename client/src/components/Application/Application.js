@@ -239,7 +239,8 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
                    attributesToShow={this.state.attributesToShow}
                    updateAttributesToShow={this.updateAttributesToShow}
                      initConfig={this.initConfig}
-                   />
+                   updateTrip={this.updateTrip}
+          />
           <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
                          port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
           <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
