@@ -197,24 +197,47 @@ class Search extends Component {
           }
           else
           {
-            var values = search.filters.find(
+              var values = search.filters.find(
+                  x => x.name === event.target.name).values;
+              console.log("remove entry");
+              console.log(values);
+              values= values.filter((value,index,arr)=>{
+                return value != event.target.value;
+               }
+
+            );
+
+                for (var i in search["filters"]) {
+                  if (search["filters"][i].name == event.target.name) {
+                    console.log("found in in loop");
+                    console.log(search["filters"][i]);
+                    search["filters"][i].values = values;
+                    console.log(search);
+                    this.setState({search: search});
+                    break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
+                  }
+                }
+
+             values = search.filters.find(
                 x => x.name === event.target.name).values;
-            console.log("remove entry");
-            console.log(values);
-            values= values.filter((value,index,arr)=>{
-              return value != event.target.value;
-          }
-          );
-            for (var i in search["filters"]) {
-              if (search["filters"][i].name == event.target.name) {
-                console.log("found in in loop");
-                console.log(search["filters"][i]);
-                search["filters"][i].values = values;
-                console.log(search);
+
+                console.log("before removing all value");
+                console.log(values);
+
+
+              if(values.length==0) {
+                var type = search.filters.find(
+                    x => x.name !== event.target.name);
+                if(!type)
+                {
+                  type=[];
+                }
+                search["filters"] = type;
+                console.log("remove all");
+                console.log(type);
                 this.setState({search: search});
-                break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
               }
-            }
+
 
 
           }

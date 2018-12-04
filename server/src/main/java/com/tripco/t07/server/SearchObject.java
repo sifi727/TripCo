@@ -25,7 +25,7 @@ private String addFilters()
             Filter filter = filters.get(i);
             for(int j=0; j<filter.values.length; j++) {
                 String value = filter.values[j];
-                filterMatch = filterMatch + filter.name + "=" + "'"+value+"'";
+                filterMatch = filterMatch + filter.name + " like " + "'%"+value+"%'";
                 if (j + 1 < filter.values.length) {
                     filterMatch = filterMatch + " or ";
                 }
