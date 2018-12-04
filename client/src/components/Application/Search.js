@@ -45,6 +45,7 @@ class Search extends Component {
             this.innerCheckboxGroup = this.innerCheckboxGroup.bind(this);
             this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
           this.toggle = this.toggle.bind(this);
+          this.updateSearchFilter = this.updateSearchFilter.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -152,47 +153,41 @@ class Search extends Component {
         search[field] = event.target.value;
         this.setState({search:search});
     }
+    updateSearchFilter(search,name,values)
+    {
+      for (var i in search["filters"]) {
+        if (search["filters"][i].name == name) {
+          search["filters"][i].values = values;
+          this.setState({search: search});
+          break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
+        }
+      }
+
+    }
 
 
   onCheckBoxClick(event){
-          console.log(event.target.name);
-          console.log(event.target.value);
+
           let search = this.state.search;
 
           if(event.target.checked) {
-            if(event.target.name=="key")
-            {
-
-            }
             var type = search.filters.find(
                 x => x.name === event.target.name);
 
-            if (!type) {
+            if (!type) {  // the filter do not have type filter in it.
               let obj = {
                 "name": event.target.name,
                 "values": [event.target.value]
               };
+
               search["filters"].push(obj);
-              console.log("Added type");
-              console.log(search);
-              console.log("setting state");
-              console.log(search);
               this.setState({search: search});
-            } else {
-              console.log("have a type");
-              console.log(type);
+            } else {  // the filter has the key but not the value
 
               type["values"].push(event.target.value);
-              for (var i in search["filters"]) {
-                if (search["filters"][i].name == event.target.name) {
-                  console.log("found in in loop");
-                  console.log(search["filters"][i]);
-                  search["filters"][i].values = type.values;
-                  console.log(search);
-                  this.setState({search: search});
-                  break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
-                }
-              }
+              this.updateSearchFilter(search,event.target.name,type.values);
+
+
 
 
             }
@@ -201,8 +196,6 @@ class Search extends Component {
           {
               var values = search.filters.find(
                   x => x.name === event.target.name).values;
-              console.log("remove entry");
-              console.log(values);
               values= values.filter((value,index,arr)=>{
                 return value != event.target.value;
                }
@@ -211,10 +204,7 @@ class Search extends Component {
 
                 for (var i in search["filters"]) {
                   if (search["filters"][i].name == event.target.name) {
-                    console.log("found in in loop");
-                    console.log(search["filters"][i]);
                     search["filters"][i].values = values;
-                    console.log(search);
                     this.setState({search: search});
                     break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
                   }
@@ -222,9 +212,6 @@ class Search extends Component {
 
              values = search.filters.find(
                 x => x.name === event.target.name).values;
-
-                console.log("before removing all value");
-                console.log(values);
 
 
               if(values.length==0) {
