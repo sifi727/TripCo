@@ -260,12 +260,12 @@ public class Trip {
 
     return dist;
   }
-
-  private ArrayList<Place> optimizePlaces() {
+  
+  private  ArrayList<Place> optimizePlaces() {
     ArrayList<Place> updatedPlaces = places;
-    if (options.optimization != null && !options.optimization.equalsIgnoreCase("none")) {
-      ShortOptimization optimizedPlaces = new ShortOptimization(places, options.optimization);
-      updatedPlaces = optimizedPlaces.nearestNeighborShortestPlaces();
+    if(options.optimization != null && !options.optimization.equalsIgnoreCase("none")) {
+      TripOptimization optimizedPlaces = new TripOptimization(places, options.optimization);
+      updatedPlaces = optimizedPlaces.optimizedTripPlaces();
     }
     return updatedPlaces;
   }

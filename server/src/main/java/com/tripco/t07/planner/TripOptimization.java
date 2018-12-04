@@ -3,12 +3,12 @@ package com.tripco.t07.planner;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ShortOptimization {
+public class TripOptimization {
     private Place [] places;
     private int[][] distances;
     private String optimizationLevel;
 
-    ShortOptimization(ArrayList<Place> places, String optimizationLevel){
+    public TripOptimization(ArrayList<Place> places, String optimizationLevel){
         this.places=places.toArray(new Place[places.size()]);
         this.distances = new int[places.size()][places.size()];
         this.optimizationLevel=optimizationLevel;
@@ -16,7 +16,7 @@ public class ShortOptimization {
     }
 
 
-    ArrayList<Place> nearestNeighborShortestPlaces(){
+   public ArrayList<Place> optimizedTripPlaces(){
 
         createDistanceMatrix();
         int shortestTrip = Integer.MAX_VALUE;
@@ -25,7 +25,6 @@ public class ShortOptimization {
             int [] route = new int[places.length+1]; //+1 to include round trip
             int routeIndex=0;
             boolean[] visitedPlaces = new boolean[places.length];
-           // int totalTripDistance = 0;
             route[0] = i; //starting place
             route[places.length]=i; //to make it a round trip route
             visitedPlaces[i] = true;
@@ -37,7 +36,6 @@ public class ShortOptimization {
                     break;
                 }
                 visitedPlaces[nextVisitedPlaceIndex] = true;
-                //totalTripDistance += distances[previousPlaceIndex][ nextVisitedPlaceIndex];
                 route[routeIndex] = previousPlaceIndex;
                 previousPlaceIndex = nextVisitedPlaceIndex;
                 routeIndex++;
@@ -45,13 +43,12 @@ public class ShortOptimization {
 
             int routeDistance=sumRoute(route);
             if(optimizationLevel.equalsIgnoreCase("shorter")){
-               int twoOptDistance= twoOpt(route, distances);
+               int twoOptDistance= twoOpt(route);
                if(twoOptDistance<routeDistance){
                    routeDistance=twoOptDistance;
                }
             }
 
-           // routeDistance+=distances[previousPlaceIndex][i]; //add to make it round trip
             if(routeDistance<shortestTrip){
                 shortestTrip=routeDistance;
                 shortestRoute= Arrays.copyOf(route, route.length);
@@ -65,7 +62,7 @@ public class ShortOptimization {
         return shortestTripPlaces;
     }
 
-    public int sumRoute(int [] route){
+    private int sumRoute(int [] route){
         int distance =0;
         for (int i = 0; i <route.length-1 ; i++) {
             distance+=distances[route[i]][route[i+1]];
@@ -73,7 +70,7 @@ public class ShortOptimization {
         return distance;
     }
 
-    public int closestPlace(int originIndex, Place[] places, boolean[] visitedPlaces) {
+    private int closestPlace(int originIndex, Place[] places, boolean[] visitedPlaces) {
 
         int shortestDistance = Integer.MAX_VALUE;
         int closestPlaceIndex = originIndex;
@@ -104,7 +101,7 @@ public class ShortOptimization {
         }
     }
 
-    public void reverseBetweeniIndecency(int[]route, int leftIndex, int rightIndex) {
+    private void reverseBetweenIndeces(int[]route, int leftIndex, int rightIndex) {
         int temp;
         while (leftIndex < rightIndex) {
             temp = route[leftIndex];
@@ -116,23 +113,12 @@ public class ShortOptimization {
     }
 
 
-    int distanceBetweenCity(int[][] distance, int[] route, int cityIndex1, int cityIindex2) {
-        return distance[route[cityIndex1]][route[cityIindex2]];
+   private int distanceBetweenCity(int[] route, int cityIndex1, int cityIindex2) {
+        return distances[route[cityIndex1]][route[cityIindex2]];
     }
 
-    int totalDistanceOfRoute(int[][] distance, int [] route)
-    {
-        int totalDistance = 0;
-        for(int i =0; i<route.length-1; i++)
-        {
-            totalDistance = distance[route[i]][route[i+1]];
 
-        }
-        return totalDistance;
-
-    }
-
-    public int twoOpt(int[] route, int[][] distance) {
+    private int twoOpt(int[] route) {
         boolean improvement = true;
         int n = route.length-1;
         int delta;
@@ -141,11 +127,11 @@ public class ShortOptimization {
             for (int i = 0; i <= n - 3; i++) {
                 for (int k = i + 2; k <= n - 1; k++) {
                     delta =
-                            -distanceBetweenCity(distance, route, i, i + 1) - distanceBetweenCity(distance, route,
-                                    k, k + 1) + distanceBetweenCity(distance, route, i, k) + distanceBetweenCity(
-                                    distance, route, i + 1, k + 1);
+                            -distanceBetweenCity(route, i, i + 1) - distanceBetweenCity(route,
+                                    k, k + 1) + distanceBetweenCity(route, i, k) + distanceBetweenCity(
+                                    route, i + 1, k + 1);
                     if (delta < 0) {
-                        reverseBetweeniIndecency(route, i + 1, k);
+                        reverseBetweenIndeces(route, i + 1, k);
                         improvement = true;
                     }
                 }
