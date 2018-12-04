@@ -47,6 +47,7 @@ class Search extends Component {
           this.toggle = this.toggle.bind(this);
           this.updateSearchFilter = this.updateSearchFilter.bind(this);
           this.addValueToSearchFilter = this.addValueToSearchFilter.bind(this);
+          this.removeValueToSearchFilter= this.removeValueToSearchFilter.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -198,6 +199,31 @@ class Search extends Component {
 
     }
 
+    removeValueToSearchFilter(search,event){
+      var values = search.filters.find(
+          x => x.name === event.target.name).values;
+
+      values=this.removeValueFromValues(values, event.target.value);
+
+      this.updateSearchFilter(search,event.target.name,values);
+
+      values = search.filters.find(
+          x => x.name === event.target.name).values;
+
+
+      if(values.length==0) {
+        var type = search.filters.find(
+            x => x.name !== event.target.name);
+        if(!type)
+        {
+          type=[];
+        }
+        search["filters"] = type;
+        this.setState({search: search});
+      }
+
+    }
+
 
   onCheckBoxClick(event){
 
@@ -209,27 +235,7 @@ class Search extends Component {
           }
           else   //removing a filter
           {
-              var values = search.filters.find(
-                  x => x.name === event.target.name).values;
-
-            values=this.removeValueFromValues(values, event.target.value);
-
-            this.updateSearchFilter(search,event.target.name,values);
-
-             values = search.filters.find(
-                x => x.name === event.target.name).values;
-
-
-              if(values.length==0) {
-                var type = search.filters.find(
-                    x => x.name !== event.target.name);
-                if(!type)
-                {
-                  type=[];
-                }
-                search["filters"] = type;
-                this.setState({search: search});
-              }
+             this.removeValueToSearchFilter(search,event);
           }
     }
 
