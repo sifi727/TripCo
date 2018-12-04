@@ -11,7 +11,8 @@ import {
   Input,
   Row,
   Table,
-    Label
+  Label,
+  Collapse, ButtonGroup
 } from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
@@ -43,6 +44,7 @@ class Search extends Component {
             this.checkboxGroup = this.checkboxGroup.bind(this);
             this.innerCheckboxGroup = this.innerCheckboxGroup.bind(this);
             this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
+          this.toggle = this.toggle.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -303,6 +305,9 @@ class Search extends Component {
        );
 
     }
+  toggle() {
+    this.setState({collapse: !this.state.collapse});
+  }
 
     render() {
         const searchField = this.searchField();
@@ -318,11 +323,19 @@ class Search extends Component {
                     <br />
                     <Row>
                       <Col>
+                        <ButtonGroup>
                     {searchButton}
+                        <Button  onClick={this.toggle}>Search Filters</Button>
+                        </ButtonGroup>
                       </Col>
+                        <Col offset-sm-1>
+                        <Collapse isOpen={this.state.collapse}>
+                          {checkboxGroup}
+                        </Collapse>
+                        </Col>
+
                       <Col>
-                        Select Search Filters
-                    {checkboxGroup}
+
                       </Col>
                     </Row>
                     <br /><br />
