@@ -209,11 +209,12 @@ class Search extends Component {
 
       values = search.filters.find(
           x => x.name === event.target.name).values;
-
-
       if(values.length==0) {
-        var type = search.filters.find(
-            x => x.name !== event.target.name);
+
+        var type = this.state.search.filters.filter((kvp)=>{
+
+            return(kvp.values.length>0);}
+            );
         if(!type)
         {
           type=[];
@@ -221,7 +222,6 @@ class Search extends Component {
         search["filters"] = type;
         this.setState({search: search});
       }
-
     }
 
 
