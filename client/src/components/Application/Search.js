@@ -137,6 +137,7 @@ class Search extends Component {
 
         request(search, 'search', this.props.port, this.props.hostname).then(response => {
             this.setState({"search": response});
+          this.setState({collapse: false});
         });
     }
 
@@ -152,8 +153,7 @@ class Search extends Component {
         this.setState({search:search});
     }
 
-  // "filters"       : [{"name":"type",
-  //   "values":["balloonport", "heliport", "airport", "seaplane base"]}
+
   onCheckBoxClick(event){
           console.log(event.target.name);
           console.log(event.target.value);
@@ -247,35 +247,16 @@ class Search extends Component {
 
 
     }
-    doesFiltersContainName(value)
-    {
-      this.state.filters.forEach((filter)=>{
-        if(filter.name==value)
-        {
-          return true
-        }
-      });
-
-    }
 
   innerCheckboxGroup(filter)
   {
 
     return(filter.values.map((value)=>{
-      // console.log("name test");
-      // console.log("name" in this.state.search.filters);
-      // console.log("filter.name");
-      // console.log(filter.name);
-      // console.log(this.state.search.filters.find(x=> x.name===filter.name));
-      // console.log(this.state.search.filters.find(x=> x.name===filter.name).values);
-      // console.log(this.state.search.filters.find(x=> x.name===filter.name).values.includes(value));
-     // console.log(this.state.search.filters[filter.name].includes(value));
       return(
           <FormGroup check  className="ml-4">
             <Input type="checkbox" name={filter.name} value={value} id={filter.name+value} onClick={(event)=>this.onCheckBoxClick(event)} />
             <Label for={value} check>{value}</Label>
           </FormGroup>
-
       );
     }));
   }
@@ -293,11 +274,6 @@ class Search extends Component {
              </FormGroup>
 
      );
-          //
-          // let innervalue=filter.values.map((value) => {
-          //
-          // });
-
 
       });
        return(checkboxes
