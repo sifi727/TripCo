@@ -1,5 +1,18 @@
 import React, {Component} from 'react'
-import {Button, Card, CardBody, CardTitle, Col, Container, FormText, Input, Row, Table} from 'reactstrap'
+import {
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  Col,
+  Container,
+  FormGroup,
+  FormText,
+  Input,
+  Row,
+  Table,
+    Label
+} from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
 class Search extends Component {
@@ -27,6 +40,8 @@ class Search extends Component {
             this.submit = this.submit.bind(this);
             this.td = this.td.bind(this);
             this.updateSearch = this.updateSearch.bind(this);
+            this.checkboxGroup = this.checkboxGroup.bind(this);
+            this.innerCheckboxGroup = this.innerCheckboxGroup.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -133,13 +148,53 @@ class Search extends Component {
         search[field] = event.target.value;
         this.setState({search:search});
     }
+  innerCheckboxGroup(filter)
+  {
+    console.log(filter);
+    return(filter.values.map((value)=>{
+      console.log(value);
+      console.log(this.state.search.filters);
+      return(
+          <FormGroup check>
+            <Input type="checkbox" name="check" id={value} check={(this.state.search.filters.includes(filter.name) && this.state.search.filters[filter.name].includes(value))}  />
+            <Label for={value} check>{value}</Label>
+          </FormGroup>
+
+      );
+    }));
+  }
+
+    checkboxGroup()
+    {
+     let checkboxes= this.props.config.filters.map((filter)=>{
+         return(
+             <FormGroup check>
+             <Input type="checkbox" name="check" id={filter.name}/>
+             <Label for={filter.name} check>{filter.name}</Label>
 
 
+             {this.innerCheckboxGroup(filter)}
+             </FormGroup>
+
+     );
+          //
+          // let innervalue=filter.values.map((value) => {
+          //
+          // });
+
+
+      });
+       return(checkboxes
+
+       );
+
+    }
 
     render() {
         const searchField = this.searchField();
         const searchButton = this.searchButton();
         const getTable = this.getTable();
+        const checkboxGroup = this.checkboxGroup();
 
         return (
             <Card>
@@ -148,6 +203,7 @@ class Search extends Component {
                     {searchField}
                     <br />
                     {searchButton}
+         {checkboxGroup}
                     <br /><br />
                     {getTable}
                 </CardBody>
