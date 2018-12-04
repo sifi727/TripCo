@@ -42,6 +42,7 @@ class Search extends Component {
             this.updateSearch = this.updateSearch.bind(this);
             this.checkboxGroup = this.checkboxGroup.bind(this);
             this.innerCheckboxGroup = this.innerCheckboxGroup.bind(this);
+            this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -148,15 +149,100 @@ class Search extends Component {
         search[field] = event.target.value;
         this.setState({search:search});
     }
+
+  // "filters"       : [{"name":"type",
+  //   "values":["balloonport", "heliport", "airport", "seaplane base"]}
+  onCheckBoxClick(event){
+          console.log(event.target.name);
+          console.log(event.target.value);
+          let search = this.state.search;
+          if(event.target.checked) {
+            var type = search.filters.find(
+                x => x.name === event.target.name);
+
+            if (!type) {
+              let obj = {
+                "name": event.target.name,
+                "values": [event.target.value]
+              };
+              search["filters"].push(obj);
+              console.log("Added type");
+              console.log(search);
+              console.log("setting state");
+              console.log(search);
+              this.setState({search: search});
+            } else {
+              console.log("have a type");
+              console.log(type);
+
+              type["values"].push(event.target.value);
+              for (var i in search["filters"]) {
+                if (search["filters"][i].name == event.target.name) {
+                  console.log("found in in loop");
+                  console.log(search["filters"][i]);
+                  search["filters"][i].values = type.values;
+                  console.log(search);
+                  this.setState({search: search});
+                  break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
+                }
+              }
+
+
+            }
+          }
+          else
+          {
+            var values = search.filters.find(
+                x => x.name === event.target.name).values;
+            console.log("remove entry");
+            console.log(values);
+            values= values.filter((value,index,arr)=>{
+              return value != event.target.value;
+          }
+          );
+            for (var i in search["filters"]) {
+              if (search["filters"][i].name == event.target.name) {
+                console.log("found in in loop");
+                console.log(search["filters"][i]);
+                search["filters"][i].values = values;
+                console.log(search);
+                this.setState({search: search});
+                break; //Stop this loop, we found it!  //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer/4689892
+              }
+            }
+
+
+          }
+
+
+
+    }
+    doesFiltersContainName(value)
+    {
+      this.state.filters.forEach((filter)=>{
+        if(filter.name==value)
+        {
+          return true
+        }
+      });
+
+    }
+
   innerCheckboxGroup(filter)
   {
-    console.log(filter);
+
     return(filter.values.map((value)=>{
-      console.log(value);
-      console.log(this.state.search.filters);
+      // console.log("name test");
+      // console.log("name" in this.state.search.filters);
+      // console.log("filter.name");
+      // console.log(filter.name);
+      // console.log(this.state.search.filters.find(x=> x.name===filter.name));
+      // console.log(this.state.search.filters.find(x=> x.name===filter.name).values);
+      // console.log(this.state.search.filters.find(x=> x.name===filter.name).values.includes(value));
+     // console.log(this.state.search.filters[filter.name].includes(value));
       return(
           <FormGroup check>
-            <Input type="checkbox" name="check" id={value} check={(this.state.search.filters.includes(filter.name) && this.state.search.filters[filter.name].includes(value))}  />
+            <Input type="checkbox" name={filter.name} value={value} id={filter.name+value} onClick={(event)=>this.onCheckBoxClick(event)} />
             <Label for={value} check>{value}</Label>
           </FormGroup>
 
@@ -169,7 +255,7 @@ class Search extends Component {
      let checkboxes= this.props.config.filters.map((filter)=>{
          return(
              <FormGroup check>
-             <Input type="checkbox" name="check" id={filter.name}/>
+             <Input type="checkbox" name="key" value={filter.name} id={filter.name+"key"} onClick={(event)=>this.onCheckBoxClick(event)}/>
              <Label for={filter.name} check>{filter.name}</Label>
 
 
