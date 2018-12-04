@@ -156,7 +156,12 @@ class Search extends Component {
           console.log(event.target.name);
           console.log(event.target.value);
           let search = this.state.search;
+
           if(event.target.checked) {
+            if(event.target.name=="key")
+            {
+
+            }
             var type = search.filters.find(
                 x => x.name === event.target.name);
 
@@ -256,7 +261,7 @@ class Search extends Component {
          return(
              <FormGroup check>
              <Input type="checkbox" name="key" value={filter.name} id={filter.name+"key"} onClick={(event)=>this.onCheckBoxClick(event)}/>
-             <Label for={filter.name} check>{filter.name}</Label>
+             <Label>{filter.name}</Label>
 
 
              {this.innerCheckboxGroup(filter)}
@@ -285,11 +290,18 @@ class Search extends Component {
         return (
             <Card>
                 <CardBody style={{overflow:'scroll', maxHeight:'77%'}} >
-                    <CardTitle>Seach and Add New Destinations</CardTitle>
+                    <CardTitle>Search and Add New Destinations</CardTitle>
                     {searchField}
                     <br />
+                    <Row>
+                      <Col>
                     {searchButton}
-         {checkboxGroup}
+                      </Col>
+                      <Col>
+                        Select Search Filters
+                    {checkboxGroup}
+                      </Col>
+                    </Row>
                     <br /><br />
                     {getTable}
                 </CardBody>
