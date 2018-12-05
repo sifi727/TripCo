@@ -11,4 +11,5 @@ public class Option {
   public String unitName;
   public Double unitRadius;
   public String units;
+  public String map;
 }

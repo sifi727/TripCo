@@ -5,7 +5,7 @@ import Info from './Info'
 import Map from './Map';
 import Options from './Options';
 import PlanUtilities from './PlanUtilities'
-import {get_config, request, get_port} from '../../api/api';
+import {get_config, get_port} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
 import AddPlace from './AddPlace';
@@ -58,8 +58,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
   get_config('config',port,hostname).then(
       config => {
     if(!config.attributes){
-    const minAttributes = ["name", "id", "latitude", "longitude"];
-    config["attributes"] = minAttributes;
+    config["attributes"] = ["name", "id", "latitude", "longitude"];
   }
 
   this.setState({
@@ -84,7 +83,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
   }
 
   removePlace(index){
-    if(index==this.state.trip.places.length) {
+    if(index === this.state.trip.places.length) {
       index=0;
     }
 
@@ -187,7 +186,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
     let trip = this.state.trip;
     trip.options[option] = value;
     this.setState(trip);
-    if(option=="units") {
+    if(option === "units") {
         this.setState({'tripHasChanged': true});
     }
   }
@@ -195,7 +194,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
   updatePlaces(event) {
     this.setState({'tripHasChanged':true});
     let startIndex = event.target.value;
-    var newArray = this.state.trip.places.slice(startIndex);
+    let newArray = this.state.trip.places.slice(startIndex);
     // copy the begining of the old array
     for(let i = 0; i < startIndex; i++) {
       newArray.push(this.state.trip.places[i]);
@@ -259,7 +258,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
   }
 
   resetTrip() {
-      var blanktrip = {
+      const blanktrip = {
           version: this.state.trip.version,
           type: "trip",
           title: "",
@@ -285,12 +284,12 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
   {
     let attributesToShow  = this.state.attributesToShow;
 
-
-    if(this.state.attributesToShow.includes(attributeValue)) {
-      attributesToShow= attributesToShow.filter((value, index, arg) => {return(value != attributeValue);});
-    }
-    else {
+    if (!this.state.attributesToShow.includes(attributeValue)) {
       attributesToShow.push(attributeValue);
+    } else {
+      attributesToShow = attributesToShow.filter((value) => {
+        return (value !== attributeValue);
+      });
     }
     this.setState({attributesToShow:attributesToShow});
 
@@ -318,7 +317,13 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
                    attributesToShow={this.state.attributesToShow}
                    updateAttributesToShow={this.updateAttributesToShow}
                      initConfig={this.initConfig}
-                   />
+                   updateTrip={this.updateTrip}
+          />
+          <PlanUtilities trip={this.state.trip} updateTffiObject={this.updateTffiObject}
+                         port={this.state.port} hostname={this.state.hostname} resetTrip={this.resetTrip} />
+          <Calculator options={this.state.trip.options} port={this.state.port} hostname={this.state.hostname} />
+          <Search port={this.state.port} hostname={this.state.hostname} addPlace={this.addPlace} />
+          <About/>
         </Container>
     )
   }
