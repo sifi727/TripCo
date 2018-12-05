@@ -83,6 +83,7 @@ We have more epics planned for this Sprint as a result of few tasks rolling over
 |11/26/18| 0| #315, #323, #326, #337, #290| none|
 |11/28/18| #337|  #315, #323, #326,  #290| none|
 |11/30/18| #290, #326, #315, #323, #324| #336, #242, #335| none|
+|11/2/18| #318, #330, #327, #328, #361, #329, #365, #332, #242| #358, #359, #370, #336, #227| none|
 
 *Add a new row for the scrum session after each lecture. *
 
