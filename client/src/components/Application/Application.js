@@ -111,7 +111,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
                    removePlace={this.removePlace}/>
         <AddPlace addPlace={this.addPlace}/>
         <Search port={this.state.port} hostname={this.state.hostname}
-                addPlace={this.addPlace}/>
+                addPlace={this.addPlace} config={this.state.config}/>
         <PlanUtilities trip={this.state.trip}
                        updateTffiObject={this.updateTffiObject}
                        port={this.state.port} hostname={this.state.hostname}
