@@ -3,6 +3,7 @@ import { Card, CardBody, Media} from 'reactstrap'
 import alex from './Alex.jpg'
 import jerrel from './Jerrel.jpg'
 import david from './David.jpg'
+import dmitry from './Dmitry.jpg'
 
 class About extends Component{
     constructor(props) {
@@ -46,10 +47,11 @@ class About extends Component{
                 <h3>Dmitry M.</h3>
                 <Media>
                   <Media left>
-                    <Media object src={''} alt={"Dmitry"} className='contact_image_square'/>
+                    <Media object src={dmitry} alt={"Dmitry"} className='contact_image_rectangle'/>
                   </Media>
                   <Media body>
-                    <p>Stub</p>
+                      <p>I'm a third year student at CSU majoring in computer science. Previously I've graduated from Colorado School of Mines with a degree in petroleum engineering in 2008. I worked as production and drilling engineer in Wyoming and Colorado, including a position as night time rig site supervisor. My focus on drilling optimization and frustration with lack of suitable software in the industry lead me to a career change with the goal of designing software that would fill that void. The industry experience helped me understand the importance of teamwork and communication. </p>
+                      <p> Originally from Russia, I've lived in Colorado for most of my time in US. My hobbies are traveling and many outdoor activities that this area has to offer, as well as scuba diving.</p>
                   </Media>
                 </Media>
               </CardBody>
