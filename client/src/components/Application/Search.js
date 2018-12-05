@@ -12,7 +12,8 @@ import {
   Row,
   Table,
   Label,
-  Collapse, ButtonGroup
+  Collapse,
+  ButtonGroup
 } from 'reactstrap'
 import {request, get_comfig} from '../../api/api.js'
 
@@ -61,8 +62,10 @@ class Search extends Component {
                 </Col>
             );
     }
+
     resetFilter()
     {
+      document.querySelectorAll('.searchFilterTextBoxGroupClass:checked').forEach( el => el.checked = false );
       let search =      {search:{
       "version"   : 4,
           "type"      : "search",
@@ -73,6 +76,7 @@ class Search extends Component {
           "places"    : []
     }};
       this.setState(search);
+
     }
   componentDidUpdate(prevProps)
     {
@@ -268,7 +272,7 @@ class Search extends Component {
     return(filter.values.map((value)=>{
       return(
           <FormGroup check  className="ml-4">
-            <Input type="checkbox" name={filter.name} value={value} id={filter.name+value} onClick={(event)=>this.onCheckBoxClick(event)} />
+            <Input className={"searchFilterTextBoxGroupClass"} type="checkbox" name={filter.name} value={value} id={filter.name+value} onClick={(event)=>this.onCheckBoxClick(event)} />
             <Label for={value} check>{value}</Label>
           </FormGroup>
       );
@@ -279,8 +283,7 @@ class Search extends Component {
     {
      let checkboxes= this.props.config.filters.map((filter)=>{
          return(
-             <FormGroup check >
-             {/*<Input type="checkbox" name="key" value={filter.name} id={filter.name+"key"} onClick={(event)=>this.onCheckBoxClick(event)}/>*/}
+             <FormGroup check  >
              <Label>{filter.name}</Label>
 
 
@@ -318,7 +321,7 @@ class Search extends Component {
                         <Button  onClick={this.toggle}>Search Filters</Button>
                         </ButtonGroup>
                       </Col>
-                        <Col offset-sm-1>
+                        <Col  offset-sm-1>
                         <Collapse isOpen={this.state.collapse}>
                           {checkboxGroup}
                         </Collapse>
