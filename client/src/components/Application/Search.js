@@ -44,11 +44,11 @@ class Search extends Component {
             this.checkboxGroup = this.checkboxGroup.bind(this);
             this.innerCheckboxGroup = this.innerCheckboxGroup.bind(this);
             this.onCheckBoxClick = this.onCheckBoxClick.bind(this);
-          this.toggle = this.toggle.bind(this);
-          this.updateSearchFilter = this.updateSearchFilter.bind(this);
-          this.addValueToSearchFilter = this.addValueToSearchFilter.bind(this);
-          this.removeValueToSearchFilter= this.removeValueToSearchFilter.bind(this);
-          this.resetFilter = this.resetFilter.bind(this);
+            this.toggle = this.toggle.bind(this);
+            this.updateSearchFilter = this.updateSearchFilter.bind(this);
+            this.addValueToSearchFilter = this.addValueToSearchFilter.bind(this);
+            this.removeValueToSearchFilter= this.removeValueToSearchFilter.bind(this);
+            this.resetFilter = this.resetFilter.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
