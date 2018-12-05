@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardBody, Media} from 'reactstrap'
 import alex from './Alex.jpg'
-import jerrel from './Jerrel.png'
+import jerrel from './Jerrel.jpg'
 import david from './David.jpg'
 
 class About extends Component{
@@ -58,7 +58,7 @@ class About extends Component{
                 <h3>Jerrel S.</h3>
                 <Media>
                   <Media left>
-                    <Media object src={jerrel} alt={"Jerrel"} className='contact_image_square'/>
+                    <Media object src={jerrel} alt={"Jerrel"} className='contact_image_rectangle'/>
                   </Media>
                   <Media body>
                     <p>I am originally from the east coast and lived in Pittsburgh, Pennsylvania for most of my life in a town southeast of Pittsburgh called McKeesport. I am currently majoring in two degrees: Computer Science and Applied Computing Technology. I have been in Colorado since August 2010 and before that, I lived in Georgia for nearly seven years in the city of Columbus. I developed a passion for computers once I was out of high school and I have always enjoyed math when I was younger, so computer science fits well with what I wanted to do as a career.</p>
