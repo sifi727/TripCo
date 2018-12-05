@@ -48,6 +48,7 @@ class Search extends Component {
           this.updateSearchFilter = this.updateSearchFilter.bind(this);
           this.addValueToSearchFilter = this.addValueToSearchFilter.bind(this);
           this.removeValueToSearchFilter= this.removeValueToSearchFilter.bind(this);
+          this.resetFilter = this.resetFilter.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -60,6 +61,28 @@ class Search extends Component {
                 </Col>
             );
     }
+    resetFilter()
+    {
+      let search =      {search:{
+      "version"   : 4,
+          "type"      : "search",
+          "match"     : "",
+          "filters"   : [],
+          "limit"     : 25,
+          "found"     : 0,
+          "places"    : []
+    }};
+      this.setState(search);
+    }
+  componentDidUpdate(prevProps)
+    {
+
+      if(prevProps.port !== this.props.port || prevProps.host !== this.props.host)
+      {
+        this.resetFilter();
+      }
+    }
+
 
     deleteRowInTable(place) {
         let places = this.state.search.places;
