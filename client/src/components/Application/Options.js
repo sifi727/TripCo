@@ -159,10 +159,11 @@ class Options extends Component {
     }
 
     let saveBtn;
+    let fileName = "map." + this.props.extension;
     if(this.props.map !== null) {
       if(this.props.map === "") {
         saveBtn = <a className="btn btn-secondary.disabled text-white"
-                     download="map.kml">
+                     download={fileName}>
           Save Map
         </a>
       }
@@ -170,7 +171,7 @@ class Options extends Component {
         saveBtn = <a className="btn btn-secondary text-white"
                      href={`data:text/plain;charset=utf-8,${
                          encodeURIComponent(this.props.map)}`}
-                     download="map.kml">
+                     download={fileName}>
           Save Map
         </a>
       }

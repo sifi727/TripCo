@@ -310,7 +310,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
             <Map trip={this.state.trip}/>
             {getNavTag}
             {getTabTag}
-            <Options map={this.state.trip.map} options={this.state.trip.options} config={this.state.config}
+            <Options extension={this.state.trip.options.map} map={this.state.trip.map} options={this.state.trip.options} config={this.state.config}
                    updateOptions={this.updateOptions} port={this.state.port} hostname={this.state.hostname}
                    updatePort={this.updatePort} updateHostname={this.updateHostname}
                    attributes={this.state.config.attributes}
