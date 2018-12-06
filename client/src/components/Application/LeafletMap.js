@@ -46,23 +46,24 @@ class LeafletMap extends Component {
     }
      for(var i = 1; i<this.props.trip.places.length; i++){ //start at one because we if statement account for first plac
 
-    let place = this.props.trip.places[i];
+    let currentPlace = this.props.trip.places[i];
+    let prevPlace = this.props.trip.places[i-1];
     //
     //
     //
-    //    if(this.needToWrapAroundMap(prevPlaceLong,place.longitude)) {
-    //      console.log("need to wrap");
+       if(this.needToWrapAroundMap(prevPlace.longitude,currentPlace.longitude)) {
+         console.log("need to wrap");
     //
-    //        if (prevPlace.longitude > currentPlace.longitude) //go right off map
-    //        {
-    //          latLong.push([currentPlace.latitude,currentPlace.longitude+360])
-    //          placesTrip.push([latLong]);
-    //          latLong=[];
-    //          latLong.push([prevPlaceLat,prevPlaceLong-360]);
-    //          latLong.push([currentPlace.latitude,currentPlace.longitude]);
+           if (prevPlace.longitude > currentPlace.longitude) //go right off map
+           {
+             maplatLong.push([currentPlace.latitude,currentPlace.longitude+360])
+             placesTrip.push([maplatLong]);
+             maplatLong=[];
+             maplatLong.push([prevPlaceLat,prevPlaceLong-360]);
+             maplatLong.push([currentPlace.latitude,currentPlace.longitude]);
     //
     //         // OffMapToRightPath(prevPoint, point)
-    //        }
+           }
     //
     //        else
     //        {
@@ -84,20 +85,17 @@ class LeafletMap extends Component {
     //       }
     //
     //        //\\ let latLong=(new L.LatLng(place.latitude, place.longitude+(prevPlaceLong-180))).wrap();
-           prevPlaceLong = place.longitude;
-           prevPlaceLat=place.latitude;
     //
     //
     //
-    //   }
+      }
     //
-    //    else
-    //    {
+       else
+       {
          console.log("Do not to wrap");
-         prevPlaceLong=place.longitude;
-         prevPlaceLat=place.latitude;
-         maplatLong.push([place.latitude, place.longitude]);
-     //  }
+
+         maplatLong.push([currentPlace.latitude, currentPlace.longitude]);
+      }
     //
     //
     //
