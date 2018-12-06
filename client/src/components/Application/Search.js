@@ -50,6 +50,7 @@ class Search extends Component {
             this.addValueToSearchFilter = this.addValueToSearchFilter.bind(this);
             this.removeValueToSearchFilter= this.removeValueToSearchFilter.bind(this);
             this.resetFilter = this.resetFilter.bind(this);
+            this.addAll = this.addAll.bind(this);
         }
 
     buildCol(text, id, value, type, field) {
@@ -302,6 +303,10 @@ class Search extends Component {
     this.setState({collapse: !this.state.collapse});
   }
 
+  addAll(){
+
+  }
+
     render() {
         const searchField = this.searchField();
         const searchButton = this.searchButton();
@@ -317,8 +322,9 @@ class Search extends Component {
                     <Row>
                       <Col>
                         <ButtonGroup>
-                    {searchButton}
-                        <Button  onClick={this.toggle}>Search Filters</Button>
+                            {searchButton}
+                            <Button  onClick={this.toggle}>Search Filters</Button>
+                            <Button onClick={this.addAll}> Add All Results</Button>
                         </ButtonGroup>
                       </Col>
                         <Col  offset-sm-1>
