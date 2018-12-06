@@ -20,9 +20,9 @@ public class TripOptimization {
 
         createDistanceMatrix();
         long shortestTrip = Long.MAX_VALUE;
-        long [] shortestRoute = new long[places.length+1];
+        int [] shortestRoute = new int [places.length+1];
         for(int i=0; i<places.length; i++){
-            long [] route = new long[places.length+1]; //+1 to include round trip
+            int [] route = new int[places.length+1]; //+1 to include round trip
             int routeIndex=0;
             boolean[] visitedPlaces = new boolean[places.length];
             route[0] = i; //starting place
@@ -62,10 +62,10 @@ public class TripOptimization {
         return shortestTripPlaces;
     }
 
-    private int sumRoute(long [] route){
+    private long sumRoute(int [] route){
         int distance =0;
         for (int i = 0; i <route.length-1 ; i++) {
-            distance+=distances[(int)route[i]][(int)route[i+1]];
+            distance+=distances[route[i]][route[i+1]];
         }
         return distance;
     }
@@ -101,8 +101,8 @@ public class TripOptimization {
         }
     }
 
-    private void reverseBetweenIndeces(long[]route, int leftIndex, int rightIndex) {
-        long temp;
+    private void reverseBetweenIndeces(int[]route, int leftIndex, int rightIndex) {
+        int temp;
         while (leftIndex < rightIndex) {
             temp = route[leftIndex];
             route[leftIndex] = route[rightIndex];
@@ -113,12 +113,12 @@ public class TripOptimization {
     }
 
 
-   private long distanceBetweenCity(long[] route, int cityIndex1, int cityIindex2) {
-        return distances[(int)route[cityIndex1]][(int)route[cityIindex2]];
+   private long distanceBetweenCity(int[] route, int cityIndex1, int cityIindex2) {
+        return distances[route[cityIndex1]][route[cityIindex2]];
     }
 
 
-    private long twoOpt(long[] route) {
+    private long twoOpt(int[] route) {
         boolean improvement = true;
         long n = route.length-1;
         long delta;
