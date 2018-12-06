@@ -158,24 +158,6 @@ class Options extends Component {
       );
     }
 
-    let saveBtn;
-    if(this.props.map !== null) {
-      if(this.props.map === "") {
-        saveBtn = <a className="btn btn-secondary.disabled text-white"
-                     download="map.kml">
-          Save Map
-        </a>
-      }
-      else {
-        saveBtn = <a className="btn btn-secondary text-white"
-                     href={`data:text/plain;charset=utf-8,${
-                         encodeURIComponent(this.props.map)}`}
-                     download="map.kml">
-          Save Map
-        </a>
-      }
-    }
-
     let form;
 
     if (this.props.options.units === "user defined") {
@@ -215,7 +197,6 @@ class Options extends Component {
                 </FormText>
                 <ButtonGroup vertical>
                   {mapBtns}
-                  {saveBtn}
                 </ButtonGroup>
               </Col>
               <Col>
