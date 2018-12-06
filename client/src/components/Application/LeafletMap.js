@@ -62,7 +62,7 @@ class LeafletMap extends Component {
              maplatLong.push([currentPlace.latitude ,currentPlace.longitude + 360]);
              placesTrip.push([maplatLong]);
              maplatLong=[];
-             maplatLong.push([prevPlaceLat,prevPlaceLong-360]);
+             maplatLong.push([prevPlace.latitude,prevPlace.longitude-360]);
              maplatLong.push([currentPlace.latitude,currentPlace.longitude]);
     //
     //         // OffMapToRightPath(prevPoint, point)
@@ -125,7 +125,7 @@ class LeafletMap extends Component {
 
 
     return (
-        <Map center={position} zoom={2} style={{height: 500, maxWidth: 800}} minZoom={1} maxBounds={bounds}>
+        <Map center={position} zoom={1.637} style={{height: 500, maxWidth: 800}} minZoom={1.637} maxBounds={bounds}>
           {/* A tile layer, the actual map data (and an attribution) */}
           <TileLayer
               attribution='&amp;copy <a href=https://wikimediafoundation.org/wiki/Maps_Terms_of_Use;>Wikimedia Maps</a>'
