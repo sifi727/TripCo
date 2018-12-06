@@ -27,27 +27,30 @@ class LeafletMap extends Component {
 
     // Here are coordinates to make two lines from 3 points
     let placesTrip = [];
+    let copyOfPlaces=this.props.trip.places.slice();
 
-    let prevPlaceLong=undefined;
-    let prevPlaceLat = undefined;
+
     let maplatLong = [];
     console.log("reset maplatLong");
     console.log(maplatLong);
-    if(this.props.trip.places.length>0)
+    console.log("copy place");
+    console.log(copyOfPlaces);
+    if(copyOfPlaces.length>0)
     {
       console.log("start if maplatLong should be empty");
       console.log(maplatLong);
       console.log("first place in maplatLong");
-      maplatLong.push([this.props.trip.places[0].latitude,this.props.trip.places[0].longitude]);
+      maplatLong.push([copyOfPlaces[0].latitude,copyOfPlaces[0].longitude]);
       console.log(maplatLong);
-      prevPlaceLong=this.props.trip.places[0].longitude;
-      prevPlaceLat=this.props.trip.places[0].latitude;
+      copyOfPlaces.push(this.props.trip.places[0]); //make round trip;
+      console.log("Number places");
+      console.log(copyOfPlaces);
 
     }
-     for(var i = 1; i<this.props.trip.places.length; i++){ //start at one because we if statement account for first plac
+     for(var i = 1; i<copyOfPlaces.length; i++){ //start at one because we if statement account for first place
 
-    let currentPlace = this.props.trip.places[i];
-    let prevPlace = this.props.trip.places[i-1];
+    let currentPlace = copyOfPlaces[i];
+    let prevPlace = copyOfPlaces[i-1];
     //
     //
     //
@@ -56,7 +59,7 @@ class LeafletMap extends Component {
     //
            if (prevPlace.longitude > currentPlace.longitude) //go right off map
            {
-             maplatLong.push([currentPlace.latitude,currentPlace.longitude+360])
+             maplatLong.push([currentPlace.latitude ,currentPlace.longitude + 360]);
              placesTrip.push([maplatLong]);
              maplatLong=[];
              maplatLong.push([prevPlaceLat,prevPlaceLong-360]);
@@ -64,6 +67,25 @@ class LeafletMap extends Component {
     //
     //         // OffMapToRightPath(prevPoint, point)
            }
+           else {
+             console.log(currentPlace.name);
+             console.log(currentPlace);
+             console.log(prevPlace.name);
+             console.log(prevPlace);
+             maplatLong.push([currentPlace.latitude ,currentPlace.longitude - 360]);
+
+             placesTrip.push([maplatLong]);
+             maplatLong = [];
+             console.log("after rest");
+             console.log(currentPlace.name);
+             console.log(currentPlace);
+             console.log(prevPlace.name);
+             console.log(prevPlace);
+             maplatLong.push([prevPlace.latitude,prevPlace.longitude+360]);
+             maplatLong.push([currentPlace.latitude, currentPlace.longitude]);
+           }
+
+
     //
     //        else
     //        {
@@ -96,32 +118,12 @@ class LeafletMap extends Component {
 
          maplatLong.push([currentPlace.latitude, currentPlace.longitude]);
       }
-    //
-    //
-    //
-    //
-    }
-    if(this.props.trip.places.length>0 ) {
-      maplatLong.push([this.props.trip.places[0].latitude,this.props.trip.places[0].longitude]);
+     }
+    if(maplatLong.length>0 ) {
       placesTrip.push(maplatLong);
     }
-    console.log("placesTrip value");
-    console.log(placesTrip);
 
-    // Here's a set of coordinates for a single line.
-    let singleLine = [
-      [[45.51, -122.68],
-        [37.77, -122.43],
-        [34.04, -118.2]],
-      [[40.78, -73.91],
-        [41.83, -87.62],
-        [32.76, -96.72]]
-    ];
 
-    /*
-     * Let's create a map, and use the publicly available Wikimedia tiles for it.
-     * Then let's add some different Polylines- lines that can have multiple points.
-     */
     return (
         <Map center={position} zoom={2} style={{height: 500, maxWidth: 800}} minZoom={1} maxBounds={bounds}>
           {/* A tile layer, the actual map data (and an attribution) */}
@@ -132,7 +134,6 @@ class LeafletMap extends Component {
           {/* Here's a line that uses all three of our coordinates */}
           <Polyline positions={placesTrip} color='green'/>
           {/* Here's another line that uses some different coordinates, for only two points. */}
-          <Polyline positions={singleLine} color='red'/>
         </Map>
     );
   }
