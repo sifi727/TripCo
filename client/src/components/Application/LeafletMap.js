@@ -6,6 +6,7 @@ import Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 // react-leaflet items
 import { Map, TileLayer, Polyline } from 'react-leaflet';
+import {Card, CardBody, Col, Row} from "reactstrap";
 
 // A basic map component
 class LeafletMap extends Component {
@@ -55,17 +56,13 @@ class LeafletMap extends Component {
     //
     //
        if(this.needToWrapAroundMap(prevPlace.longitude,currentPlace.longitude)) {
-         console.log("need to wrap");
-    //
-           if (prevPlace.longitude > currentPlace.longitude) //go right off map
-           {
+
+           if (prevPlace.longitude > currentPlace.longitude){ //go right off map
              maplatLong.push([currentPlace.latitude ,currentPlace.longitude + 360]);
              placesTrip.push([maplatLong]);
              maplatLong=[];
              maplatLong.push([prevPlace.latitude,prevPlace.longitude-360]);
              maplatLong.push([currentPlace.latitude,currentPlace.longitude]);
-    //
-    //         // OffMapToRightPath(prevPoint, point)
            }
            else {
              console.log(currentPlace.name);
@@ -84,40 +81,10 @@ class LeafletMap extends Component {
              maplatLong.push([prevPlace.latitude,prevPlace.longitude+360]);
              maplatLong.push([currentPlace.latitude, currentPlace.longitude]);
            }
-
-
-    //
-    //        else
-    //        {
-
-
-             // let leftOfMapX = SVG_MAP_WIDTH - currentPoint.getX() - previousPoint.getX();
-             // let rightOfMapX = previousPoint.getX() + SVG_MAP_WIDTH;
-             // stringBuilder.append(
-             //     String.format(" L %f,%f", leftOfMapX, currentPoint.getY()));
-             //
-             // stringBuilder
-             // .append(String.format(" M %f,%f",
-             //     rightOfMapX, previousPoint.getY()));
-             // stringBuilder.append(
-             //     String.format(" L %f,%f", currentPoint.getX(), currentPoint.getY()));
-             //
-             // return stringBuilder.toString();
-
-    //       }
-    //
-    //        //\\ let latLong=(new L.LatLng(place.latitude, place.longitude+(prevPlaceLong-180))).wrap();
-    //
-    //
-    //
-      }
-    //
-       else
-       {
-         console.log("Do not to wrap");
-
+       }
+       else {
          maplatLong.push([currentPlace.latitude, currentPlace.longitude]);
-      }
+       }
      }
     if(maplatLong.length>0 ) {
       placesTrip.push(maplatLong);
@@ -125,6 +92,19 @@ class LeafletMap extends Component {
 
 
     return (
+        <Card>
+          <CardBody>
+
+
+
+
+
+
+
+
+            <h3>{this.props.trip.title}</h3>
+            <Row>
+              <Col sm="12" md={{ offset: 1 }}>
         <Map center={position} zoom={1.637} style={{height: 500, maxWidth: 800}} minZoom={1.637} maxBounds={bounds}>
           {/* A tile layer, the actual map data (and an attribution) */}
           <TileLayer
@@ -135,6 +115,10 @@ class LeafletMap extends Component {
           <Polyline positions={placesTrip} color='green'/>
           {/* Here's another line that uses some different coordinates, for only two points. */}
         </Map>
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
     );
   }
 }

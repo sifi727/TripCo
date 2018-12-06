@@ -308,7 +308,6 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
     return (
         <Container id="Application">
             <Info/>
-            <Map trip={this.state.trip}/>
           <LeafletMap trip={this.state.trip}/>
             {getNavTag}
             {getTabTag}
