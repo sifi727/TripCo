@@ -1,6 +1,5 @@
 import  React, { Component } from 'react';
-// Import actual leaflet
-import Leaflet from 'leaflet';
+
 // Stylesheet required for leaflet to function
 // You must include this import
 import 'leaflet/dist/leaflet.css';
@@ -8,7 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import { Map, TileLayer, Polyline } from 'react-leaflet';
 import {Card, CardBody, Col, Row} from "reactstrap";
 
-// A basic map component
+
 class LeafletMap extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +25,7 @@ class LeafletMap extends Component {
     // A starting position to center the map at
     let position = [15, -15];
 
-    // Here are coordinates to make two lines from 3 points
+
     let placesTrip = [];
     let copyOfPlaces=this.props.trip.places.slice();
 
@@ -37,13 +36,11 @@ class LeafletMap extends Component {
       maplatLong.push([copyOfPlaces[0].latitude,copyOfPlaces[0].longitude]);
       copyOfPlaces.push(this.props.trip.places[0]); //make round trip;
     }
-     for(var i = 1; i<copyOfPlaces.length; i++){ //start at one because we if statement account for first place
+     for(var i = 1; i<copyOfPlaces.length; i++){
 
     let currentPlace = copyOfPlaces[i];
     let prevPlace = copyOfPlaces[i-1];
-    //
-    //
-    //
+
        if(this.needToWrapAroundMap(prevPlace.longitude,currentPlace.longitude)) {
 
            if (prevPlace.longitude > currentPlace.longitude){ //go right off map
@@ -74,27 +71,16 @@ class LeafletMap extends Component {
     return (
         <Card>
           <CardBody>
-
-
-
-
-
-
-
-
             <h3>{this.props.trip.title}</h3>
             <Row>
               <Col sm="12" md={{ offset: 1 }}>
-        <Map center={position} zoom={1.637} style={{height: 500, maxWidth: 800}} minZoom={1.637} maxBounds={bounds}>
-          {/* A tile layer, the actual map data (and an attribution) */}
-          <TileLayer
-              attribution='&amp;copy <a href=https://wikimediafoundation.org/wiki/Maps_Terms_of_Use;>Wikimedia Maps</a>'
-              url='https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'
-          />
-          {/* Here's a line that uses all three of our coordinates */}
-          <Polyline positions={placesTrip} color='green'/>
-          {/* Here's another line that uses some different coordinates, for only two points. */}
-        </Map>
+                <Map center={position} zoom={1.637} style={{height: 500, maxWidth: 800}} minZoom={1.637} maxBounds={bounds}>
+                  {/* A tile layer, the actual map data (and an attribution) */}
+                  <TileLayer
+                      attribution='&amp;copy <a href=https://wikimediafoundation.org/wiki/Maps_Terms_of_Use;>Wikimedia Maps</a>'
+                      url='https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'/>
+                  <Polyline positions={placesTrip} color='green'/>
+                </Map>
               </Col>
             </Row>
           </CardBody>
