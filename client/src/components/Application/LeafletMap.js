@@ -32,21 +32,10 @@ class LeafletMap extends Component {
 
 
     let maplatLong = [];
-    console.log("reset maplatLong");
-    console.log(maplatLong);
-    console.log("copy place");
-    console.log(copyOfPlaces);
     if(copyOfPlaces.length>0)
     {
-      console.log("start if maplatLong should be empty");
-      console.log(maplatLong);
-      console.log("first place in maplatLong");
       maplatLong.push([copyOfPlaces[0].latitude,copyOfPlaces[0].longitude]);
-      console.log(maplatLong);
       copyOfPlaces.push(this.props.trip.places[0]); //make round trip;
-      console.log("Number places");
-      console.log(copyOfPlaces);
-
     }
      for(var i = 1; i<copyOfPlaces.length; i++){ //start at one because we if statement account for first place
 
@@ -65,19 +54,10 @@ class LeafletMap extends Component {
              maplatLong.push([currentPlace.latitude,currentPlace.longitude]);
            }
            else {
-             console.log(currentPlace.name);
-             console.log(currentPlace);
-             console.log(prevPlace.name);
-             console.log(prevPlace);
              maplatLong.push([currentPlace.latitude ,currentPlace.longitude - 360]);
 
              placesTrip.push([maplatLong]);
              maplatLong = [];
-             console.log("after rest");
-             console.log(currentPlace.name);
-             console.log(currentPlace);
-             console.log(prevPlace.name);
-             console.log(prevPlace);
              maplatLong.push([prevPlace.latitude,prevPlace.longitude+360]);
              maplatLong.push([currentPlace.latitude, currentPlace.longitude]);
            }
