@@ -57,7 +57,7 @@ public class TripOptimization {
 
         ArrayList<Place> shortestTripPlaces = new ArrayList<>(places.length);
         for (int j = 0; j < shortestRoute.length-1; j++) {
-            shortestTripPlaces.add(places[(int)shortestRoute[j]]);
+            shortestTripPlaces.add(places[shortestRoute[j]]);
         }
         return shortestTripPlaces;
     }
