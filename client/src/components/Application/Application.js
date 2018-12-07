@@ -11,6 +11,7 @@ import Calculator from './Calculator';
 import AddPlace from './AddPlace';
 import Search from './Search';
 import About from './About';
+import LeafletMap from "./LeafletMap";
 /* Renders the application.
  * Holds the destinations and options state shared with the trip.
  */
@@ -307,7 +308,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
     return (
         <Container id="Application">
             <Info/>
-            <Map trip={this.state.trip}/>
+          <LeafletMap trip={this.state.trip}/>
             {getNavTag}
             {getTabTag}
             <Options options={this.state.trip.options} config={this.state.config}
