@@ -5,13 +5,30 @@ import  React, { Component } from 'react';
 import 'leaflet/dist/leaflet.css';
 // react-leaflet items
 import { Map, TileLayer, Polyline } from 'react-leaflet';
-import {Card, CardBody, Col, Row} from "reactstrap";
+import {Button, Card, CardBody, Col, Collapse, Row} from "reactstrap";
 
 
 class LeafletMap extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        collapse: true
+    };
+    this.getLabel = this.getLabel.bind(this);
     this.needToWrapAroundMap= this.needToWrapAroundMap.bind(this);
+    this.toggle = this.toggle.bind(this);
+};
+
+    getLabel() {
+        // return the correct symbol based on state
+        if(this.state.collapse) {
+            return "-";
+        }
+        return "Show Map";
+    }
+
+    toggle() {
+        this.setState({ collapse: !this.state.collapse });
     }
 
   needToWrapAroundMap(place1Long, place2Long) {
@@ -69,22 +86,29 @@ class LeafletMap extends Component {
 
 
     return (
-        <Card>
-          <CardBody>
-            <h3>{this.props.trip.title}</h3>
-            <Row>
-              <Col sm="12" md={{ offset: 1 }}>
-                <Map center={position} zoom={1.637} style={{height: 500, maxWidth: 800}} minZoom={1.637} maxBounds={bounds}>
-                  {/* A tile layer, the actual map data (and an attribution) */}
-                  <TileLayer
-                      attribution='&amp;copy <a href=https://wikimediafoundation.org/wiki/Maps_Terms_of_Use;>Wikimedia Maps</a>'
-                      url='https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'/>
-                  <Polyline positions={placesTrip} color='green'/>
-                </Map>
-              </Col>
-            </Row>
-          </CardBody>
-        </Card>
+        <div>
+            <Button onClick={this.toggle} className="float-right">
+              <span aria-hidden>{this.getLabel()}</span>
+            </Button>
+            <Collapse isOpen={this.state.collapse}>
+              <Card>
+                  <CardBody>
+                    <h3>{this.props.trip.title}</h3>
+                    <Row>
+                      <Col sm="12" md={{ offset: 1 }}>
+                        <Map center={position} zoom={1.637} style={{height: 500, maxWidth: 800}} minZoom={1.637} maxBounds={bounds}>
+                          {/* A tile layer, the actual map data (and an attribution) */}
+                          <TileLayer
+                              attribution='&amp;copy <a href=https://wikimediafoundation.org/wiki/Maps_Terms_of_Use;>Wikimedia Maps</a>'
+                              url='https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'/>
+                          <Polyline positions={placesTrip} color='green'/>
+                        </Map>
+                      </Col>
+                    </Row>
+                  </CardBody>
+              </Card>
+            </Collapse>
+          </div>
     );
   }
 }
