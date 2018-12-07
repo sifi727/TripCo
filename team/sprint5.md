@@ -88,7 +88,7 @@ We were able to complete all of the planned Epics, including all of the tasks an
 
 ## Review
 
-We were able to sucessfully finish all of our Epics and tasks including all of the story points. 
+We were able to successfully finish all of our Epics and tasks including all of the story points. 
 
 #### Completed Epics in Sprint Backlog 
 
@@ -103,22 +103,22 @@ We were able to sucessfully finish all of our Epics and tasks including all of t
 
 #### Incomplete Epics in Sprint Backlog 
 
-We don't have any incompleted Epics.
+We don't have any uncompleted Epics.
 
 #### What Went Well
 
-The team showed clear understandign of overall goals of this projects. We were able to put the user first and design our web app around this concept.
+The team showed clear understanding of overall goals of this projects. We were able to put the user first and design our web app around this concept.
 
 * Good team communication throughout the entire sprint
 * We were able to correctly plan out our sprint, divide the Epics into individual tasks and divide them between team members.
-* We focused heavily on matching our web app with the updated TFFI and the resutls we received from 50% check. 
+* We focused heavily on matching our web app with the updated TFFI and the results we received from 50% check. 
 * The UI improvements were a large focus this sprint and we were very happy with the results 
 
 #### Problems Encountered and Resolutions
 
 We didn't have any major setbacks this sprint.
 
-* We had diffucilties with interactive map changes such as leaflet wrap calculations, kml conversion and map save feature
+* We had difficulties with interactive map changes such as leaflet wrap calculations, kml conversion and map save feature
 *
 
 ## Retrospective
