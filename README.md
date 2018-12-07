@@ -1,6 +1,7 @@
 # t07 - Team double 07
-![Team double 07](/images/Team-double07-1820x1080.jpg "Team double 07")
-_Jerrel, David, and Alex_
+<img src="/client/src/components/Application/Alex.jpg" alt="drawing" width="200"/> <img src="/client/src/components/Application/David.jpg" alt="drawing" width="200"/>
+<img src="/client/src/components/Application/Dmitry.jpg" alt="drawing" width="200"/> <img src="/client/src/components/Application/Jerrel.jpg" alt="drawing" width="200"/>
+
 # Member Information
 
 | Name | eName | gitHub username | email |
