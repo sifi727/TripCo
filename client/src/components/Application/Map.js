@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
-import { Card, CardBody, Media} from 'reactstrap'
+import { Button, Card, CardBody, Collapse, Media} from 'reactstrap'
 
 /* The Map allows the user to view the map image provided in the Trip TFFI file */
 class Map extends Component{
     constructor(props) {
         super(props);
+        this.state = {
+          collapse: true
+        };
+        this.getLabel = this.getLabel.bind(this);
         this.getMap = this.getMap.bind(this);
+        this.toggle = this.toggle.bind(this);
+    };
+
+    getLabel() {
+      // return the correct symbol based on state
+      if(this.state.collapse) {
+        return "-";
+      }
+      return "+";
     }
 
     getMap() {
@@ -15,14 +28,24 @@ class Map extends Component{
       return <Media object src={'data:image/svg+xml;base64,' + btoa(this.props.trip.map)} alt={"Upload your trip to view it here"}/>;
     }
 
+    toggle() {
+      this.setState({ collapse: !this.state.collapse });
+    }
 
     render() {
-      return <Card>
+      return <div>
+        <Button onClick={this.toggle} className="float-right">
+          <span aria-hidden>{this.getLabel()}</span>
+        </Button>
+        <Collapse isOpen={this.state.collapse}>
+          <Card>
             <CardBody>
               <h3>{this.props.trip.title}</h3>
               {this.getMap()}
             </CardBody>
-          </Card>;
+          </Card>
+        </Collapse>
+      </div>
     }
 }
 
