@@ -158,7 +158,7 @@ class Options extends Component {
     );
 
     let mapBtns;
-    if(this.props.config.maps !== null) {
+    if(this.props.config.maps) {
       mapBtns = this.props.config.maps.map((type) =>
           <Button
               key={'map_button_' + type}
@@ -174,7 +174,6 @@ class Options extends Component {
 
     let saveBtn;
     let fileName = "map." + ((this.props.extension)?this.props.extension:"svg");
-    console.log(this.props.extension, fileName);
     if(this.props.map !== null) {
       if(this.props.map === "") {
         saveBtn = <a className="btn btn-secondary.disabled text-white"
