@@ -5,12 +5,12 @@ import java.util.Arrays;
 
 public class TripOptimization {
     private Place [] places;
-    private int[][] distances;
+    private long[][] distances;
     private String optimizationLevel;
 
     public TripOptimization(ArrayList<Place> places, String optimizationLevel){
         this.places=places.toArray(new Place[places.size()]);
-        this.distances = new int[places.size()][places.size()];
+        this.distances = new long[places.size()][places.size()];
         this.optimizationLevel=optimizationLevel;
 
     }
@@ -19,8 +19,8 @@ public class TripOptimization {
    public ArrayList<Place> optimizedTripPlaces(){
 
         createDistanceMatrix();
-        int shortestTrip = Integer.MAX_VALUE;
-        int [] shortestRoute = new int[places.length+1];
+        long shortestTrip = Long.MAX_VALUE;
+        int [] shortestRoute = new int [places.length+1];
         for(int i=0; i<places.length; i++){
             int [] route = new int[places.length+1]; //+1 to include round trip
             int routeIndex=0;
@@ -41,9 +41,9 @@ public class TripOptimization {
                 routeIndex++;
                 }
 
-            int routeDistance=sumRoute(route);
+            long routeDistance=sumRoute(route);
             if(optimizationLevel.equalsIgnoreCase("shorter")){
-               int twoOptDistance= twoOpt(route);
+               long twoOptDistance= twoOpt(route);
                if(twoOptDistance<routeDistance){
                    routeDistance=twoOptDistance;
                }
@@ -62,7 +62,7 @@ public class TripOptimization {
         return shortestTripPlaces;
     }
 
-    private int sumRoute(int [] route){
+    private long sumRoute(int [] route){
         int distance =0;
         for (int i = 0; i <route.length-1 ; i++) {
             distance+=distances[route[i]][route[i+1]];
@@ -72,11 +72,11 @@ public class TripOptimization {
 
     private int closestPlace(int originIndex, Place[] places, boolean[] visitedPlaces) {
 
-        int shortestDistance = Integer.MAX_VALUE;
+        long shortestDistance = Long.MAX_VALUE;
         int closestPlaceIndex = originIndex;
         for (int placeIndex = 0; placeIndex < places.length; placeIndex++) {
             if (placeIndex!=originIndex && !visitedPlaces[placeIndex]) {
-                int distance = distances[originIndex][placeIndex];
+                long distance = distances[originIndex][placeIndex];
                 if (distance <= shortestDistance) {
                     shortestDistance = distance;
                     closestPlaceIndex = placeIndex;
@@ -86,7 +86,7 @@ public class TripOptimization {
      return closestPlaceIndex;
     }
 
-    private int legDistance(Place origin, Place destination) {
+    private long legDistance(Place origin, Place destination) {
         Distance distance = new Distance(origin, destination, null, "miles", -1);
         distance.calculateTotalDistance();
         return distance.distance;
@@ -113,15 +113,15 @@ public class TripOptimization {
     }
 
 
-   private int distanceBetweenCity(int[] route, int cityIndex1, int cityIindex2) {
+   private long distanceBetweenCity(int[] route, int cityIndex1, int cityIindex2) {
         return distances[route[cityIndex1]][route[cityIindex2]];
     }
 
 
-    private int twoOpt(int[] route) {
+    private long twoOpt(int[] route) {
         boolean improvement = true;
-        int n = route.length-1;
-        int delta;
+        long n = route.length-1;
+        long delta;
         while (improvement) {
             improvement = false;
             for (int i = 0; i <= n - 3; i++) {

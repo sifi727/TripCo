@@ -21,7 +21,7 @@ public class TestCalculate {
     Gson gson;
 
     double delta;
-    int dist;
+    long dist;
     int version;
     Place origin;
     Place destination;
@@ -69,9 +69,9 @@ public class TestCalculate {
         gson = new Gson();
         distance = gson.fromJson(requestBody, Distance.class);
 
-        Integer expectedInt = 65;
+        Long expectedLong = (long)65;
 
-        assertEquals(distance.distance, expectedInt);
+        assertEquals(distance.distance, expectedLong);
         assertEquals(distance.type, type);
         assertEquals(distance.units, units);
         assertEquals(distance.version, version);

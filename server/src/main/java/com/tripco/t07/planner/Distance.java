@@ -4,7 +4,7 @@ public class Distance {
 
   //The variables in this class should match the REST API definition.
   public Double unitRadius;
-  public Integer distance;
+  public Long distance;
   public int version;
   public Place origin;
   public Place destination;
@@ -28,7 +28,7 @@ public class Distance {
   }
 
   // A constructor to manually initialize all fields (mostly for testing)
-  public Distance(Integer distance, int version, Place origin, Place destination, String type, String unitname, String units, double radius) {
+  public Distance(Long distance, int version, Place origin, Place destination, String type, String unitname, String units, double radius) {
     this.distance = distance;
     this.destination = destination;
     this.origin = origin;
@@ -97,6 +97,6 @@ public class Distance {
     double denominator = left_denominator_component + right_denominator_component;
 
     //Calculate the distance between the origin and the destination.
-    this.distance = (int) (Math.round(radius * Math.atan2(numerator, denominator)));
+    this.distance = (long) (Math.round(radius * Math.atan2(numerator, denominator)));
   }
 }

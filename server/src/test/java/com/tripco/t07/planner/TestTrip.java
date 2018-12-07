@@ -136,8 +136,8 @@ public class TestTrip {
   public void testDistancesWithZeroPlaces() {
     trip.places = new ArrayList<>();
     trip.plan();
-    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    expectedDistances.add(0);
+    ArrayList<Long> expectedDistances = new ArrayList<Long>();
+    expectedDistances.add((long)0);
     assertEquals(expectedDistances, trip.distances);
 
   }
@@ -150,8 +150,8 @@ public class TestTrip {
 
     Gson gson = new Gson();
     trip = gson.fromJson(placesJson, Trip.class);
-    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances, 24, 40, 58);
+    ArrayList<Long> expectedDistances = new ArrayList<Long>();
+    Collections.addAll(expectedDistances, (long)24, (long)40, (long)58);
     trip.plan();
     assertEquals(expectedDistances, trip.distances);
   }
@@ -165,8 +165,8 @@ public class TestTrip {
 
     Gson gson = new Gson();
     trip = gson.fromJson(placesJson, Trip.class);
-    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances,  24, 40, 58);
+    ArrayList<Long> expectedDistances = new ArrayList<Long>();
+    Collections.addAll(expectedDistances,  (long)24, (long)40, (long)58);
     trip.plan();
     assertEquals(expectedDistances, trip.distances);
   }
@@ -175,8 +175,8 @@ public class TestTrip {
   public void testDistanceWithNullPlaces() {
     trip.places = null;
     trip.plan();
-    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    expectedDistances.add(0);
+    ArrayList<Long> expectedDistances = new ArrayList<Long>();
+    expectedDistances.add((long)0);
     assertEquals(expectedDistances, trip.distances);
 
   }
@@ -193,8 +193,8 @@ public class TestTrip {
     {
       fail();
     }
-    ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances, 24, 40, 58);
+    ArrayList<Long> expectedDistances = new ArrayList<Long>();
+    Collections.addAll(expectedDistances, (long)24, (long)40, (long)58);
     assertEquals(2,trip.version);
     assertEquals(expectedDistances,trip.distances);
     assertEquals("miles",trip.options.units);

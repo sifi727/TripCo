@@ -17,7 +17,7 @@ public class Trip {
   public String title;
   public Option options;
   public ArrayList<Place> places;
-  public ArrayList<Integer> distances;
+  public ArrayList<Long> distances;
   public String map;
   public int version;
 
@@ -223,7 +223,7 @@ public class Trip {
    * Returns the distances between consecutive places, including the return to the starting point to make a round trip.
    */
 
-  private int legDistance(Place origin, Place destination) {
+  private long legDistance(Place origin, Place destination) {
     Distance distance = null;
     if (options.units.equals("user defined")) {
       distance = new Distance(origin, destination, options.unitName, options.units,
@@ -238,12 +238,12 @@ public class Trip {
   /**
    * Returns the distances between consecutive places, including the return to the starting point to make a round trip.
    */
-  private ArrayList<Integer> calculateLegDistances() {
+  private ArrayList<Long> calculateLegDistances() {
 
-    ArrayList<Integer> dist = new ArrayList<Integer>();
+    ArrayList<Long> dist = new ArrayList<Long>();
     if (places == null || places.size() == 0) {
 
-      dist.add(0);
+      dist.add((long)0);
       return dist;
 
     }
