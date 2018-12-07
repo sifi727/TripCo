@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Container, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
-import classnames from 'classnames';
 import Info from './Info'
 import Map from './Map';
 import Options from './Options';
@@ -132,7 +131,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
     return <Nav tabs>
       <NavItem>
         <NavLink
-            classname={classnames({active: this.state.activeTab === '1'})}
+            active={(this.state.activeTab === '1')?true:false}
             onClick={() => {
               this.toggle('1');
             }}
@@ -142,7 +141,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
       </NavItem>
       <NavItem>
         <NavLink
-            classname={classnames({active: this.state.activeTab === '2'})}
+            active={(this.state.activeTab === '2')?true:false}
             onClick={() => {
               this.toggle('2');
             }}
@@ -152,7 +151,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
       </NavItem>
       <NavItem>
         <NavLink
-            classname={classnames({active: this.state.activeTab === '3'})}
+            active={(this.state.activeTab === '3')?true:false}
             onClick={() => {
               this.toggle('3');
             }}
