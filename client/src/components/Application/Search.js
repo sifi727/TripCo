@@ -304,7 +304,12 @@ class Search extends Component {
   }
 
   addAll(){
-
+      this.state.search.places.forEach(place => {
+          this.props.addPlace(place);
+      });
+      let search = this.state.search;
+      search.places =[];
+      this.setState(search);
   }
 
     render() {
@@ -323,8 +328,8 @@ class Search extends Component {
                       <Col>
                         <ButtonGroup>
                             {searchButton}
-                            <Button  onClick={this.toggle}>Search Filters</Button>
                             <Button onClick={this.addAll}> Add All Results</Button>
+                            <Button  onClick={this.toggle}>Search Filters</Button>
                         </ButtonGroup>
                       </Col>
                         <Col  offset-sm-1>
