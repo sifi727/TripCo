@@ -66,7 +66,7 @@ Epics planned for this sprint.
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
 | Epics | 5 | 5|
-| Tasks |  58  | 58 | 
+| Tasks |  58  | 63 | 
 | Story Points |  49 | 49| 
 
 We have more epics planned for this Sprint as a result of few tasks rolling over from Sprint 4. We have less story points planned compared to previous Sprints to ensure that we will be able to finish our planned deliverables by the end of the Sprint.
@@ -137,7 +137,7 @@ The team displayed good communication and cohesion. The team members continued t
 
 #### What we need to work on
 
-We were able to meet our goals this sprint. We could improve development time distribution so tasks are completed evenly throughout the sprint instead of mostly in the second half.
+We were able to meet our goals this sprint. We could improve development time distribution so tasks are completed evenly throughout the sprint instead of mostly in the second half. We also feel that we need to increase the amount of code coverage we have to ensure the quality of our product.
 
 #### What we will change next sprint 
 
