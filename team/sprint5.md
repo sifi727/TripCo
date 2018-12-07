@@ -116,14 +116,16 @@ The team showed clear understanding of overall goals of this projects. We were a
 
 #### Problems Encountered and Resolutions
 
-We didn't have any major setbacks this sprint.
+We didn't have any major setbacks this sprint. Although we did have the following minor difficulties:
 
-* We had difficulties with interactive map changes such as leaflet wrap calculations, kml conversion and map save feature
-*
+* leaflet wrap calculations
+* kml conversion
+* setting up the map save feature
+* staying focused on finishing, two of us graduating made it hard! 
 
 ## Retrospective
 
-Early planning stages were critical in understanding of tasks and layout of future development. The team members were effective in visualizing the goals and solution process of each epic.
+Early planning stages were critical in understanding of tasks and layout of future development. The team members were effective in visualizing the goals and solution process of each epic. We really came out with something that looks great, and all members are satisified with the product.
 
 #### What we changed this sprint
 
