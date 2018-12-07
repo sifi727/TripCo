@@ -159,7 +159,8 @@ class Options extends Component {
     }
 
     let saveBtn;
-    let fileName = "map." + this.props.extension;
+    let fileName = "map." + ((this.props.extension)?this.props.extension:"svg");
+    console.log(this.props.extension, fileName);
     if(this.props.map !== null) {
       if(this.props.map === "") {
         saveBtn = <a className="btn btn-secondary.disabled text-white"
