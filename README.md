@@ -1,5 +1,5 @@
 # t07 - Team double 07
-<img src="/client/src/components/Application/Alex.jpg" alt="drawing" width="200"/> <img src="/client/src/components/Application/David.jpg" alt="drawing" width="200"/>
+<img src="/client/src/components/Application/Alex.jpg" alt="drawing" width="200" height="300"/> <img src="/client/src/components/Application/David.jpg" alt="drawing" width="200"/>
 <img src="/client/src/components/Application/Dmitry.jpg" alt="drawing" width="200"/> <img src="/client/src/components/Application/Jerrel.jpg" alt="drawing" width="200"/>
 
 # Member Information
