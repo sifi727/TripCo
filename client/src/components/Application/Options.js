@@ -158,6 +158,26 @@ class Options extends Component {
       );
     }
 
+    let saveBtn;
+    let fileName = "map." + ((this.props.extension)?this.props.extension:"svg");
+    console.log(this.props.extension, fileName);
+    if(this.props.map !== null) {
+      if(this.props.map === "") {
+        saveBtn = <a className="btn btn-secondary.disabled text-white"
+                     download={fileName}>
+          Save Map
+        </a>
+      }
+      else {
+        saveBtn = <a className="btn btn-secondary text-white"
+                     href={`data:text/plain;charset=utf-8,${
+                         encodeURIComponent(this.props.map)}`}
+                     download={fileName}>
+          Save Map
+        </a>
+      }
+    }
+
     let form;
 
     if (this.props.options.units === "user defined") {
@@ -197,6 +217,7 @@ class Options extends Component {
                 </FormText>
                 <ButtonGroup vertical>
                   {mapBtns}
+                  {saveBtn}
                 </ButtonGroup>
               </Col>
               <Col>
@@ -213,9 +234,9 @@ class Options extends Component {
                            updateOptionState={this.updateOptionState}/>
             <Row>
               <Button  value="updateBtn"
-                      onClick={(event) => {
-                        this.submitServerInfo()
-                      }}>Update</Button>
+                       onClick={(event) => {
+                         this.submitServerInfo()
+                       }}>Update</Button>
             </Row>
           </CardBody>
         </Card>
