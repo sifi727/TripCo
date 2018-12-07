@@ -35,7 +35,7 @@ class About extends Component{
 
     buildParagraphs(par) {
         return (
-            <p className={"text-justify"} >{par}</p>
+            <p className="text-justify ml-2"  >{par}</p>
         )
     }
 
