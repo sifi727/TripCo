@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Container, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap';
-import Info from './Info'
-import Map from './Map';
+import Info from './Info';
 import Options from './Options';
-import PlanUtilities from './PlanUtilities'
+import PlanUtilities from './PlanUtilities';
 import {get_config, get_port} from '../../api/api';
 import Itinerary from './Itinerary';
 import Calculator from './Calculator';
