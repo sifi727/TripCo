@@ -282,6 +282,10 @@ class Search extends Component {
 
     checkboxGroup()
     {
+      if(!this.props.config.filters)
+      {
+        return;
+      }
      let checkboxes= this.props.config.filters.map((filter)=>{
          return(
              <FormGroup check  >
