@@ -62,9 +62,6 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
     if(!config.filter){
       config["filters"] = [];
     }
-    if(!config.maps){
-      config["maps"] = ["svg"];
-    }
 
   this.setState({
     config: config
