@@ -43,7 +43,7 @@ function testExample() {
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));
 
-  expect(actual).toEqual(["miles", "kilometers", "svg", "kml", "updateBtn"]);
+  expect(actual).toEqual([undefined, "miles", "kilometers", "svg", "kml", "updateBtn"]);
 }
 
 test('Check to see if table gets made correctly (Function)', testExample);
@@ -66,5 +66,5 @@ test('Check to see if table gets made correctly (Lambda)', () => {
   let actual = [];
   options.find('Button').map((element) => actual.push(element.prop('value')));  // (2)
 
-  expect(actual).toEqual(["miles","kilometers","svg","kml","updateBtn"]);  // (3)
+  expect(actual).toEqual([undefined, "miles","kilometers","svg","kml","updateBtn"]);  // (3)
 });
