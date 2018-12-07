@@ -65,15 +65,13 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | 5 | *total* |
-| Tasks |  24   | *total* | 
-| Story Points |  25  | *total* | 
+| Epics | 5 | 5|
+| Tasks |  58  | 58 | 
+| Story Points |  49 | 49| 
 
 We have more epics planned for this Sprint as a result of few tasks rolling over from Sprint 4. We have less story points planned compared to previous Sprints to ensure that we will be able to finish our planned deliverables by the end of the Sprint.
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
-
-*Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
+We were able to complete all of the planned Epics, including all of the tasks and story points.
 
 
 ## Scrums
@@ -84,57 +82,61 @@ We have more epics planned for this Sprint as a result of few tasks rolling over
 |11/28/18| #337|  #315, #323, #326,  #290| none|
 |11/30/18| #290, #326, #315, #323, #324| #336, #242, #335| none|
 |11/2/18| #318, #330, #327, #328, #361, #329, #365, #332, #242| #358, #359, #370, #336, #227| none|
+|11/5/18| #380, #379, #320, #336, #277, #331| #358, #359, #370| none|
 
 *Add a new row for the scrum session after each lecture. *
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+We were able to sucessfully finish all of our Epics and tasks including all of the story points. 
 
 #### Completed Epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
-* 
+* #338 User: Make the system easier to use.: We've implemented a number of UI improvements to make the web app easier and more intuitive
+* #317 User: I want to view my trip in other tools.: We have added a reactive map and the ability for user to save their trip in svg or kml map format  
+* #321 TripCo: Update the application to adhere to sprint 4 TFFI specs and demo results : We have finalized our web app to match the updated TFFI specs
+* #325 User: I want to know who to thank for this application: Added a section that showcases our team.
+* #262 User: I want to plan trips worldwide.: Added the ability to search for destinations worldwide and filter search requests
+
 
 #### Incomplete Epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
-
-* *## epic title: explanation*
-*
+We don't have any incompleted Epics.
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+The team showed clear understandign of overall goals of this projects. We were able to put the user first and design our web app around this concept.
 
-* *something*
-*
+* Good team communication throughout the entire sprint
+* We were able to correctly plan out our sprint, divide the Epics into individual tasks and divide them between team members.
+* We focused heavily on matching our web app with the updated TFFI and the resutls we received from 50% check. 
+* The UI improvements were a large focus this sprint and we were very happy with the results 
 
 #### Problems Encountered and Resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
+We didn't have any major setbacks this sprint.
 
-* *something*
+* We had diffucilties with interactive map changes such as leaflet wrap calculations, kml conversion and map save feature
 *
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+Early planning stages were critical in understanding of tasks and layout of future development. The team members were effective in visualizing the goals and solution process of each epic.
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+We were able to adapt to team members not being present during team meetings. This was our goal from last sprint and we were able to still include missing team members by setting up a conference call. This helped us is keeping everyone up to date with current developments.
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+The team displayed good communication and cohesion. The team members continued to help each other with complicated tasks which greatly improved development times. 
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+We were able to meet our goals this sprint. We could improve development time distribution so tasks are completed evenly throughout the sprint instead of mostly in the second half.
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+This is the final sprint and no additional development will be done. 
