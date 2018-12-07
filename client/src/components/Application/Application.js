@@ -59,9 +59,6 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
     if(!config.attributes){
     config["attributes"] = ["name", "id", "latitude", "longitude"];
   }
-    if(!config.filter){
-      config["filters"] = [];
-    }
 
   this.setState({
     config: config
