@@ -131,6 +131,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
       <NavItem>
         <NavLink
             active={(this.state.activeTab === '1')?true:false}
+            style={(this.state.activeTab === '1')?{background:"gainsboro", fontWeight:"bold"}:{}}
             onClick={() => {
               this.toggle('1');
             }}
@@ -141,6 +142,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
       <NavItem>
         <NavLink
             active={(this.state.activeTab === '2')?true:false}
+            style={(this.state.activeTab === '2')?{background:"gainsboro", fontWeight:"bold"}:{}}
             onClick={() => {
               this.toggle('2');
             }}
@@ -151,6 +153,7 @@ initConfig(port=this.state.port,hostname=this.state.hostname){
       <NavItem>
         <NavLink
             active={(this.state.activeTab === '3')?true:false}
+            style={(this.state.activeTab === '3')?{background:"gainsboro", fontWeight:"bold"}:{}}
             onClick={() => {
               this.toggle('3');
             }}
