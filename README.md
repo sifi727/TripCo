@@ -6,10 +6,10 @@
 
 | Name | eName | gitHub username | email |
 | ----------------- | ---------- | ---------- | ----------------------------------- |
-| David Jump | djump | DavidJump | David.Jump@Colostate.edu |
-| Alex Laswell | alaswell | alaswell | alaswell@mail.colostate.edu |
-|Dmitry Melnikov   | dmelniko  | dmelniko | dmelniko@rams.colostate.edu    |
-| Jerrel Siler | jsiler | sifi727 | jsiler727@outlook.com |
+| David Jump | djump | DavidJump | dj@Colostate.edu |
+| Alex Laswell | alaswell | alaswell | al@mail.colostate.edu |
+|Dmitry Melnikov   | dmelniko  | dmelniko | dm@rams.colostate.edu    |
+| Jerrel Siler | jsiler | sifi727 | js@colostate.edu |
 
 ### David Jump
 
